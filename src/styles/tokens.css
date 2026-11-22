@@ -470,7 +470,36 @@
   --zones-list-col:     16rem;     /* 256 : colonne mini de la liste textuelle des zones */
 
   /* En-tête : innovations APSUD (Header.astro) */
-  --nav-feature-w:       18rem;      /* 288 : carte « À la une », 5ᵉ colonne du tiroir du méga-menu (≥ 90em) */
+  --nav-feature-w:       22rem;      /* 352 : carte « À la une », 5ᵉ colonne du tiroir du méga-menu (≥ 90em) */
+  --nav-feature-ratio:   4 / 3;      /* photo de la carte (texte posé dessus) */
+  --nav-feature-overlay: linear-gradient(to top,
+                           color-mix(in oklab, var(--apsud-foret-900) 96%, transparent) 0%,
+                           color-mix(in oklab, var(--apsud-foret-900) 86%, transparent) 42%,
+                           color-mix(in oklab, var(--apsud-vert-700) 55%, transparent) 68%,
+                           color-mix(in oklab, var(--apsud-vert-500) 18%, transparent) 88%,
+                           transparent 100%);   /* dégradé vert nuancé : Forêt dense sous le texte, voile vert, photo libre en haut */
+  --nav-feature-ink:     var(--apsud-coton);
+  --nav-feature-meta:    color-mix(in oklab, var(--apsud-coton) 78%, transparent);   /* ligne d'en-tête : crème adoucie (le vert jurait sur le dégradé) */
+  --nav-feature-accent:  var(--apsud-soleil-400);   /* soulignement et flèche du lien : touche Soleil */
+  --nav-feature-step:    0.5rem 0.5rem 0 var(--apsud-pousse-300);   /* marche Pousse derrière la carte */
+  --nav-feature-zoom:    1.05;
+
+  /* Paiement des dons (2026-11-22) */
+  --donate-method-visual: 7.5rem;    /* 120 : logo du moyen de paiement dans sa carte de choix */
+  --donate-method-visual-sm: 6.5rem; /* 104 : même logo, sur téléphone (au-dessus du texte) */
+  --card-brand-w:        3rem;       /*  48 : logo de réseau de cartes */
+  --card-brand-h:        2rem;       /*  32 */
+  --om-orange:           #FF7900;    /* orange de la marque Orange (bouton « Payer » Orange Money) */
+  --om-ink:              #000000;    /* texte sur l'orange Orange : contraste 8,6:1 */
+  --pay-panel-w:         36rem;      /* 576 : formulaire de paiement */
+  --om-bar:              0.25rem;    /*   4 : filet orange sous l'en-tête Orange Money */
+  --om-logo-w:           9rem;       /* 144 : logo Orange Money (fichier rogné) */
+  --nav-intro-w:         20rem;      /* présentation de la porte active, sous le logo (≥ 90em) */
+  --nav-map-w:           15rem;      /* 240 : mini-carte des préfectures (« Nos zones ») */
+  --nav-map-stroke:      1px;
+  --nav-map-active:      var(--apsud-pousse-300);   /* préfectures où APSUD a des projets */
+  --fs-nav-link:         clamp(1rem, 0.9274rem + 0.3226vw, 1.25rem);   /* 16 → 20 : sous-liens du méga-menu */
+  --nav-link-icon:       1.25em;
   --nav-feature-delay:   120ms;      /* la photo « À la une » se dévoile juste après la descente du tiroir */
   --header-progress-h:   0.1875rem;  /*   3 : barre de lecture sous la barre d'en-tête */
   --header-logo-scale:   0.875;      /* logo réduit quand la barre se compacte au défilement (80 → 64) */

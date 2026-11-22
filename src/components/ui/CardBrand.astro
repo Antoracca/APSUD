@@ -1,0 +1,28 @@
+---
+/**
+ * Logo d'un réseau de cartes bancaires (Visa, Mastercard…), en SVG intégré au build depuis le jeu
+ * « logos » d'Iconify (@iconify-json/logos, licence CC0) : couleurs officielles, aucun fichier ni
+ * requête côté visiteur. Utilisé par la page de paiement par carte.
+ */
+import { getIconData, iconToSVG, replaceIDs } from '@iconify/utils';
+import icons from '@iconify-json/logos/icons.json';
+import './CardBrand.css';
+
+interface Props {
+  /** nom de l'icône dans le jeu « logos » (visa, mastercard, amex, discover, jcb, unionpay…) */
+  icon: string;
+  /** nom accessible ; sans lui, le logo est décoratif */
+  label?: string;
+  class?: string;
+  [key: string]: unknown;
+}
+
+const { icon, label, class: className, ...rest } = Astro.props;
+const data = getIconData(icons as Parameters<typeof getIconData>[0], icon);
+if (!data) throw new Error(`Logo de carte introuvable : ${icon}`);
+const { attributes, body } = iconToSVG(data, { height: 'auto' });
+const a11y = label ? `role="img" aria-label="${label}"` : 'aria-hidden="true"';
+const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${attributes.viewBox}" focusable="false" ${a11y}>${replaceIDs(body, icon)}</svg>`;
+---
+
+<span class:list={['c-card-brand', className]} set:html={svg} {...rest} />

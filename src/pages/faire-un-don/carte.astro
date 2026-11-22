@@ -1,0 +1,28 @@
+---
+/**
+ * /faire-un-don/carte — paiement d'un don par carte bancaire (front-end, 2026-11-22).
+ * Le montant arrive de /faire-un-don (?montant=…&devise=…). Vérifications sur l'appareil
+ * (card-validator) ; aucun débit tant que le prestataire (Stripe ou passerelle) n'est pas branché :
+ * « Payer » mène à une page 404 provisoire.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/layout/PageHeader.astro';
+import PaymentShell from '../../sections/paiement/PaymentShell.astro';
+import CardForm from '../../sections/paiement/CardForm.astro';
+---
+
+<BaseLayout
+  title="Don par carte bancaire"
+  description="Faites un don à APSUD par carte bancaire : Visa, Mastercard, American Express et autres réseaux."
+  showEyebrow={false}
+>
+  <PageHeader
+    variant="compact"
+    title="Don par carte bancaire"
+    intro="Depuis la Centrafrique ou l’étranger, en euros ou en francs CFA."
+    breadcrumb={[{ label: 'Agir avec nous', href: '/agir' }, { label: 'Faire un don', href: '/faire-un-don' }, { label: 'Carte bancaire' }]}
+  />
+  <PaymentShell method="carte">
+    <CardForm />
+  </PaymentShell>
+</BaseLayout>

@@ -1,0 +1,76 @@
+---
+/**
+ * Paiement Orange Money (/faire-un-don/orange-money) — front-end seulement.
+ * Le donateur saisit son numéro Orange Money (+236, 8 chiffres) ; une référence de suivi est créée
+ * sur la page. « Payer » vérifie le numéro puis mène à la page provisoire (404) : rien n'est
+ * envoyé ni débité tant que l'agrégateur n'est pas branché (back-end à venir).
+ * Le numéro n'apparaît jamais dans l'URL.
+ */
+import { Image } from 'astro:assets';
+import Icon from '../../components/ui/Icon.astro';
+import { getImage } from '../../lib/images';
+import { site } from '../../data/site';
+import { orangeMoneyLogo, phoneCountry, paymentPendingHref } from './paymentData';
+import './OrangeMoneyForm.css';
+
+const logo = getImage(orangeMoneyLogo);
+---
+
+<form class="c-om" novalidate data-om-form data-pending={paymentPendingHref} aria-labelledby="om-title">
+  <div class="c-om__head">
+    <Image src={logo} alt="Orange Money" width={220} height={Math.round((220 * logo.height) / logo.width)} format="webp" loading="eager" class="c-om__logo" />
+    <p class="c-om__ref">
+      <span class="c-om__ref-label">Référence de suivi</span>
+      <output class="c-om__ref-value" data-om-ref>—</output>
+    </p>
+  </div>
+
+  <div class="c-om__body">
+    <h2 class="c-om__title" id="om-title">Payer avec Orange Money</h2>
+
+    <dl class="c-om__facts">
+      <div><dt>Montant à payer</dt><dd class="c-om__amount" data-om-amount>à choisir</dd></div>
+      <div><dt>Bénéficiaire</dt><dd>{site.sigle} — {site.nom}</dd></div>
+    </dl>
+
+    <div class="c-om__field">
+      <label class="c-om__label" for="om-phone">Numéro Orange Money</label>
+      <div class="c-om__phone">
+        <span class="c-om__prefix" aria-hidden="true">{phoneCountry.code}</span>
+        <input
+          class="c-om__input"
+          id="om-phone"
+          type="tel"
+          inputmode="numeric"
+          autocomplete="tel-national"
+          placeholder="72 00 00 00"
+          maxlength="11"
+          required
+          aria-describedby="om-phone-hint om-phone-error"
+          data-om-phone
+        />
+      </div>
+      <p class="c-om__hint" id="om-phone-hint">Le numéro qui recevra la demande de confirmation ({phoneCountry.digits} chiffres, sans l’indicatif {phoneCountry.code}).</p>
+      <p class="c-om__error" id="om-phone-error" aria-live="polite" data-om-error></p>
+    </div>
+
+    <ol class="c-om__steps">
+      <li>Vous validez le paiement sur cette page.</li>
+      <li>Une demande de confirmation s’affiche sur votre téléphone.</li>
+      <li>Vous la confirmez avec votre code secret Orange Money.</li>
+    </ol>
+
+    <button class="c-om__pay" type="submit" data-om-pay>
+      <span data-om-pay-label>Payer</span>
+      <Icon name="arrow-right" />
+    </button>
+    <p class="c-om__warning">
+      <Icon name="cadenas" size="sm" />
+      <span>Ne communiquez jamais votre code secret&nbsp;: APSUD ne vous le demandera ni par téléphone ni par message.</span>
+    </p>
+  </div>
+</form>
+
+<script>
+  import '../../scripts/payment-orange';
+</script>

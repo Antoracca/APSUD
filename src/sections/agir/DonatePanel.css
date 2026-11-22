@@ -185,3 +185,88 @@
     .c-donate-chip__label, .c-donate-switch__label { transition: none; }
   }
 }
+
+/* ---------- Étape 3 : moyen de paiement (cartes à choix unique) ---------- */
+@layer components {
+  .c-donate-methods { display: grid; gap: var(--space-3); }
+
+  .c-donate-method {
+    position: relative;
+    display: grid;
+    grid-template-columns: var(--donate-method-visual) minmax(0, 1fr) auto;
+    align-items: center;
+    gap: var(--space-4);
+    padding: var(--space-4);
+    border: var(--border-width-strong) solid var(--color-border-subtle);
+    border-radius: var(--radius-control);
+    background: var(--color-bg);
+    cursor: pointer;
+  }
+  .c-donate-method__input {
+    position: absolute;
+    inset: 0;
+    inline-size: 100%;
+    block-size: 100%;
+    margin: 0;
+    opacity: 0;
+    cursor: pointer;
+  }
+  .c-donate-method__visual { display: grid; place-items: center start; }
+  .c-donate-method__om { inline-size: 100%; block-size: auto; max-inline-size: var(--donate-method-visual); mix-blend-mode: multiply; /* fond blanc du PNG fondu dans la carte choisie */ }
+  .c-donate-method__brands { display: flex; flex-wrap: wrap; gap: var(--space-1); }
+  .c-donate-method__brands .c-card-brand { --card-brand-w: 2.25rem; --card-brand-h: 1.5rem; }
+  .c-donate-method__text { display: grid; gap: var(--space-1); }
+  .c-donate-method__title {
+    font-family: var(--font-condensed);
+    font-stretch: var(--font-stretch-condensed);
+    font-size: var(--fs-lead);
+    font-weight: var(--fw-heavy);
+    line-height: var(--lh-tight);
+  }
+  .c-donate-method__desc { color: var(--color-text-muted); font-size: var(--fs-small); line-height: var(--lh-snug); }
+
+  /* Coche : goutte-feuille vide → pleine (Forêt) quand le moyen est choisi */
+  .c-donate-method__check {
+    display: grid;
+    place-items: center;
+    inline-size: var(--space-6);
+    block-size: var(--space-6);
+    border: var(--border-width-strong) solid var(--color-border-control);
+    border-radius: var(--radius-goutte);
+    color: transparent;
+  }
+  .c-donate-method:has(:checked) {
+    border-color: var(--color-surface-strong);
+    background: var(--color-surface-tint);
+  }
+  .c-donate-method:has(:checked) .c-donate-method__check {
+    border-color: var(--color-surface-strong);
+    background: var(--color-surface-strong);
+    color: var(--color-surface-signature);
+  }
+  .c-donate-method:has(:focus-visible) {
+    outline: var(--focus-width) solid var(--color-focus);
+    outline-offset: var(--focus-offset);
+  }
+  .c-donate-method:hover:not(:has(:checked)) { border-color: var(--color-border-control); }
+
+  .c-donate-panel__cta { gap: var(--space-3); }
+
+  /* Téléphone : logo au-dessus du texte (sinon le texte se réduit à une colonne de mots) */
+  @media (width < 30em) {
+    .c-donate-method {
+      grid-template-columns: minmax(0, 1fr) auto;
+      grid-template-areas: "visual check" "text text";
+      gap: var(--space-3);
+    }
+    .c-donate-method__visual { grid-area: visual; }
+    .c-donate-method__text { grid-area: text; }
+    .c-donate-method__check { grid-area: check; align-self: start; }
+    .c-donate-method__om { max-inline-size: var(--donate-method-visual-sm); }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .c-donate-method { transition: border-color var(--dur-short) var(--ease-out), background-color var(--dur-short) var(--ease-out); }
+    .c-donate-method__check { transition: background-color var(--dur-short) var(--ease-out), color var(--dur-short) var(--ease-out); }
+  }
+}

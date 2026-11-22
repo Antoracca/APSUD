@@ -1,0 +1,101 @@
+---
+/**
+ * Paiement par carte bancaire (/faire-un-don/carte) — interface front-end.
+ * Vérifications sur l'appareil avec la bibliothèque card-validator (Braintree/PayPal, MIT) :
+ * réseau reconnu dès les premiers chiffres, contrôle de Luhn (numéro mal saisi ou inventé),
+ * date d'expiration, cryptogramme (3 ou 4 chiffres selon le réseau), titulaire.
+ * Logos officiels des réseaux : CardBrand.astro (Iconify « logos »).
+ *
+ * ⚠ Les champs n'ont pas d'attribut `name` et le formulaire n'a pas d'`action` : rien n'est envoyé.
+ * « Payer » mène à la page provisoire (404). Au branchement (Stripe ou passerelle bancaire),
+ * remplacer ces champs par les champs hébergés du prestataire (ex. Stripe Payment Element) :
+ * c'est lui qui recevra les numéros de carte et gérera la détection de fraude (3-D Secure, Radar),
+ * ce qu'aucune vérification côté navigateur ne peut faire.
+ */
+import Icon from '../../components/ui/Icon.astro';
+import CardBrand from '../../components/ui/CardBrand.astro';
+import { cardBrands, paymentPendingHref } from './paymentData';
+import './CardForm.css';
+---
+
+<form class="c-card-pay" novalidate data-card-form data-pending={paymentPendingHref} aria-labelledby="card-title">
+  <div class="c-card-pay__head">
+    <h2 class="c-card-pay__title" id="card-title">Payer par carte bancaire</h2>
+    <ul class="c-card-pay__brands" role="list" aria-label="Cartes acceptées">
+      {cardBrands.map((b) => <li><CardBrand icon={b.icon} label={b.name} /></li>)}
+    </ul>
+    <p class="c-card-pay__cb">Les Cartes Bancaires (CB) co-marquées Visa ou Mastercard sont acceptées.</p>
+  </div>
+
+  <div class="c-card-pay__body">
+    <div class="c-card-pay__field c-card-pay__field--full">
+      <label class="c-card-pay__label" for="card-number">Numéro de carte</label>
+      <div class="c-card-pay__control c-card-pay__control--number">
+        <input
+          class="c-card-pay__input"
+          id="card-number"
+          type="text"
+          inputmode="numeric"
+          autocomplete="cc-number"
+          placeholder="1234 1234 1234 1234"
+          maxlength="23"
+          required
+          aria-describedby="card-number-error"
+          data-card-number
+        />
+        <span class="c-card-pay__detected" aria-hidden="true" data-card-detected>
+          <span class="c-card-pay__generic"><Icon name="carte-bancaire" /></span>
+          {cardBrands.map((b) => <CardBrand icon={b.icon} class="c-card-pay__brand" data-brand={b.type} />)}
+        </span>
+      </div>
+      <p class="c-card-pay__status u-visually-hidden" aria-live="polite" data-card-brand-name></p>
+      <p class="c-card-pay__error" id="card-number-error" aria-live="polite" data-error-for="number"></p>
+    </div>
+
+    <div class="c-card-pay__field">
+      <label class="c-card-pay__label" for="card-expiry">Date d’expiration</label>
+      <div class="c-card-pay__control">
+        <input class="c-card-pay__input" id="card-expiry" type="text" inputmode="numeric" autocomplete="cc-exp" placeholder="MM / AA" maxlength="7" required aria-describedby="card-expiry-error" data-card-expiry />
+      </div>
+      <p class="c-card-pay__error" id="card-expiry-error" aria-live="polite" data-error-for="expiry"></p>
+    </div>
+
+    <div class="c-card-pay__field">
+      <label class="c-card-pay__label" for="card-cvc">Cryptogramme</label>
+      <div class="c-card-pay__control">
+        <input class="c-card-pay__input" id="card-cvc" type="text" inputmode="numeric" autocomplete="cc-csc" placeholder="123" maxlength="4" required aria-describedby="card-cvc-hint card-cvc-error" data-card-cvc />
+      </div>
+      <p class="c-card-pay__hint" id="card-cvc-hint" data-card-cvc-hint>Les 3 chiffres au dos de la carte.</p>
+      <p class="c-card-pay__error" id="card-cvc-error" aria-live="polite" data-error-for="cvc"></p>
+    </div>
+
+    <div class="c-card-pay__field c-card-pay__field--full">
+      <label class="c-card-pay__label" for="card-name">Titulaire de la carte</label>
+      <div class="c-card-pay__control">
+        <input class="c-card-pay__input" id="card-name" type="text" autocomplete="cc-name" placeholder="Nom tel qu’inscrit sur la carte" required aria-describedby="card-name-error" data-card-name />
+      </div>
+      <p class="c-card-pay__error" id="card-name-error" aria-live="polite" data-error-for="name"></p>
+    </div>
+
+    <div class="c-card-pay__field c-card-pay__field--full">
+      <label class="c-card-pay__label" for="card-email">E-mail pour le reçu</label>
+      <div class="c-card-pay__control">
+        <input class="c-card-pay__input" id="card-email" type="email" autocomplete="email" placeholder="vous@exemple.org" required aria-describedby="card-email-error" data-card-email />
+      </div>
+      <p class="c-card-pay__error" id="card-email-error" aria-live="polite" data-error-for="email"></p>
+    </div>
+
+    <button class="c-card-pay__pay c-card-pay__field--full" type="submit" data-card-pay>
+      <Icon name="cadenas" />
+      <span data-card-pay-label>Payer</span>
+    </button>
+    <p class="c-card-pay__secure c-card-pay__field--full">
+      Les vérifications du numéro, de la date et du cryptogramme se font sur votre appareil.
+      Les données de carte seront transmises uniquement à notre prestataire de paiement, jamais à APSUD.
+    </p>
+  </div>
+</form>
+
+<script>
+  import '../../scripts/payment-card';
+</script>

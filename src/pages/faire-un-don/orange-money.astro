@@ -1,0 +1,27 @@
+---
+/**
+ * /faire-un-don/orange-money — paiement d'un don par Orange Money (front-end, 2026-11-22).
+ * Le montant arrive de /faire-un-don (?montant=…&devise=…). Aucun débit tant que l'agrégateur
+ * Mobile Money n'est pas branché (back-end à venir) ; « Payer » mène à une page 404 provisoire.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/layout/PageHeader.astro';
+import PaymentShell from '../../sections/paiement/PaymentShell.astro';
+import OrangeMoneyForm from '../../sections/paiement/OrangeMoneyForm.astro';
+---
+
+<BaseLayout
+  title="Don par Orange Money"
+  description="Faites un don à APSUD depuis votre téléphone avec Orange Money, en francs CFA."
+  showEyebrow={false}
+>
+  <PageHeader
+    variant="compact"
+    title="Don par Orange Money"
+    intro="Saisissez votre numéro, puis confirmez le paiement sur votre téléphone."
+    breadcrumb={[{ label: 'Agir avec nous', href: '/agir' }, { label: 'Faire un don', href: '/faire-un-don' }, { label: 'Orange Money' }]}
+  />
+  <PaymentShell method="orange-money">
+    <OrangeMoneyForm />
+  </PaymentShell>
+</BaseLayout>

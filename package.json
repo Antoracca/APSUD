@@ -11,6 +11,11 @@
   },
   "dependencies": {
     "@fontsource-variable/mona-sans": "^5.3.0",
-    "astro": "^7.4.13"
+    "astro": "^7.4.13",
+    "card-validator": "^10.0.4"
+  },
+  "devDependencies": {
+    "@iconify-json/logos": "^1.2.10",
+    "@iconify/utils": "^3.1.7"
   }
 }

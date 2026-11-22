@@ -48,7 +48,7 @@ export const partners: Partner[] = list
       category: p.categorie === 'bailleur' ? 'bailleur' : 'partenaire',
       url: (p.site_officiel as string | null) ?? null,
       logo,
-      bandLogo: hasImage(`assets/partenaires/bandeau/${p.slug}.png`) ? `assets/partenaires/bandeau/${p.slug}.png` : logo,
+      bandLogo: [`assets/partenaires/bandeau/${p.slug}.svg`, `assets/partenaires/bandeau/${p.slug}.png`].find((f) => hasImage(f)) ?? logo,
     } satisfies Partner;
   })
   .filter((p): p is Partner => p !== null);

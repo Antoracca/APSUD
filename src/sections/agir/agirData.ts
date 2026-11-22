@@ -147,12 +147,12 @@ export const donationAmounts = {
 
 export const donationFaq = [
   {
-    q: 'Pourquoi les coordonnées de paiement ne sont-elles pas affichées ?',
-    a: 'Pour éviter toute erreur de numéro ou tentative de fraude, APSUD communique ses coordonnées Mobile Money et bancaires directement aux donateurs qui en font la demande.',
+    q: 'Quels moyens de paiement puis-je utiliser ?',
+    a: 'Orange Money depuis votre téléphone, en francs CFA, ou une carte bancaire (Visa, Mastercard, American Express et autres réseaux), depuis la Centrafrique ou l’étranger.',
   },
   {
-    q: 'Le montant choisi ici est-il prélevé ?',
-    a: 'Non. Les montants proposés sont indicatifs : ils servent seulement à préparer votre message. Aucun paiement n’est effectué sur ce site.',
+    q: 'Mes données de paiement sont-elles conservées ?',
+    a: 'Non. APSUD ne conserve ni votre numéro de carte ni votre code Orange Money : ils sont traités uniquement par le prestataire de paiement. Ne communiquez jamais votre code secret, même à une personne se présentant comme APSUD.',
   },
   {
     q: 'Puis-je donner depuis l’étranger ou faire un don en nature ?',

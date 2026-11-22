@@ -1,0 +1,136 @@
+/* Paiement Orange Money (OrangeMoneyForm.astro) */
+@layer components {
+  .c-om {
+    background: var(--apsud-blanc);
+    border: var(--border-width) solid var(--color-border-subtle);
+    box-shadow: var(--shadow-step);
+  }
+  .c-om__head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-2) var(--space-4);
+    padding: var(--space-4) var(--space-6);
+    border-block-end: var(--om-bar) solid var(--om-orange);   /* filet orange de la marque */
+  }
+  .c-om__logo { inline-size: var(--om-logo-w); block-size: auto; }
+  .c-om__ref { display: grid; justify-items: end; gap: var(--space-1); }
+  .c-om__ref-label { color: var(--color-text-muted); font-size: var(--fs-caption); }
+  .c-om__ref-value {
+    font-family: var(--font-condensed);
+    font-stretch: var(--font-stretch-condensed);
+    font-size: var(--fs-lead);
+    font-weight: var(--fw-heavy);
+    letter-spacing: var(--ls-overline);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .c-om__body { display: grid; gap: var(--space-6); padding: var(--space-6); }
+  .c-om__title { font-size: var(--fs-h4); }
+
+  .c-om__facts { display: grid; gap: var(--space-3); margin: 0; }
+  .c-om__facts > div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: var(--space-1) var(--space-4);
+    padding-block-end: var(--space-3);
+    border-block-end: var(--border-width) solid var(--color-border-subtle);
+  }
+  .c-om__facts dt { color: var(--color-text-muted); font-size: var(--fs-small); }
+  .c-om__facts dd { margin: 0; font-weight: var(--fw-bold); text-align: end; }
+  .c-om__facts .c-om__amount {
+    font-family: var(--font-headline);
+    font-size: var(--fs-h3);
+    font-stretch: var(--font-stretch-stat);
+    font-weight: var(--fw-stat-light);
+    line-height: var(--lh-tight);
+  }
+
+  .c-om__field { display: grid; gap: var(--space-2); }
+  .c-om__label { font-weight: var(--fw-bold); }
+  .c-om__phone {
+    display: flex;
+    align-items: stretch;
+    border: var(--border-width-strong) solid var(--color-border-control);
+    border-radius: var(--radius-control);
+    background: var(--apsud-blanc);
+  }
+  .c-om__phone:focus-within { outline: var(--focus-width) solid var(--om-orange); outline-offset: var(--focus-offset); }
+  .c-om__prefix {
+    display: grid;
+    place-items: center;
+    padding-inline: var(--space-4);
+    border-inline-end: var(--border-width) solid var(--color-border-subtle);
+    background: var(--color-surface-soft);
+    font-weight: var(--fw-bold);
+    font-variant-numeric: tabular-nums;
+  }
+  .c-om__input {
+    flex: 1;
+    inline-size: 0;                 /* la largeur vient du flex, pas de la largeur par défaut des champs */
+    min-inline-size: 0;
+    min-block-size: var(--tap-comfort);
+    padding-inline: var(--space-4);
+    border: 0;
+    background: transparent;
+    font: inherit;
+    font-size: var(--fs-lead);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: var(--ls-overline);
+  }
+  .c-om__input:focus { outline: none; }
+  .c-om__hint { color: var(--color-text-muted); font-size: var(--fs-small); }
+  .c-om__error { color: var(--color-error); font-size: var(--fs-small); font-weight: var(--fw-bold); }
+  .c-om__error:empty { display: none; }
+  .c-om__field:has(.c-om__error:not(:empty)) .c-om__phone { border-color: var(--color-error); }
+
+  /* Étapes : vraie séquence, numérotée en pastilles orange */
+  .c-om__steps {
+    display: grid;
+    gap: var(--space-3);
+    margin: 0;
+    padding: var(--space-4);
+    background: var(--color-surface-soft);
+    list-style: none;
+    counter-reset: om;
+    font-size: var(--fs-small);
+  }
+  .c-om__steps li { display: grid; grid-template-columns: auto 1fr; gap: var(--space-3); align-items: center; counter-increment: om; }
+  .c-om__steps li::before {
+    content: counter(om);
+    display: grid;
+    place-items: center;
+    inline-size: var(--space-6);
+    block-size: var(--space-6);
+    border-radius: var(--radius-round);
+    background: var(--om-orange);
+    color: var(--om-ink);
+    font-weight: var(--fw-heavy);
+    font-size: var(--fs-caption);
+  }
+
+  .c-om__pay {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-3);
+    min-block-size: var(--tap-comfort);
+    padding: var(--space-3) var(--space-6);
+    border: 0;
+    border-radius: var(--radius-control);
+    background: var(--om-orange);
+    color: var(--om-ink);
+    font-family: var(--font-condensed);
+    font-stretch: var(--font-stretch-condensed);
+    font-size: var(--fs-h6);
+    font-weight: var(--fw-heavy);
+    cursor: pointer;
+  }
+  .c-om__pay:hover { box-shadow: inset 0 0 0 var(--border-width-strong) var(--om-ink); }
+  .c-om__pay:focus-visible { outline: var(--focus-width) solid var(--color-focus); outline-offset: var(--focus-offset); }
+  .c-om__pay[aria-disabled="true"] { cursor: progress; opacity: 0.7; }
+  .c-om__warning { display: flex; gap: var(--space-2); align-items: start; color: var(--color-text-muted); font-size: var(--fs-small); }
+}

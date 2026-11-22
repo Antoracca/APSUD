@@ -2,7 +2,8 @@
 /**
  * Grille de logos de bailleurs / partenaires (Prosper `.l-logo-grid` + `.c-logo`), partagée par
  * /faire-un-don (preuves, version compacte) et /agir/partenariat (références).
- * Logos en niveaux de gris au repos, couleur d'origine au survol et au focus ; chaque logo mène
+ * Ton « neutre » : niveaux de gris au repos, couleur au survol. Ton « vert » (page de don) : logos
+ * sans fond, en couleur d'origine, posés sur le vert doux du bandeau d'accueil ; chaque logo mène
  * à sa fiche sur /partenaires. Les logos viennent de src/data/partners.ts (jamais recopiés).
  */
 import { Image } from 'astro:assets';
@@ -15,18 +16,20 @@ interface Props {
   slugs?: string[];
   category?: Partner['category'];
   size?: 'sm' | 'md';
+  /** « vert » : logos sans fond (versions du bandeau), en couleur, sur le vert doux de l'accueil */
+  tone?: 'neutre' | 'vert';
   label: string;
   class?: string;
 }
 
-const { slugs, category, size = 'md', label, class: className } = Astro.props;
+const { slugs, category, size = 'md', tone = 'neutre', label, class: className } = Astro.props;
 const list = slugs
   ? slugs.map((s) => partners.find((p) => p.slug === s)).filter((p): p is Partner => !!p)
   : partners.filter((p) => !category || p.category === category);
-const logos = list.map((p) => ({ ...p, img: getImage(p.logo) }));
+const logos = list.map((p) => ({ ...p, img: getImage(tone === 'vert' ? p.bandLogo : p.logo) }));
 ---
 
-<ul class:list={['c-agir-logos', `c-agir-logos--${size}`, className]} role="list" aria-label={label}>
+<ul class:list={['c-agir-logos', `c-agir-logos--${size}`, `c-agir-logos--${tone}`, className]} role="list" aria-label={label}>
   {logos.map((p) => (
     <li class="c-agir-logos__item">
       <a class="c-agir-logos__link" href={`/partenaires#${p.slug}`}>

@@ -286,21 +286,32 @@
     transform: translateY(-100%);
   }
 
+  /* Étiquette « À la une » : pastille Pousse en goutte-feuille, au-dessus de la carte */
   .c-header__feature-label {
-    color: var(--color-text-muted);
+    position: relative;                       /* au-dessus du fond du panneau (couche créée par son clip-path) */
+    justify-self: start;
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-goutte);
+    background: var(--color-surface-signature);
+    color: var(--color-text);
     font-family: var(--font-condensed);
     font-stretch: var(--font-stretch-condensed);
     font-size: var(--fs-overline);
-    font-weight: var(--fw-bold);
+    font-weight: var(--fw-heavy);
     line-height: var(--lh-tight);
     letter-spacing: var(--ls-overline);
     text-transform: uppercase;
   }
 
+  /* Carte image : la photo occupe toute la carte, un dégradé vert nuancé (Forêt → Vert APSUD →
+     transparent) monte du bas, et le texte se pose dessus. Toute la carte est cliquable. */
   .c-header__feature-card {
     position: relative;                       /* lien « En savoir plus » étendu à toute la carte */
     display: grid;
-    row-gap: var(--space-2);
+    grid-template-areas: "card";
+    overflow: hidden;
+    background: var(--color-surface-strong);  /* teinte d'attente pendant le chargement de la photo */
+    box-shadow: var(--nav-feature-step);
   }
   .c-header__feature-card:has(:focus-visible) {
     outline: var(--focus-width) solid var(--color-focus);
@@ -309,35 +320,53 @@
   .c-header__feature-card :focus-visible { outline: none; }
 
   .c-header__feature-media {
+    position: relative;
+    grid-area: card;
     display: block;
-    margin-block-end: var(--space-1);
-    overflow: hidden;
-    background: var(--color-surface-tint);    /* teinte d'attente pendant le chargement de la photo */
+  }
+  .c-header__feature-media::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--nav-feature-overlay);
   }
   .c-header__feature-img {
     display: block;
     inline-size: 100%;
     block-size: auto;
-    aspect-ratio: 16 / 9;
+    aspect-ratio: var(--nav-feature-ratio);
     object-fit: cover;
   }
 
+  .c-header__feature-text {
+    position: relative;                       /* au-dessus du dégradé */
+    grid-area: card;
+    align-self: end;
+    display: grid;
+    row-gap: var(--space-2);
+    padding: var(--space-5);
+    --color-link: var(--nav-feature-ink);
+    --color-link-decoration: var(--nav-feature-accent);
+  }
   .c-header__feature-meta {
-    color: var(--color-text-muted);
+    color: var(--nav-feature-meta);
     font-size: var(--fs-caption);
+    font-weight: var(--fw-medium);
     line-height: var(--lh-snug);
   }
   .c-header__feature-title {
-    color: var(--color-text);
+    color: var(--nav-feature-ink);
     font-family: var(--font-condensed);
     font-stretch: var(--font-stretch-condensed);
-    font-size: var(--fs-lead);
-    font-weight: var(--fw-bold);
+    font-size: var(--fs-h6);
+    font-weight: var(--fw-heavy);
     line-height: var(--lh-tight);
     letter-spacing: var(--ls-condensed);
     text-wrap: balance;
   }
-  .c-header__feature-link { justify-self: start; font-size: var(--fs-small); }
+  .c-header__feature-link { justify-self: start; margin-block-start: var(--space-1); font-size: var(--fs-small); }
+  .c-header__feature-link .c-arrow-link__label { text-decoration-color: var(--nav-feature-accent); }
+  .c-header__feature-link .c-arrow-link__icon { color: var(--nav-feature-accent); }
 
   /* ------------------------------------------------------------------ */
   /* Innovation APSUD : barre de lecture (100 % CSS, défilement)         */
@@ -616,11 +645,24 @@
 
     /* « À la une » : la photo se dévoile en rideau, du haut vers le bas, juste après le tiroir.
        Fermée, elle est repliée sans transition (le tiroir remonte déjà en 100 ms). */
-    .c-header__feature-img { clip-path: inset(0 0 100% 0); }
-    .c-header__inner:has(.c-header__doors[data-active]) .c-header__feature-img {
+    .c-header__feature-media { clip-path: inset(0 0 100% 0); }
+    .c-header__inner:has(.c-header__doors[data-active]) .c-header__feature-media {
       clip-path: inset(0);
       transition: clip-path var(--dur-long) var(--ease-out) var(--nav-feature-delay);
     }
+    /* le texte monte en fondu une fois la photo dévoilée */
+    .c-header__feature-text { opacity: 0; translate: 0 var(--space-3); }
+    .c-header__inner:has(.c-header__doors[data-active]) .c-header__feature-text {
+      opacity: 1;
+      translate: none;
+      transition:
+        opacity var(--dur-long) var(--ease-out) calc(var(--nav-feature-delay) + var(--dur-short)),
+        translate var(--dur-long) var(--ease-out) calc(var(--nav-feature-delay) + var(--dur-short));
+    }
+    /* survol de la carte : la photo avance très lentement, le dégradé se resserre */
+    .c-header__feature-img { transition: scale var(--dur-signature) var(--ease-out); }
+    .c-header__feature-card:hover .c-header__feature-img,
+    .c-header__feature-card:focus-within .c-header__feature-img { scale: var(--nav-feature-zoom); }
     .c-header__progress { transition: opacity var(--dur-short) var(--ease-out); }
     .c-header__link { transition: padding-inline-start var(--dur-menu) var(--ease-out), color var(--dur-short) var(--ease-out); }
     .c-header__search { transition: background-color var(--dur-short) var(--ease-out); }
@@ -663,4 +705,119 @@
   }
 
   @keyframes c-header-progress { to { scale: 1 1; } }
+}
+
+/* ------------------------------------------------------------------ */
+/* Méga-menu, refonte intérieure (2026-11-22)                          */
+/*  - présentation de la porte active sous le logo (≥ 90em) ;           */
+/*  - « Nos zones » : mini-carte, la préfecture survolée s'allume ;     */
+/*  - liens plus lisibles, pictogrammes métier pour « Nos actions ».    */
+/* ------------------------------------------------------------------ */
+@layer components {
+  .c-header__intros { display: none; }
+
+  @media (width >= 90em) {
+    .c-header__intros {
+      position: relative;                    /* au-dessus du fond du panneau (couche de son clip-path) */
+      display: grid;
+      grid-template-areas: "intro";
+      grid-row: 2;
+      grid-column: 1;
+      align-self: stretch;
+      min-inline-size: 0;
+      padding-block: var(--space-6) var(--space-8);
+      padding-inline-end: var(--space-10);
+      pointer-events: none;
+    }
+  }
+
+  .c-header__intro {
+    grid-area: intro;
+    display: grid;
+    align-content: start;
+    row-gap: var(--space-3);
+    max-inline-size: var(--nav-intro-w);
+    opacity: 0;
+    visibility: hidden;
+  }
+  .c-header__inner:has(.c-header__doors[data-active="1"]) [data-intro="1"],
+  .c-header__inner:has(.c-header__doors[data-active="2"]) [data-intro="2"],
+  .c-header__inner:has(.c-header__doors[data-active="3"]) [data-intro="3"],
+  .c-header__inner:has(.c-header__doors[data-active="4"]) [data-intro="4"] {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .c-header__intro-title {
+    color: var(--color-heading);
+    font-family: var(--font-condensed);
+    font-stretch: var(--font-stretch-condensed);
+    font-size: var(--fs-h3);
+    font-weight: var(--fw-heavy);
+    line-height: var(--lh-tight);
+    letter-spacing: var(--ls-condensed);
+  }
+  .c-header__intro-text {
+    color: var(--color-text-muted);
+    font-size: var(--fs-body);
+    line-height: var(--lh-snug);
+    text-wrap: pretty;
+  }
+
+  /* Mini-carte : préfectures en Pousse pâle, zones d'intervention plus soutenues, zone survolée en Vert */
+  .c-header__map {
+    inline-size: min(100%, var(--nav-map-w));
+    block-size: auto;
+    margin-block-start: var(--space-3);
+    overflow: visible;
+  }
+  .c-header__map-zone {
+    fill: var(--color-surface-tint);
+    stroke: var(--apsud-blanc);
+    stroke-width: var(--nav-map-stroke);
+    vector-effect: non-scaling-stroke;
+    stroke-linejoin: round;
+  }
+  .c-header__map-zone--done,
+  .c-header__map-zone--ongoing { fill: var(--nav-map-active); }
+  .c-header__map-zone.is-lit { fill: var(--color-brand); }
+  .c-header__map-city {
+    fill: var(--color-surface-strong);
+    stroke: var(--apsud-blanc);
+    stroke-width: var(--nav-map-stroke);
+    vector-effect: non-scaling-stroke;
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+  .c-header__map-city.is-lit { fill: var(--color-brand); scale: 1.6; }
+
+  /* Liens : plus grands, pictogramme Vert devant les domaines d'action */
+  .c-header__link {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--fs-nav-link);
+  }
+  .c-header__link-icon {
+    flex: none;
+    inline-size: var(--nav-link-icon);
+    block-size: var(--nav-link-icon);
+    color: var(--color-text-brand);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .c-header__intro {
+      translate: 0 var(--space-2);
+      transition: opacity var(--dur-short) var(--ease-out), translate var(--dur-standard) var(--ease-out), visibility 0s linear var(--dur-short);
+    }
+    .c-header__inner:has(.c-header__doors[data-active="1"]) [data-intro="1"],
+    .c-header__inner:has(.c-header__doors[data-active="2"]) [data-intro="2"],
+    .c-header__inner:has(.c-header__doors[data-active="3"]) [data-intro="3"],
+    .c-header__inner:has(.c-header__doors[data-active="4"]) [data-intro="4"] {
+      translate: none;
+      transition: opacity var(--dur-standard) var(--ease-out) var(--dur-shortest), translate var(--dur-standard) var(--ease-out) var(--dur-shortest), visibility 0s;
+    }
+    .c-header__map-zone { transition: fill var(--dur-short) var(--ease-out); }
+    .c-header__map-city { transition: fill var(--dur-short) var(--ease-out), scale var(--dur-standard) var(--ease-out); }
+  }
 }

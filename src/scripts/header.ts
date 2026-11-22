@@ -53,6 +53,29 @@ if (header) {
     const PANEL = '.c-header__clip, .c-header__backdrop-clip, .c-header__feature';
     const inMenu = (node: Node | null) => !!node && (doors.contains(node) || !!feature?.contains(node));
 
+    /* « À la une » : la photo est en chargement différé, mais elle reste rognée tant que le menu est
+       fermé ; certains navigateurs ne la chargent alors jamais (ou trop tard, en ligne). On la
+       précharge dès que la page est au repos, et au plus tard à la première ouverture. */
+    const featureImg = feature?.querySelector<HTMLImageElement>('img') ?? null;
+    const loadFeature = () => { if (featureImg && featureImg.loading !== 'eager') featureImg.loading = 'eager'; };
+    const idle = (cb: () => void) =>
+      'requestIdleCallback' in window ? window.requestIdleCallback(cb, { timeout: 3000 }) : window.setTimeout(cb, 1500);
+    if (document.readyState === 'complete') idle(loadFeature);
+    else window.addEventListener('load', () => idle(loadFeature), { once: true });
+
+    /* Mini-carte « Nos zones » : survol ou focus d'un lien de zone = sa préfecture s'allume */
+    const mapParts = Array.from(header.querySelectorAll<SVGElement>('[data-zone-path]'));
+    const lightZone = (slug: string | null) =>
+      mapParts.forEach((el) => el.classList.toggle('is-lit', !!slug && el.dataset.zonePath === slug));
+    doors.querySelectorAll<HTMLElement>('[data-zone]').forEach((link) => {
+      const on = () => lightZone(link.dataset.zone ?? null);
+      const off = () => lightZone(null);
+      link.addEventListener('pointerenter', on);
+      link.addEventListener('focus', on);
+      link.addEventListener('pointerleave', off);
+      link.addEventListener('blur', off);
+    });
+
     /* Délais lus dans les jetons (tokens.css) */
     const tokenMs = (name: string, fallback: number) => {
       const raw = getComputedStyle(document.documentElement).getPropertyValue(name).trim();
@@ -78,6 +101,7 @@ if (header) {
       clearTimers();
       if (door === active) return;
       active = door;
+      if (door) loadFeature();
       doorEls.forEach((d) => d.classList.toggle('is-active', d === door));
       if (door) doors.dataset.active = String(doorEls.indexOf(door) + 1);
       else {

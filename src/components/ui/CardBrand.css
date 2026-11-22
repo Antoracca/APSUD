@@ -1,0 +1,19 @@
+/* Logo de réseau de cartes (CardBrand.astro) */
+@layer components {
+  .c-card-brand {
+    display: inline-grid;
+    place-items: center;
+    inline-size: var(--card-brand-w);
+    block-size: var(--card-brand-h);
+    padding: var(--space-1);
+    border: var(--border-width) solid var(--color-border-subtle);
+    border-radius: var(--radius-control);
+    background: var(--apsud-blanc);
+    line-height: 0;
+  }
+  .c-card-brand svg {
+    inline-size: 100%;
+    block-size: 100%;
+    max-inline-size: none;
+  }
+}

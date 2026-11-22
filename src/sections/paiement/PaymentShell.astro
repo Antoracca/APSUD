@@ -1,0 +1,48 @@
+---
+/**
+ * Cadre commun des pages de paiement (/faire-un-don/orange-money, /faire-un-don/carte) :
+ * formulaire à gauche (slot), récapitulatif du don à droite (collant). En mobile, le récapitulatif
+ * passe en premier, en version compacte.
+ * Le montant vient de l'URL (?montant=…&devise=…), lu par src/scripts/payment-summary.ts ;
+ * sans JS ou sans montant valide : « à choisir » et lien de retour vers /faire-un-don.
+ */
+import Icon from '../../components/ui/Icon.astro';
+import './PaymentShell.css';
+
+interface Props {
+  /** moyen de paiement : Orange Money débite en FCFA (conversion depuis l'euro) */
+  method: 'orange-money' | 'carte';
+}
+const { method } = Astro.props;
+---
+
+<section class="c-pay l-section--sm" aria-label="Paiement du don">
+  <div class="l-constrain c-pay__grid">
+    <aside class="c-pay__summary" aria-labelledby="pay-summary-title" data-pay-summary data-method={method}>
+      <h2 class="c-pay__summary-title" id="pay-summary-title">Votre don</h2>
+      <p class="c-pay__amount"><output data-pay-amount>à choisir</output></p>
+      <p class="c-pay__converted" data-pay-converted hidden></p>
+      <a class="c-pay__change" href="/faire-un-don" data-pay-change>
+        <Icon name="arrow-left" size="sm" />
+        <span>Modifier le montant ou le moyen de paiement</span>
+      </a>
+      <ul class="c-pay__assurances" role="list">
+        <li><Icon name="cadenas" size="sm" /><span>Vos données de paiement ne sont jamais conservées par APSUD.</span></li>
+        <li><Icon name="mail" size="sm" /><span>Un reçu vous est envoyé après confirmation.</span></li>
+        <li><Icon name="check" size="sm" /><span>Votre don finance directement les actions d’APSUD en Centrafrique.</span></li>
+      </ul>
+    </aside>
+
+    <div class="c-pay__main">
+      <slot />
+      <p class="c-pay__notice" role="note">
+        <Icon name="cadenas" size="sm" />
+        <span>Le paiement en ligne est en cours de mise en service&nbsp;: aucun montant n’est encore débité.</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+<script>
+  import '../../scripts/payment-summary';
+</script>

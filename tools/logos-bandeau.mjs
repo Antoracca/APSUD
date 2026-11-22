@@ -26,6 +26,8 @@ const report = [];
 for (const p of list) {
   const file = pick(p);
   if (!file) continue;
+  // version vectorielle redessinée à la main (ex. drapeau du Japon) : prioritaire, on n'y touche pas
+  if (existsSync(join(OUT, `${p.slug}.svg`))) { report.push(`${p.slug} : SVG redessiné conservé`); continue; }
   const img = sharp(file, { density: 300 }).resize({ height: 320, withoutEnlargement: true }).ensureAlpha();
   const { data: px, info } = await img.raw().toBuffer({ resolveWithObject: true });
   const { width: w, height: h } = info;

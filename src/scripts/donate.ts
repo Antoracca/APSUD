@@ -1,10 +1,10 @@
 /**
  * Module de don non transactionnel (/faire-un-don, DonatePanel.astro).
  * - Récapitulatif en direct de l'intention de don (devise + montant choisi ou saisi).
- * - Le bouton « Demander les coordonnées » transmet l'intention au formulaire de contact :
- *   /contact?objet=don&montant=25000&devise=XAF (aucune donnée personnelle dans l'URL).
+ * - « Procéder au paiement » mène à la page du moyen choisi (Orange Money ou carte) avec le montant :
+ *   /faire-un-don/orange-money?montant=25000&devise=XAF (aucune donnée personnelle dans l'URL).
  * - Petite « pulsation » du récapitulatif à chaque changement (coupée si animations réduites).
- * Aucun paiement : APSUD communique ses coordonnées sur demande.
+ * Front-end seulement : aucun débit tant que le back-end de paiement n'est pas branché.
  */
 const nf = new Intl.NumberFormat('fr-FR');
 const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -38,8 +38,8 @@ document.querySelectorAll<HTMLElement>('[data-donate]').forEach((panel) => {
 
     summary!.textContent = value ? `${nf.format(value)} ${label}` : 'à préciser';
 
-    const url = new URL('/contact', window.location.origin);
-    url.searchParams.set('objet', 'don');
+    const method = panel.querySelector<HTMLInputElement>('[data-donate-method]:checked');
+    const url = new URL(method?.dataset.href ?? '/faire-un-don/orange-money', window.location.origin);
     if (value) {
       url.searchParams.set('montant', String(value));
       url.searchParams.set('devise', code);

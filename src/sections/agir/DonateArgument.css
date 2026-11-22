@@ -50,5 +50,5 @@
 
   .c-donate-argument__proof { display: grid; gap: var(--space-4); justify-items: start; }
   .c-donate-argument__proof .c-agir-logos { inline-size: 100%; grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--agir-chip-min)), 1fr)); }
-  .c-donate-argument__proof .c-agir-logos__link { background: var(--color-surface-soft); }
+  .c-donate-argument__proof .c-agir-logos:not(.c-agir-logos--vert) .c-agir-logos__link { background: var(--color-surface-soft); }
 }

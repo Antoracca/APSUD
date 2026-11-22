@@ -1,0 +1,75 @@
+/* Cadre des pages de paiement (PaymentShell.astro) */
+@layer components {
+  .c-pay__grid {
+    display: grid;
+    gap: var(--space-8);
+    align-items: start;
+  }
+
+  /* Récapitulatif : panneau Forêt, montant en grand */
+  .c-pay__summary {
+    display: grid;
+    gap: var(--space-3);
+    padding: var(--space-6);
+    background: var(--color-surface-strong);
+    color: var(--apsud-coton);
+    box-shadow: var(--shadow-step);
+    --color-focus: var(--color-surface-signature);
+  }
+  .c-pay__summary-title {
+    color: var(--color-surface-signature);
+    font-size: var(--fs-h6);
+  }
+  .c-pay__amount {
+    font-family: var(--font-headline);
+    font-size: var(--fs-h2);
+    font-stretch: var(--font-stretch-stat);
+    font-weight: var(--fw-stat-light);
+    line-height: var(--lh-tight);
+    font-variant-numeric: lining-nums;
+  }
+  .c-pay__converted { color: var(--apsud-vert-100); font-size: var(--fs-small); }
+  .c-pay__converted[hidden] { display: none; }
+  .c-pay__change {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    justify-self: start;
+    min-block-size: var(--tap-min);
+    color: var(--apsud-coton);
+    font-size: var(--fs-small);
+    font-weight: var(--fw-bold);
+    text-decoration-color: var(--color-surface-signature);
+    text-underline-offset: 0.2em;
+  }
+  .c-pay__assurances {
+    display: grid;
+    gap: var(--space-3);
+    margin: var(--space-3) 0 0;
+    padding: var(--space-4) 0 0;
+    border-block-start: var(--border-width) solid color-mix(in oklab, var(--apsud-coton) 22%, transparent);
+    list-style: none;
+    font-size: var(--fs-small);
+    line-height: var(--lh-snug);
+  }
+  .c-pay__assurances li { display: grid; grid-template-columns: auto 1fr; gap: var(--space-3); align-items: start; }
+  .c-pay__assurances .c-icon { color: var(--color-surface-signature); }
+
+  .c-pay__main { display: grid; gap: var(--space-4); min-inline-size: 0; }
+  .c-pay__notice {
+    display: flex;
+    gap: var(--space-2);
+    align-items: start;
+    color: var(--color-text-muted);
+    font-size: var(--fs-small);
+  }
+
+  @media (width >= 64em) {
+    .c-pay__grid {
+      grid-template-columns: minmax(0, var(--pay-panel-w)) minmax(18rem, 22rem);
+      justify-content: center;
+      gap: var(--space-12);
+    }
+    .c-pay__summary { order: 2; position: sticky; inset-block-start: calc(var(--header-h-scrolled) + var(--space-6)); }
+  }
+}

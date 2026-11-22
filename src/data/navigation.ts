@@ -7,11 +7,19 @@
 export interface NavLink {
   label: string;
   href: string;
+  /** Préfecture mise en évidence sur la mini-carte du méga-menu (slug de rca-prefectures.json) */
+  zone?: string;
+  /** Pictogramme maison affiché devant le lien dans le méga-menu */
+  icon?: string;
 }
 
 export interface NavGroup {
   label: string;
   href: string;
+  /** Phrase de présentation affichée à gauche du méga-menu (≥ 90em) */
+  intro?: string;
+  /** Affiche la mini-carte des préfectures dans la présentation */
+  map?: boolean;
   links: NavLink[];
 }
 
@@ -19,6 +27,7 @@ export const mainNav: NavGroup[] = [
   {
     label: "L'ONG",
     href: '/qui-sommes-nous',
+    intro: 'Une ONG centrafricaine, avec des équipes centrafricaines, aux côtés des communautés depuis 2015.',
     links: [
       { label: 'Qui sommes-nous', href: '/qui-sommes-nous' },
       { label: 'Mission et valeurs', href: '/qui-sommes-nous#valeurs' },
@@ -30,28 +39,32 @@ export const mainNav: NavGroup[] = [
   {
     label: 'Nos actions',
     href: '/nos-actions',
+    intro: 'Quatre domaines d’intervention, de la réponse d’urgence au développement durable.',
     links: [
-      { label: 'Eau, hygiène et assainissement', href: '/nos-actions/eau-hygiene-assainissement' },
-      { label: 'Sécurité alimentaire', href: '/nos-actions/securite-alimentaire' },
-      { label: 'Protection et genre', href: '/nos-actions/protection' },
-      { label: 'Société civile locale', href: '/nos-actions/societe-civile' },
+      { label: 'Eau, hygiène et assainissement', href: '/nos-actions/eau-hygiene-assainissement', icon: 'eau' },
+      { label: 'Sécurité alimentaire', href: '/nos-actions/securite-alimentaire', icon: 'agriculture' },
+      { label: 'Protection et genre', href: '/nos-actions/protection', icon: 'protection' },
+      { label: 'Société civile locale', href: '/nos-actions/societe-civile', icon: 'societe-civile' },
       { label: 'Tous les projets', href: '/projets' },
     ],
   },
   {
     label: 'Nos zones',
     href: '/nos-zones',
+    intro: 'Bangui et les préfectures où nos équipes travaillent. Survolez une zone pour la situer.',
+    map: true,
     links: [
-      { label: 'Bangui', href: '/nos-zones#bangui' },
-      { label: 'Ombella-M’Poko', href: '/nos-zones#ombella-mpoko' },
-      { label: 'Ouaka', href: '/nos-zones#ouaka' },
-      { label: 'Haute-Kotto', href: '/nos-zones#haute-kotto' },
+      { label: 'Bangui', href: '/nos-zones#bangui', zone: 'bangui' },
+      { label: 'Ombella-M’Poko', href: '/nos-zones#ombella-mpoko', zone: 'ombella-m-poko' },
+      { label: 'Ouaka', href: '/nos-zones#ouaka', zone: 'ouaka' },
+      { label: 'Haute-Kotto', href: '/nos-zones#haute-kotto', zone: 'haute-kotto' },
       { label: 'Carte des interventions', href: '/nos-zones' },
     ],
   },
   {
     label: 'Agir avec nous',
     href: '/agir',
+    intro: 'Donner, s’associer à nos projets ou répondre à nos appels d’offres : chaque soutien compte sur le terrain.',
     links: [
       { label: 'Faire un don', href: '/faire-un-don' },
       { label: 'Devenir partenaire', href: '/agir/partenariat' },

@@ -38,6 +38,7 @@ import { Picture } from 'astro:assets';
 import { getImage } from '../../lib/images';
 import { featuredProjects } from '../../data/home';
 import { mainNav, donateLink, searchLink } from '../../data/navigation';
+import { zones, mapViewBox } from '../../data/zones';
 import { site, telHref } from '../../data/site';
 import './Header.css';
 
@@ -46,12 +47,21 @@ const clean = (href: string) => href.split('#')[0].replace(/\/$/, '') || '/';
 const isCurrent = (href: string) => !href.includes('#') && clean(href) === path;
 const inSection = (href: string) => path === clean(href) || path.startsWith(`${clean(href)}/`);
 
-/* « À la une » : projet phare, photo recadrée en 16:9 au build (seuls les pixels affichés sont servis) */
+/* « À la une » : projet phare, photo recadrée en 4:3 au build (seuls les pixels affichés sont servis) */
 const feature = featuredProjects.items[0];
 const featureSrc = getImage(feature.image);
-const featureW = Math.round(Math.min(featureSrc.width, (featureSrc.height * 16) / 9));
-const featureH = Math.round((featureW * 9) / 16);
-const featureWidths = [320, 640].filter((w) => w < featureW).concat(featureW).filter((w) => w <= 640);
+const featureW = Math.round(Math.min(featureSrc.width, (featureSrc.height * 4) / 3));
+const featureH = Math.round((featureW * 3) / 4);
+const featureWidths = [360, 720].filter((w) => w <= featureW);
+
+/* Mini-carte du méga-menu (« Nos zones ») : tracés arrondis à l'entier, assez précis à 220 px de large
+   et plus légers (~22 Ko au lieu de 30, ~6 Ko compressés). Bangui, trop petite, reçoit un point. */
+const miniMap = zones.map((z) => ({
+  slug: z.slug,
+  status: z.status,
+  d: z.d.replace(/(-?\d+)\.\d+/g, '$1'),
+}));
+const bangui = zones.find((z) => z.slug === 'bangui');
 ---
 
 <header class="c-header" data-header>
@@ -63,6 +73,26 @@ const featureWidths = [320, 640].filter((w) => w < featureW).concat(featureW).fi
           hauteur de la colonne la plus longue (rangée 2 partagée en subgrid), descend avec les colonnes. */}
       <div class="c-header__backdrop-clip" aria-hidden="true">
         <span class="c-header__backdrop"></span>
+      </div>
+
+      {/* Présentation de la porte active (≥ 90em), sous le logo : titre, phrase, et pour « Nos zones »
+          la mini-carte dont la préfecture s'allume au survol du lien correspondant. Décoratif : la
+          même information est portée par les liens. */}
+      <div class="c-header__intros" aria-hidden="true">
+        {mainNav.map((group, i) => (
+          <div class="c-header__intro" data-intro={i + 1}>
+            <p class="c-header__intro-title">{group.label}</p>
+            {group.intro && <p class="c-header__intro-text">{group.intro}</p>}
+            {group.map && (
+              <svg class="c-header__map" viewBox={mapViewBox} focusable="false">
+                {miniMap.map((z) => (
+                  <path class={`c-header__map-zone c-header__map-zone--${z.status}`} d={z.d} data-zone-path={z.slug} />
+                ))}
+                {bangui && <circle class="c-header__map-city" cx={bangui.cx} cy={bangui.cy} r="9" data-zone-path="bangui" />}
+              </svg>
+            )}
+          </div>
+        ))}
       </div>
 
       <nav class="c-header__nav" aria-label="Navigation principale">
@@ -84,8 +114,10 @@ const featureWidths = [320, 640].filter((w) => w < featureW).concat(featureW).fi
                         class="c-header__link"
                         href={link.href}
                         aria-current={isCurrent(link.href) ? 'page' : undefined}
+                        data-zone={link.zone}
                       >
-                        {link.label}
+                        {link.icon && <Icon name={link.icon} class="c-header__link-icon" />}
+                        <span class="c-header__link-label">{link.label}</span>
                       </a>
                     </li>
                   ))}
@@ -108,7 +140,7 @@ const featureWidths = [320, 640].filter((w) => w < featureW).concat(featureW).fi
                 width={featureW}
                 height={featureH}
                 widths={featureWidths}
-                sizes="18rem"
+                sizes="22rem"
                 fit="cover"
                 formats={['avif', 'webp']}
                 loading="lazy"
@@ -116,11 +148,13 @@ const featureWidths = [320, 640].filter((w) => w < featureW).concat(featureW).fi
                 class="c-header__feature-img"
               />
             </span>
-            <p class="c-header__feature-meta">{feature.meta}</p>
-            <p class="c-header__feature-title">{feature.title}</p>
-            <ArrowLink href={feature.href} stretched class="c-header__feature-link">
-              En savoir plus<span class="u-visually-hidden">&nbsp;: {feature.title}</span>
-            </ArrowLink>
+            <div class="c-header__feature-text">
+              <p class="c-header__feature-meta">{feature.meta}</p>
+              <p class="c-header__feature-title">{feature.title}</p>
+              <ArrowLink href={feature.href} stretched class="c-header__feature-link">
+                En savoir plus<span class="u-visually-hidden">&nbsp;: {feature.title}</span>
+              </ArrowLink>
+            </div>
           </article>
         </div>
       </aside>

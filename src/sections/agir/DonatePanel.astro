@@ -1,17 +1,21 @@
 ---
 /**
  * /faire-un-don — module de don (gabarit E de Prosper, colonne droite `c-donation-form`).
- * NON transactionnel : APSUD n'a publié aucune modalité (organisation.json › don) ; on ne
- * publie ni numéro Mobile Money, ni IBAN, ni RIB. Le module prépare une intention de don
- * (devise + montant indicatif) et la transmet au formulaire de contact
- * (/contact?objet=don&montant=…&devise=…), où APSUD répond avec ses coordonnées.
+ * Étape 3 « Moyen de paiement » (2026-11-22) : Orange Money ou carte bancaire. « Procéder au paiement »
+ * mène à la page du moyen choisi avec le montant et la devise (/faire-un-don/orange-money?montant=…&devise=…,
+ * aucune donnée personnelle dans l'URL). Front-end seulement : aucun débit tant que le back-end
+ * (agrégateur, Stripe ou passerelle) n'est pas branché. Aucune coordonnée APSUD n'est publiée.
  *
  * Sans JS : radios natifs, bascule de devise en CSS (:has), lien vers /contact?objet=don.
  * Avec JS (src/scripts/donate.ts) : récapitulatif en direct, champ « autre montant », lien enrichi.
  * Innovation APSUD : la puce choisie prend la forme de la goutte-feuille (coin vif en bas à gauche).
  * TODO back-end : brancher ici un paiement en ligne (CinetPay, Flutterwave…) sans changer la structure.
  */
+import { Image } from 'astro:assets';
 import Button from '../../components/ui/Button.astro';
+import CardBrand from '../../components/ui/CardBrand.astro';
+import { getImage } from '../../lib/images';
+import { paymentMethods, cardBrands, orangeMoneyLogo } from '../paiement/paymentData';
 import Icon from '../../components/ui/Icon.astro';
 import { site, telHref } from '../../data/site';
 import { donationAmounts } from './agirData';
@@ -21,12 +25,13 @@ const nf = new Intl.NumberFormat('fr-FR');
 const currencies = Object.values(donationAmounts);
 const first = currencies[0];
 const tel = site.contact.telephones[0];
+const omLogo = getImage(orangeMoneyLogo);
 ---
 
 <aside class="c-donate-panel" aria-labelledby="don-panel-title" data-donate>
   <div class="c-donate-panel__head t-foret">
     <h2 id="don-panel-title" class="c-donate-panel__title">Préparer mon don</h2>
-    <p class="c-donate-panel__intro">Choisissez un montant indicatif&nbsp;: APSUD vous communique ensuite ses coordonnées de paiement.</p>
+    <p class="c-donate-panel__intro">Choisissez un montant et votre moyen de paiement&nbsp;: Orange Money ou carte bancaire.</p>
   </div>
 
   <div class="c-donate-panel__body">
@@ -43,7 +48,7 @@ const tel = site.contact.telephones[0];
     </fieldset>
 
     <fieldset class="c-donate-step">
-      <legend class="c-donate-step__legend"><span class="c-donate-step__num" aria-hidden="true">2</span> Montant indicatif</legend>
+      <legend class="c-donate-step__legend"><span class="c-donate-step__num" aria-hidden="true">2</span> Montant</legend>
       {currencies.map((c) => (
         <div class="c-donate-amounts" data-currency={c.code}>
           {c.values.map((v) => (
@@ -63,31 +68,43 @@ const tel = site.contact.telephones[0];
       </div>
     </fieldset>
 
-    <div class="c-donate-step">
-      <p class="c-donate-step__legend"><span class="c-donate-step__num" aria-hidden="true">3</span> Modalités</p>
-      <ul class="c-donate-ways" role="list">
-        <li class="c-donate-ways__item">
-          <span class="c-donate-ways__icon" aria-hidden="true"><Icon name="phone" /></span>
-          <span><strong>Mobile Money</strong><br />Coordonnées communiquées par APSUD sur demande.</span>
-        </li>
-        <li class="c-donate-ways__item">
-          <span class="c-donate-ways__icon" aria-hidden="true"><Icon name="don" /></span>
-          <span><strong>Virement bancaire</strong><br />Coordonnées communiquées par APSUD sur demande.</span>
-        </li>
-      </ul>
-    </div>
+    <fieldset class="c-donate-step">
+      <legend class="c-donate-step__legend"><span class="c-donate-step__num" aria-hidden="true">3</span> Moyen de paiement</legend>
+      <div class="c-donate-methods">
+        {paymentMethods.map((m, i) => (
+          <label class={`c-donate-method c-donate-method--${m.id}`}>
+            <input class="c-donate-method__input" type="radio" name="paiement" value={m.id} checked={i === 0} data-href={m.href} data-donate-method />
+            <span class="c-donate-method__visual" aria-hidden="true">
+              {m.id === 'orange-money' ? (
+                <Image src={omLogo} alt="" width={240} height={Math.round((240 * omLogo.height) / omLogo.width)} format="webp" class="c-donate-method__om" />
+              ) : (
+                <span class="c-donate-method__brands">
+                  {cardBrands.slice(0, 3).map((b) => <CardBrand icon={b.icon} />)}
+                </span>
+              )}
+            </span>
+            <span class="c-donate-method__text">
+              <span class="c-donate-method__title">{m.title}</span>
+              <span class="c-donate-method__desc">{m.text}</span>
+            </span>
+            <span class="c-donate-method__check" aria-hidden="true"><Icon name="check" size="sm" /></span>
+          </label>
+        ))}
+      </div>
+    </fieldset>
 
     <p class="c-donate-summary" aria-live="polite">
-      Votre intention de don&nbsp;: <output class="c-donate-summary__value" data-donate-summary>{nf.format(first.default)}&nbsp;{first.label}</output>
+      Votre don&nbsp;: <output class="c-donate-summary__value" data-donate-summary>{nf.format(first.default)}&nbsp;{first.label}</output>
     </p>
 
-    <Button href="/contact?objet=don" variant="donate" size="lg" class="c-donate-panel__cta" data-donate-cta>
-      Demander les coordonnées
+    <Button href={paymentMethods[0].href} variant="donate" size="lg" class="c-donate-panel__cta" data-donate-cta>
+      Procéder au paiement
+      <Icon name="arrow-right" />
     </Button>
 
     <p class="c-donate-panel__legal">
-      <Icon name="check" size="sm" />
-      <span>Montants purement indicatifs&nbsp;: aucun paiement n’est effectué sur ce site.</span>
+      <Icon name="cadenas" size="sm" />
+      <span>Paiement en ligne en cours de mise en service&nbsp;: aucun montant n’est encore débité.</span>
     </p>
     <p class="c-donate-panel__alt">
       Vous préférez appeler&nbsp;? <a href={telHref(tel)}>{tel}</a>
