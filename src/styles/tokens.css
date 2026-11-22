@@ -494,6 +494,9 @@
   --pay-panel-w:         36rem;      /* 576 : formulaire de paiement */
   --om-bar:              0.25rem;    /*   4 : filet orange sous l'en-tête Orange Money */
   --om-logo-w:           9rem;       /* 144 : logo Orange Money (fichier rogné) */
+  --transfer-logo-h:     2.75rem;    /*  44 : logo de banque dans sa carte de choix (virement) */
+  --transfer-logo-h-sm:  2.25rem;    /*  36 : même logo sur téléphone */
+  --transfer-bank-min:   9.5rem;     /* 152 : largeur mini d'une carte de banque (grille auto-fit) */
   --nav-intro-w:         20rem;      /* présentation de la porte active, sous le logo (≥ 90em) */
   --nav-map-w:           15rem;      /* 240 : mini-carte des préfectures (« Nos zones ») */
   --nav-map-w-md:        12rem;      /* 192 : mini-carte entre 768 et 1439 px */

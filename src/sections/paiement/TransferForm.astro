@@ -1,0 +1,123 @@
+---
+/**
+ * Virement bancaire (/faire-un-don/virement) — front-end seulement (2026-11-22).
+ * Le donateur choisit d'où il vire (Centrafrique : RIB CEMAC ; étranger : IBAN + BIC/SWIFT)
+ * et la banque d'APSUD (Ecobank, BGFIBank, BSIC). Les coordonnées affichées suivent ces deux choix
+ * en CSS seul (:has), donc sans JavaScript ; le script ajoute la référence et les boutons « Copier ».
+ * COORDONNÉES PROVISOIRES : génériques, aucun compte réel (voir paymentData.ts, décision D5).
+ */
+import { Image } from 'astro:assets';
+import Icon from '../../components/ui/Icon.astro';
+import { getImage } from '../../lib/images';
+import { site } from '../../data/site';
+import { banks, formatIban, paymentPendingHref, transferProvisional } from './paymentData';
+import './TransferForm.css';
+
+const holder = `${site.sigle} — ${site.nom}`;
+const logoW = (img: ReturnType<typeof getImage>, h: number) => Math.round((h * img.width) / img.height);
+---
+
+<div class="c-transfer" data-transfer>
+  <div class="c-transfer__head">
+    <h2 class="c-transfer__title">Faire un virement</h2>
+    <p class="c-transfer__ref">
+      <span class="c-transfer__ref-label">Motif à indiquer</span>
+      <output class="c-transfer__ref-value" data-transfer-ref>DON APSUD</output>
+    </p>
+  </div>
+
+  <div class="c-transfer__body">
+    {transferProvisional && (
+      <p class="c-transfer__provisional" role="note">
+        <Icon name="cadenas" size="sm" />
+        <span><strong>Coordonnées d’exemple, à ne pas utiliser.</strong> Les coordonnées bancaires d’APSUD seront publiées ici après validation. N’effectuez aucun virement pour l’instant.</span>
+      </p>
+    )}
+
+    <fieldset class="c-transfer__group">
+      <legend class="c-transfer__legend">D’où faites-vous le virement&nbsp;?</legend>
+      <div class="c-transfer__origin">
+        <label class="c-transfer__seg">
+          <input type="radio" name="origine" value="national" checked />
+          <span>Depuis la Centrafrique</span>
+          <small>ou la zone CEMAC</small>
+        </label>
+        <label class="c-transfer__seg">
+          <input type="radio" name="origine" value="international" />
+          <span>Depuis l’étranger</span>
+          <small>virement international</small>
+        </label>
+      </div>
+    </fieldset>
+
+    <fieldset class="c-transfer__group">
+      <legend class="c-transfer__legend">Vers quelle banque&nbsp;?</legend>
+      <div class="c-transfer__banks">
+        {banks.map((b, i) => {
+          const img = getImage(b.logo);
+          return (
+            <label class={`c-transfer__bank c-transfer__bank--${b.id}`}>
+              <input type="radio" name="banque" value={b.id} checked={i === 0} />
+              <Image src={img} alt="" width={logoW(img, 88)} height={88} loading="eager" class="c-transfer__logo" />
+              <span class="c-transfer__bank-name">{b.name}</span>
+            </label>
+          );
+        })}
+      </div>
+    </fieldset>
+
+    {banks.map((b) => (
+      <section class="c-transfer__account" data-bank={b.id} aria-label={`Coordonnées ${b.name}`}>
+        <dl class="c-transfer__rows">
+          <div><dt>Titulaire du compte</dt><dd>{holder}</dd></div>
+          <div><dt>Banque</dt><dd>{b.name}, {b.agency}</dd></div>
+          <div class="c-transfer__rib" data-scope="national">
+            <dt>RIB</dt>
+            <dd>
+              <span class="c-transfer__rib-parts">
+                <span><small>Banque</small><code>{b.bankCode}</code></span>
+                <span><small>Guichet</small><code>{b.branchCode}</code></span>
+                <span><small>N° de compte</small><code>{b.account}</code></span>
+                <span><small>Clé</small><code>{b.ribKey}</code></span>
+              </span>
+              <button type="button" class="c-transfer__copy" data-copy={`${b.bankCode} ${b.branchCode} ${b.account} ${b.ribKey}`}>Copier le RIB</button>
+            </dd>
+          </div>
+          <div data-scope="international">
+            <dt>IBAN</dt>
+            <dd><code>{formatIban(b.iban)}</code><button type="button" class="c-transfer__copy" data-copy={b.iban}>Copier l’IBAN</button></dd>
+          </div>
+          <div data-scope="international">
+            <dt>BIC / SWIFT</dt>
+            <dd><code>{b.bic}</code><button type="button" class="c-transfer__copy" data-copy={b.bic}>Copier le BIC</button></dd>
+          </div>
+          <div>
+            <dt>Montant</dt>
+            <dd class="c-transfer__amount" data-transfer-amount>à choisir</dd>
+          </div>
+          <div>
+            <dt>Motif</dt>
+            <dd><code data-transfer-ref>DON APSUD</code><button type="button" class="c-transfer__copy" data-copy="DON APSUD" data-copy-ref>Copier le motif</button></dd>
+          </div>
+        </dl>
+      </section>
+    ))}
+
+    <ol class="c-transfer__steps">
+      <li>Depuis votre banque ou votre application, créez un virement vers le compte ci-dessus.</li>
+      <li>Indiquez le motif&nbsp;: il nous permet de rattacher votre don et de vous envoyer un reçu.</li>
+      <li data-scope="international">Les frais d’un virement international dépendent de votre banque&nbsp;; comptez quelques jours ouvrés.</li>
+      <li data-scope="national">Un virement entre banques de la zone CEMAC arrive en général en 24 à 48&nbsp;heures.</li>
+    </ol>
+
+    <a class="c-transfer__done" href={paymentPendingHref}>
+      <span>J’ai fait mon virement</span>
+      <Icon name="arrow-right" />
+    </a>
+    <p class="c-transfer__status" aria-live="polite" data-transfer-status></p>
+  </div>
+</div>
+
+<script>
+  import '../../scripts/payment-transfer';
+</script>

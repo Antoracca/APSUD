@@ -10,7 +10,7 @@
  * TODO back-end : remplacer le corps de submit() par un fetch POST vers le point d'API
  * (PHP sur LWS ou service de formulaires), puis afficher la confirmation ou une erreur réseau.
  */
-const currencyLabels: Record<string, string> = { XAF: 'FCFA', EUR: 'EUR' };
+const currencyLabels: Record<string, string> = { XAF: 'FCFA', EUR: 'EUR', USD: 'USD' };
 const nf = new Intl.NumberFormat('fr-FR');
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 

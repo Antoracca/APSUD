@@ -5,7 +5,7 @@
  */
 import type { ImagePath } from '../../data/home';
 
-export type PaymentMethodId = 'orange-money' | 'carte';
+export type PaymentMethodId = 'orange-money' | 'carte' | 'virement';
 
 export const paymentMethods: {
   id: PaymentMethodId;
@@ -24,6 +24,12 @@ export const paymentMethods: {
     title: 'Carte bancaire',
     text: 'Visa, Mastercard, American Express et autres réseaux, depuis la Centrafrique ou l’étranger.',
     href: '/faire-un-don/carte',
+  },
+  {
+    id: 'virement',
+    title: 'Virement bancaire',
+    text: 'Depuis la Centrafrique ou l’étranger, vers notre compte Ecobank, BGFIBank ou BSIC.',
+    href: '/faire-un-don/virement',
   },
 ];
 
@@ -54,3 +60,59 @@ export const cardBrands: { type: string; icon: string; name: string }[] = [
   { type: 'diners-club', icon: 'dinersclub', name: 'Diners Club' },
   { type: 'maestro', icon: 'maestro', name: 'Maestro' },
 ];
+
+/**
+ * Virement bancaire : banques proposées et coordonnées.
+ * ATTENTION — COORDONNÉES PROVISOIRES (2026-11-22) : numéros génériques (codes banque 999xx
+ * inexistants) en attendant les vraies coordonnées confirmées par écrit par APSUD (décision D5).
+ * Clés RIB et IBAN calculés pour être bien formés, mais aucun compte réel derrière.
+ * Format CEMAC : code banque (5) + code guichet (5) + numéro de compte (11) + clé (2) ; IBAN « CF ».
+ * Logos officiels : Ecobank (Wikimedia Commons), BGFIBank (Wikipédia), BSIC (bsicbank.com).
+ */
+export const transferProvisional = true;
+
+export type BankId = 'ecobank' | 'bgfi' | 'bsic';
+
+export const banks: {
+  id: BankId;
+  name: string;
+  logo: ImagePath;
+  agency: string;
+  bankCode: string;
+  branchCode: string;
+  account: string;
+  ribKey: string;
+  iban: string;
+  bic: string;
+}[] = [
+  {
+    id: 'ecobank',
+    name: 'Ecobank Centrafrique',
+    logo: 'assets/apsud/images/paiement/banques/ecobank.svg' as ImagePath,
+    agency: 'Agence principale, Bangui',
+    bankCode: '99901', branchCode: '00001', account: '00000000001', ribKey: '07',
+    iban: 'CF4299901000010000000000107',
+    bic: 'EXEMCFBG001',
+  },
+  {
+    id: 'bgfi',
+    name: 'BGFIBank Centrafrique',
+    logo: 'assets/apsud/images/paiement/banques/bgfi.png' as ImagePath,
+    agency: 'Agence principale, Bangui',
+    bankCode: '99902', branchCode: '00001', account: '00000000002', ribKey: '12',
+    iban: 'CF4299902000010000000000212',
+    bic: 'EXEMCFBG002',
+  },
+  {
+    id: 'bsic',
+    name: 'BSIC Centrafrique',
+    logo: 'assets/apsud/images/paiement/banques/bsic.svg' as ImagePath,
+    agency: 'Agence principale, Bangui',
+    bankCode: '99903', branchCode: '00001', account: '00000000003', ribKey: '17',
+    iban: 'CF4299903000010000000000317',
+    bic: 'EXEMCFBG003',
+  },
+];
+
+/** IBAN lisible : groupes de 4 caractères. */
+export const formatIban = (iban: string) => iban.replace(/(.{4})/g, '$1 ').trim();

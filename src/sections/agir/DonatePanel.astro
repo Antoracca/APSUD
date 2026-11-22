@@ -1,7 +1,7 @@
 ---
 /**
  * /faire-un-don — module de don (gabarit E de Prosper, colonne droite `c-donation-form`).
- * Étape 3 « Moyen de paiement » (2026-11-22) : Orange Money ou carte bancaire. « Procéder au paiement »
+ * Étape 3 « Moyen de paiement » (2026-11-22) : Orange Money, carte bancaire ou virement. « Procéder au paiement »
  * mène à la page du moyen choisi avec le montant et la devise (/faire-un-don/orange-money?montant=…&devise=…,
  * aucune donnée personnelle dans l'URL). Front-end seulement : aucun débit tant que le back-end
  * (agrégateur, Stripe ou passerelle) n'est pas branché. Aucune coordonnée APSUD n'est publiée.
@@ -15,7 +15,7 @@ import { Image } from 'astro:assets';
 import Button from '../../components/ui/Button.astro';
 import CardBrand from '../../components/ui/CardBrand.astro';
 import { getImage } from '../../lib/images';
-import { paymentMethods, cardBrands, orangeMoneyLogo } from '../paiement/paymentData';
+import { paymentMethods, cardBrands, orangeMoneyLogo, banks } from '../paiement/paymentData';
 import Icon from '../../components/ui/Icon.astro';
 import { site, telHref } from '../../data/site';
 import { donationAmounts } from './agirData';
@@ -26,12 +26,13 @@ const currencies = Object.values(donationAmounts);
 const first = currencies[0];
 const tel = site.contact.telephones[0];
 const omLogo = getImage(orangeMoneyLogo);
+const bankLogos = banks.map((b) => ({ id: b.id, img: getImage(b.logo) }));
 ---
 
 <aside class="c-donate-panel" aria-labelledby="don-panel-title" data-donate>
   <div class="c-donate-panel__head t-foret">
     <h2 id="don-panel-title" class="c-donate-panel__title">Préparer mon don</h2>
-    <p class="c-donate-panel__intro">Choisissez un montant et votre moyen de paiement&nbsp;: Orange Money ou carte bancaire.</p>
+    <p class="c-donate-panel__intro">Choisissez un montant et votre moyen de paiement&nbsp;: Orange Money, carte bancaire ou virement.</p>
   </div>
 
   <div class="c-donate-panel__body">
@@ -77,6 +78,10 @@ const omLogo = getImage(orangeMoneyLogo);
             <span class="c-donate-method__visual" aria-hidden="true">
               {m.id === 'orange-money' ? (
                 <Image src={omLogo} alt="" width={240} height={Math.round((240 * omLogo.height) / omLogo.width)} format="webp" class="c-donate-method__om" />
+              ) : m.id === 'virement' ? (
+                <span class="c-donate-method__banks">
+                  {bankLogos.map((b) => <Image src={b.img} alt="" width={Math.round((48 * b.img.width) / b.img.height)} height={48} class="c-donate-method__bank" />)}
+                </span>
               ) : (
                 <span class="c-donate-method__brands">
                   {cardBrands.slice(0, 3).map((b) => <CardBrand icon={b.icon} />)}

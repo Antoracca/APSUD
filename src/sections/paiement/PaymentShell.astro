@@ -11,7 +11,7 @@ import './PaymentShell.css';
 
 interface Props {
   /** moyen de paiement : Orange Money débite en FCFA (conversion depuis l'euro) */
-  method: 'orange-money' | 'carte';
+  method: 'orange-money' | 'carte' | 'virement';
 }
 const { method } = Astro.props;
 ---

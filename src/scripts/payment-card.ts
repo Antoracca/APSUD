@@ -32,7 +32,7 @@ if (form) {
   const setAmount = (text: string) => { payLabel.textContent = `Payer ${text}`; };
   if (html.dataset.payAmount) {
     const v = Number(html.dataset.payAmount);
-    const cur = html.dataset.payCurrency === 'EUR' ? '€' : 'FCFA';
+    const cur = ({ EUR: '€', USD: '$' } as Record<string, string>)[html.dataset.payCurrency ?? ''] ?? 'FCFA';
     setAmount(`${new Intl.NumberFormat('fr-FR').format(v).replace(/ /g, ' ')} ${cur}`);
   }
   document.addEventListener('pay:amount', (e) => setAmount((e as CustomEvent).detail.text));

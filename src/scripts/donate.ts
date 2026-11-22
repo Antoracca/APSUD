@@ -1,7 +1,7 @@
 /**
  * Module de don non transactionnel (/faire-un-don, DonatePanel.astro).
  * - Récapitulatif en direct de l'intention de don (devise + montant choisi ou saisi).
- * - « Procéder au paiement » mène à la page du moyen choisi (Orange Money ou carte) avec le montant :
+ * - « Procéder au paiement » mène à la page du moyen choisi (Orange Money, carte ou virement) avec le montant :
  *   /faire-un-don/orange-money?montant=25000&devise=XAF (aucune donnée personnelle dans l'URL).
  * - Petite « pulsation » du récapitulatif à chaque changement (coupée si animations réduites).
  * Front-end seulement : aucun débit tant que le back-end de paiement n'est pas branché.

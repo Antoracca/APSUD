@@ -1,0 +1,27 @@
+---
+/**
+ * /faire-un-don/virement — don par virement bancaire, national (RIB CEMAC) ou international
+ * (IBAN + BIC), vers Ecobank, BGFIBank ou BSIC (front-end, 2026-11-22).
+ * Coordonnées PROVISOIRES tant qu'APSUD n'a pas confirmé les vraies par écrit (D5).
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/layout/PageHeader.astro';
+import PaymentShell from '../../sections/paiement/PaymentShell.astro';
+import TransferForm from '../../sections/paiement/TransferForm.astro';
+---
+
+<BaseLayout
+  title="Don par virement bancaire"
+  description="Faites un don à APSUD par virement bancaire, depuis la Centrafrique ou l’étranger : Ecobank, BGFIBank ou BSIC."
+  showEyebrow={false}
+>
+  <PageHeader
+    variant="compact"
+    title="Don par virement bancaire"
+    intro="Depuis la Centrafrique ou l’étranger, vers le compte d’APSUD de votre choix."
+    breadcrumb={[{ label: 'Agir avec nous', href: '/agir' }, { label: 'Faire un don', href: '/faire-un-don' }, { label: 'Virement bancaire' }]}
+  />
+  <PaymentShell method="virement">
+    <TransferForm />
+  </PaymentShell>
+</BaseLayout>

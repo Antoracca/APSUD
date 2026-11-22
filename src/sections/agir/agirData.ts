@@ -143,6 +143,7 @@ export const impacts: Impact[] = [
 export const donationAmounts = {
   XAF: { label: 'FCFA', code: 'XAF', values: [5000, 10000, 25000, 50000], default: 10000 },
   EUR: { label: 'EUR', code: 'EUR', values: [10, 25, 50, 100], default: 25 },
+  USD: { label: 'USD', code: 'USD', values: [10, 25, 50, 100], default: 25 },
 } as const;
 
 export const donationFaq = [

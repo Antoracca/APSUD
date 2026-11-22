@@ -2,7 +2,7 @@
 /**
  * /faire-un-don — gabarit E de Prosper (PROSPER_STRUCTURE §5.14, DESIGN.md §5.9) :
  * en-tête compact → [argumentaire | module de don] → FAQ.
- * Le module mène au paiement choisi (Orange Money ou carte, pages /faire-un-don/…), front-end
+ * Le module mène au paiement choisi (Orange Money, carte ou virement, pages /faire-un-don/…), front-end
  * seulement tant que le back-end n'est pas branché. Aucune coordonnée APSUD n'est publiée (D5).
  */
 import BaseLayout from '../layouts/BaseLayout.astro';
@@ -14,7 +14,7 @@ import '../sections/agir/DonateBody.css';
 
 <BaseLayout
   title="Faire un don"
-  description="Soutenez APSUD, ONG nationale centrafricaine : eau, hygiène, revenus et protection pour les communautés. Don par Orange Money ou carte bancaire."
+  description="Soutenez APSUD, ONG nationale centrafricaine : eau, hygiène, revenus et protection pour les communautés. Don par Orange Money, carte bancaire ou virement."
   showEyebrow={false}
 >
   <PageHeader

@@ -41,11 +41,13 @@
 
   /* Ton « vert » (page de don) : bandeau vert doux, logos sans fond et en couleur d'origine */
   .c-agir-logos--vert {
+    grid-template-columns: repeat(3, minmax(0, 1fr));   /* 9 logos : 3 rangées pleines, sans trou, à toute largeur */
     gap: var(--space-2) var(--space-6);
     padding: var(--space-4) var(--space-6);
     background: var(--band-bg);
   }
-  .c-agir-logos--vert .c-agir-logos__link { background: transparent; }
+  .c-agir-logos--vert .c-agir-logos__link { background: transparent; padding-inline: 0; }
+  @media (width < 30em) { .c-agir-logos--vert { gap: var(--space-2) var(--space-4); padding-inline: var(--space-4); --_h: var(--space-12); } }
   .c-agir-logos--vert .c-agir-logos__img { filter: none; opacity: 1; }
   .c-agir-logos--vert .c-agir-logos__link:hover .c-agir-logos__img { scale: 1.06; }
   @media (prefers-reduced-motion: no-preference) {

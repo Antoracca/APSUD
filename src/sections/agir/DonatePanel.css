@@ -84,8 +84,9 @@
     grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--agir-chip-min)), 1fr));
     gap: var(--space-3);
   }
-  .c-donate-panel:has(#don-devise-eur:checked) .c-donate-amounts[data-currency="XAF"],
-  .c-donate-panel:not(:has(#don-devise-eur:checked)) .c-donate-amounts[data-currency="EUR"] { display: none; }
+  .c-donate-panel:has(#don-devise-eur:checked) .c-donate-amounts:not([data-currency="EUR"]),
+  .c-donate-panel:has(#don-devise-usd:checked) .c-donate-amounts:not([data-currency="USD"]),
+  .c-donate-panel:not(:has(#don-devise-eur:checked, #don-devise-usd:checked)) .c-donate-amounts:not([data-currency="XAF"]) { display: none; }
 
   .c-donate-chip__label {
     display: grid;
@@ -215,6 +216,8 @@
   .c-donate-method__om { inline-size: 100%; block-size: auto; max-inline-size: var(--donate-method-visual); mix-blend-mode: multiply; /* fond blanc du PNG fondu dans la carte choisie */ }
   .c-donate-method__brands { display: flex; flex-wrap: wrap; gap: var(--space-1); }
   .c-donate-method__brands .c-card-brand { --card-brand-w: 2.25rem; --card-brand-h: 1.5rem; }
+  .c-donate-method__banks { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-1) var(--space-2); }
+  .c-donate-method__bank { inline-size: auto; block-size: var(--space-5); max-inline-size: 100%; }
   .c-donate-method__text { display: grid; gap: var(--space-1); }
   .c-donate-method__title {
     font-family: var(--font-condensed);
