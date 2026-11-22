@@ -496,6 +496,9 @@
   --om-logo-w:           9rem;       /* 144 : logo Orange Money (fichier rogné) */
   --nav-intro-w:         20rem;      /* présentation de la porte active, sous le logo (≥ 90em) */
   --nav-map-w:           15rem;      /* 240 : mini-carte des préfectures (« Nos zones ») */
+  --nav-map-w-md:        12rem;      /* 192 : mini-carte entre 768 et 1439 px */
+  --nav-feature-w-md:    clamp(18rem, 12rem + 12vw, 22rem);   /* carte « À la une » entre 768 et 1439 px */
+  --nav-feature-ratio-md: 16 / 9;    /* photo moins haute sous les liens (panneau plus court) */
   --nav-map-stroke:      1px;
   --nav-map-active:      var(--apsud-pousse-300);   /* préfectures où APSUD a des projets */
   --fs-nav-link:         clamp(1rem, 0.9274rem + 0.3226vw, 1.25rem);   /* 16 → 20 : sous-liens du méga-menu */

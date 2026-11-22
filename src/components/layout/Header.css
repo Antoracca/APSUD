@@ -821,3 +821,44 @@
     .c-header__map-city { transition: fill var(--dur-short) var(--ease-out), scale var(--dur-standard) var(--ease-out); }
   }
 }
+
+/* ------------------------------------------------------------------ */
+/* Écrans de 768 à 1439 px (tablettes, portables 1280 / 1366) :        */
+/* la présentation et « À la une » passent dans une 3e rangée du       */
+/* panneau, SOUS les liens (à côté du logo et des actions, il n'y a    */
+/* pas la place). Le fond du panneau couvre les rangées 2 et 3.         */
+/* ------------------------------------------------------------------ */
+@layer components {
+  @media (48em <= width < 90em) {
+    .c-header__inner { grid-template-rows: var(--_bar-h) auto auto; }
+    .c-header__backdrop-clip { grid-row: 2 / span 2; }
+
+    .c-header__intros {
+      position: relative;                    /* au-dessus du fond du panneau */
+      display: grid;
+      grid-template-areas: "intro";
+      grid-row: 3;
+      grid-column: 1 / span 2;
+      align-self: stretch;
+      min-inline-size: 0;
+      padding-block: var(--space-2) var(--space-8);
+      pointer-events: none;
+    }
+    .c-header__intro { max-inline-size: min(var(--nav-intro-w), 46%); }
+    .c-header__intro-title { font-size: var(--fs-h4); }
+    .c-header__map { inline-size: min(100%, var(--nav-map-w-md)); }
+
+    .c-header__feature {
+      display: block;
+      grid-row: 3;
+      grid-column: 2 / -1;
+      overflow: clip;
+      pointer-events: none;                  /* fermée, la colonne ne capte pas le survol */
+    }
+    .c-header__feature-body {
+      grid-template-columns: min(100%, var(--nav-feature-w-md));
+      padding-block: var(--space-2) var(--space-8);
+    }
+    .c-header__feature-img { aspect-ratio: var(--nav-feature-ratio-md); }
+  }
+}
