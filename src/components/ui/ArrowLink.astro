@@ -1,0 +1,27 @@
+---
+/**
+ * Lien d'action (« En savoir plus ») : texte 800 souligné 1 px, 2 px au survol,
+ * flèche qui glisse légèrement. Si `stretched`, toute la carte parente devient cliquable
+ * (le parent doit être en position: relative).
+ */
+import Icon from './Icon.astro';
+import './ArrowLink.css';
+
+interface Props {
+  href: string;
+  external?: boolean;
+  stretched?: boolean;
+  class?: string;
+}
+const { href, external = false, stretched = false, class: className } = Astro.props;
+---
+
+<a
+  href={href}
+  class:list={['c-arrow-link', { 'c-arrow-link--stretched': stretched }, className]}
+  {...(external ? { target: '_blank', rel: 'noopener' } : {})}
+>
+  <span class="c-arrow-link__label"><slot /></span>
+  <Icon name={external ? 'external' : 'arrow-right'} class="c-arrow-link__icon" size="sm" />
+  {external && <span class="u-visually-hidden"> (nouvel onglet)</span>}
+</a>

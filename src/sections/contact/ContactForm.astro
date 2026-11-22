@@ -1,0 +1,98 @@
+---
+/**
+ * /contact — formulaire accessible (Prosper /contact-us : Nom, E-mail, Objet/Catégorie, Message,
+ * pot de miel anti-spam). Validation native renforcée par src/scripts/contact-form.ts :
+ * messages d'erreur reliés aux champs (aria-describedby), résumé d'erreurs focalisable,
+ * pré-remplissage depuis l'URL (?objet=don&montant=25000&devise=XAF — jamais de donnée
+ * personnelle dans l'URL) et confirmation affichée EN PLACE, sans envoi réel.
+ *
+ * TODO back-end : brancher l'envoi (point d'API PHP sur LWS ou service de formulaires)
+ * dans submit() de contact-form.ts ; la structure HTML et les messages restent identiques.
+ * Méthode POST vers la page elle-même : sans JS, aucune donnée ne passe dans l’URL ni chez un tiers.
+ */
+import Button from '../../components/ui/Button.astro';
+import Icon from '../../components/ui/Icon.astro';
+import { site } from '../../data/site';
+import { contactSubjects } from '../agir/agirData';
+import './ContactForm.css';
+---
+
+<div class="c-contact-form" data-contact>
+  <h2 class="c-contact-form__title" id="contact-form-title">Écrire à APSUD</h2>
+  <p class="c-contact-form__intro">Tous les champs sont obligatoires, sauf mention contraire.</p>
+
+  <div class="c-contact-form__errors" role="alert" tabindex="-1" hidden data-contact-errors>
+    <p class="c-contact-form__errors-title">Le message n’a pas pu être préparé&nbsp;:</p>
+    <ul data-contact-errors-list></ul>
+  </div>
+
+  <form class="c-contact-form__form" action="/contact" method="post" novalidate aria-labelledby="contact-form-title" data-contact-form>
+    <div class="c-field">
+      <label class="c-field__label" for="contact-nom">Nom et prénom</label>
+      <input class="c-field__input" id="contact-nom" name="nom" type="text" autocomplete="name" required maxlength="120" aria-describedby="contact-nom-error" />
+      <p class="c-field__error" id="contact-nom-error" hidden></p>
+    </div>
+
+    <div class="c-field">
+      <label class="c-field__label" for="contact-email">Adresse e-mail</label>
+      <input class="c-field__input" id="contact-email" name="email" type="email" autocomplete="email" inputmode="email" required maxlength="160" aria-describedby="contact-email-hint contact-email-error" />
+      <p class="c-field__hint" id="contact-email-hint">Pour vous répondre, uniquement.</p>
+      <p class="c-field__error" id="contact-email-error" hidden></p>
+    </div>
+
+    <div class="c-field">
+      <label class="c-field__label" for="contact-objet">Objet</label>
+      <div class="c-field__select">
+        <select class="c-field__input" id="contact-objet" name="objet" required aria-describedby="contact-objet-error" data-contact-subject>
+          <option value="">Choisir un objet</option>
+          {contactSubjects.map((s) => <option value={s.value}>{s.label}</option>)}
+        </select>
+        <Icon name="chevron-down" class="c-field__chevron" />
+      </div>
+      <p class="c-field__error" id="contact-objet-error" hidden></p>
+    </div>
+
+    <div class="c-field">
+      <div class="c-field__row">
+        <label class="c-field__label" for="contact-message">Message</label>
+        <span class="c-field__count" aria-hidden="true" data-contact-count>0 / 2000</span>
+      </div>
+      <textarea class="c-field__input c-field__input--area" id="contact-message" name="message" rows="7" required minlength="10" maxlength="2000" aria-describedby="contact-message-error" data-contact-message></textarea>
+      <p class="c-field__error" id="contact-message-error" hidden></p>
+    </div>
+
+    <!-- Pot de miel : invisible pour les personnes, rempli par les robots -->
+    <div class="c-contact-form__trap" aria-hidden="true">
+      <label for="contact-site">Ne pas remplir ce champ</label>
+      <input id="contact-site" name="site" type="text" tabindex="-1" autocomplete="off" />
+    </div>
+
+    <div class="c-field c-field--check">
+      <input class="c-field__check" id="contact-accord" name="accord" type="checkbox" required aria-describedby="contact-accord-error" />
+      <label class="c-field__check-label" for="contact-accord">
+        J’accepte qu’APSUD utilise ces informations pour répondre à ma demande. Voir la <a href="/confidentialite">politique de confidentialité</a>.
+      </label>
+      <p class="c-field__error" id="contact-accord-error" hidden></p>
+    </div>
+
+    <div class="c-contact-form__submit">
+      <Button type="submit" variant="primary" size="lg">Envoyer le message</Button>
+    </div>
+  </form>
+
+  <div class="c-contact-form__done" tabindex="-1" hidden data-contact-done>
+    <span class="c-contact-form__done-badge" aria-hidden="true"><Icon name="check" size="lg" /></span>
+    <h3 class="c-contact-form__done-title">Merci, votre message est prêt.</h3>
+    <p>
+      L’envoi en ligne sera bientôt activé. En attendant, écrivez directement à
+      <a href={`mailto:${site.contact.email}`} data-contact-mailto>{site.contact.email}</a> ou appelez le
+      <a href={`tel:${site.contact.telephones[0].replace(/[^+\d]/g, '')}`}>{site.contact.telephones[0]}</a>.
+    </p>
+    <p class="c-contact-form__done-note">Le lien e-mail ci-dessus reprend votre objet et votre message.</p>
+    <button class="c-contact-form__again" type="button" data-contact-again>Écrire un autre message</button>
+  </div>
+</div>
+
+<script>
+  import '../../scripts/contact-form';
+</script>

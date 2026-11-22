@@ -1,0 +1,51 @@
+---
+/**
+ * Accueil §3 — Projets en cours. Équivalent des « Featured stories » de Prosper
+ * (PROSPER_STRUCTURE §5.1 n° 3 ; PROSPER_TOKENS §5.3 et §13 ; DESIGN.md §4.12).
+ *
+ * h2 aligné à gauche → grille asymétrique 58,58 % / 41,42 % (rapport √2) :
+ * grande carte à gauche, carte moyenne à droite décalée vers le bas de sorte que
+ * les deux médias finissent sur la même ligne et que les titres soient alignés
+ * → bouton contour « Voir tous les projets ».
+ * Mobile : cartes empilées, 40 px entre elles.
+ */
+import ProjectCard from '../../components/ui/ProjectCard.astro';
+import Button from '../../components/ui/Button.astro';
+import { featuredProjects } from '../../data/home';
+import './HomeFeaturedProjects.css';
+
+const { title, items, cta } = featuredProjects;
+const sizes = {
+  large: '(min-width: 75em) 43rem, (min-width: 37.5em) 58vw, 100vw',
+  medium: '(min-width: 75em) 30.5rem, (min-width: 37.5em) 41vw, 100vw',
+} as const;
+---
+
+<section class="c-featured-projects" aria-labelledby="projets-en-cours-titre">
+  <div class="c-featured-projects__inner l-constrain">
+    <h2 id="projets-en-cours-titre" class="c-featured-projects__title">{title}</h2>
+
+    <div class="c-featured-projects__grid">
+      {items.map((item, i) => (
+        <ProjectCard
+          href={item.href}
+          image={item.image}
+          imageAlt={item.imageAlt}
+          title={item.title}
+          text={item.text}
+          meta={item.meta}
+          status="en-cours"
+          reveal
+          revealDelay={i * 150}
+          size={item.size}
+          sizes={sizes[item.size]}
+          class={`c-featured-projects__card c-featured-projects__card--${item.size}`}
+        />
+      ))}
+    </div>
+
+    <div class="c-featured-projects__actions">
+      <Button href={cta.href} variant="outline">{cta.label}</Button>
+    </div>
+  </div>
+</section>

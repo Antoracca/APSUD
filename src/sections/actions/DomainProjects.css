@@ -1,0 +1,110 @@
+/* Page domaine — projets du domaine + filtre de statut (radios natifs + :has, sans JS) */
+@layer components {
+  .c-domain-projects {
+    padding-block: var(--space-section);
+  }
+  .c-domain-projects__head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: var(--space-6);
+    margin-block-end: var(--space-12);
+  }
+  .c-domain-projects__title {
+    margin: 0;
+    font-size: var(--fs-h2);
+    font-weight: var(--fw-bold);
+    line-height: var(--lh-heading);
+  }
+
+  /* ---------- Filtre : pastilles ---------- */
+  .c-domain-projects__filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+  .c-domain-projects__option {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    min-block-size: var(--tap-min);
+    padding-inline: var(--space-4);
+    border: var(--border-width) solid var(--color-border-control);
+    border-radius: var(--radius-control);
+    background: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-condensed);
+    font-size: var(--fs-button);
+    font-stretch: var(--font-stretch-condensed);
+    font-weight: var(--fw-heavy);
+    cursor: pointer;
+    outline: 0 solid var(--color-border-control);
+    transition:
+      outline-width var(--dur-short) var(--ease-out),
+      background-color var(--dur-short) var(--ease-in),
+      color var(--dur-short) var(--ease-in);
+  }
+  .c-domain-projects__option:hover { outline-width: var(--border-width-strong); }
+  .c-domain-projects__option:has(:focus-visible) {
+    outline: var(--focus-width) solid var(--color-focus);
+    outline-offset: var(--focus-offset);
+  }
+  .c-domain-projects__option:has(:checked) {
+    background: var(--button-ink-bg);
+    color: var(--button-ink-text);
+  }
+  .c-domain-projects__count {
+    display: inline-grid;
+    place-items: center;
+    min-inline-size: var(--space-6);
+    block-size: var(--space-6);
+    padding-inline: var(--space-1);
+    border-radius: var(--radius-goutte);
+    background: var(--color-surface-tint);
+    color: var(--color-text);
+    font-family: var(--font-text);
+    font-size: var(--fs-caption);
+    font-stretch: var(--font-stretch-text);
+    font-weight: var(--fw-bold);
+  }
+
+  /* ---------- Grille ---------- */
+  .c-domain-projects__grid {
+    display: grid;
+    gap: var(--space-12) var(--grid-gap);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .c-domain-projects__item--tile { align-self: start; }
+
+  /* Filtrage */
+  .c-domain-projects:has(#statut-en-cours:checked) [data-status="realise"],
+  .c-domain-projects:has(#statut-realise:checked) [data-status="en-cours"] {
+    display: none;
+  }
+  /* Innovation : les cartes restantes réapparaissent en fondu doux */
+  @media (prefers-reduced-motion: no-preference) {
+    .c-domain-projects:has(#statut-en-cours:checked, #statut-realise:checked) .c-domain-projects__item {
+      animation: c-domain-projects-in var(--dur-long) var(--ease-out);
+    }
+  }
+  @keyframes c-domain-projects-in {
+    from { opacity: 0; translate: 0 var(--space-4); }
+  }
+
+  .c-domain-projects__more {
+    margin-block-start: var(--space-12);
+  }
+
+  @media (width >= 37.5em) {
+    .c-domain-projects__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (width >= 64em) {
+    .c-domain-projects__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  }
+}

@@ -1,0 +1,87 @@
+---
+/**
+ * Liste d'offres — commune à /carrieres (offres d'emploi) et /agir/appels-d-offres (avis).
+ * DESIGN.md §5.7 n° 2, 3, 5 et 7 : titre + compteur, liste de JobRow (slot par défaut),
+ * état vide honnête si rien n'est publié, archive repliée (slot `archive`), encadré de vigilance.
+ *
+ * `count` = nombre d'offres ouvertes : 0 → EmptyState (jamais de contenu fictif).
+ */
+import EmptyState from '../../components/ui/EmptyState.astro';
+import Icon from '../../components/ui/Icon.astro';
+import './OffersListing.css';
+
+interface Props {
+  id: string;
+  title: string;
+  count: number;
+  /** « offre ouverte » / « offres ouvertes » */
+  singular: string;
+  plural: string;
+  emptyTitle: string;
+  emptyText: string;
+  emptyLink?: { label: string; href: string };
+  archiveLabel?: string;
+  archiveCount?: number;
+  notice?: { title: string; text: string; link?: { label: string; href: string } };
+}
+
+const {
+  id,
+  title,
+  count,
+  singular,
+  plural,
+  emptyTitle,
+  emptyText,
+  emptyLink,
+  archiveLabel = 'Offres clôturées',
+  archiveCount = 0,
+  notice,
+} = Astro.props;
+---
+
+<section class="c-offers" aria-labelledby={id}>
+  <div class="l-constrain l-constrain--media">
+    <header class="c-offers__head" data-reveal>
+      <h2 id={id} class="c-offers__title">{title}</h2>
+      <p class="c-offers__count" aria-live="polite">
+        <span class="c-offers__count-num">{count}</span>
+        {count > 1 ? plural : singular}
+      </p>
+    </header>
+
+    {count > 0 ? (
+      <div class="c-job-list c-offers__list" data-reveal data-reveal-delay="100">
+        <slot />
+      </div>
+    ) : (
+      <div data-reveal data-reveal-delay="100">
+        <EmptyState
+          title={emptyTitle}
+          text={emptyText}
+          icon="calendar"
+          headingLevel="h3"
+          link={emptyLink}
+        />
+      </div>
+    )}
+
+    {archiveCount > 0 && (
+      <details class="c-offers__archive">
+        <summary class="c-offers__archive-summary">
+          <Icon name="chevron-down" size="sm" class="c-offers__archive-chevron" />
+          {archiveLabel} ({archiveCount})
+        </summary>
+        <div class="c-job-list"><slot name="archive" /></div>
+      </details>
+    )}
+
+    {notice && (
+      <aside class="c-offers__notice" aria-labelledby={`${id}-vigilance`} data-reveal>
+        <h3 id={`${id}-vigilance`} class="c-offers__notice-title">{notice.title}</h3>
+        <p>{notice.text}</p>
+        {notice.link && <p><a href={notice.link.href}>{notice.link.label}</a></p>}
+      </aside>
+    )}
+  </div>
+</section>

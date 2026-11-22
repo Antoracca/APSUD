@@ -1,0 +1,41 @@
+/* Carte projet des listes /projets — variante sans photo (aplat Coton + pictogramme du domaine) */
+@layer components {
+  /* Résumé raccourci à 4 lignes dans les grilles (le texte complet est sur la fiche) */
+  .c-projets-card .c-project-card__text {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    line-clamp: 4;
+    overflow: hidden;
+  }
+  .c-projets-card .c-project-card__title { font-size: var(--fs-h5); }
+
+  .c-projets-card__placeholder {
+    position: relative;
+    display: grid;
+    place-items: center;
+    aspect-ratio: var(--card-media-ratio);
+    background: var(--color-surface-soft);
+    color: var(--color-text-brand);
+    overflow: hidden;
+  }
+  /* Grande goutte-feuille qui déborde du coin bas gauche (forme signature) */
+  .c-projets-card__drop {
+    position: absolute;
+    inset-inline-start: calc(-1 * var(--space-10));
+    inset-block-end: calc(-1 * var(--space-10));
+    inline-size: var(--leaf-drop-md);
+    block-size: var(--leaf-drop-md);
+    border-radius: var(--radius-goutte);
+    background: var(--color-surface-signature);
+  }
+  .c-projets-card__icon { position: relative; }
+  .c-projets-card__note {
+    position: absolute;
+    inset-block-end: var(--space-3);
+    inset-inline-end: var(--space-4);
+    font-size: var(--fs-caption);
+    font-weight: var(--fw-semibold);
+    color: var(--color-text-muted);
+  }
+}

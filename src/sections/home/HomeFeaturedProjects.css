@@ -1,0 +1,48 @@
+/* Accueil §3 — Projets en cours. Calqué sur Prosper `.c-featured-stories`
+   (featured-stories.css) : colonne flex, gap 2 rem, margin-block 6 rem ;
+   grille asymétrique dès 37,5 rem de conteneur. */
+@layer components {
+  .c-featured-projects {
+    margin-block: var(--space-section);   /* 64 → 128 : rythme Prosper ~120 px à 1440 */
+  }
+  .c-featured-projects__inner {
+    container: featured-projects / inline-size;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-8);
+  }
+  .c-featured-projects__title {
+    margin: 0;
+    font-size: var(--fs-h2);
+    font-weight: var(--fw-bold);
+    line-height: var(--lh-heading);
+  }
+
+  /* Mobile : cartes empilées */
+  .c-featured-projects__grid {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-10) var(--space-6);
+  }
+
+  /* Asymétrie Prosper : 58,58 % / 41,42 % (√2). Les cartes s'alignent en sous-grille :
+     la rangée « média » prend la hauteur de la grande image, la petite image
+     se cale sur le bas → décalage vers le bas, titres sur la même ligne. */
+  @container featured-projects (width >= 37.5rem) {
+    .c-featured-projects__grid {
+      display: grid;
+      grid-template-columns:
+        calc((100% - var(--space-6)) * var(--ratio-silver) / (var(--ratio-silver) + 1))
+        minmax(0, 1fr);
+      grid-template-rows: auto auto;
+      row-gap: var(--space-4);   /* = écart média / contenu de la carte (sous-grille) */
+    }
+    .c-featured-projects__card {
+      grid-row: span 2;
+      grid-template-rows: subgrid;
+    }
+    .c-featured-projects__card--medium .c-project-card__media { align-self: end; }
+  }
+
+  .c-featured-projects__actions { display: flex; }
+}

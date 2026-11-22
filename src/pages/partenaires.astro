@@ -1,0 +1,39 @@
+---
+/**
+ * Partenaires et bailleurs — équivalent APSUD de « Partners » (PROSPER_STRUCTURE §5.16, §13.1) :
+ * en-tête texte → introduction + chiffres → annuaire filtrable par famille (fiche ancrée par
+ * organisation) → double CTA « Devenir partenaire ».
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/layout/PageHeader.astro';
+import CtaTwoUp from '../components/ui/CtaTwoUp.astro';
+import PartnersIntro from '../sections/partenaires/PartnersIntro.astro';
+import PartnersDirectory from '../sections/partenaires/PartnersDirectory.astro';
+import { chiffres } from '../sections/partenaires/partenairesData';
+---
+
+<BaseLayout
+  title="Partenaires et bailleurs"
+  description={`Les ${chiffres.organisations} partenaires et bailleurs d’APSUD en Centrafrique : fonds humanitaires, agences des Nations unies, coopérations bilatérales, ONG internationales et nationales, et les projets menés ensemble.`}
+>
+  <PageHeader
+    variant="text"
+    title="Partenaires et bailleurs"
+    intro="Ensemble, nous portons une aide pensée avec et pour les communautés centrafricaines."
+    breadcrumb={[{ label: 'Agir avec nous', href: '/agir' }, { label: 'Partenaires et bailleurs' }]}
+  />
+  <PartnersIntro />
+  <PartnersDirectory />
+  <CtaTwoUp
+    primary={{
+      title: 'Devenir partenaire',
+      text: 'Bailleur, agence ou ONG : parlons de vos priorités en Centrafrique et de la façon d’y répondre ensemble.',
+      cta: { label: 'Proposer un partenariat', href: '/agir/partenariat' },
+    }}
+    secondary={{
+      title: 'Nos zones d’intervention',
+      text: 'Découvrez, préfecture par préfecture, où se déroulent les projets menés avec nos partenaires.',
+      cta: { label: 'Voir la carte', href: '/nos-zones' },
+    }}
+  />
+</BaseLayout>

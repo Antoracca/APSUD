@@ -1,0 +1,184 @@
+---
+/**
+ * Accueil §7 — Bailleurs et partenaires (priorité n°1 du client).
+ *
+ * Bandeau défilant inspiré du bandeau « Récipiendaire fier de ce prix » d'Alight (demande du
+ * développeur, 2026-11-22), transposé aux couleurs APSUD et enrichi :
+ *  - bandeau vert doux, fondu depuis la section précédente (blanc) et vers la suivante (Coton) ; à gauche le titre, dont un mot passe en italique large,
+ *    souligné d'un double trait de pinceau SVG qui se dessine à l'apparition ;
+ *  - DEUX rangées superposées : « Bailleurs » en haut (défile vers la gauche), « Partenaires de mise
+ *    en œuvre » en bas (vers la droite). Logos SANS FOND (tools/logos-bandeau.mjs), dans leurs vraies
+ *    couleurs, directement sur le vert : le vert doux garde lisibles les bleus pâles et les logos verts ;
+ *  - entre les deux rangées, au « juste milieu », un appel au don sobre (capsule Forêt, marche Pousse,
+ *    bouton Soleil « Agir à leurs côtés ») : le visiteur prend place entre bailleurs et partenaires ;
+ *  - fond : goutte-feuille géante en contours concentriques, ton sur ton, qui dérive très lentement ;
+ *  - entrée : chaque rangée glisse depuis son côté ; le défilement continue au survol et au toucher
+ *    (seul le focus clavier l'arrête) ; le logo survolé grandit légèrement. (Bouton Pause retiré à la demande du développeur.)
+ *  - « Animations réduites » : aucun défilement, rangées balayables au doigt (défilement horizontal
+ *    aimanté) ; la copie de boucle est retirée. Sans JS : défilement CSS, pause au survol.
+ *
+ * Logos chargés tout de suite (loading="eager") : en différé, un logo ne se chargerait qu'en entrant
+ * dans la zone rognée et apparaîtrait vide pendant le défilement (fichiers légers, quelques Ko).
+ *
+ * Boucle sans couture : la piste contient la liste puis sa copie (inert, aria-hidden), chacune suivie
+ * d'un écart ; elle se translate de −50 %.
+ *
+ * Équilibrage des logos (mesuré au build avec sharp, une fois par logo) : hauteur inversement
+ * proportionnelle à la racine du rapport largeur/hauteur de l'ENCRE (marges exclues), bornée en CSS.
+ */
+import { Image } from 'astro:assets';
+import sharp from 'sharp';
+import path from 'node:path';
+import ArrowLink from '../../components/ui/ArrowLink.astro';
+import Button from '../../components/ui/Button.astro';
+import Icon from '../../components/ui/Icon.astro';
+import { getImage } from '../../lib/images';
+import { partnersByCategory } from '../../data/partners';
+import { partnersBand } from '../../data/home';
+import './HomePartners.css';
+
+interface Ink { ratio: number; fill: number }
+
+/** Cache de module : la mesure n'est faite qu'une fois par fichier (dev et build). */
+const inkCache: Map<string, Promise<Ink>> =
+  ((globalThis as Record<string, unknown>).__apsudInkBandCache as Map<string, Promise<Ink>>) ??
+  ((globalThis as Record<string, unknown>).__apsudInkBandCache = new Map());
+
+/** Boîte englobante de l'encre d'un logo (pixels ni transparents ni blancs). */
+async function measureInk(file: string): Promise<Ink> {
+  const { data, info } = await sharp(path.resolve(process.cwd(), file), { density: 144 })
+    .resize({ width: 480, height: 480, fit: 'inside', withoutEnlargement: true })
+    .ensureAlpha()
+    .raw()
+    .toBuffer({ resolveWithObject: true });
+  const { width: w, height: h } = info;
+  let x0 = w, y0 = h, x1 = -1, y1 = -1;
+  for (let y = 0; y < h; y++) {
+    for (let x = 0; x < w; x++) {
+      const i = (y * w + x) * 4;
+      const l = (0.2126 * data[i] + 0.7152 * data[i + 1] + 0.0722 * data[i + 2]) / 255;
+      if (data[i + 3] < 26 || l > 0.94) continue;
+      if (x < x0) x0 = x; if (x > x1) x1 = x;
+      if (y < y0) y0 = y; if (y > y1) y1 = y;
+    }
+  }
+  if (x1 < 0) return { ratio: w / h, fill: 1 };
+  return { ratio: (x1 - x0 + 1) / (y1 - y0 + 1), fill: (y1 - y0 + 1) / h };
+}
+
+function ink(file: string): Promise<Ink> {
+  if (!inkCache.has(file)) inkCache.set(file, measureInk(file).catch(() => ({ ratio: 1, fill: 1 })));
+  return inkCache.get(file)!;
+}
+
+const rows = await Promise.all(
+  partnersBand.rows.map(async (row) => ({
+    ...row,
+    logos: await Promise.all(
+      partnersByCategory(row.category).map(async (p) => {
+        const img = getImage(p.bandLogo);
+        const m = await ink(p.bandLogo);
+        return {
+          ...p,
+          img,
+          isSvg: img.format === 'svg',
+          /* facteur de hauteur du FICHIER : encre à surface constante, corrigée des marges internes */
+          scale: (1 / Math.sqrt(m.ratio) / m.fill).toFixed(3),
+        };
+      }),
+    ),
+  })),
+);
+
+/* Titre : le mot mis en valeur est isolé pour l'italique et le trait de pinceau */
+const [before, after = ''] = partnersBand.title.split(partnersBand.emphasis);
+const total = rows.reduce((n, r) => n + r.logos.length, 0);
+const LEAF = 'M0 100V50a50 50 0 0 1 50-50 50 50 0 0 1 50 50 50 50 0 0 1-50 50Z';
+---
+
+<section class="c-partners-band" aria-labelledby="home-partners-title" data-marquee>
+  {/* Fond décoratif : goutte-feuille géante (forme « cap ») en contours concentriques, ton sur ton */}
+  <svg class="c-partners-band__bg" viewBox="0 0 1600 720" preserveAspectRatio="xMaxYMid slice" aria-hidden="true" focusable="false">
+    <g class="c-partners-band__bg-drift">
+      <path class="c-partners-band__bg-fill" d={LEAF} transform="translate(1150 60) scale(6) rotate(-135 50 50)" />
+      <path class="c-partners-band__bg-line" d={LEAF} transform="translate(1060 -30) scale(7.8) rotate(-135 50 50)" vector-effect="non-scaling-stroke" />
+      <path class="c-partners-band__bg-line c-partners-band__bg-line--soft" d={LEAF} transform="translate(970 -120) scale(9.6) rotate(-135 50 50)" vector-effect="non-scaling-stroke" />
+    </g>
+    <path class="c-partners-band__bg-seed" d={LEAF} transform="translate(-70 540) scale(2.4)" />
+  </svg>
+
+  <div class="c-partners-band__inner">
+    <header class="c-partners-band__head" data-reveal>
+      <p class="c-partners-band__overline">{partnersBand.overline}</p>
+      <h2 id="home-partners-title" class="c-partners-band__title">
+        {before}<em class="c-partners-band__em">{partnersBand.emphasis}<svg class="c-partners-band__brush" viewBox="0 0 200 17" aria-hidden="true" focusable="false"><path d="M4 7c34-4 74-5.5 112-5.5 28 0 54 .8 80 2.2" pathLength="1" /><path d="M30 13.5c30-3 63-4.2 96-4.2 22 0 40 .7 56 1.6" pathLength="1" /></svg></em>{after}
+      </h2>
+      <p class="c-partners-band__text">{partnersBand.text}</p>
+      <div class="c-partners-band__actions">
+        <ArrowLink href={partnersBand.cta.href}>{partnersBand.cta.label}</ArrowLink>
+      </div>
+    </header>
+
+    <div class="c-partners-band__rows" data-reveal>
+      {rows.map((row, r) => (
+        <>
+        {r === 1 && (
+          /* Appel au don, au « juste milieu » : entre ceux qui financent et ceux qui mettent en œuvre */
+          <aside class="c-partners-band__give" aria-labelledby="partners-give-title" style="--_row: 0.5">
+            <span class="c-partners-band__give-leaf" aria-hidden="true"></span>
+            <div class="c-partners-band__give-copy">
+              <p class="c-partners-band__give-title" id="partners-give-title">{partnersBand.give.title}</p>
+              <p class="c-partners-band__give-text">{partnersBand.give.text}</p>
+            </div>
+            <Button href={partnersBand.give.href} variant="donate" size="lg" class="c-partners-band__give-button">
+              {partnersBand.give.label}
+              <Icon name="arrow-right" class="c-partners-band__give-arrow" />
+            </Button>
+          </aside>
+        )}
+        <div
+          class={`c-marquee c-marquee--${row.direction}`}
+          style={`--_n: ${row.logos.length}; --_row: ${r}`}
+          role="group"
+          aria-labelledby={`marquee-label-${r}`}
+        >
+          <h3 class="c-marquee__label" id={`marquee-label-${r}`}>
+            <span class="c-marquee__label-text">{row.label}</span>
+            <span class="c-marquee__count"><span class="u-visually-hidden">, </span>{row.logos.length}<span class="u-visually-hidden"> organisations</span></span>
+          </h3>
+          <div class="c-marquee__viewport">
+            <div class="c-marquee__track">
+              {[0, 1].map((copy) => (
+                <ul class="c-marquee__list" role="list" aria-hidden={copy ? 'true' : undefined} inert={copy ? true : undefined}>
+                  {row.logos.map((p) => (
+                    <li class="c-marquee__item">
+                      <a class="c-marquee__tile" href={`/partenaires#${p.slug}`} style={`--_scale: ${p.scale}`} title={p.name}>
+                        {p.isSvg ? (
+                          <Image class="c-marquee__logo" src={p.img} alt={copy ? '' : p.name} loading="eager" decoding="async" />
+                        ) : (
+                          <Image
+                            class="c-marquee__logo"
+                            src={p.img}
+                            alt={copy ? '' : p.name}
+                            widths={[200, 400]}
+                            sizes="11rem"
+                            format="webp"
+                            loading="eager"
+                            decoding="async"
+                          />
+                        )}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              ))}
+            </div>
+          </div>
+        </div>
+        </>
+      ))}
+    </div>
+  </div>
+  <p class="u-visually-hidden">{total} organisations présentées dans ce bandeau.</p>
+</section>
+

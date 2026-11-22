@@ -1,0 +1,16 @@
+---
+/**
+ * Page 404 (Astro la génère en 404.html ; à déclarer chez LWS : ErrorDocument 404 /404.html).
+ * Contenu : src/sections/erreur/NotFound.astro. Pas de double CTA (DESIGN.md §5.11).
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import NotFound from '../sections/erreur/NotFound.astro';
+---
+
+<BaseLayout
+  title="Page introuvable"
+  description="Cette page n’existe pas ou a été déplacée. Retrouvez les rubriques du site d’APSUD ou lancez une recherche."
+  showEyebrow={false}
+>
+  <NotFound />
+</BaseLayout>

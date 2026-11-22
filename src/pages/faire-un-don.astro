@@ -1,0 +1,29 @@
+---
+/**
+ * /faire-un-don — gabarit E de Prosper (PROSPER_STRUCTURE §5.14, DESIGN.md §5.9) :
+ * en-tête compact → [argumentaire | module de don] → FAQ.
+ * Non transactionnel : aucune coordonnée de paiement n'est publiée tant qu'APSUD ne l'a pas
+ * confirmée par écrit (INSTRUCTIONS §7, D5) ; le module renvoie vers le contact.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/layout/PageHeader.astro';
+import DonateBody from '../sections/agir/DonateBody.astro';
+import DonateFaq from '../sections/agir/DonateFaq.astro';
+import '../sections/agir/DonateBody.css';
+---
+
+<BaseLayout
+  title="Faire un don"
+  description="Soutenez APSUD, ONG nationale centrafricaine : eau, hygiène, revenus et protection pour les communautés. Coordonnées Mobile Money et bancaires communiquées sur demande."
+  showEyebrow={false}
+>
+  <PageHeader
+    variant="compact"
+    class="c-donate-header"
+    title="Faire un don"
+    intro="Votre soutien aide les équipes d’APSUD à agir auprès des communautés centrafricaines, des quartiers de Bangui aux préfectures."
+    breadcrumb={[{ label: 'Agir avec nous', href: '/agir' }, { label: 'Faire un don' }]}
+  />
+  <DonateBody />
+  <DonateFaq />
+</BaseLayout>

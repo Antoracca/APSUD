@@ -1,0 +1,160 @@
+---
+/**
+ * Bandeau cookies + panneau de préférences — DESIGN.md §4.25, PROSPER_STRUCTURE §3.5.
+ * Modèle : le centre de préférences OneTrust de Prosper (catégories en accordéon,
+ * « Toujours actifs », interrupteurs, « Enregistrer mes choix »), mais stylé aux tokens APSUD
+ * et conforme RGPD/CNIL : refuser est aussi simple qu'accepter (3 boutons de même poids),
+ * rien n'est chargé avant le choix, choix conservé 6 mois.
+ *
+ * - Bandeau : carte flottante en bas à gauche (desktop), pleine largeur en bas (mobile).
+ *   Masqué par défaut ; src/scripts/cookies.ts l'affiche après l'événement `load`
+ *   s'il n'existe pas de choix valide. Sans JS, aucun traceur ne peut être chargé : pas de bandeau.
+ * - Panneau : vrai <dialog> modal (focus piégé, Échap). Il s'ouvre depuis tout élément
+ *   [data-cookie-open] de la page (bouton « Gérer les cookies » du footer, « Personnaliser »).
+ * - Choix stocké dans localStorage (clé `apsud_consent` : version, date, catégories) ;
+ *   un événement `apsud:consent` est émis sur `document` à chaque choix (detail = choix).
+ * Aucun script tiers.
+ */
+import Button from '../ui/Button.astro';
+import Icon from '../ui/Icon.astro';
+import { legalNav } from '../../data/navigation';
+import './CookieBanner.css';
+
+const policyHref = `${legalNav[1].href}#cookies`;
+
+interface Category {
+  id: 'necessaires' | 'audience' | 'externes';
+  title: string;
+  text: string;
+  locked?: boolean;
+  cookies?: { nom: string; finalite: string; duree: string }[];
+}
+
+const categories: Category[] = [
+  {
+    id: 'necessaires',
+    title: 'Nécessaires',
+    locked: true,
+    text: 'Indispensables au fonctionnement du site, ils ne peuvent pas être désactivés. Ils mémorisent par exemple vos choix sur les cookies.',
+    cookies: [{ nom: 'apsud_consent', finalite: 'Mémorise vos choix sur les cookies', duree: '6 mois' }],
+  },
+  {
+    id: 'audience',
+    title: 'Mesure d’audience',
+    text: 'Ils nous indiquent quelles pages sont consultées et comment, pour améliorer le site. Désactivés tant que vous ne les acceptez pas.',
+  },
+  {
+    id: 'externes',
+    title: 'Contenus externes',
+    text: 'Vidéos (YouTube, Vimeo), cartes et publications de réseaux sociaux intégrées au site. Ces services déposent leurs propres cookies : tant que vous les refusez, ils ne sont pas chargés.',
+  },
+];
+---
+
+<section
+  class="c-cookie-banner"
+  aria-labelledby="cookie-banner-title"
+  data-cookie-banner
+  hidden
+>
+  <div class="c-cookie-banner__head">
+    <h2 class="c-cookie-banner__title" id="cookie-banner-title">Vos choix sur les cookies</h2>
+    <button type="button" class="c-cookie-banner__skip" data-cookie-action="reject">
+      Continuer sans accepter
+    </button>
+  </div>
+  <p class="c-cookie-banner__text">
+    Avec votre accord, nous utilisons des cookies pour mesurer la fréquentation du site et afficher des
+    contenus externes (vidéos, cartes). Rien n’est déposé sans votre choix, hormis ce qui est indispensable
+    au fonctionnement du site. <a href={policyHref}>Politique cookies</a>
+  </p>
+  <div class="c-cookie-banner__actions">
+    <Button variant="outline" class="c-cookie-banner__button" data-cookie-action="reject">Tout refuser</Button>
+    <Button variant="outline" class="c-cookie-banner__button" data-cookie-open aria-haspopup="dialog">Personnaliser</Button>
+    <Button variant="outline" class="c-cookie-banner__button" data-cookie-action="accept">Tout accepter</Button>
+  </div>
+</section>
+
+<dialog class="c-cookie-panel" aria-labelledby="cookie-panel-title" aria-describedby="cookie-panel-intro" data-cookie-panel>
+  <div class="c-cookie-panel__header">
+    <h2 class="c-cookie-panel__title" id="cookie-panel-title">Préférences de cookies</h2>
+    <button type="button" class="c-cookie-panel__close" data-cookie-close>
+      <Icon name="close" />
+      <span class="u-visually-hidden">Fermer sans enregistrer</span>
+    </button>
+  </div>
+
+  <div class="c-cookie-panel__body">
+    <p class="c-cookie-panel__intro" id="cookie-panel-intro">
+      Choisissez les cookies que vous acceptez, catégorie par catégorie. Vous pouvez modifier ces choix à tout
+      moment avec le lien « Gérer les cookies » en bas de chaque page. <a href={policyHref}>Politique cookies</a>
+    </p>
+
+    <h3 class="c-cookie-panel__subtitle">Gérer vos préférences</h3>
+    <ul class="c-cookie-panel__list" role="list">
+      {categories.map((cat) => (
+        <li class="c-cookie-panel__cat" data-cookie-cat={cat.id}>
+          <div class="c-cookie-panel__cat-head">
+            <button
+              type="button"
+              class="c-cookie-panel__toggle"
+              id={`cookie-cat-${cat.id}-btn`}
+              aria-expanded="false"
+              aria-controls={`cookie-cat-${cat.id}`}
+              data-cookie-accordion
+            >
+              <Icon name="chevron-down" class="c-cookie-panel__chevron" />
+              <span class="c-cookie-panel__cat-title" id={`cookie-cat-${cat.id}-title`}>{cat.title}</span>
+            </button>
+            {cat.locked ? (
+              <span class="c-cookie-panel__always">Toujours actifs</span>
+            ) : (
+              <button
+                type="button"
+                role="switch"
+                aria-checked="false"
+                aria-labelledby={`cookie-cat-${cat.id}-title`}
+                class="c-cookie-panel__switch"
+                data-consent-switch={cat.id}
+              >
+                <span class="c-cookie-panel__switch-state" aria-hidden="true">Désactivé</span>
+                <span class="c-cookie-panel__switch-track" aria-hidden="true">
+                  <span class="c-cookie-panel__switch-thumb"><Icon name="check" size="sm" /></span>
+                </span>
+              </button>
+            )}
+          </div>
+          <div class="c-cookie-panel__cat-body" id={`cookie-cat-${cat.id}`} role="region" aria-labelledby={`cookie-cat-${cat.id}-btn`}>
+            <div class="c-cookie-panel__cat-inner">
+              <p class="c-cookie-panel__cat-text">{cat.text}</p>
+              {cat.cookies && (
+                <table class="c-cookie-panel__table">
+                  <caption class="u-visually-hidden">Cookies de la catégorie {cat.title}</caption>
+                  <thead>
+                    <tr><th scope="col">Nom</th><th scope="col">Finalité</th><th scope="col">Durée</th></tr>
+                  </thead>
+                  <tbody>
+                    {cat.cookies.map((c) => (
+                      <tr><td><code>{c.nom}</code></td><td>{c.finalite}</td><td>{c.duree}</td></tr>
+                    ))}
+                  </tbody>
+                </table>
+              )}
+            </div>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </div>
+
+  <div class="c-cookie-panel__footer">
+    <Button variant="outline" class="c-cookie-panel__button" data-cookie-action="reject">Tout refuser</Button>
+    <Button variant="outline" class="c-cookie-panel__button" data-cookie-action="save">Enregistrer mes choix</Button>
+    <Button variant="outline" class="c-cookie-panel__button" data-cookie-action="accept">Tout accepter</Button>
+  </div>
+</dialog>
+
+<script>
+  import '../../scripts/cookies';
+</script>
+

@@ -1,0 +1,566 @@
+/* Pied de page — DESIGN.md §4.24 ; calque de .c-footer-desktop* de Prosper (PROSPER_TOKENS §12) */
+@layer components {
+  .c-footer {
+    /* Fond derrière les marches = fond de la dernière section (raccord, voir plus bas) */
+    --_lead-bg: var(--footer-lead-bg, var(--color-bg));
+    background: var(--_lead-bg);
+    color: var(--color-text);
+  }
+
+  .c-footer__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    inline-size: 100%;
+    max-inline-size: var(--container-wide);
+    margin-inline: auto;
+  }
+
+  /* ---------- 1. Marches en escalier (c-footer-desktop__top-step) ---------- */
+  .c-footer__top {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    inline-size: 100%;
+    block-size: var(--footer-step-sm);
+  }
+  .c-footer__step {
+    flex-shrink: 0;
+    background: var(--color-surface-signature);
+  }
+  .c-footer__step--one   { block-size: 0; inline-size: var(--footer-step-ratio); }
+  .c-footer__step--two   { flex: 1 1 auto; block-size: 100%; }
+  .c-footer__step--three { flex: 1 0 var(--border-width); block-size: 100%; }
+
+  /* Raccord : dernière section déjà en Pousse → pas de marches, l'aplat se colle */
+  body:has(main > :last-child.t-coton)       .c-footer { --_lead-bg: var(--color-surface-soft); }
+  body:has(main > :last-child.t-pousse-pale) .c-footer { --_lead-bg: var(--color-surface-tint); }
+  body:has(main > :last-child.t-foret)       .c-footer { --_lead-bg: var(--color-surface-strong); }
+  body:has(main > :last-child.t-pousse)      .c-footer__top,
+  .c-footer--flush .c-footer__top { display: none; }
+
+  /* ---------- 1 bis. Retour en haut, porté par la plus haute marche (innovation APSUD) ----------
+     Mobile : carré seul, posé à cheval sur la marche et l'aplat ; ≥ 48em : libellé + carré,
+     calé en haut à droite de la 3e marche. */
+  .c-footer__totop {
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline-end: var(--gutter);
+    z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-3);
+    min-block-size: var(--tap-min);
+    color: var(--color-heading);
+    text-decoration-line: none;
+  }
+  .c-footer__totop-label {
+    font-family: var(--font-condensed);
+    font-stretch: var(--font-stretch-condensed);
+    font-size: var(--fs-footer-title-md);
+    font-weight: var(--fw-bold);
+    letter-spacing: var(--ls-overline);
+    text-transform: uppercase;
+    text-decoration-line: underline;
+    text-decoration-color: transparent;
+    text-decoration-thickness: var(--underline-thickness);
+    text-underline-offset: 0.2em;
+    transition: text-decoration-color var(--dur-short) var(--ease-out);
+  }
+  .c-footer__totop-icon {
+    display: grid;
+    place-items: center;
+    inline-size: var(--tap-min);
+    block-size: var(--tap-min);
+    overflow: hidden;
+    border-radius: var(--radius-control);
+    background: var(--button-ink-bg);
+    color: var(--button-ink-text);
+    transition: background-color var(--dur-short) var(--ease-out);
+  }
+  .c-footer__totop-icon .c-icon { rotate: -90deg; }
+  .c-footer__totop:hover .c-footer__totop-label,
+  .c-footer__totop:focus-visible .c-footer__totop-label { text-decoration-color: currentColor; }
+  .c-footer__totop:hover .c-footer__totop-icon { background: var(--button-ink-bg-hover); }
+  .c-footer__totop:active .c-footer__totop-icon { background: var(--button-ink-bg-active); }
+  .c-footer__totop:focus-visible { outline: var(--focus-width) solid var(--color-focus); outline-offset: var(--focus-offset); }
+  /* la flèche sort par le haut et revient par le bas : « on remonte » */
+  @media (prefers-reduced-motion: no-preference) {
+    .c-footer__totop:hover .c-footer__totop-icon .c-icon {
+      animation: c-footer-totop-loop var(--dur-long) var(--ease-out);
+    }
+  }
+  @keyframes c-footer-totop-loop {
+    0%   { translate: 0 0; }
+    45%  { translate: 0 calc(-1 * var(--tap-min)); }
+    46%  { translate: 0 var(--tap-min); }
+    100% { translate: 0 0; }
+  }
+  @media (width < 48em) {
+    .c-footer__totop-label {
+      position: absolute;
+      inline-size: 1px;
+      block-size: 1px;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+    }
+  }
+
+  /* ---------- 1 ter. Les marches se dressent l'une après l'autre (innovation APSUD) ----------
+     footer.ts pose .is-risen quand l'escalier entre à l'écran. Sans JS, ou avec « animations
+     réduites », .js-reveal est absent : l'escalier est affiché d'emblée. */
+  @media (prefers-reduced-motion: no-preference) {
+    .js-reveal .c-footer__top:not(.is-risen) .c-footer__step { clip-path: inset(100% 0 0 0); }
+    .js-reveal .c-footer__top:not(.is-risen) .c-footer__totop { opacity: 0; translate: 0 var(--space-4); }
+    .js-reveal .c-footer__top.is-risen .c-footer__step {
+      clip-path: inset(0 0 0 0);
+      transition: clip-path var(--dur-signature) var(--ease-out);
+    }
+    .js-reveal .c-footer__top.is-risen .c-footer__step--three { transition-delay: var(--dur-standard); }
+    .js-reveal .c-footer__top.is-risen .c-footer__totop {
+      transition:
+        opacity var(--dur-intro) var(--ease-out) calc(var(--dur-standard) * 2),
+        translate var(--dur-intro) var(--ease-out) calc(var(--dur-standard) * 2);
+    }
+  }
+
+  /* ---------- 2. Corps Pousse (c-footer-desktop__middle) ---------- */
+  .c-footer__middle {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: var(--space-12);
+    inline-size: 100%;
+    padding: var(--space-10) var(--gutter);
+    overflow: hidden;
+  }
+
+  .c-footer__lead {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-10);
+    inline-size: 100%;
+  }
+
+  .c-footer__tagline {
+    margin: 0;
+    color: var(--color-heading);
+    font-family: var(--font-condensed);
+    font-stretch: var(--font-stretch-condensed);
+    font-size: var(--fs-footer-tagline);
+    font-weight: var(--fw-bold);
+    line-height: var(--lh-tight);
+    letter-spacing: var(--ls-headline);
+    text-wrap: pretty;
+    overflow-wrap: break-word;
+  }
+
+  /* Coordonnées (absentes chez Prosper, indispensables pour APSUD) */
+  .c-footer__contact {
+    display: grid;
+    gap: var(--space-3);
+    font-size: var(--fs-small);
+    font-style: normal;
+    line-height: var(--lh-lead);
+  }
+  .c-footer__contact-title,
+  .c-footer__group-title,
+  .c-footer__newsletter-label {
+    margin: 0;
+    color: var(--color-heading);
+    font-family: var(--font-condensed);
+    font-stretch: var(--font-stretch-condensed);
+    font-size: var(--fs-footer-title);
+    font-weight: var(--fw-bold);
+    line-height: var(--lh-tight);
+    letter-spacing: var(--ls-overline);
+    text-transform: uppercase;
+  }
+  .c-footer__contact-title { margin-block-end: var(--space-1); }
+  .c-footer__contact-line {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: start;
+    gap: var(--space-2);
+  }
+  .c-footer__contact-icon { margin-block-start: calc(var(--space-1) / 2); }
+  .c-footer__contact-list { display: grid; }
+  .c-footer__contact-link {
+    display: inline-flex;
+    align-items: center;
+    min-block-size: var(--_row);
+    font-weight: var(--fw-medium);
+    text-decoration-line: none;
+  }
+  .c-footer__contact { --_row: var(--tap-min); }
+  .c-footer__contact-line:has(a) .c-footer__contact-icon { margin-block-start: calc((var(--_row) - var(--_s)) / 2); }
+  .c-footer__contact-link:hover,
+  .c-footer__contact-link:focus-visible { text-decoration-line: underline; }
+
+  /* Colonnes de liens (c-footer__menu) */
+  .c-footer__menu-container { inline-size: 100%; }
+  .c-footer__menu {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: var(--space-12);
+    inline-size: 100%;
+  }
+  .c-footer__group {
+    display: flex;
+    flex: 1 1 var(--footer-group-min);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-6);
+  }
+  .c-footer__group-title a {
+    color: inherit;
+    text-decoration-line: underline;
+    text-decoration-color: currentColor;
+    text-decoration-thickness: var(--underline-thickness);
+  }
+  .c-footer__group-children {
+    inline-size: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .c-footer__group-child { line-height: var(--lh-lead); }
+  .c-footer__group-child a {
+    display: inline-flex;
+    align-items: center;
+    min-block-size: var(--tap-min);
+    color: var(--color-text);
+    font-size: var(--fs-small);
+    font-weight: var(--fw-medium);
+    text-decoration-line: none;
+  }
+  .c-footer__group-child a:hover,
+  .c-footer__group-child a:focus-visible { text-decoration-line: underline; }
+
+  /* Réseaux sociaux (c-footer__group-social) */
+  .c-footer__social {
+    display: flex;
+    gap: var(--space-2);
+    margin: var(--space-8) 0 0 calc(-1 * var(--space-3));
+    padding: 0;
+    list-style: none;
+  }
+  .c-footer__social-link {
+    display: grid;
+    place-items: center;
+    inline-size: var(--tap-min);
+    block-size: var(--tap-min);
+    color: var(--color-text);
+    transition: background-color var(--dur-short) var(--ease-out);
+  }
+  .c-footer__social-link:hover,
+  .c-footer__social-link:focus-visible { background: var(--color-surface-tint); }
+
+  /* Lettre d'information (c-footer__newsletter) */
+  .c-footer__newsletter {
+    display: flex;
+    flex-direction: column;
+    inline-size: 100%;
+    max-inline-size: var(--footer-col-aside);
+    margin-block-end: var(--space-12);
+  }
+  .c-footer__newsletter-label { margin-block-end: var(--space-8); }
+  .c-footer__form { display: grid; gap: var(--space-5); }
+  .c-footer__field { display: grid; gap: var(--space-2); }
+
+  .c-footer__input {
+    inline-size: 100%;
+    block-size: var(--control-h);
+    padding: 0 var(--space-3);
+    border: var(--border-width) solid var(--color-border-control);
+    border-radius: var(--radius-control);
+    background: var(--field-bg);
+    color: var(--color-text);
+    font-size: var(--fs-body);
+    font-weight: var(--fw-medium);
+  }
+  .c-footer__input::placeholder { color: var(--color-text-muted); opacity: 1; }
+  .c-footer__input:focus-visible {
+    outline: var(--border-width) solid var(--color-border-control);
+    outline-offset: var(--space-1);
+  }
+  .c-footer__input[aria-invalid="true"] {
+    border-color: var(--color-error);
+    background: var(--color-error-bg);
+  }
+
+  .c-footer__help,
+  .c-footer__privacy {
+    margin: 0;
+    font-size: var(--fs-footer-legal);
+    line-height: var(--lh-caption);
+  }
+  .c-footer__privacy a { color: inherit; text-decoration-color: currentColor; }
+  .c-footer__error {
+    margin: 0;
+    padding: var(--space-1) var(--space-2);
+    background: var(--color-error-bg);
+    color: var(--color-error);
+    font-size: var(--fs-caption);
+    font-weight: var(--fw-semibold);
+    line-height: var(--lh-caption);
+  }
+  .c-footer__error[hidden] { display: none; }
+
+  /* Case à cocher maison (1,375 rem, bord 2 px, rayon 4 px ; survol : bord 3 px — Prosper) */
+  .c-footer__check {
+    position: relative;
+    display: grid;
+    grid-template-columns: var(--checkbox-size) 1fr;
+    align-items: start;
+    gap: var(--space-3);
+  }
+  .c-footer__check-input {
+    position: absolute;
+    inset: 0 auto auto 0;
+    inline-size: var(--checkbox-size);
+    block-size: var(--checkbox-size);
+    margin: 0;
+    opacity: 0;
+    cursor: pointer;
+  }
+  .c-footer__check-box {
+    grid-column: 1;
+    grid-row: 1;
+    display: grid;
+    place-items: center;
+    inline-size: var(--checkbox-size);
+    block-size: var(--checkbox-size);
+    border: var(--border-width-strong) solid var(--color-border-control);
+    border-radius: var(--radius-control);
+    background: var(--field-bg);
+    color: transparent;
+    pointer-events: none;
+    transition: background-color var(--dur-shortest) var(--ease-out), box-shadow var(--dur-shortest) var(--ease-out);
+  }
+  .c-footer__check-input:hover + .c-footer__check-box {
+    box-shadow: inset 0 0 0 var(--border-width) var(--color-border-control);
+  }
+  .c-footer__check-input:checked + .c-footer__check-box {
+    background: var(--color-border-control);
+    color: var(--color-surface-signature);
+  }
+  .c-footer__check-input:focus-visible + .c-footer__check-box {
+    outline: var(--focus-width) solid var(--color-focus);
+    outline-offset: var(--focus-offset);
+  }
+  .c-footer__check-input[aria-invalid="true"] + .c-footer__check-box { border-color: var(--color-error); }
+  .c-footer__check-label {
+    grid-column: 2;
+    font-size: var(--fs-small);
+    line-height: var(--lh-caption);
+    cursor: pointer;
+  }
+
+  .c-footer__newsletter-button {
+    inline-size: var(--newsletter-button-w);
+    margin-block-start: var(--space-1);
+    text-transform: uppercase;
+  }
+
+  .c-footer__thankyou {
+    margin: var(--space-4) 0 0;
+    padding: var(--space-2) var(--space-4);
+    border: var(--border-width) solid var(--color-border-control);
+    background: var(--color-surface-tint);
+    color: var(--color-text);
+    font-size: var(--fs-body);
+    font-weight: var(--fw-medium);
+    text-align: center;
+  }
+  .c-footer__thankyou:focus { outline: none; }
+  .c-footer__thankyou[hidden],
+  .c-footer__form[hidden] { display: none; }
+
+  /* ---------- 3. Sous-footer Coton (c-footer-desktop__bottom) ---------- */
+  .c-footer__bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-10);
+    inline-size: 100%;
+    padding: var(--space-10) var(--gutter);
+    overflow: hidden;
+  }
+  .c-footer__info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-2);
+    max-inline-size: 100%;
+    font-size: var(--fs-small);
+    line-height: var(--lh-tight);
+  }
+  .c-footer__info-org {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-6);
+    margin: 0 0 var(--space-8);
+    line-height: var(--lh-caption);
+  }
+  .c-footer__info-links {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .c-footer__info-link {
+    display: inline-flex;
+    align-items: center;
+    min-block-size: var(--tap-min);
+    padding: 0;
+    padding-inline-end: var(--space-2);
+    border: 0;
+    background: none;
+    color: var(--color-text);
+    font: inherit;
+    text-decoration-line: underline;
+    text-decoration-color: currentColor;
+    text-decoration-thickness: var(--underline-thickness);
+    text-underline-offset: 0.18em;
+    cursor: pointer;
+    transition: --underline-thickness var(--dur-short) var(--ease-out);
+  }
+  .c-footer__info-link:hover { --underline-thickness: var(--border-width-strong); }
+  .c-footer__info-copyright {
+    display: flex;
+    align-items: center;
+    min-block-size: var(--space-6);
+    margin: 0;
+  }
+
+  /* Pastille de preuve (c-efficiency-lockup--footer) */
+  .c-footer__proof {
+    display: flex;
+    align-items: center;
+    gap: var(--space-5);
+  }
+  .c-footer__proof-badge {
+    position: relative;
+    display: grid;
+    place-items: center;
+    flex: none;
+    inline-size: var(--proof-size);
+    block-size: var(--proof-size);
+  }
+  .c-footer__proof-svg {
+    position: absolute;
+    inset: 0;
+    inline-size: 100%;
+    block-size: 100%;
+  }
+  .c-footer__proof-disc  { fill: var(--proof-disc); }
+  .c-footer__proof-track { stroke: var(--proof-ring-bg); }
+  .c-footer__proof-ring {
+    stroke: var(--proof-ring-fg);
+    stroke-dasharray: 100;
+    stroke-dashoffset: 0;
+  }
+  .c-footer__proof-value {
+    position: relative;
+    color: var(--proof-ring-fg);
+    font-family: var(--font-condensed);
+    font-stretch: var(--font-stretch-condensed);
+    font-size: var(--fs-proof-value);
+    font-weight: var(--fw-bold);
+    line-height: var(--lh-tight);
+    letter-spacing: var(--ls-headline);
+    font-variant-numeric: tabular-nums;
+  }
+  .c-footer__proof-text {
+    max-inline-size: var(--proof-text-w);
+    margin: 0;
+    font-size: var(--fs-small);
+    line-height: var(--lh-caption);
+  }
+  .c-footer__proof-text a { color: inherit; text-decoration-color: currentColor; }
+
+  /* Animation : l'anneau se dessine quand la pastille est entièrement visible (efficiency-lockup.js) */
+  @media (prefers-reduced-motion: no-preference) {
+    .js-reveal .c-footer__proof:not(.is-drawn) .c-footer__proof-ring { stroke-dashoffset: 100; }
+    .js-reveal .c-footer__proof.is-drawn .c-footer__proof-ring {
+      transition: stroke-dashoffset var(--dur-ring) var(--ease-out);
+    }
+  }
+
+  /* ---------- ≥ 48em ---------- */
+  @media (width >= 48em) {
+    .c-footer__middle { flex-direction: row; flex-wrap: wrap; }
+    .c-footer__menu-container { flex: 1 1 0; min-inline-size: 0; inline-size: auto; }
+    .c-footer__newsletter { flex: 0 0 var(--footer-col-aside); }
+    .c-footer__contact-title,
+    .c-footer__group-title,
+    .c-footer__newsletter-label { font-size: var(--fs-footer-title-md); }
+    .c-footer__group-child a { min-block-size: var(--space-8); }
+    .c-footer__contact { --_row: var(--space-8); }
+    .c-footer__bottom { flex-direction: row; flex-wrap: wrap; gap: var(--space-12); }
+    .c-footer__info-link { min-block-size: var(--space-6); }
+    .c-footer__proof-badge { inline-size: var(--proof-size-md); block-size: var(--proof-size-md); }
+  }
+
+  /* ---------- ≥ 80em : escalier complet, colonnes Prosper ---------- */
+  @media (width >= 80em) {
+    .c-footer__inner { padding-block-start: var(--space-10); }
+    .c-footer__top { block-size: var(--footer-step-lg); }
+    .c-footer__step--one { inline-size: var(--footer-col-lead); }
+    .c-footer__step--two { flex: 0 0 var(--footer-step-w); block-size: var(--footer-step-md); }
+    /* retour en haut centré dans la partie de la 3e marche qui dépasse la 2e */
+    .c-footer__totop { inset-block-start: calc((var(--footer-step-lg) - var(--footer-step-md) - var(--tap-min)) / 2); }
+
+    .c-footer__middle {
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+      gap: 0;
+      padding-inline-start: 0;
+      padding-block-start: var(--space-16);
+    }
+    .c-footer__lead {
+      flex: 0 0 var(--footer-col-lead);
+      padding-inline: var(--footer-inset) var(--space-8);
+    }
+    .c-footer__menu-container {
+      flex: 0 1 var(--footer-col-menu);
+      margin-inline-start: var(--space-4);
+    }
+    .c-footer__menu { flex-wrap: nowrap; gap: 0; }
+    .c-footer__group { flex: 1 1 50%; }
+    .c-footer__group-title a { text-decoration-line: none; }
+    .c-footer__group-title a:hover,
+    .c-footer__group-title a:focus-visible { text-decoration-line: underline; }
+    .c-footer__newsletter {
+      flex: 0 1 var(--footer-col-aside);
+      margin-inline: auto;
+    }
+
+    .c-footer__bottom {
+      flex-wrap: nowrap;
+      gap: 0;
+      padding-inline-start: 0;
+      padding-block-start: var(--space-16);
+    }
+    .c-footer__logo-link {
+      flex: 0 0 var(--footer-col-lead);
+      padding-inline-start: var(--footer-inset);
+    }
+    .c-footer__info {
+      flex: 0 1 var(--footer-col-menu);
+      gap: 0;
+      margin-inline-start: var(--space-4);
+      min-inline-size: 0;
+    }
+    .c-footer__proof {
+      flex: 0 1 var(--footer-col-aside);
+      margin-inline: auto;
+    }
+  }
+}

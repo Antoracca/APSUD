@@ -1,0 +1,55 @@
+---
+/**
+ * Fil d'Ariane — Prosper `.c-breadcrumb` (pages de niveau 2 et plus, STRUCTURE §4.2).
+ * <nav aria-label> + liste ordonnée ; la page courante n'est pas un lien (aria-current="page").
+ * Données structurées schema.org BreadcrumbList en JSON-LD (URL absolues, site.url).
+ * « Accueil » est ajouté en tête sauf `home={false}`.
+ */
+import Icon from '../ui/Icon.astro';
+import { site } from '../../data/site';
+import './Breadcrumb.css';
+
+export interface Crumb {
+  label: string;
+  href?: string;
+}
+
+interface Props {
+  items: Crumb[];
+  home?: boolean;
+  class?: string;
+}
+
+const { items, home = true, class: className } = Astro.props;
+const trail: Crumb[] = [...(home ? [{ label: 'Accueil', href: '/' }] : []), ...items];
+const lastIndex = trail.length - 1;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: trail.map((c, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    name: c.label,
+    ...(c.href || i === lastIndex
+      ? { item: new URL(c.href ?? Astro.url.pathname, site.url).href }
+      : {}),
+  })),
+};
+---
+
+<nav class:list={['c-breadcrumb', className]} aria-label="Fil d’Ariane">
+  <ol class="c-breadcrumb__list" role="list">
+    {trail.map((c, i) => (
+      <li class="c-breadcrumb__item">
+        {i === lastIndex || !c.href ? (
+          <span class="c-breadcrumb__current" aria-current={i === lastIndex ? 'page' : undefined}>{c.label}</span>
+        ) : (
+          <a class="c-breadcrumb__link" href={c.href}>{c.label}</a>
+        )}
+        {i < lastIndex && <Icon name="chevron-right" size="sm" class="c-breadcrumb__sep" />}
+      </li>
+    ))}
+  </ol>
+</nav>
+<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />

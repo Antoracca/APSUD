@@ -1,0 +1,35 @@
+---
+/**
+ * /agir — les façons d'agir en boîtes 3 colonnes (Prosper « How to help », boîtes ×2 :
+ * fonds, legs, crypto… → transposées pour APSUD : don, partenariat, emploi, appels d'offres,
+ * don en nature, contact). Toute la boîte est cliquable (lien étiré, un seul arrêt de tabulation).
+ * Innovation APSUD : au survol / focus, la boîte se lève sur sa « marche » Pousse (ombre pleine
+ * décalée, signature du pied de page), le filet Vert se remplit et la goutte-feuille pivote.
+ */
+import Icon from '../../components/ui/Icon.astro';
+import ArrowLink from '../../components/ui/ArrowLink.astro';
+import { ways } from './agirData';
+import './AgirWays.css';
+---
+
+<section class="c-agir-ways l-section" id="facons-d-agir" aria-labelledby="agir-ways-title">
+  <div class="l-constrain">
+    <header class="c-agir-ways__head" data-reveal>
+      <h2 id="agir-ways-title" class="c-agir-ways__title">Toutes les façons d’agir</h2>
+      <p class="c-agir-ways__lead u-lead">
+        Particulier, entreprise, bailleur ou candidat&nbsp;: choisissez la porte qui vous correspond.
+      </p>
+    </header>
+    <ul class="c-agir-ways__grid" role="list">
+      {ways.map((w, i) => (
+        <li class="c-way" data-reveal data-reveal-delay={String((i % 3) * 120)}>
+          <span class="c-way__index" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+          <span class="c-way__badge" aria-hidden="true"><Icon name={w.icon} size="lg" /></span>
+          <h3 class="c-way__title">{w.title}</h3>
+          <p class="c-way__text">{w.text}</p>
+          <ArrowLink href={w.link.href} stretched class="c-way__link">{w.link.label}</ArrowLink>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

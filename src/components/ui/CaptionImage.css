@@ -1,0 +1,89 @@
+/* Image + légende-cartouche — DESIGN.md §4.8 ; Prosper `.c-caption-image--hero`
+   (cartouche #4AFFF4 de 24 rem + carré #E4FFC3 de 5 rem, hauteur 100 % − 16 px) */
+@layer components {
+  .c-caption-image {
+    --_ratio: 16 / 9;
+
+    container: caption-image / inline-size;
+  }
+  .c-caption-image__frame { display: grid; margin: 0; }
+  .c-caption-image--r4-3 { --_ratio: 4 / 3; }
+  .c-caption-image--r1-1 { --_ratio: 1; }
+
+  .c-caption-image__media { display: block; }
+  .c-caption-image__img {
+    display: block;
+    inline-size: 100%;
+    max-inline-size: none;
+    block-size: auto;
+    aspect-ratio: var(--_ratio);
+    object-fit: cover;
+    border-radius: var(--radius-none);
+  }
+
+  /* Petit format : légende pleine largeur sous la photo (Prosper mobile) */
+  .c-caption-image__caption {
+    background: var(--color-surface-signature);
+  }
+  .c-caption-image__text {
+    display: block;
+    padding: var(--space-4);
+    color: var(--color-text);
+    font-size: var(--fs-caption);
+    line-height: var(--lh-caption);
+    text-wrap: pretty;
+  }
+  .c-caption-image__credit {
+    display: inline;
+    margin-inline-start: var(--space-1);
+    white-space: nowrap;   /* même couleur que la légende : le Mousse échoue sur Pousse (4,43:1) */
+  }
+
+  /* Grand format : cartouche posé sur le bas de la photo, carré teinté décalé */
+  @container caption-image (width >= 40rem) {
+    .c-caption-image__media,
+    .c-caption-image__caption { grid-area: 1 / 1; }
+
+    .c-caption-image__caption {
+      position: relative;
+      display: flex;
+      justify-content: flex-end;
+      align-self: end;
+      justify-self: start;
+      inline-size: 50%;
+      background: transparent;
+      translate: 0 var(--_overhang, 0);
+    }
+    .c-caption-image__text {
+      position: relative;
+      z-index: var(--z-raised);
+      inline-size: min(var(--caption-max), 100%);
+      background: var(--color-surface-signature);
+    }
+    .c-caption-image__caption::before {
+      content: "";
+      position: absolute;
+      inset-block-end: 0;
+      inset-inline-end: min(var(--caption-max), 100%);
+      block-size: calc(100% - var(--space-4));
+      inline-size: var(--caption-step-w);
+      background: var(--color-surface-tint);
+    }
+
+    /* Miroir : cartouche dans la moitié droite, carré à sa droite */
+    .c-caption-image--right .c-caption-image__caption {
+      justify-self: end;
+      justify-content: flex-start;
+    }
+    .c-caption-image--right .c-caption-image__caption::before {
+      inset-inline-end: auto;
+      inset-inline-start: min(var(--caption-max), 100%);
+    }
+
+    /* « À cheval » : le cartouche déborde sous la photo */
+    .c-caption-image--straddle .c-caption-image__frame {
+      --_overhang: var(--space-8);
+      padding-block-end: var(--_overhang);
+    }
+  }
+}

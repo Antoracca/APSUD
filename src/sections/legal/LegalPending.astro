@@ -1,0 +1,16 @@
+---
+/**
+ * Marqueur « [à compléter par APSUD] » : une information juridique que seule APSUD peut fournir
+ * (agrément, directeur de la publication, coordonnées de l'hébergeur…). Bien visible (surligné
+ * Soleil) pour qu'aucune page ne parte en ligne avec un champ vide ; LegalDoc les compte.
+ * `hint` précise ce qui est attendu (« numéro d'agrément »).
+ */
+import './LegalPending.css';
+
+interface Props {
+  hint?: string;
+}
+const { hint } = Astro.props;
+---
+
+<mark class="c-legal-pending" data-legal-pending>[à compléter par APSUD{hint && <span class="c-legal-pending__hint"> : {hint}</span>}]</mark>

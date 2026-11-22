@@ -1,0 +1,81 @@
+---
+/**
+ * Gabarit commun à toutes les pages :
+ * lien d'évitement → bandeau d'annonce → header (méga-menu + menu mobile)
+ * → <main> → footer → bandeau cookies.
+ */
+import '@fontsource-variable/mona-sans/wdth.css';
+/* Italique : téléchargée seulement si une page en affiche (mot mis en valeur du bandeau partenaires) */
+import '@fontsource-variable/mona-sans/wdth-italic.css';
+import '../styles/tokens.css';
+import '../styles/base.css';
+
+import SkipLink from '../components/layout/SkipLink.astro';
+import Eyebrow from '../components/layout/Eyebrow.astro';
+import Header from '../components/layout/Header.astro';
+import Footer from '../components/layout/Footer.astro';
+import CookieBanner from '../components/layout/CookieBanner.astro';
+import { site } from '../data/site';
+
+interface Props {
+  title?: string;
+  description?: string;
+  showEyebrow?: boolean;
+}
+
+const {
+  title,
+  description = `${site.nom} (${site.sigle}) : ${site.statut} en ${site.pays}. ${site.mission}`,
+  showEyebrow = true,
+} = Astro.props;
+
+const fullTitle = title ? `${title} | ${site.sigle}` : `${site.sigle} — ${site.nom}`;
+const canonical = new URL(Astro.url.pathname, site.url).href;
+---
+
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta name="theme-color" content="#0B2A1A" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:site_name" content={site.sigle} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'NGO',
+      name: site.nom,
+      alternateName: site.sigle,
+      url: site.url,
+      email: site.contact.email,
+      address: { '@type': 'PostalAddress', addressLocality: 'Bimbo', addressCountry: 'CF' },
+      sameAs: site.reseaux.map((r) => r.url),
+    })} />
+    <script is:inline>
+      document.documentElement.classList.add('js');
+      if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.documentElement.classList.add('js-reveal');
+      }
+    </script>
+  </head>
+  <body>
+    <SkipLink />
+    {showEyebrow && <Eyebrow />}
+    <Header />
+    <main id="contenu" tabindex="-1">
+      <slot />
+    </main>
+    <Footer />
+    <CookieBanner />
+    <script>
+      import '../scripts/reveal';
+    </script>
+  </body>
+</html>

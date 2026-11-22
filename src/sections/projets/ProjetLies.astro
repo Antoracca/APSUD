@@ -1,0 +1,44 @@
+---
+/**
+ * Fiche projet — projets liés : autres projets du même domaine (jusqu'à 3, en cours d'abord),
+ * en cartes ProjectCard (via ProjetsCard). Lien vers la liste filtrée sur ce domaine.
+ * Section absente si aucun autre projet ne partage le domaine.
+ */
+import ArrowLink from '../../components/ui/ArrowLink.astro';
+import { getProjects, type Projet } from '../../data/projects';
+import { getDomain } from '../../data/domains';
+import ProjetsCard from './ProjetsCard.astro';
+import './ProjetLies.css';
+
+interface Props {
+  projet: Projet;
+}
+
+const { projet: p } = Astro.props;
+const lies = getProjects()
+  .filter((x) => x.slug !== p.slug && x.domaines.some((d) => p.domaines.includes(d)))
+  .slice(0, 3);
+const domaine = p.domaines[0] ? getDomain(p.domaines[0]) : undefined;
+---
+
+{lies.length > 0 && (
+  <section class="c-projet-lies l-section" aria-labelledby="projet-lies-titre">
+    <div class="l-constrain">
+      <header class="c-projet-lies__head">
+        <h2 id="projet-lies-titre" class="c-projet-lies__title" data-reveal>
+          {domaine ? `Autres projets : ${domaine.titre.toLowerCase()}` : 'Autres projets'}
+        </h2>
+        {domaine && (
+          <ArrowLink href={`/projets?domaine=${domaine.slug}`}>Tous les projets de ce domaine</ArrowLink>
+        )}
+      </header>
+      <ul class="c-projet-lies__grid" role="list">
+        {lies.map((x, i) => (
+          <li>
+            <ProjetsCard projet={x} reveal revealDelay={i * 150} />
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+)}

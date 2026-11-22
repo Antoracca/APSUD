@@ -1,0 +1,54 @@
+/* /faire-un-don — argumentaire (colonne gauche du gabarit E) */
+@layer components {
+  .c-donate-argument {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-12);
+  }
+  .c-donate-argument__title { font-size: var(--fs-h3); margin-block-end: var(--space-4); }
+  .c-donate-argument__subtitle { font-size: var(--fs-h5); margin-block-end: var(--space-4); }
+  .c-donate-argument__why { display: grid; gap: var(--space-4); max-inline-size: var(--measure-text); }
+  .c-donate-argument__why p { font-size: var(--fs-lead); line-height: var(--lh-lead); }
+  .c-donate-argument__strong { color: var(--color-text-brand); }
+  .c-donate-argument__note { color: var(--color-text-muted); margin-block-end: var(--space-6); }
+
+  .c-impacts {
+    display: grid;
+    padding: 0;
+    list-style: none;
+    border-block-start: var(--border-width) solid var(--color-border-subtle);
+  }
+  .c-impact {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: var(--space-5);
+    padding-block: var(--space-6);
+    border-block-end: var(--border-width) solid var(--color-border-subtle);
+  }
+  .c-impact__badge {
+    display: grid;
+    place-items: center;
+    inline-size: var(--leaf-drop-sm);
+    block-size: var(--leaf-drop-sm);
+    border-radius: var(--radius-goutte);
+    background: var(--color-surface-tint);
+    color: var(--color-text-brand);
+    transition: background-color var(--dur-standard) var(--ease-out), color var(--dur-standard) var(--ease-out);
+  }
+  .c-impact:hover .c-impact__badge { background: var(--color-brand); color: var(--button-primary-text); }
+  .c-impact__title { font-size: var(--fs-h6); }
+  .c-impact__fact { margin-block-start: var(--space-2); }
+  .c-impact__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-1) var(--space-4);
+    margin-block-start: var(--space-2);
+    font-size: var(--fs-small);
+    color: var(--color-text-muted);
+  }
+  .c-impact__link { font-weight: var(--fw-heavy); color: var(--color-text); }
+
+  .c-donate-argument__proof { display: grid; gap: var(--space-4); justify-items: start; }
+  .c-donate-argument__proof .c-agir-logos { inline-size: 100%; grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--agir-chip-min)), 1fr)); }
+  .c-donate-argument__proof .c-agir-logos__link { background: var(--color-surface-soft); }
+}

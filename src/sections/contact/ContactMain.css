@@ -1,0 +1,14 @@
+/* /contact — grille coordonnées | formulaire */
+@layer components {
+  /* en-tête et aiguillage calés sur la grille de 1200 px */
+  .c-page-header.c-contact-header .l-constrain--text { max-inline-size: calc(var(--container) + 2 * var(--gutter)); }
+  .c-contact-main { padding-block-start: 0; }
+  .c-contact-main__grid { display: grid; gap: var(--space-12); }
+  @media (width >= 60em) {
+    .c-contact-main__grid {
+      grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+      gap: var(--space-16);
+      align-items: start;
+    }
+  }
+}

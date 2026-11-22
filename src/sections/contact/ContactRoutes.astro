@@ -1,0 +1,26 @@
+---
+/**
+ * /contact — aiguillage par besoin (Prosper /contact-us : phrases avec lien vers le bon service,
+ * DESIGN.md §5.8 n° 2) : liens fléchés en 2 colonnes, avant le formulaire.
+ */
+import Icon from '../../components/ui/Icon.astro';
+import { contactRoutes } from '../agir/agirData';
+import './ContactRoutes.css';
+---
+
+<nav class="c-contact-routes l-constrain" aria-labelledby="contact-routes-title">
+  <h2 id="contact-routes-title" class="c-contact-routes__title">Trouver le bon interlocuteur</h2>
+  <ul class="c-contact-routes__list" role="list">
+    {contactRoutes.map((r) => (
+      <li>
+        <a class="c-contact-route" href={r.href}>
+          <span class="c-contact-route__body">
+            <span class="c-contact-route__label">{r.label}</span>
+            <span class="c-contact-route__text">{r.text}</span>
+          </span>
+          <Icon name="arrow-right" class="c-contact-route__icon" />
+        </a>
+      </li>
+    ))}
+  </ul>
+</nav>

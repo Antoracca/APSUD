@@ -1,0 +1,85 @@
+---
+/**
+ * Page domaine §3 — Le domaine en chiffres (Prosper `.c-quick-stats`, version page intérieure).
+ * Fond Coton ; à gauche une goutte-feuille « cap » qui glisse en place (comme l'accueil),
+ * à droite 4 chiffres grands et légers séparés par des filets, puis les préfectures (liens
+ * vers la carte des zones) et les bailleurs. Tout est calculé depuis les fiches projets.
+ * Compteurs : src/scripts/counters.ts (valeurs finales dans le HTML : sans JS / animations
+ * réduites, rien ne bouge).
+ */
+import LeafDrop from '../../components/ui/LeafDrop.astro';
+import Icon from '../../components/ui/Icon.astro';
+import { domainStats, type Domaine } from './actionsData';
+import './DomainStats.css';
+
+interface Props {
+  domain: Domaine;
+}
+const { domain: d } = Astro.props;
+const s = domainStats(d.slug);
+const plural = (k: number, one: string, many: string) => (k > 1 ? many : one);
+
+const figures = [
+  { value: s.projets, label: plural(s.projets, 'projet mené', 'projets menés') },
+  { value: s.prefectures.length, label: plural(s.prefectures.length, 'préfecture d’intervention', 'préfectures d’intervention') },
+  { value: s.bailleurs.length, label: plural(s.bailleurs.length, 'bailleur', 'bailleurs') },
+];
+---
+
+<section class="c-domain-stats t-coton" aria-labelledby="domain-stats-title">
+  <div class="l-constrain c-domain-stats__inner">
+    <div class="c-domain-stats__drop">
+      <LeafDrop shape="cap" size="fill" color="brand" animate />
+    </div>
+
+    <div class="c-domain-stats__body">
+      <h2 id="domain-stats-title" class="c-domain-stats__title" data-reveal>Le domaine en chiffres</h2>
+
+      <dl class="c-domain-stats__grid" data-stats>
+        {figures.map((f, i) => (
+          <div class="c-domain-stats__stat" style={`--i: ${i}`}>
+            <dt class="c-domain-stats__label">{f.label}</dt>
+            <dd class="c-domain-stats__number">
+              <span aria-hidden="true" data-count={f.value} data-prefix="" data-suffix="" data-index={i}>{f.value}</span>
+              <span class="u-visually-hidden">{f.value}</span>
+            </dd>
+          </div>
+        ))}
+        {s.periode && (
+          <div class="c-domain-stats__stat" style={`--i: ${figures.length}`}>
+            <dt class="c-domain-stats__label">{s.periode.includes('–') ? 'années d’action' : 'année d’action'}</dt>
+            <dd class="c-domain-stats__number c-domain-stats__number--period">{s.periode}</dd>
+          </div>
+        )}
+      </dl>
+
+      {s.prefectures.length > 0 && (
+        <div class="c-domain-stats__list" data-reveal>
+          <h3 class="c-domain-stats__list-title">Préfectures</h3>
+          <ul class="c-domain-stats__chips" role="list">
+            {s.prefectures.map((p) => (
+              <li>
+                <a class="c-domain-stats__chip" href={`/nos-zones#${p.slug}`}>
+                  <Icon name="map-pin" size="sm" />{p.nom}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {s.bailleurs.length > 0 && (
+        <div class="c-domain-stats__list" data-reveal>
+          <h3 class="c-domain-stats__list-title">Bailleurs</h3>
+          <p class="c-domain-stats__donors">{s.bailleurs.join(' · ')}</p>
+        </div>
+      )}
+
+      <p class="c-domain-stats__source">Chiffres calculés à partir des fiches projets publiées sur ce site.</p>
+    </div>
+  </div>
+</section>
+
+<script>
+  import '../../scripts/counters';
+</script>

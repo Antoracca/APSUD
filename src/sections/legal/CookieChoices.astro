@@ -1,0 +1,57 @@
+---
+/**
+ * Page /cookies — « Vos choix actuels » : état en direct de chaque catégorie du bandeau
+ * (lu dans `apsud_consent`, mis à jour à l'événement `apsud:consent`) + bouton
+ * « Modifier mes choix » [data-cookie-open] qui ouvre le panneau de préférences existant.
+ * Sans JS : le bandeau ne s'affiche pas et aucun traceur ne peut être chargé ; l'encadré le dit.
+ */
+import Button from '../../components/ui/Button.astro';
+import { cookieCategories } from './cookieCategories';
+import './CookieChoices.css';
+---
+
+<div class="c-cookie-choices" data-cookie-choices>
+  <p class="c-cookie-choices__title">Vos choix actuels</p>
+  <ul class="c-cookie-choices__list" role="list">
+    {cookieCategories.map((c) => (
+      <li class="c-cookie-choices__item">
+        <span class="c-cookie-choices__name">{c.titre}</span>
+        <span
+          class="c-cookie-choices__state"
+          data-state={c.toujoursActif ? 'on' : 'unset'}
+          data-cookie-state={c.toujoursActif ? undefined : c.id}
+        >{c.toujoursActif ? 'Toujours actifs' : 'Pas encore choisi'}</span>
+      </li>
+    ))}
+  </ul>
+  <p class="c-cookie-choices__date" data-cookie-date hidden></p>
+  <p class="c-cookie-choices__nojs">Sans JavaScript, aucun cookie facultatif ne peut être déposé.</p>
+  <div class="c-cookie-choices__actions">
+    <Button variant="primary" data-cookie-open aria-haspopup="dialog">Modifier mes choix</Button>
+  </div>
+</div>
+
+<script>
+  import { readConsent, type Consent } from '../../scripts/cookies';
+
+  const box = document.querySelector<HTMLElement>('[data-cookie-choices]');
+  const fmt = new Intl.DateTimeFormat('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
+
+  function render(consent: Consent | null) {
+    if (!box) return;
+    box.querySelectorAll<HTMLElement>('[data-cookie-state]').forEach((el) => {
+      const cat = el.dataset.cookieState as keyof Consent['categories'];
+      const value = consent ? consent.categories[cat] : null;
+      el.dataset.state = value === null ? 'unset' : value ? 'on' : 'off';
+      el.textContent = value === null ? 'Pas encore choisi' : value ? 'Acceptés' : 'Refusés';
+    });
+    const date = box.querySelector<HTMLElement>('[data-cookie-date]');
+    if (date) {
+      date.hidden = !consent;
+      if (consent) date.textContent = `Choix enregistré le ${fmt.format(new Date(consent.date))}, valable 6 mois.`;
+    }
+  }
+
+  render(readConsent());
+  document.addEventListener('apsud:consent', (e) => render((e as CustomEvent<Consent>).detail));
+</script>

@@ -1,0 +1,31 @@
+/* /agir/partenariat — modalités en escalier */
+@layer components {
+  .c-partner-modes__title { font-size: var(--fs-h2); text-align: center; margin-block-end: var(--space-12); }
+  .c-partner-modes__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--agir-mode-min)), 1fr));
+    gap: var(--space-6);
+    padding: 0;
+    list-style: none;
+  }
+  .c-partner-mode {
+    display: grid;
+    align-content: start;
+    gap: var(--space-4);
+    padding: var(--space-8);
+    background: var(--color-surface-tint);
+    border-block-start: var(--tile-bar) solid var(--color-brand);
+  }
+  @media (width >= 60em) {
+    .c-partner-mode { margin-block-start: calc(var(--_step) * var(--space-10)); }
+  }
+  .c-partner-mode__num {
+    font-size: var(--fs-stat);
+    font-weight: var(--fw-stat-light);
+    line-height: var(--lh-tight);
+    color: var(--color-text-brand);
+    font-variant-numeric: tabular-nums;
+  }
+  .c-partner-mode__title { font-size: var(--fs-h5); }
+  .c-partner-mode__text { color: var(--color-text-muted); }
+}

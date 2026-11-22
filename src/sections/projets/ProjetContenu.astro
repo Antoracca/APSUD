@@ -1,0 +1,73 @@
+---
+/**
+ * Fiche projet — corps de texte dans la colonne de lecture (Prose, 690 px), en deux temps
+ * pour laisser la galerie s'intercaler comme dans les articles Prosper :
+ *  - `part="objectifs"` : objectif général (chapeau) + objectifs spécifiques (liste numérotée) ;
+ *  - `part="actions"`   : activités (puces goutte-feuille) + résultats attendus.
+ * Longues listes d'activités : les 8 premières visibles, la suite dans un <details> natif.
+ * Les textes sont ceux des fiches, sans réécriture.
+ */
+import Prose from '../../components/ui/Prose.astro';
+import type { Projet } from '../../data/projects';
+import './ProjetContenu.css';
+
+interface Props {
+  projet: Projet;
+  part: 'objectifs' | 'actions';
+}
+
+const { projet: p, part } = Astro.props;
+const VISIBLES = 8;
+const actVisibles = p.activites.length > VISIBLES + 2 ? p.activites.slice(0, VISIBLES) : p.activites;
+const actSuite = p.activites.slice(actVisibles.length);
+const resultatsTitre = p.resultatsNature?.toLowerCase().includes('attendu') ? 'Résultats attendus' : 'Résultats';
+const hasObjectifs = !!p.objectifGeneral || p.objectifs.length > 0;
+const hasActions = p.activites.length > 0 || p.resultats.length > 0;
+---
+
+{part === 'objectifs' && hasObjectifs && (
+  <Prose as="section" class="c-projet-contenu" aria-label="Objectifs du projet">
+    {p.objectifGeneral && (
+      <>
+        <h2>Objectif général</h2>
+        <p class="c-projet-contenu__lead">{p.objectifGeneral}</p>
+      </>
+    )}
+    {p.objectifs.length > 0 && (
+      <>
+        <h2>{p.objectifs.length > 1 ? 'Objectifs spécifiques' : 'Objectif spécifique'}</h2>
+        {p.objectifs.length > 1 ? (
+          <ol>{p.objectifs.map((o) => <li>{o}</li>)}</ol>
+        ) : (
+          <p>{p.objectifs[0]}</p>
+        )}
+      </>
+    )}
+  </Prose>
+)}
+
+{part === 'actions' && hasActions && (
+  <Prose as="section" class="c-projet-contenu" aria-label="Activités et résultats">
+    {p.activites.length > 0 && (
+      <>
+        <h2>Activités</h2>
+        <ul>{actVisibles.map((a) => <li>{a}</li>)}</ul>
+        {actSuite.length > 0 && (
+          <details class="c-projet-contenu__more">
+            <summary class="c-projet-contenu__summary">
+              <span class="c-projet-contenu__summary-open">Afficher les {actSuite.length} autres activités</span>
+              <span class="c-projet-contenu__summary-close">Masquer les activités supplémentaires</span>
+            </summary>
+            <ul class="c-projet-contenu__suite">{actSuite.map((a) => <li>{a}</li>)}</ul>
+          </details>
+        )}
+      </>
+    )}
+    {p.resultats.length > 0 && (
+      <>
+        <h2>{resultatsTitre}</h2>
+        <ul class="c-projet-contenu__resultats">{p.resultats.map((r) => <li>{r}</li>)}</ul>
+      </>
+    )}
+  </Prose>
+)}

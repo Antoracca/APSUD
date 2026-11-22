@@ -1,0 +1,72 @@
+---
+/**
+ * Qui sommes-nous §6 — Domaines d'intervention : 4 cartes qui mènent aux pages /nos-actions/<slug>
+ * (équivalent du bloc « What we do » relié depuis « Who we are » chez Prosper).
+ * Données : src/data/domains.ts (textes d'organisation.json, photos de projets réels).
+ * Toute la carte est cliquable : le lien est posé sur le titre et étiré (un seul arrêt de tabulation).
+ * Innovation APSUD (hors animations réduites) : au survol, la photo se resserre doucement,
+ * la goutte-feuille du pictogramme pivote et la carte monte, comme les tuiles de l'accueil.
+ * En bas : le domaine transversal (protection de l'environnement), en simple mention.
+ */
+import { Picture } from 'astro:assets';
+import Icon from '../../components/ui/Icon.astro';
+import ArrowLink from '../../components/ui/ArrowLink.astro';
+import { domains, transversal } from '../../data/domains';
+import { getImage } from '../../lib/images';
+import { domainsBlock } from './ong';
+import './OngDomains.css';
+
+const pluriel = (n: number) => (n > 1 ? `${n} projets` : `${n} projet`);
+---
+
+<section class="c-ong-domains" aria-labelledby="ong-domains-title">
+  <div class="l-constrain">
+    <header class="c-ong-domains__head">
+      <h2 id="ong-domains-title" class="c-ong-domains__title">{domainsBlock.title}</h2>
+      <p class="c-ong-domains__intro">{domainsBlock.intro}</p>
+    </header>
+
+    <ul class="c-ong-domains__grid" role="list">
+      {domains.map((d, i) => {
+        const img = getImage(d.image.src);
+        return (
+          <li class="c-ong-domain" data-reveal data-reveal-delay={String(i * 120)}>
+            <div class="c-ong-domain__media">
+              <Picture
+                src={img}
+                alt=""
+                widths={[320, 480, 640].filter((w) => w < img.width).concat(Math.min(img.width, 960))}
+                sizes="(min-width: 75em) 17.5rem, (min-width: 40em) 50vw, 100vw"
+                formats={['avif', 'webp']}
+                loading="lazy"
+                decoding="async"
+                class="c-ong-domain__img"
+              />
+              <span class="c-ong-domain__badge" aria-hidden="true"><Icon name={d.icone} /></span>
+            </div>
+            <div class="c-ong-domain__body">
+              <h3 class="c-ong-domain__title">
+                <a class="c-ong-domain__link" href={d.href}>{d.titre}</a>
+              </h3>
+              <p class="c-ong-domain__text">{d.intro}</p>
+              <p class="c-ong-domain__meta">
+                <span>{pluriel(d.projets)}</span>
+                <span class="c-ong-domain__more" aria-hidden="true">
+                  Découvrir <Icon name="arrow-right" size="sm" />
+                </span>
+              </p>
+            </div>
+          </li>
+        );
+      })}
+    </ul>
+
+    <div class="c-ong-domains__foot">
+      <p class="c-ong-domains__transversal">
+        <Icon name={transversal.icone} class="c-ong-domains__transversal-icon" />
+        <span>{transversal.texte}</span>
+      </p>
+      <ArrowLink href={domainsBlock.link.href}>{domainsBlock.link.label}</ArrowLink>
+    </div>
+  </div>
+</section>

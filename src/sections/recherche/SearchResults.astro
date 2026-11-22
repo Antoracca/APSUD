@@ -1,0 +1,177 @@
+---
+/**
+ * /recherche — champ de recherche + toutes les entrées de l'index, groupées (pages, domaines, projets).
+ * Sans JS : la page reste un plan du site complet (tout est affiché) et le formulaire GET ne filtre pas.
+ * Avec JS : filtrage instantané côté client (insensible aux accents et à la casse, tous les mots
+ * doivent être trouvés), surlignage des mots dans les titres, compteur annoncé (aria-live),
+ * paramètre ?q= lu au chargement et tenu à jour (lien partageable, 404 → recherche).
+ */
+import Icon from '../../components/ui/Icon.astro';
+import EmptyState from '../../components/ui/EmptyState.astro';
+import { searchIndex, searchGroups, type SearchGroup } from './searchIndex';
+import './SearchResults.css';
+
+const norm = (s: string) =>
+  s.normalize('NFD').replace(/\p{Diacritic}/gu, '').toLowerCase().replace(/[’']/g, ' ');
+
+const groups = (Object.keys(searchGroups) as SearchGroup[]).map((g) => ({
+  id: g,
+  label: searchGroups[g],
+  items: searchIndex.filter((e) => e.groupe === g),
+}));
+const total = searchIndex.length;
+---
+
+<div class="c-search l-constrain l-constrain--media" data-search>
+  <form class="c-search__form" action="/recherche" method="get" role="search" data-search-form>
+    <label class="c-search__label" for="recherche-q">Que cherchez-vous ?</label>
+    <div class="c-search__field">
+      <Icon name="search" size="lg" class="c-search__icon" />
+      <input
+        class="c-search__input"
+        id="recherche-q"
+        name="q"
+        type="search"
+        autocomplete="off"
+        spellcheck="false"
+        placeholder="Un projet, un lieu, un bailleur…"
+        aria-describedby="recherche-statut"
+        data-search-input
+      />
+      <button class="c-search__submit" type="submit">
+        <Icon name="arrow-right" />
+        <span class="u-visually-hidden">Lancer la recherche</span>
+      </button>
+    </div>
+    <p class="c-search__status" id="recherche-statut" role="status" aria-live="polite" data-search-status>
+      {total} pages et projets
+    </p>
+  </form>
+
+  <div class="c-search__results">
+    {groups.map((g) => (
+      <section class="c-search__group" aria-labelledby={`recherche-${g.id}`} data-search-group>
+        <h2 class="c-search__group-title" id={`recherche-${g.id}`}>
+          {g.label} <span class="c-search__group-count" data-search-count>{g.items.length}</span>
+        </h2>
+        <ul class="c-search__list" role="list">
+          {g.items.map((e) => (
+            <li
+              class="c-search__item"
+              data-search-item
+              data-search-text={norm([e.titre, e.description, e.motsCles ?? '', e.badge ?? ''].join(' '))}
+            >
+              <a class="c-search__link" href={e.href}>
+                <span class="c-search__item-title" data-search-title>{e.titre}</span>
+                {e.badge && <span class:list={['c-search__badge', e.badge === 'En cours' && 'c-search__badge--ongoing']}>{e.badge}</span>}
+                {e.description && <span class="c-search__item-desc">{e.description}</span>}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))}
+
+    <div class="c-search__empty" data-search-empty hidden>
+      <EmptyState
+        title="Aucun résultat"
+        text="Essayez un autre mot (un lieu, un domaine, un bailleur) ou parcourez les rubriques ci-dessous. Vous pouvez aussi nous écrire."
+        icon="search"
+      />
+    </div>
+  </div>
+</div>
+
+<script>
+  const root = document.querySelector<HTMLElement>('[data-search]');
+  if (root) {
+    const input = root.querySelector<HTMLInputElement>('[data-search-input]')!;
+    const form = root.querySelector<HTMLFormElement>('[data-search-form]')!;
+    const status = root.querySelector<HTMLElement>('[data-search-status]')!;
+    const empty = root.querySelector<HTMLElement>('[data-search-empty]')!;
+    const groups = [...root.querySelectorAll<HTMLElement>('[data-search-group]')];
+    const items = [...root.querySelectorAll<HTMLElement>('[data-search-item]')];
+    const total = items.length;
+
+    const norm = (s: string) =>
+      s.normalize('NFD').replace(/\p{Diacritic}/gu, '').toLowerCase().replace(/[’']/g, ' ');
+
+    /* Titre d'origine conservé pour pouvoir surligner puis restaurer */
+    const titles = new Map(items.map((li) => {
+      const el = li.querySelector<HTMLElement>('[data-search-title]')!;
+      return [li, { el, text: el.textContent ?? '' }];
+    }));
+
+    /** Surligne les mots trouvés dans le titre (correspondance sans accents, texte d'origine conservé). */
+    function highlight(el: HTMLElement, text: string, terms: string[]) {
+      el.textContent = '';
+      if (!terms.length) { el.textContent = text; return; }
+      const n = norm(text);
+      const marks = new Array<boolean>(text.length).fill(false);
+      for (const t of terms) {
+        let i = n.indexOf(t);
+        while (i !== -1) { for (let k = i; k < i + t.length; k++) marks[k] = true; i = n.indexOf(t, i + t.length); }
+      }
+      let buf = '';
+      let on = false;
+      const flush = () => {
+        if (!buf) return;
+        if (on) { const m = document.createElement('mark'); m.className = 'c-search__hit'; m.textContent = buf; el.append(m); }
+        else el.append(buf);
+        buf = '';
+      };
+      for (let k = 0; k < text.length; k++) {
+        if (marks[k] !== on) { flush(); on = marks[k]; }
+        buf += text[k];
+      }
+      flush();
+    }
+
+    function run(raw: string) {
+      const terms = norm(raw).split(/\s+/).filter((t) => t.length > 0);
+      let shown = 0;
+      for (const li of items) {
+        const hay = li.dataset.searchText ?? '';
+        const ok = terms.every((t) => hay.includes(t));
+        li.hidden = !ok;
+        if (ok) shown++;
+        const t = titles.get(li)!;
+        highlight(t.el, t.text, ok ? terms : []);
+      }
+      for (const g of groups) {
+        const n = g.querySelectorAll('[data-search-item]:not([hidden])').length;
+        g.hidden = n === 0;
+        const c = g.querySelector('[data-search-count]');
+        if (c) c.textContent = String(n);
+      }
+      empty.hidden = shown > 0;
+      status.textContent = !terms.length
+        ? `${total} pages et projets`
+        : shown === 0
+          ? `Aucun résultat pour « ${raw.trim()} »`
+          : `${shown} résultat${shown > 1 ? 's' : ''} pour « ${raw.trim()} »`;
+      root!.dataset.searching = terms.length ? 'true' : 'false';
+    }
+
+    let timer = 0;
+    input.addEventListener('input', () => {
+      window.clearTimeout(timer);
+      timer = window.setTimeout(() => {
+        run(input.value);
+        const url = new URL(location.href);
+        if (input.value.trim()) url.searchParams.set('q', input.value.trim());
+        else url.searchParams.delete('q');
+        history.replaceState(null, '', url);
+      }, 120);
+    });
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      run(input.value);
+      const first = items.find((li) => !li.hidden);
+      if (input.value.trim() && first) first.querySelector('a')?.focus();
+    });
+
+    const q = new URLSearchParams(location.search).get('q') ?? '';
+    if (q) { input.value = q; run(q); }
+  }
+</script>

@@ -1,0 +1,50 @@
+---
+/**
+ * /agir — hero (gabarit A de Prosper, « How to help » §5.13) : photo pleine largeur et bloc
+ * Forêt posé en bas à gauche, avec sa « marche » Pousse pâle. Pas de fil d'Ariane (gabarit A).
+ * Innovation APSUD : le H1 monte ligne par ligne derrière son masque, puis un ruban
+ * « façons d'agir » (ancres vers les boîtes) se déroule sous le bouton. Coupé si animations réduites.
+ */
+import { Picture } from 'astro:assets';
+import Button from '../../components/ui/Button.astro';
+import { getImage } from '../../lib/images';
+import { projectPhoto } from './agirData';
+import './AgirHero.css';
+
+const photo = projectPhoto('projet-ippy-retour-sensibilisation-enfants-03.jpg');
+const img = getImage(photo.src);
+const widths = [480, 768, 1024, 1440, 1920].filter((w) => w <= img.width);
+if (widths.at(-1)! < img.width) widths.push(img.width);
+const lines = ['Agir avec APSUD,', 'aux côtés des communautés'];
+---
+
+<section class="c-agir-hero" aria-labelledby="agir-hero-title">
+  <div class="c-agir-hero__media">
+    <Picture
+      src={img}
+      alt={photo.alt}
+      formats={['avif', 'webp']}
+      widths={widths}
+      sizes="(min-width: 100em) 100rem, 100vw"
+      loading="eager"
+      fetchpriority="high"
+      decoding="async"
+      class="c-agir-hero__img"
+    />
+  </div>
+  <div class="c-agir-hero__content t-foret">
+    <h1 id="agir-hero-title" class="c-agir-hero__title">
+      {lines.map((l, i) => (
+        <span class="c-agir-hero__line" style={`--line: ${i}`}><span class="c-agir-hero__line-inner">{l}</span>{i < lines.length - 1 && ' '}</span>
+      ))}
+    </h1>
+    <p class="c-agir-hero__text">
+      Donner, financer, travailler ou fournir&nbsp;: chacun peut aider APSUD à sauver des vies et à
+      accompagner le développement local en Centrafrique.
+    </p>
+    <div class="c-agir-hero__actions">
+      <Button href="/faire-un-don" variant="donate">Faire un don</Button>
+      <a class="c-agir-hero__more" href="#facons-d-agir">Toutes les façons d’agir</a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,41 @@
+---
+/**
+ * Grille de logos de bailleurs / partenaires (Prosper `.l-logo-grid` + `.c-logo`), partagée par
+ * /faire-un-don (preuves, version compacte) et /agir/partenariat (références).
+ * Logos en niveaux de gris au repos, couleur d'origine au survol et au focus ; chaque logo mène
+ * à sa fiche sur /partenaires. Les logos viennent de src/data/partners.ts (jamais recopiés).
+ */
+import { Image } from 'astro:assets';
+import { partners, type Partner } from '../../data/partners';
+import { getImage } from '../../lib/images';
+import './AgirLogos.css';
+
+interface Props {
+  /** Liste de slugs (ordre conservé) ; sinon tous ceux de `category` */
+  slugs?: string[];
+  category?: Partner['category'];
+  size?: 'sm' | 'md';
+  label: string;
+  class?: string;
+}
+
+const { slugs, category, size = 'md', label, class: className } = Astro.props;
+const list = slugs
+  ? slugs.map((s) => partners.find((p) => p.slug === s)).filter((p): p is Partner => !!p)
+  : partners.filter((p) => !category || p.category === category);
+const logos = list.map((p) => ({ ...p, img: getImage(p.logo) }));
+---
+
+<ul class:list={['c-agir-logos', `c-agir-logos--${size}`, className]} role="list" aria-label={label}>
+  {logos.map((p) => (
+    <li class="c-agir-logos__item">
+      <a class="c-agir-logos__link" href={`/partenaires#${p.slug}`}>
+        {p.img.format === 'svg' ? (
+          <Image class="c-agir-logos__img" src={p.img} alt={p.name} loading="lazy" decoding="async" />
+        ) : (
+          <Image class="c-agir-logos__img" src={p.img} alt={p.name} widths={[160, 320]} sizes="10rem" format="webp" loading="lazy" decoding="async" />
+        )}
+      </a>
+    </li>
+  ))}
+</ul>

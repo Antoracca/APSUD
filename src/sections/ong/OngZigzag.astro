@@ -1,0 +1,28 @@
+---
+/**
+ * Qui sommes-nous §8 — Zigzag (Prosper « Who we are » n° 5 : 3 côte-à-côte alternés).
+ * Réutilise SideBySide (image G / D / G, boîte Coton calée en bas, volet à l'entrée).
+ */
+import SideBySide from '../../components/ui/SideBySide.astro';
+import { zigzag } from './ong';
+import './OngZigzag.css';
+---
+
+<section class="c-ong-zigzag" aria-labelledby="ong-zigzag-title">
+  <div class="l-constrain">
+    <h2 id="ong-zigzag-title" class="c-ong-zigzag__title">{zigzag.title}</h2>
+    <div class="c-ong-zigzag__rows">
+      {zigzag.rows.map((row, i) => (
+        <SideBySide
+          image={row.image}
+          imageAlt={row.imageAlt}
+          title={row.title}
+          text={row.text}
+          link={row.link}
+          reverse={i % 2 === 1}
+          focus={row.focus}
+        />
+      ))}
+    </div>
+  </div>
+</section>

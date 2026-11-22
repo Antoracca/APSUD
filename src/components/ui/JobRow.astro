@@ -1,0 +1,122 @@
+---
+/**
+ * Ligne d'offre — DESIGN.md §4.14 (listing Jobvite de Prosper, mais sur le site).
+ * Sert aux offres d'emploi (/carrieres) et, en variante `appel-offres`, aux avis
+ * d'appels d'offres (/agir/appels-d-offres). Les offres se lisent en LISTE, pas en grille.
+ *
+ *  - Gauche : badges (type de contrat / de marché), intitulé (lien étendu à toute la ligne),
+ *    métadonnées (lieu, projet, référence).
+ *  - Droite : date limite + badge d'échéance (« Clôture dans 5 jours » si ≤ 7 jours,
+ *    « Clôture demain / aujourd'hui » si ≤ 1 jour), flèche.
+ *  - Clôturée : badge Sable, intitulé Mousse ; la ligne reste un lien vers la fiche archivée.
+ * Le badge d'échéance est calculé à la génération du site (sortie statique) puis
+ * recalculé dans le navigateur à partir de `data-deadline` (petit script ci-dessous).
+ */
+import Icon from './Icon.astro';
+import './JobRow.css';
+
+interface Meta {
+  icon?: string;
+  label: string;
+}
+
+interface Props {
+  href: string;
+  title: string;
+  badges?: string[];
+  meta?: Meta[];
+  /** Référence affichée en premier en variante appel d'offres */
+  reference?: string;
+  /** Date limite ISO (AAAA-MM-JJ) */
+  deadline?: string;
+  closed?: boolean;
+  closedLabel?: string;
+  variant?: 'emploi' | 'appel-offres';
+  headingLevel?: 'h2' | 'h3' | 'h4';
+  class?: string;
+}
+
+const {
+  href,
+  title,
+  badges = [],
+  meta = [],
+  reference,
+  deadline,
+  closed = false,
+  closedLabel = 'Clôturée',
+  variant = 'emploi',
+  headingLevel: H = 'h3',
+  class: className,
+} = Astro.props;
+
+const dateFmt = new Intl.DateTimeFormat('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
+const deadlineDate = deadline ? new Date(`${deadline}T23:59:59`) : null;
+const daysLeft = deadlineDate ? Math.ceil((deadlineDate.getTime() - Date.now()) / 86_400_000) : null;
+const urgency =
+  closed || daysLeft === null || daysLeft > 7 ? null : daysLeft <= 0 ? 'today' : daysLeft === 1 ? 'tomorrow' : 'soon';
+const urgencyLabel =
+  urgency === 'today' ? 'Clôture aujourd’hui' : urgency === 'tomorrow' ? 'Clôture demain' : urgency ? `Clôture dans ${daysLeft} jours` : '';
+---
+
+<article
+  class:list={['c-job-row', `c-job-row--${variant}`, { 'c-job-row--closed': closed }, className]}
+  data-deadline={deadline}
+>
+  <div class="c-job-row__main">
+    {(badges.length > 0 || closed) && (
+      <ul class="c-job-row__badges" role="list">
+        {badges.map((b) => <li class="c-job-row__badge">{b}</li>)}
+        {closed && <li class="c-job-row__badge c-job-row__badge--closed">{closedLabel}</li>}
+      </ul>
+    )}
+    {variant === 'appel-offres' && reference && <p class="c-job-row__ref">{reference}</p>}
+    <H class="c-job-row__title">
+      <a class="c-job-row__link" href={href}>{title}</a>
+    </H>
+    {(meta.length > 0 || (variant === 'emploi' && reference)) && (
+      <ul class="c-job-row__meta" role="list">
+        {meta.map((m) => (
+          <li class="c-job-row__meta-item">
+            {m.icon && <Icon name={m.icon} size="sm" />}
+            <span>{m.label}</span>
+          </li>
+        ))}
+        {variant === 'emploi' && reference && <li class="c-job-row__meta-item c-job-row__meta-item--ref">{reference}</li>}
+      </ul>
+    )}
+  </div>
+
+  <div class="c-job-row__aside">
+    {deadlineDate && (
+      <p class="c-job-row__deadline">
+        <Icon name="calendar" size="sm" />
+        <span>
+          <span class="c-job-row__deadline-label">Date limite</span>
+          <time datetime={deadline}>{dateFmt.format(deadlineDate)}</time>
+        </span>
+      </p>
+    )}
+    <span
+      class:list={['c-job-row__urgency', urgency && `c-job-row__urgency--${urgency}`]}
+      data-job-urgency
+      hidden={!urgency}
+    >{urgencyLabel}</span>
+    <Icon name="arrow-right" class="c-job-row__arrow" />
+  </div>
+</article>
+
+<script>
+  /* Recalcule le badge d'échéance au jour de la visite (le site est généré à l'avance). */
+  const DAY = 86_400_000;
+  document.querySelectorAll<HTMLElement>('.c-job-row[data-deadline]:not(.c-job-row--closed)').forEach((row) => {
+    const badge = row.querySelector<HTMLElement>('[data-job-urgency]');
+    if (!badge || !row.dataset.deadline) return;
+    const left = Math.ceil((new Date(`${row.dataset.deadline}T23:59:59`).getTime() - Date.now()) / DAY);
+    const level = left > 7 ? null : left <= 0 ? 'today' : left === 1 ? 'tomorrow' : 'soon';
+    badge.className = 'c-job-row__urgency' + (level ? ` c-job-row__urgency--${level}` : '');
+    badge.hidden = !level;
+    badge.textContent =
+      level === 'today' ? 'Clôture aujourd’hui' : level === 'tomorrow' ? 'Clôture demain' : level ? `Clôture dans ${left} jours` : '';
+  });
+</script>

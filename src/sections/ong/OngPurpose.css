@@ -1,0 +1,90 @@
+/* Qui sommes-nous — mission, vision, objectif */
+@layer components {
+  .c-ong-purpose {
+    margin-block: var(--space-section-sm) var(--space-section);
+  }
+  .c-ong-purpose__title {
+    margin: 0 0 var(--space-12);
+    font-size: var(--fs-h2);
+    line-height: var(--lh-heading);
+  }
+
+  /* ---------- Mission : grande phrase adossée à une barre Soleil ---------- */
+  .c-ong-purpose__mission {
+    position: relative;
+    margin: 0;
+    padding-inline-start: var(--space-10);
+  }
+  .c-ong-purpose__mission::before {
+    content: "";
+    position: absolute;
+    inset-block: 0;
+    inset-inline-start: 0;
+    inline-size: var(--space-2);
+    background: var(--color-accent);
+    transform-origin: 50% 0;
+  }
+  .c-ong-purpose__label {
+    color: var(--color-text-brand);
+    font-size: var(--fs-overline);
+    font-weight: var(--fw-bold);
+    letter-spacing: var(--ls-overline);
+    text-transform: uppercase;
+  }
+  .c-ong-purpose__statement {
+    margin: var(--space-4) 0 0;
+  }
+  .c-ong-purpose__statement p {
+    margin: 0;
+    color: var(--color-heading);
+    font-family: var(--font-headline);
+    font-size: var(--fs-h2);
+    font-stretch: var(--font-stretch-manifesto);
+    font-weight: var(--fw-manifesto);
+    line-height: var(--lh-heading);
+    letter-spacing: var(--ls-manifesto);
+    text-wrap: pretty;
+  }
+
+  /* ---------- Vision + objectif ---------- */
+  .c-ong-purpose__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+    gap: var(--space-8);
+    margin: var(--space-16) 0 0;
+  }
+  .c-ong-purpose__item {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: var(--space-6);
+    row-gap: var(--space-3);
+    align-content: start;
+    padding: var(--space-8);
+    background: var(--color-surface-soft);
+  }
+  .c-ong-purpose__drop {
+    grid-row: span 2;
+  }
+  .c-ong-purpose__item .c-ong-purpose__label {
+    align-self: end;
+  }
+  .c-ong-purpose__text {
+    margin: 0;
+    color: var(--color-heading);
+    font-family: var(--font-condensed);
+    font-size: var(--fs-h5);
+    font-stretch: var(--font-stretch-condensed);
+    font-weight: var(--fw-headline);
+    line-height: var(--lh-snug);
+    text-wrap: pretty;
+  }
+
+  /* ---------- La barre Soleil se dessine à l'entrée (innovation APSUD) ---------- */
+  @media (prefers-reduced-motion: no-preference) {
+    .js-reveal .c-ong-purpose__mission::before {
+      scale: 1 0;
+      transition: scale var(--dur-signature) var(--ease-out) var(--delay-signature);
+    }
+    .js-reveal .c-ong-purpose__mission.is-revealed::before { scale: 1 1; }
+  }
+}

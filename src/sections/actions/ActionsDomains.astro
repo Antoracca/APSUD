@@ -1,0 +1,43 @@
+---
+/**
+ * Hub « Nos actions » §3 — Les domaines en zigzag (Prosper « How we work, start to finish » :
+ * h2 à gauche puis blocs SideBySide alternés, boîte Coton calée sur le bas de la photo carrée).
+ * Ajout APSUD dans chaque boîte : pictogramme du domaine et bilan calculé (projets · période · préfectures).
+ */
+import SideBySide from '../../components/ui/SideBySide.astro';
+import Icon from '../../components/ui/Icon.astro';
+import { domains, domainStats, domainKind } from './actionsData';
+import './ActionsDomains.css';
+
+const rows = domains.map((d) => ({ d, s: domainStats(d.slug) }));
+const plural = (n: number, one: string, many: string) => `${n} ${n > 1 ? many : one}`;
+---
+
+<section class="c-actions-domains" aria-labelledby="actions-domains-title">
+  <div class="l-constrain">
+    <h2 id="actions-domains-title" class="c-actions-domains__title" data-reveal>Nos domaines d’intervention</h2>
+    <div class="c-actions-domains__rows">
+      {rows.map(({ d, s }, i) => (
+        <SideBySide
+          image={d.image.src}
+          imageAlt={d.image.alt}
+          title={d.titre}
+          text={d.intro}
+          link={{ label: 'Découvrir le domaine', href: d.href }}
+          reverse={i % 2 === 1}
+          class="c-actions-domains__row"
+        >
+          <p class="c-actions-domains__kind">
+            <span class="c-actions-domains__icon" aria-hidden="true"><Icon name={d.icone} size="sm" /></span>
+            {domainKind(d)}
+          </p>
+          <ul class="c-actions-domains__facts" role="list">
+            <li>{plural(s.projets, 'projet', 'projets')}</li>
+            {s.periode && <li>{s.periode}</li>}
+            <li>{plural(s.prefectures.length, 'préfecture', 'préfectures')}</li>
+          </ul>
+        </SideBySide>
+      ))}
+    </div>
+  </div>
+</section>

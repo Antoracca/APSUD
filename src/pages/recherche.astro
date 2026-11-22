@@ -1,0 +1,17 @@
+---
+/**
+ * /recherche — recherche simple côté client (cible de la loupe du header et de la 404).
+ * En-tête compact puis SearchResults (index : pages, domaines, projets).
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/layout/PageHeader.astro';
+import SearchResults from '../sections/recherche/SearchResults.astro';
+---
+
+<BaseLayout
+  title="Rechercher"
+  description="Rechercher une page, un domaine d’action ou un projet sur le site d’APSUD."
+>
+  <PageHeader variant="compact" title="Rechercher" />
+  <SearchResults />
+</BaseLayout>

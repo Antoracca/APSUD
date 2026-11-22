@@ -1,0 +1,44 @@
+---
+/**
+ * /agir/partenariat — « Pourquoi APSUD » : bandeau de chiffres calculés (Prosper .c-quick-stats,
+ * panneau Pousse) puis 4 raisons en grille 2 × 2 (faits vérifiables, agirData.reasons).
+ * Innovation APSUD : chaque raison est numérotée sur une goutte-feuille qui « tombe » en place
+ * à l'entrée dans l'écran (révélation en cascade, coupée si animations réduites).
+ */
+import Icon from '../../components/ui/Icon.astro';
+import { facts, reasons } from './agirData';
+import './PartnerReasons.css';
+
+const stats = [
+  { value: String(facts.projets), label: 'projets présentés sur ce site' },
+  { value: String(facts.prefectures), label: `préfectures${facts.bangui ? ', et Bangui,' : ''} où APSUD a mené des projets` },
+  { value: String(facts.enCours), label: 'projets en cours' },
+  { value: String(facts.partenaires), label: 'bailleurs et partenaires présentés sur ce site' },
+];
+---
+
+<section class="c-partner-reasons l-section" aria-labelledby="partner-reasons-title">
+  <div class="l-constrain">
+    <ul class="c-partner-stats t-pousse" role="list" data-reveal>
+      {stats.map((s) => (
+        <li class="c-partner-stats__item">
+          <span class="c-partner-stats__value">{s.value}</span>
+          <span class="c-partner-stats__label">{s.label}</span>
+        </li>
+      ))}
+    </ul>
+
+    <h2 id="partner-reasons-title" class="c-partner-reasons__title" data-reveal>Pourquoi travailler avec APSUD</h2>
+    <ol class="c-partner-reasons__grid" role="list">
+      {reasons.map((r, i) => (
+        <li class="c-reason" data-reveal data-reveal-delay={String((i % 2) * 150)}>
+          <span class="c-reason__badge" aria-hidden="true"><Icon name={r.icon} size="lg" /></span>
+          <div>
+            <h3 class="c-reason__title">{r.title}</h3>
+            <p class="c-reason__text">{r.text}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>

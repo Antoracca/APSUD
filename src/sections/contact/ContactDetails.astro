@@ -1,0 +1,59 @@
+---
+/**
+ * /contact — coordonnées réelles (src/data/site.ts) : siège, boîte postale, téléphones
+ * cliquables (cibles ≥ 48 px), e-mail, puis encart réseaux sociaux.
+ * Pas d'horaires ni de carte : APSUD ne les a pas encore communiqués (organisation.json › contact).
+ */
+import Icon from '../../components/ui/Icon.astro';
+import { site, telHref } from '../../data/site';
+import './ContactDetails.css';
+
+const c = site.contact;
+---
+
+<div class="c-contact-details">
+  <h2 class="c-contact-details__title">Coordonnées</h2>
+
+  <dl class="c-contact-details__list">
+    <div class="c-contact-details__row">
+      <dt><Icon name="map-pin" /><span>Siège national</span></dt>
+      <dd>
+        <address>
+          {c.adresse}<br />
+          {c.boitePostale}<br />
+          {c.pays}
+        </address>
+      </dd>
+    </div>
+    <div class="c-contact-details__row">
+      <dt><Icon name="phone" /><span>Téléphone</span></dt>
+      <dd>
+        <ul class="c-contact-details__phones" role="list">
+          {c.telephones.map((t) => (
+            <li><a class="c-contact-details__tel" href={telHref(t)}>{t}</a></li>
+          ))}
+        </ul>
+      </dd>
+    </div>
+    <div class="c-contact-details__row">
+      <dt><Icon name="mail" /><span>E-mail</span></dt>
+      <dd><a class="c-contact-details__mail" href={`mailto:${c.email}`}>{c.email}</a></dd>
+    </div>
+  </dl>
+
+  <aside class="c-contact-social t-foret" aria-labelledby="contact-social-title">
+    <h3 id="contact-social-title" class="c-contact-social__title">Suivre APSUD</h3>
+    <p class="c-contact-social__text">Actualités du terrain, lancements de projets et appels publiés par l’équipe.</p>
+    <ul class="c-contact-social__list" role="list">
+      {site.reseaux.map((r) => (
+        <li>
+          <a class="c-contact-social__link" href={r.url} target="_blank" rel="noopener">
+            <Icon name={r.icone} />
+            <span>{r.nom}</span>
+            <span class="u-visually-hidden"> (nouvel onglet)</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </aside>
+</div>

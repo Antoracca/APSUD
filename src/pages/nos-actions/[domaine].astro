@@ -1,0 +1,53 @@
+---
+/**
+ * Page domaine (/nos-actions/<slug>) — équivalent des pages thématiques de Prosper
+ * (/what-we-do/{domaine}, STRUCTURE §5.9), gabarit B :
+ * fil d'Ariane + sur-titre + H1 + photo légendée → chapeau + objectif → axe transversal
+ * → le domaine en chiffres (calculés) → projets du domaine (filtre statut) → autres domaines → double CTA.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/layout/PageHeader.astro';
+import CtaTwoUp from '../../components/ui/CtaTwoUp.astro';
+import Icon from '../../components/ui/Icon.astro';
+import DomainIntro from '../../sections/actions/DomainIntro.astro';
+import ActionsTransversal from '../../sections/actions/ActionsTransversal.astro';
+import DomainStats from '../../sections/actions/DomainStats.astro';
+import DomainProjects from '../../sections/actions/DomainProjects.astro';
+import DomainSiblings from '../../sections/actions/DomainSiblings.astro';
+import { domains, domainKind, domainStats, captionOf, type Domaine } from '../../sections/actions/actionsData';
+import { ctaTwoUp } from '../../data/home';
+import '../../sections/actions/DomainPage.css';
+
+export function getStaticPaths() {
+  return domains.map((domain) => ({ params: { domaine: domain.slug }, props: { domain } }));
+}
+
+interface Props {
+  domain: Domaine;
+}
+const { domain: d } = Astro.props;
+const s = domainStats(d.slug);
+const description = `${d.titre} : ${d.intro.replace(/\.$/, '')}. ${s.projets} projets d’APSUD en République centrafricaine${s.periode ? ` (${s.periode})` : ''}.`;
+---
+
+<BaseLayout title={d.titre} description={description}>
+  <PageHeader
+    title={d.titre}
+    breadcrumb={[{ label: 'Nos actions', href: '/nos-actions' }, { label: d.titre }]}
+    image={d.image.src}
+    imageAlt={d.image.alt}
+    caption={captionOf(d.image)}
+    credit="© APSUD"
+  >
+    <p slot="eyebrow" class="c-domain-kicker">
+      <span class="c-domain-kicker__icon" aria-hidden="true"><Icon name={d.icone} size="sm" /></span>
+      {domainKind(d)}
+    </p>
+  </PageHeader>
+  <DomainIntro domain={d} />
+  <ActionsTransversal variant="inline" />
+  <DomainStats domain={d} />
+  <DomainProjects domain={d} />
+  <DomainSiblings domain={d} />
+  <CtaTwoUp {...ctaTwoUp} />
+</BaseLayout>

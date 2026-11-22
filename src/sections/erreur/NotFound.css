@@ -1,0 +1,145 @@
+/* Page 404 — Coton, goutte-feuille géante « tombée » (DESIGN.md §5.11) */
+@layer components {
+  .c-not-found {
+    position: relative;
+    display: grid;
+    align-items: center;
+    min-block-size: calc(100svh - var(--header-h));
+    padding-block: var(--space-section);
+    overflow: clip;
+  }
+
+  /* --- Goutte tombée --- */
+  .c-not-found__drop {
+    position: absolute;
+    inset-block-start: var(--space-8);
+    inset-inline-end: var(--space-8);
+    inline-size: var(--error-drop-w);
+    rotate: var(--error-drop-tilt);
+    transform-origin: 30% 90%;
+  }
+  @media (width >= 64em) {
+    .c-not-found__drop {
+      inset-block-start: 50%;
+      inset-inline-end: max(var(--gutter), calc((100% - var(--container)) / 2));
+      translate: 0 -50%;
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    :root.js .c-not-found__drop {
+      animation: c-not-found-fall var(--dur-drop-fall) var(--ease-out) var(--dur-intro) both;
+    }
+  }
+  /* Chute depuis le haut puis petite oscillation avant de se poser à −20° */
+  @keyframes c-not-found-fall {
+    0%   { translate: 0 -120vh; rotate: -70deg; }
+    60%  { rotate: -8deg; }
+    80%  { rotate: -26deg; }
+    100% { rotate: var(--error-drop-tilt); }
+  }
+  @media (width >= 64em) {
+    @keyframes c-not-found-fall {
+      0%   { translate: 0 -150vh; rotate: -70deg; }
+      55%  { translate: 0 -50%; }
+      60%  { rotate: -8deg; }
+      80%  { rotate: -26deg; }
+      100% { translate: 0 -50%; rotate: var(--error-drop-tilt); }
+    }
+  }
+
+  /* --- Contenu --- */
+  .c-not-found__inner {
+    position: relative;
+    z-index: var(--z-raised);
+    display: grid;
+    gap: var(--space-6);
+    justify-items: start;
+    inline-size: 100%;
+  }
+  .c-not-found__inner > * { max-inline-size: var(--measure-text); }
+  .c-not-found__code {
+    font-size: var(--fs-overline);
+    font-weight: var(--fw-bold);
+    letter-spacing: var(--ls-overline);
+    text-transform: uppercase;
+    color: var(--color-text-brand);
+  }
+  .c-not-found__title {
+    font-size: var(--fs-h1);
+    line-height: var(--lh-heading);
+  }
+  @media (width < 64em) {
+    .c-not-found__inner { padding-block-start: calc(var(--error-drop-w) * 0.8); }
+  }
+  .c-not-found__text {
+    max-inline-size: var(--measure-intro);
+    font-size: var(--fs-lead);
+    line-height: var(--lh-lead);
+  }
+
+  .c-not-found__suggest {
+    padding: var(--space-3) var(--space-5);
+    border-inline-start: var(--space-1) solid var(--color-brand);
+    background: var(--field-bg);
+    font-weight: var(--fw-semibold);
+  }
+  .c-not-found__suggest[hidden] { display: none; }
+
+  /* --- Recherche --- */
+  .c-not-found__form {
+    display: flex;
+    inline-size: min(100%, var(--measure-intro));
+    margin-block-start: var(--space-2);
+  }
+  .c-not-found__input {
+    flex: 1;
+    min-inline-size: 0;
+    min-block-size: var(--control-h);
+    padding-inline: var(--space-4);
+    border: var(--border-width) solid var(--color-border-control);
+    border-inline-end: 0;
+    border-radius: var(--radius-control) 0 0 var(--radius-control);
+    background: var(--field-bg);
+    color: var(--color-text);
+    font: inherit;
+  }
+  .c-not-found__input:focus-visible {
+    outline: var(--focus-width) solid var(--color-focus);
+    outline-offset: var(--focus-offset);
+  }
+  .c-not-found__submit {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding-inline: var(--button-pad-inline);
+    border: 0;
+    border-radius: 0 var(--radius-control) var(--radius-control) 0;
+    background: var(--button-ink-bg);
+    color: var(--button-ink-text);
+    font-family: var(--font-condensed);
+    font-stretch: var(--font-stretch-condensed);
+    font-weight: var(--fw-heavy);
+    font-size: var(--fs-button);
+    cursor: pointer;
+    transition: background-color var(--dur-shortest) var(--ease-out);
+  }
+  .c-not-found__submit:hover { background: var(--button-ink-bg-hover); }
+  .c-not-found__submit:focus-visible {
+    outline: var(--focus-width) solid var(--color-focus);
+    outline-offset: var(--focus-offset);
+  }
+
+  /* --- Portes --- */
+  .c-not-found__nav {
+    margin-block-start: var(--space-4);
+    padding-block-start: var(--space-6);
+    border-block-start: var(--border-width) solid var(--color-border-subtle);
+    inline-size: 100%;
+  }
+  .c-not-found__links {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, calc(var(--measure-intro) / 2.5)), 1fr));
+    gap: var(--space-4) var(--space-8);
+  }
+}

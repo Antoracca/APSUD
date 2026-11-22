@@ -1,0 +1,23 @@
+/* /faire-un-don — grille du gabarit E (argumentaire | module) */
+@layer components {
+  /* l'en-tête compact s'aligne sur la grille de 1200 px (et non sur la mesure média de 996 px) */
+  .c-page-header.c-donate-header .l-constrain--media { max-inline-size: calc(var(--container) + 2 * var(--gutter)); }
+  .c-donate { padding-block-start: 0; }
+  .c-donate__grid {
+    display: grid;
+    gap: var(--space-12);
+    grid-template-areas: "panel" "argument";
+  }
+  .c-donate__panel { grid-area: panel; }
+  .c-donate__argument { grid-area: argument; min-inline-size: 0; }
+
+  @media (width >= 60em) {
+    .c-donate__grid {
+      grid-template-columns: minmax(0, 7fr) minmax(var(--hero-content-min), 5fr);
+      grid-template-areas: "argument panel";
+      align-items: start;
+      gap: var(--space-16);
+    }
+    .c-donate__panel { position: sticky; inset-block-start: calc(var(--header-h-scrolled) + var(--eyebrow-h) + var(--space-6)); }
+  }
+}

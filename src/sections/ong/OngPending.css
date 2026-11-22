@@ -1,0 +1,34 @@
+/* Sous-pages « Qui sommes-nous » — état vide + « Voir aussi » */
+@layer components {
+  .c-ong-pending {
+    margin-block: var(--space-section-sm) var(--space-section);
+  }
+  .c-ong-pending__lead {
+    margin-block-end: var(--space-12);
+  }
+  .c-ong-pending__grid {
+    display: grid;
+    gap: var(--space-10);
+    align-items: start;
+  }
+  @media (width >= 64em) {
+    .c-ong-pending__grid { grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); }
+  }
+
+  .c-ong-pending__aside {
+    padding-block-start: var(--space-6);
+    border-block-start: var(--tile-bar) solid var(--color-brand);
+  }
+  .c-ong-pending__aside-title {
+    margin: 0 0 var(--space-6);
+    font-size: var(--fs-h5);
+    line-height: var(--lh-snug);
+  }
+  .c-ong-pending__links {
+    display: grid;
+    gap: var(--space-4);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+}

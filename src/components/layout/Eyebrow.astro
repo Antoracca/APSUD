@@ -1,0 +1,55 @@
+---
+/**
+ * Bandeau d'annonce (« eyebrow ») — équivalent du `.l-eyebrow` aqua de Prosper Global
+ * (PROSPER_VISUEL §7.1, PROSPER_TOKENS §11, DESIGN.md §4.1), en Pousse sur texte Forêt.
+ *
+ * - Accroche en Condensée 800 + phrase + lien souligné, croix de fermeture à droite.
+ * - Fermeture mémorisée 7 jours (localStorage `apsud-annonce-<id>`), voir src/scripts/eyebrow.ts.
+ * - Sa hauteur est exposée dans `--eyebrow-h` pour décaler le header fixe et le <main>.
+ * - Desktop (≥ 48em) : fixe en haut comme chez Prosper. Mobile : il défile avec la page
+ *   (adaptation APSUD : Prosper garde ~186 px de bandeaux fixes sur téléphone).
+ * - Sans JS : bandeau statique dans le flux, sans bouton de fermeture.
+ *
+ * Contenu : `eyebrow` dans src/data/home.ts (demain : type « Annonce » du back-office).
+ */
+import Icon from '../ui/Icon.astro';
+import { eyebrow } from '../../data/home';
+import './Eyebrow.css';
+
+interface Props {
+  variant?: 'info' | 'urgence';
+}
+const { variant = 'info' } = Astro.props;
+const { id, strong, text, link } = eyebrow;
+---
+
+<aside class:list={['c-eyebrow', `c-eyebrow--${variant}`]} aria-label="Annonce" data-eyebrow={id}>
+  <div class="c-eyebrow__clip">
+    <div class="c-eyebrow__inner">
+      <p class="c-eyebrow__content">
+        <strong class="c-eyebrow__leadin">{strong}</strong>{' '}
+        <span class="c-eyebrow__body">{text}</span>{' '}
+        <a class="c-eyebrow__link" href={link.href}>{link.label}</a>
+      </p>
+      <button type="button" class="c-eyebrow__close" aria-label="Fermer l’annonce" data-eyebrow-close>
+        <Icon name="close" />
+      </button>
+    </div>
+  </div>
+</aside>
+{/* Anti-flash : masque l'annonce déjà fermée et pose --eyebrow-h AVANT le premier affichage
+    (un module différé arriverait trop tard et ferait sauter la page). Le comportement est dans eyebrow.ts. */}
+<script is:inline>
+  (function () {
+    var el = document.currentScript && document.currentScript.previousElementSibling;
+    if (!el || !el.hasAttribute('data-eyebrow')) return;
+    try {
+      var until = Number(localStorage.getItem('apsud-annonce-' + el.getAttribute('data-eyebrow')));
+      if (until && Date.now() < until) el.hidden = true;
+    } catch (e) {}
+    document.documentElement.style.setProperty('--eyebrow-h', (el.hidden ? 0 : el.offsetHeight) + 'px');
+  })();
+</script>
+<script>
+  import '../../scripts/eyebrow';
+</script>

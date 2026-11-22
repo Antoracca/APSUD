@@ -1,0 +1,39 @@
+---
+/**
+ * /projets — tous les projets d'APSUD (gabarit B sans image, PROSPER_STRUCTURE §4.2).
+ * En-tête (fil d'Ariane, H1, chapeau calculé depuis les données) → filtres + grille
+ * (projets en cours en tête) → double appel à l'action.
+ * L'URL ?statut=realise (lien « Tous les projets réalisés » de l'accueil) est prise en compte.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/layout/PageHeader.astro';
+import CtaTwoUp from '../../components/ui/CtaTwoUp.astro';
+import ProjetsListing from '../../sections/projets/ProjetsListing.astro';
+import { getProjects, projectFacets } from '../../data/projects';
+import { domains } from '../../data/domains';
+import { ctaTwoUp } from '../../data/home';
+
+const projets = getProjects();
+const enCours = projets.filter((p) => p.statut === 'en_cours').length;
+const nbPref = projectFacets.prefectures.length;
+const actifs = domains.filter((d) => d.projets > 0);
+const domainesTexte = actifs.map((d) => d.titre.toLowerCase()).join(', ');
+
+const intro = `${projets.length} projets menés en Centrafrique, dont ${enCours} en cours, dans ${nbPref} préfectures, autour de ${actifs.length} domaines : ${domainesTexte}.`;
+---
+
+<BaseLayout
+  title="Nos projets"
+  description={`Tous les projets d’APSUD en République centrafricaine : ${projets.length} projets, dont ${enCours} en cours. Filtrez par statut, domaine, préfecture ou bailleur.`}
+>
+  <PageHeader
+    variant="standard"
+    title="Nos projets"
+    intro={intro}
+    breadcrumb={[{ label: 'Nos projets' }]}
+  />
+
+  <ProjetsListing />
+
+  <CtaTwoUp primary={ctaTwoUp.primary} secondary={ctaTwoUp.secondary} />
+</BaseLayout>

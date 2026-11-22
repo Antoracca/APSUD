@@ -1,0 +1,55 @@
+---
+/**
+ * /partenaires — introduction (Prosper /partners §2 : deux paragraphes en 7 colonnes)
+ * + chiffres de partenariat (PROSPER_STRUCTURE §5.16, équivalent APSUD), tous calculés.
+ * Les compteurs reprennent le script commun (src/scripts/counters.ts) s'il est présent sur la page ;
+ * sans JS, les valeurs finales sont écrites dans le HTML.
+ */
+import Prose from '../../components/ui/Prose.astro';
+import { getProjects } from '../../data/projects';
+import { chiffres } from './partenairesData';
+import './PartnersIntro.css';
+
+const projets = getProjects();
+const fh = projets.filter((p) => p.bailleurs.some((b) => /^FH\b|fonds humanitaire/i.test(b))).length;
+const enCours = projets.filter((p) => p.statut === 'en_cours');
+const nombre = (n: number) => (n <= 10 ? ['zéro', 'un', 'deux', 'trois', 'quatre', 'cinq', 'six', 'sept', 'huit', 'neuf', 'dix'][n] : String(n));
+
+const stats = [
+  { valeur: chiffres.organisations, libelle: 'organisations partenaires et bailleurs' },
+  { valeur: chiffres.bailleurs, libelle: 'bailleurs de fonds' },
+  { valeur: fh, libelle: `projets sur ${projets.length} financés par le Fonds humanitaire RCA` },
+];
+---
+
+<section class="c-partners-intro" aria-label="Notre façon de travailler avec nos partenaires">
+  <Prose lead data-reveal>
+    <p>
+      APSUD conduit ses projets avec des fonds humanitaires, des agences des Nations unies, des coopérations
+      bilatérales et des ONG internationales et centrafricaines. Chacune de ces organisations figure ci-dessous,
+      avec les projets que nous avons menés ensemble.
+    </p>
+    <p>
+      Le Fonds humanitaire pour la République centrafricaine, géré par OCHA, est notre premier bailleur&nbsp;: il a
+      financé {nombre(fh)} des {projets.length} projets présentés sur ce site. {enCours.length > 0 && (
+        <>Nos {nombre(enCours.length)} projets en cours sont soutenus par l’Union européenne et par le ministère
+        fédéral allemand de la Coopération économique et du Développement (BMZ), aux côtés de Welthungerhilfe.</>
+      )}
+    </p>
+    <p>
+      Nous travaillons aussi avec des ONG nationales, que nous accompagnons pour renforcer la localisation de
+      l’aide en Centrafrique.
+    </p>
+  </Prose>
+
+  <div class="l-constrain l-constrain--media">
+    <dl class="c-partners-intro__stats" data-reveal>
+      {stats.map((s, i) => (
+        <div class="c-partners-intro__stat" style={`--i: ${i}`}>
+          <dt class="c-partners-intro__label">{s.libelle}</dt>
+          <dd class="c-partners-intro__value">{s.valeur}</dd>
+        </div>
+      ))}
+    </dl>
+  </div>
+</section>

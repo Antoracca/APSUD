@@ -1,0 +1,34 @@
+---
+/**
+ * Accueil §4 — Notre façon de travailler. Équivalent du « How we work » de Prosper
+ * (PROSPER_STRUCTURE §5.1 n° 4 ; PROSPER_VISUEL §4 ; DESIGN.md §4.18).
+ * h2 aligné à gauche, puis deux blocs zigzag : image à gauche, puis image à droite ;
+ * chaque boîte Coton s'aligne sur le bas de son image carrée. Révélation au défilement.
+ */
+import SideBySide from '../../components/ui/SideBySide.astro';
+import { howWeWork } from '../../data/home';
+import './HomeHowWeWork.css';
+
+const { title, rows } = howWeWork;
+/* Point focal de chaque photo pour le recadrage carré (les personnes restent dans le cadre) */
+const focus = ['60% 50%', '40% 50%'];
+---
+
+<section class="c-how-we-work" aria-labelledby="facon-de-travailler-titre">
+  <div class="l-constrain">
+    <h2 id="facon-de-travailler-titre" class="c-how-we-work__title">{title}</h2>
+    <div class="c-how-we-work__rows">
+      {rows.map((row, i) => (
+        <SideBySide
+          image={row.image}
+          imageAlt={row.imageAlt}
+          title={row.title}
+          text={row.text}
+          link={row.link}
+          reverse={i % 2 === 1}
+          focus={focus[i] ?? 'center'}
+        />
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,38 @@
+/* Fiche projet — bandeau de métadonnées (mesure média 996 px, filets fins) */
+@layer components {
+  .c-projet-meta { margin-block-start: var(--space-8); }
+
+  .c-projet-meta__list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, calc(2 * var(--space-20))), 1fr));
+    gap: var(--space-6) var(--space-8);
+    margin: 0;
+    padding-block: var(--space-6);
+    border-block: var(--border-width) solid var(--color-border-subtle);
+  }
+  .c-projet-meta__item { min-inline-size: 0; }
+  .c-projet-meta__term {
+    margin-block-end: var(--space-1);
+    font-family: var(--font-condensed);
+    font-stretch: var(--font-stretch-condensed);
+    font-size: var(--fs-overline);
+    font-weight: var(--fw-heavy);
+    letter-spacing: var(--ls-overline);
+    text-transform: uppercase;
+    color: var(--color-text-brand);
+  }
+  .c-projet-meta__value {
+    margin: 0;
+    font-size: var(--fs-small);
+    font-weight: var(--fw-semibold);
+    line-height: var(--lh-caption);
+    overflow-wrap: anywhere;
+  }
+  .c-projet-meta__note {
+    display: block;
+    margin-block-start: var(--space-1);
+    font-size: var(--fs-caption);
+    font-weight: var(--fw-regular);
+    color: var(--color-warning-text);
+  }
+}

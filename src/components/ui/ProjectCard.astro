@@ -1,0 +1,114 @@
+---
+/**
+ * Carte projet — DESIGN.md §4.12 ; Prosper `.c-card` (PROSPER_TOKENS §13).
+ *
+ * Anatomie : média 4:3 (recadré au build) → sur-titre (badge de statut + bailleurs · période)
+ * → titre h3 condensé → résumé → lien « En savoir plus » étendu à toute la carte.
+ * Comportement Prosper : rien ne bouge au survol (ni zoom, ni ombre, ni montée),
+ * seul le soulignement du lien s'épaissit ; au clavier, l'anneau de focus entoure la carte.
+ *
+ * Innovations APSUD (désactivées si « animations réduites », contenu visible sans JS) :
+ *  - `reveal` : la photo s'ouvre par volet depuis le bas (clip-path) et se pose (léger dézoom) ;
+ *  - badge « En cours » précédé d'un point qui pulse lentement : le projet est vivant.
+ *
+ * La carte est une grille à deux rangées [média][contenu] : un parent peut l'aligner
+ * en `subgrid` (HomeFeaturedProjects cale ainsi les médias de tailles différentes sur le bas).
+ */
+import { Picture } from 'astro:assets';
+import { getImage } from '../../lib/images';
+import ArrowLink from './ArrowLink.astro';
+import './ProjectCard.css';
+
+interface Props {
+  href: string;
+  /** Chemin `assets/...` résolu par src/lib/images.ts */
+  image: string;
+  imageAlt: string;
+  title: string;
+  text?: string;
+  /** Bailleurs · période (« Union européenne · Welthungerhilfe · 2025–2027 ») */
+  meta?: string;
+  status?: 'en-cours' | 'realise';
+  size?: 'large' | 'medium' | 'standard';
+  linkLabel?: string;
+  headingLevel?: 'h2' | 'h3' | 'h4';
+  /** Point focal du recadrage (Sharp) : 'center', 'top', 'left'… */
+  focus?: 'center' | 'top' | 'bottom' | 'left' | 'right' | 'attention' | 'entropy';
+  sizes?: string;
+  loading?: 'lazy' | 'eager';
+  /** Révélation à l'entrée : la carte monte en fondu et la photo s'ouvre par volet depuis le bas. */
+  reveal?: boolean;
+  /** Décalage de la révélation en ms (cascade entre cartes voisines). */
+  revealDelay?: number;
+  class?: string;
+}
+
+const {
+  href,
+  image,
+  imageAlt,
+  title,
+  text,
+  meta,
+  status,
+  size = 'standard',
+  linkLabel = 'En savoir plus',
+  headingLevel = 'h3',
+  focus = 'center',
+  sizes = '(min-width: 75em) 37.5rem, (min-width: 37.5em) 50vw, 100vw',
+  loading = 'lazy',
+  reveal = false,
+  revealDelay,
+  class: className,
+} = Astro.props;
+
+const Heading = headingLevel;
+const statusLabel = { 'en-cours': 'En cours', realise: 'Réalisé' } as const;
+
+/* Recadrage 4:3 au build : on ne sert que les pixels affichés, sans agrandir la source. */
+const src = getImage(image);
+const cropW = Math.round(Math.min(src.width, (src.height * 4) / 3));
+const cropH = Math.round((cropW * 3) / 4);
+const widths = [400, 600, 800, 1200].filter((w) => w < cropW).concat(cropW);
+---
+
+<article
+  class:list={['c-project-card', `c-project-card--${size}`, className]}
+  {...(reveal ? { 'data-reveal': '' } : {})}
+  {...(reveal && revealDelay ? { 'data-reveal-delay': String(revealDelay) } : {})}
+>
+  <div class="c-project-card__media">
+    <Picture
+      src={src}
+      alt={imageAlt}
+      width={cropW}
+      height={cropH}
+      widths={widths}
+      sizes={sizes}
+      fit="cover"
+      position={focus}
+      formats={['avif', 'webp']}
+      loading={loading}
+      decoding="async"
+      class="c-project-card__img"
+    />
+  </div>
+
+  <div class="c-project-card__body">
+    {(status || meta) && (
+      <p class="c-project-card__meta">
+        {status && (
+          <span class:list={['c-project-card__status', `c-project-card__status--${status}`]}>
+            {statusLabel[status]}
+          </span>
+        )}
+        {meta && <span class="c-project-card__meta-text">{meta}</span>}
+      </p>
+    )}
+    <Heading class="c-project-card__title">{title}</Heading>
+    {text && <p class="c-project-card__text">{text}</p>}
+    <ArrowLink href={href} stretched class="c-project-card__link">
+      {linkLabel}<span class="u-visually-hidden">&nbsp;: {title}</span>
+    </ArrowLink>
+  </div>
+</article>

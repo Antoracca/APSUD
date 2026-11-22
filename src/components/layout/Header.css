@@ -1,0 +1,666 @@
+/* En-tête — PROSPER_TOKENS §11 (.l-main-navigation, .c-main-navigation*), DESIGN.md §4.2-4.5
+   Repères Prosper à 1440 px : barre 85 px, portes de 184 px centrées sur la page (352 → 1088),
+   tiroir blanc de la largeur des 4 portes, sous-liens Condensée 500 #557978, glissement de 10 px. */
+@layer components {
+
+  /* ------------------------------------------------------------------ */
+  /* Pile fixe : bandeau d'annonce (top 0) puis header (top --eyebrow-h) */
+  /* ------------------------------------------------------------------ */
+  .c-header {
+    --_bar-h: var(--header-h);
+    /* Mobile : le bandeau défile, le header le suit puis se cale en haut (--scroll-y posé par header.ts) */
+    --_top: max(0px, var(--eyebrow-h) - var(--scroll-y, 0px));
+
+    position: fixed;
+    inset-block-start: var(--_top);
+    inset-inline: 0;
+    z-index: var(--z-header);
+  }
+  .c-header--scrolled { --_bar-h: var(--header-h-scrolled); }
+
+  /* Le contenu commence sous la pile fixe (hauteur au repos, constante) */
+  body > main { padding-block-start: calc(var(--header-h) + var(--eyebrow-h)); }
+
+  .c-header__bar {
+    position: relative;
+    z-index: var(--z-raised);           /* au-dessus du panneau mobile qui glisse dessous */
+    background: var(--color-bg);
+    border-block-end: var(--border-width) solid transparent;
+  }
+  .c-header--scrolled .c-header__bar { border-block-end-color: var(--color-border-subtle); }
+  .c-header--open .c-header__bar { border-block-end-color: var(--color-border-subtle); }
+
+  .c-header__inner {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    column-gap: var(--space-4);
+    block-size: var(--_bar-h);
+    max-inline-size: var(--container-wide);
+    margin-inline: auto;
+    padding-inline: var(--space-6) var(--space-3);
+  }
+
+  .c-header__logo { justify-self: start; transform-origin: left center; }
+  /* Barre compactée : le logo se réduit avec elle (80 → 64 px), sans changer la mise en page */
+  .c-header--scrolled .c-header__logo { scale: var(--header-logo-scale); }
+  /* Symbole + sigle seulement : le nom complet (bien plus long que « formerly Mercy Corps ») ne revient
+     qu'à partir de 100em, pour garder l'air de Prosper entre le logo et les portes centrées sur la page */
+  .c-header__logo .c-logo__mention { display: none; }
+
+  /* ------------------------------------------------------------------ */
+  /* Actions : loupe, don, burger                                        */
+  /* ------------------------------------------------------------------ */
+  .c-header__actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: var(--space-2);
+  }
+
+  .c-header__search {
+    display: none;
+    place-items: center;
+    inline-size: var(--tap-min);
+    block-size: var(--tap-min);
+    color: var(--color-text);
+  }
+  .c-header__search:hover { background: var(--color-surface-tint); }   /* Prosper : #E4FFC3 au survol */
+
+  .c-header__donate {
+    --button-pad-inline: var(--space-3);
+    font-size: var(--fs-nav);
+    white-space: nowrap;
+  }
+
+  .c-header__burger {
+    display: grid;
+    place-items: center;
+    inline-size: var(--tap-comfort);
+    block-size: var(--tap-comfort);
+    color: var(--color-text);
+  }
+  .c-header__burger-icon {
+    position: relative;
+    inline-size: var(--burger-w);
+    block-size: calc(2 * var(--burger-step) + var(--burger-bar));
+  }
+  .c-header__burger-bar {
+    position: absolute;
+    inset-inline-start: 0;
+    inset-block-start: 0;
+    inline-size: 100%;
+    block-size: var(--burger-bar);
+    background: currentColor;
+    transform-origin: center;
+  }
+  .c-header__burger-bar:nth-child(2) { inset-block-start: var(--burger-step); }
+  .c-header__burger-bar:nth-child(3) { inset-block-start: calc(2 * var(--burger-step)); }
+
+  /* Burger → croix (Prosper : traits 1 et 2 à 134°, trait 3 à 45°) */
+  .c-header--open .c-header__burger-bar:nth-child(1),
+  .c-header--open .c-header__burger-bar:nth-child(2) {
+    inset-block-start: var(--burger-step);
+    transform: rotate(135deg);
+  }
+  .c-header--open .c-header__burger-bar:nth-child(3) {
+    inset-block-start: var(--burger-step);
+    transform: rotate(45deg);
+  }
+
+  .c-header__search:focus-visible,
+  .c-header__burger:focus-visible,
+  .c-header__door-link:focus-visible,
+  .c-header__link:focus-visible,
+  .c-header__drawer a:focus-visible,
+  .c-header__drawer button:focus-visible {
+    outline: var(--focus-width) solid var(--color-focus);
+    outline-offset: calc(-1 * var(--focus-width));
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* Navigation desktop + méga-menu « tiroir commun »                    */
+  /* ------------------------------------------------------------------ */
+  .c-header__nav,
+  .c-header__backdrop-clip { display: none; }
+
+  /* Rangée 1 = barre ; rangée 2 = tiroir (hors du flux : elle déborde sous la barre).
+     La rangée 2 est partagée en subgrid jusqu'aux colonnes : fond et colonnes ont la même hauteur. */
+  .c-header__doors {
+    display: grid;
+    grid-row: 1 / span 2;
+    grid-template-columns: repeat(4, var(--nav-door-w));
+    grid-template-rows: subgrid;
+    pointer-events: none;                    /* seules la barre et les colonnes OUVERTES captent le survol */
+  }
+
+  .c-header__door {
+    position: relative;
+    display: grid;
+    grid-row: 1 / span 2;
+    grid-template-rows: subgrid;             /* toutes les colonnes prennent la hauteur de la plus longue */
+  }
+  /* Zone de survol = la hauteur de la barre sur toute la largeur de la porte (Prosper : .c-main-navigation__group) */
+  .c-header__door::before {
+    content: "";
+    grid-row: 1;
+    grid-column: 1;
+    pointer-events: auto;
+  }
+
+  .c-header__door-link {
+    grid-row: 1;
+    grid-column: 1;
+    align-self: center;
+    justify-self: start;
+    position: relative;
+    z-index: var(--z-raised);
+    pointer-events: auto;
+    margin-inline: calc(-1 * var(--space-2));
+    padding: var(--space-2);
+    color: var(--color-text);
+    font-family: var(--font-condensed);
+    font-stretch: var(--font-stretch-condensed);
+    font-size: var(--fs-h6);          /* 18 → 24 : clamp exact de Prosper (.c-main-navigation__group-title) */
+    font-weight: var(--fw-bold);
+    line-height: var(--lh-tight);
+    letter-spacing: var(--ls-condensed);
+    text-decoration-line: none;
+    text-decoration-thickness: var(--border-width-strong);
+    text-underline-offset: 0.2em;
+    white-space: nowrap;
+  }
+  /* Porte active (son panneau est ouvert), survolée ou focalisée : pastille Pousse + soulignement.
+     Une seule porte active à la fois (src/scripts/header.ts) : la pastille suit le pointeur. */
+  .c-header__door.is-active .c-header__door-link,
+  .c-header__door-link:hover,
+  .c-header__door-link:focus-visible,
+  html:not(.js) .c-header__door:focus-within .c-header__door-link {
+    background: var(--color-surface-signature);
+    text-decoration-line: underline;
+    text-decoration-color: currentColor;
+  }
+  /* Page courante : soulignement Vert permanent */
+  .c-header__door.is-current .c-header__door-link {
+    text-decoration-line: underline;
+    text-decoration-color: var(--color-link-decoration);
+  }
+
+  .c-header__clip {
+    grid-row: 2;
+    grid-column: 1;
+    overflow: clip;
+    pointer-events: none;                     /* fermé, le tiroir ne capte pas le survol */
+  }
+
+  .c-header__links {
+    block-size: 100%;
+    padding-block: var(--space-2) var(--space-8);
+    pointer-events: auto;                     /* rogné tant qu'il est fermé : aucun survol possible */
+    transform: translateY(-100%);
+  }
+
+  /* Fond commun : même mouvement que les colonnes, sous elles, de bord à bord de la barre */
+  .c-header__backdrop-clip {
+    grid-row: 2;
+    grid-column: 1 / -1;
+    align-self: stretch;                        /* sinon centré (align-items de la barre) et écrasé à 1 px */
+    margin-inline: calc(-1 * var(--space-6));   /* recouvre la marge intérieure de la barre */
+    /* l'ombre portée sur la hero dépasse sous le panneau : on ne rogne que le haut (glissement sous la barre) */
+    clip-path: inset(0 0 calc(-1 * var(--nav-panel-shadow-room)) 0);
+    pointer-events: none;
+  }
+  /* Panneau opaque : fond blanc plein, filet et ombre qui le détachent nettement de la photo du hero */
+  .c-header__backdrop {
+    display: block;
+    block-size: 100%;
+    background: var(--color-bg);
+    border-block-end: var(--border-width) solid var(--color-border-subtle);
+    transform: translateY(-100%);
+  }
+  /* L'ombre n'existe que panneau ouvert (fermé, elle déborderait sous la barre) */
+  .c-header__inner:has(.c-header__doors[data-active]) .c-header__backdrop,
+  html:not(.js) .c-header__inner:has(.c-header__door:is(:hover, :focus-within)) .c-header__backdrop {
+    box-shadow: var(--shadow-panel);
+  }
+
+  .c-header__link {
+    display: block;
+    padding-block: var(--space-2);
+    padding-inline-end: var(--space-6);
+    color: var(--color-text-muted);
+    font-family: var(--font-condensed);
+    font-stretch: var(--font-stretch-condensed);
+    font-size: var(--fs-body);
+    font-weight: var(--fw-medium);
+    line-height: var(--lh-tight);
+    letter-spacing: var(--ls-condensed);
+    text-decoration-line: none;
+  }
+  .c-header__link:hover,
+  .c-header__link:focus-visible {
+    padding-inline-start: var(--nav-link-shift);
+    color: var(--color-text);
+    text-decoration-line: underline;
+    text-decoration-color: currentColor;
+  }
+  .c-header__link[aria-current="page"] {
+    color: var(--color-text);
+    font-weight: var(--fw-bold);
+    text-decoration-line: underline;
+    text-decoration-color: var(--color-link-decoration);
+  }
+
+  /* Ouverture pilotée par src/scripts/header.ts : UNE porte active à la fois (survol, focus clavier,
+     premier toucher). Le fond commun et « À la une » restent ouverts tant qu'une porte est active ;
+     seule la colonne de la porte active descend. Passer d'une porte à l'autre referme l'ancienne
+     colonne et ouvre la nouvelle, sans délai. */
+  .c-header__inner:has(.c-header__doors[data-active]) :is(.c-header__backdrop, .c-header__feature-body),
+  .c-header__door.is-active .c-header__links {
+    transform: none;
+  }
+  /* Panneau ouvert : il capte le pointeur (le traverser ne ferme rien) */
+  .c-header__inner:has(.c-header__doors[data-active]) .c-header__backdrop-clip { pointer-events: auto; }
+
+  /* Sans JS : la porte survolée ou focalisée ouvre sa colonne et le fond commun */
+  html:not(.js) .c-header__door:is(:hover, :focus-within) .c-header__links,
+  html:not(.js) .c-header__inner:has(.c-header__door:is(:hover, :focus-within)) .c-header__backdrop {
+    transform: none;
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* Innovation APSUD : 5e colonne « À la une » (projet phare)           */
+  /* ------------------------------------------------------------------ */
+  .c-header__feature { display: none; }
+
+  .c-header__feature-body {
+    display: grid;
+    grid-template-columns: min(100%, var(--nav-feature-w));
+    justify-content: end;
+    align-content: start;
+    row-gap: var(--space-3);
+    block-size: 100%;
+    padding-block: var(--space-4) var(--space-8);
+    padding-inline-start: var(--space-6);
+    pointer-events: auto;                     /* rogné tant qu'il est fermé : aucun survol possible */
+    transform: translateY(-100%);
+  }
+
+  .c-header__feature-label {
+    color: var(--color-text-muted);
+    font-family: var(--font-condensed);
+    font-stretch: var(--font-stretch-condensed);
+    font-size: var(--fs-overline);
+    font-weight: var(--fw-bold);
+    line-height: var(--lh-tight);
+    letter-spacing: var(--ls-overline);
+    text-transform: uppercase;
+  }
+
+  .c-header__feature-card {
+    position: relative;                       /* lien « En savoir plus » étendu à toute la carte */
+    display: grid;
+    row-gap: var(--space-2);
+  }
+  .c-header__feature-card:has(:focus-visible) {
+    outline: var(--focus-width) solid var(--color-focus);
+    outline-offset: var(--focus-offset);
+  }
+  .c-header__feature-card :focus-visible { outline: none; }
+
+  .c-header__feature-media {
+    display: block;
+    margin-block-end: var(--space-1);
+    overflow: hidden;
+    background: var(--color-surface-tint);    /* teinte d'attente pendant le chargement de la photo */
+  }
+  .c-header__feature-img {
+    display: block;
+    inline-size: 100%;
+    block-size: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+  }
+
+  .c-header__feature-meta {
+    color: var(--color-text-muted);
+    font-size: var(--fs-caption);
+    line-height: var(--lh-snug);
+  }
+  .c-header__feature-title {
+    color: var(--color-text);
+    font-family: var(--font-condensed);
+    font-stretch: var(--font-stretch-condensed);
+    font-size: var(--fs-lead);
+    font-weight: var(--fw-bold);
+    line-height: var(--lh-tight);
+    letter-spacing: var(--ls-condensed);
+    text-wrap: balance;
+  }
+  .c-header__feature-link { justify-self: start; font-size: var(--fs-small); }
+
+  /* ------------------------------------------------------------------ */
+  /* Innovation APSUD : barre de lecture (100 % CSS, défilement)         */
+  /* ------------------------------------------------------------------ */
+  .c-header__progress { display: none; }
+  @supports (animation-timeline: scroll()) {
+    .c-header__progress {
+      position: absolute;
+      inset-inline: 0;
+      inset-block-end: calc(-1 * var(--border-width));
+      display: block;
+      block-size: var(--header-progress-h);
+      background: var(--color-brand);
+      transform-origin: left center;
+      scale: 0 1;
+      opacity: 0;
+      pointer-events: none;
+      animation: c-header-progress linear both;
+      animation-timeline: scroll(root block);
+    }
+    /* N'apparaît qu'une fois la lecture commencée (barre compactée) */
+    .c-header--scrolled .c-header__progress { opacity: 1; }
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* Panneau mobile plein écran                                          */
+  /* ------------------------------------------------------------------ */
+  .c-header__drawer {
+    position: absolute;
+    inset-inline: 0;
+    inset-block-start: 100%;
+    block-size: calc(100dvh - var(--_top) - var(--_bar-h));
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    background: var(--color-bg);
+    visibility: hidden;
+    transform: translateY(-100%);
+  }
+  .c-header--open .c-header__drawer {
+    visibility: visible;
+    transform: none;
+  }
+
+  .c-header__drawer-body {
+    display: flex;
+    flex-direction: column;
+    min-block-size: 100%;
+  }
+
+  .c-header__drawer-nav {
+    flex: 1;
+    padding: var(--space-10) var(--space-3) var(--space-12) var(--space-6);
+  }
+
+  .c-header__drawer-doors {
+    display: grid;
+    gap: var(--space-4);
+  }
+
+  .c-header__drawer-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+    min-block-size: var(--drawer-row-min);
+  }
+
+  .c-header__drawer-title {
+    display: flex;
+    align-items: center;
+    min-block-size: var(--tap-comfort);
+    color: var(--color-text);
+    font-family: var(--font-condensed);
+    font-stretch: var(--font-stretch-condensed);
+    font-size: var(--fs-nav-mobile);
+    font-weight: var(--fw-bold);
+    line-height: var(--lh-tight);
+    letter-spacing: var(--ls-condensed);
+    text-decoration-line: none;
+  }
+  .c-header__drawer-title[aria-current="page"] {
+    text-decoration-line: underline;
+    text-decoration-color: var(--color-link-decoration);
+    text-decoration-thickness: var(--border-width-strong);
+  }
+
+  .c-header__drawer-toggle {
+    display: grid;
+    flex: none;
+    place-items: center;
+    inline-size: var(--tap-comfort);
+    block-size: var(--tap-comfort);
+    color: var(--color-text);
+  }
+  .c-header__drawer-toggle[aria-expanded="true"] .c-header__drawer-chevron { transform: rotate(0.5turn); }
+
+  .c-header__drawer-clip {
+    display: grid;
+    grid-template-rows: 0fr;
+  }
+  .c-header__drawer-door.is-open .c-header__drawer-clip { grid-template-rows: 1fr; }
+
+  .c-header__drawer-links {
+    min-block-size: 0;
+    overflow: hidden;
+    padding-inline-start: var(--space-6);
+    visibility: hidden;
+  }
+  .c-header__drawer-door.is-open .c-header__drawer-links {
+    visibility: visible;
+    padding-block-end: var(--space-2);
+  }
+
+  .c-header__drawer-link {
+    display: flex;
+    align-items: center;
+    min-block-size: var(--tap-min);
+    color: var(--color-text-muted);
+    font-family: var(--font-condensed);
+    font-stretch: var(--font-stretch-condensed);
+    font-size: var(--fs-lead);
+    font-weight: var(--fw-medium);
+    line-height: var(--lh-snug);
+    letter-spacing: var(--ls-condensed);
+    text-decoration-line: none;
+  }
+  .c-header__drawer-link:hover,
+  .c-header__drawer-link:active {
+    color: var(--color-text);
+    text-decoration-line: underline;
+    text-decoration-color: currentColor;
+  }
+  .c-header__drawer-link[aria-current="page"] {
+    color: var(--color-text);
+    text-decoration-line: underline;
+    text-decoration-color: var(--color-link-decoration);
+  }
+
+  .c-header__drawer-search {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-4);
+    min-block-size: var(--tap-comfort);
+    margin-block-start: var(--space-12);
+    color: var(--color-text);
+    font-family: var(--font-condensed);
+    font-stretch: var(--font-stretch-condensed);
+    font-size: var(--fs-h4);
+    font-weight: var(--fw-bold);
+    line-height: var(--lh-tight);
+    letter-spacing: var(--ls-condensed);
+    text-decoration-line: none;
+  }
+
+  .c-header__drawer-foot {
+    display: grid;
+    gap: var(--space-4);
+    padding: var(--space-8) var(--space-6) var(--space-10);
+  }
+  .c-header__drawer-foot-title {
+    color: var(--color-text-muted);
+    font-family: var(--font-condensed);
+    font-stretch: var(--font-stretch-condensed);
+    font-size: var(--fs-overline);
+    font-weight: var(--fw-bold);
+    letter-spacing: var(--ls-overline);
+    text-transform: uppercase;
+  }
+  .c-header__contact { display: grid; }
+  .c-header__contact-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-3);
+    min-block-size: var(--tap-min);
+    color: var(--color-text);
+    font-weight: var(--fw-medium);
+    white-space: nowrap;
+  }
+  .c-header__contact-link .c-icon { color: var(--color-text-brand); }
+
+  .c-header__social {
+    display: flex;
+    gap: var(--space-2);
+    margin-inline-start: calc(-1 * var(--space-2));
+  }
+  .c-header__social-link {
+    display: grid;
+    place-items: center;
+    inline-size: var(--tap-comfort);
+    block-size: var(--tap-comfort);
+    color: var(--color-text);
+  }
+  .c-header__social-link:hover { color: var(--color-text-brand); }
+
+  /* ------------------------------------------------------------------ */
+  /* Desktop ≥ 48em                                                      */
+  /* ------------------------------------------------------------------ */
+  @media (width >= 48em) {
+    .c-header { --_top: var(--eyebrow-h); }
+
+    .c-header__inner {
+      grid-template-columns: auto 1fr auto;
+      grid-template-rows: var(--_bar-h) auto;   /* rangée 2 : tiroir du méga-menu, déborde sous la barre */
+      padding-inline: var(--space-6);
+    }
+    .c-header__logo,
+    .c-header__actions { grid-row: 1; }
+    .c-header__nav {
+      display: grid;
+      grid-column: 2;
+      grid-row: 1 / span 2;
+      grid-template-rows: subgrid;
+      justify-self: center;
+      pointer-events: none;
+    }
+    .c-header__backdrop-clip { display: block; }
+    .c-header__search { display: grid; }
+    .c-header__burger,
+    .c-header__drawer { display: none; }
+  }
+
+  @media (width >= 100em) {
+    .c-header__logo .c-logo__mention { display: grid; }
+  }
+
+  @media (width >= 80em) {
+    .c-header__actions { gap: var(--space-10); }
+    .c-header__donate { --button-pad-inline: var(--space-3); --button-pad-block: calc(var(--space-3) + var(--space-1) / 2); }
+  }
+
+  /* 1440 et plus : portes centrées sur la PAGE, comme chez Prosper (352 → 1088 à 1440) */
+  @media (width >= 90em) {
+    .c-header__inner { grid-template-columns: 1fr auto 1fr; }
+
+    /* 5e colonne : sous les actions, dans la rangée du tiroir. Elle recouvre l'écart de grille pour
+       que la zone de survol reste continue entre la 4e porte et la carte (sinon le tiroir se fermerait). */
+    .c-header__feature {
+      display: block;
+      grid-column: 3;
+      grid-row: 2;
+      margin-inline-start: calc(-1 * var(--space-4));
+      overflow: clip;
+      pointer-events: none;                   /* fermée, la colonne ne capte pas le survol */
+    }
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* Mouvement (uniquement si l'utilisateur l'accepte)                   */
+  /* ------------------------------------------------------------------ */
+  @media (prefers-reduced-motion: no-preference) {
+    .c-header__inner {
+      transition: block-size var(--dur-standard) var(--ease-out), grid-template-rows var(--dur-standard) var(--ease-out);
+    }
+    .c-header__bar { transition: border-color var(--dur-short) var(--ease-out); }
+
+    .c-header__logo { transition: scale var(--dur-standard) var(--ease-out); }
+
+    /* Tiroir : fermeture immédiate (100 ms ease-in) … */
+    :is(.c-header__links, .c-header__backdrop, .c-header__feature-body) { transition: transform var(--nav-close-dur) var(--ease-in); }
+    /* … ouverture 300 ms ease-out, sans délai CSS : l'intention de survol (--nav-open-delay) est
+       gérée en JS pour la PREMIÈRE ouverture seulement ; d'une porte à l'autre, le changement est immédiat. */
+    .c-header__inner:has(.c-header__doors[data-active]) :is(.c-header__backdrop, .c-header__feature-body),
+    .c-header__door.is-active .c-header__links,
+    html:not(.js) .c-header__door:is(:hover, :focus-within) .c-header__links,
+    html:not(.js) .c-header__inner:has(.c-header__door:is(:hover, :focus-within)) .c-header__backdrop {
+      transition: transform var(--dur-menu) var(--ease-out);
+    }
+    /* Changement de porte : la nouvelle colonne arrive pendant que l'ancienne remonte ; un léger fondu
+       évite que les deux listes se croisent sous la barre. */
+    .c-header__links { transition: transform var(--nav-close-dur) var(--ease-in), opacity var(--nav-close-dur) var(--ease-in); }
+    .c-header__door:not(.is-active) .c-header__links { opacity: 0; }
+    html:not(.js) .c-header__door .c-header__links { opacity: 1; }
+    .c-header__door.is-active .c-header__links {
+      transition: transform var(--dur-menu) var(--ease-out), opacity var(--dur-short) var(--ease-out);
+    }
+
+    /* « À la une » : la photo se dévoile en rideau, du haut vers le bas, juste après le tiroir.
+       Fermée, elle est repliée sans transition (le tiroir remonte déjà en 100 ms). */
+    .c-header__feature-img { clip-path: inset(0 0 100% 0); }
+    .c-header__inner:has(.c-header__doors[data-active]) .c-header__feature-img {
+      clip-path: inset(0);
+      transition: clip-path var(--dur-long) var(--ease-out) var(--nav-feature-delay);
+    }
+    .c-header__progress { transition: opacity var(--dur-short) var(--ease-out); }
+    .c-header__link { transition: padding-inline-start var(--dur-menu) var(--ease-out), color var(--dur-short) var(--ease-out); }
+    .c-header__search { transition: background-color var(--dur-short) var(--ease-out); }
+
+    /* Panneau mobile : descend en 300 ms ease-out, remonte en 300 ms ease-in */
+    .c-header__drawer {
+      transition: transform var(--dur-menu) var(--ease-in), visibility 0s linear var(--dur-menu);
+    }
+    .c-header--open .c-header__drawer {
+      transition: transform var(--dur-menu) var(--ease-out), visibility 0s;
+    }
+    .c-header__drawer-clip { transition: grid-template-rows var(--dur-menu) var(--ease-out); }
+    .c-header__drawer-links { transition: visibility 0s linear var(--dur-menu); }
+    .c-header__drawer-door.is-open .c-header__drawer-links { transition: visibility 0s; }
+    .c-header__drawer-chevron { transition: transform var(--dur-menu) var(--ease-out); }
+
+    /* Burger : traits décalés (Prosper 500 / 700 / 600 ms, ramenés à 270 / 375 / 300 ms) */
+    .c-header__burger-bar:nth-child(1) { transition: transform var(--dur-intro) var(--ease-in-out), inset-block-start var(--dur-intro) var(--ease-in-out); }
+    .c-header__burger-bar:nth-child(2) { transition: transform var(--dur-standard) var(--ease-in-out); }
+    .c-header__burger-bar:nth-child(3) { transition: transform var(--dur-menu) var(--ease-in-out), inset-block-start var(--dur-menu) var(--ease-in-out); }
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* Sans JS : header dans le flux, menu mobile déplié sous la barre     */
+  /* ------------------------------------------------------------------ */
+  html:not(.js) .c-header { position: sticky; inset-block-start: 0; }
+  html:not(.js) body > main { padding-block-start: 0; }
+  @media (width < 48em) {
+    html:not(.js) .c-header { position: relative; }
+    html:not(.js) .c-header__burger { display: none; }
+    html:not(.js) .c-header__drawer {
+      position: static;
+      block-size: auto;
+      visibility: visible;
+      transform: none;
+    }
+    html:not(.js) .c-header__drawer-toggle { display: none; }
+    html:not(.js) .c-header__drawer-clip { grid-template-rows: 1fr; }
+    html:not(.js) .c-header__drawer-links { visibility: visible; }
+  }
+
+  @keyframes c-header-progress { to { scale: 1 1; } }
+}

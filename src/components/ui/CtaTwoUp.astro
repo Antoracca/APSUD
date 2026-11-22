@@ -1,0 +1,61 @@
+---
+/**
+ * Double appel à l'action réutilisable — Prosper `.c-cta-two-up` (fin de page systématique,
+ * DESIGN.md §4.19). Même rendu que la section de l'accueil (HomeCtaTwoUp), mais piloté par props.
+ *
+ *  - `primary`   : panneau Forêt, bouton Pousse ;
+ *  - `secondary` : panneau Pousse, bouton contour (facultatif : sans lui, un seul panneau pleine mesure).
+ *  - `title`     : titre de groupe centré (h2 au gabarit h3), facultatif.
+ * Innovation APSUD reprise de l'accueil : la « marche » d'angle se lève au survol / focus.
+ */
+import Button from './Button.astro';
+import './CtaTwoUp.css';
+
+interface Panel {
+  title: string;
+  text?: string;
+  cta: { label: string; href: string };
+}
+
+interface Props {
+  title?: string;
+  primary: Panel;
+  secondary?: Panel;
+  /** Thème du fond de la section (Coton par défaut : se fond avec les marches du pied de page) */
+  theme?: 't-coton' | 't-blanc';
+  id?: string;
+  class?: string;
+}
+
+const { title, primary, secondary, theme = 't-coton', id = 'cta-duo-title', class: className } = Astro.props;
+const panels = [
+  { ...primary, theme: 't-foret', variant: 'on-dark' as const, mod: 'primary' },
+  ...(secondary ? [{ ...secondary, theme: 't-pousse', variant: 'outline' as const, mod: 'secondary' }] : []),
+];
+const PanelHeading = title ? 'h3' : 'h2';
+---
+
+<section
+  class:list={['c-cta-duo', theme === 't-coton' && 't-coton', { 'c-cta-duo--single': !secondary }, className]}
+  aria-labelledby={title ? id : undefined}
+  aria-label={title ? undefined : 'Agir avec APSUD'}
+>
+  <div class="l-constrain l-constrain--media">
+    {title && <h2 id={id} class="c-cta-duo__title" data-reveal>{title}</h2>}
+    <div class="c-cta-duo__wrapper">
+      {panels.map((p, i) => (
+        <div
+          class:list={['c-cta-duo__panel', `c-cta-duo__panel--${p.mod}`, p.theme]}
+          data-reveal
+          data-reveal-delay={String(i * 150)}
+        >
+          <PanelHeading class="c-cta-duo__panel-title">{p.title}</PanelHeading>
+          {p.text && <p class="c-cta-duo__text">{p.text}</p>}
+          <div class="c-cta-duo__button">
+            <Button href={p.cta.href} variant={p.variant}>{p.cta.label}</Button>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,36 @@
+/* /faire-un-don — FAQ (accordéon natif) */
+@layer components {
+  .c-donate-faq__title { font-size: var(--fs-h3); margin-block-end: var(--space-8); }
+  .c-donate-faq__list { border-block-start: var(--border-width) solid var(--color-border-control); }
+  .c-faq { border-block-end: var(--border-width) solid var(--color-border-control); }
+  .c-faq__question {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-6);
+    min-block-size: var(--tap-comfort);
+    padding-block: var(--space-5);
+    font-size: var(--fs-h6);
+    font-weight: var(--fw-bold);
+    cursor: pointer;
+    list-style: none;
+  }
+  .c-faq__question::-webkit-details-marker { display: none; }
+  .c-faq__icon { color: var(--color-text-brand); transition: rotate var(--dur-standard) var(--ease-in-out); }
+  .c-faq[open] .c-faq__icon { rotate: 45deg; }
+  .c-faq__answer { padding-block-end: var(--space-6); max-inline-size: var(--measure-text); color: var(--color-text-muted); }
+  .c-donate-faq__more { margin-block-start: var(--space-8); }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .c-donate-faq { interpolate-size: allow-keywords; }
+    .c-faq::details-content {
+      block-size: 0;
+      overflow: clip;
+      transition: block-size var(--dur-standard) var(--ease-in-out), content-visibility var(--dur-standard) allow-discrete;
+    }
+    .c-faq[open]::details-content { block-size: auto; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .c-faq__icon { transition: none; }
+  }
+}

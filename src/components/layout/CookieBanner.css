@@ -1,0 +1,364 @@
+/* Bandeau cookies + panneau de préférences — DESIGN.md §4.25 */
+@layer components {
+  /* ---------- Bandeau ---------- */
+  .c-cookie-banner {
+    position: fixed;
+    inset: auto 0 0 0;
+    z-index: var(--z-cookie);
+    display: grid;
+    gap: var(--space-4);
+    padding: var(--space-5) var(--gutter) max(var(--space-4), env(safe-area-inset-bottom));
+    border-block-start: var(--border-width) solid var(--color-border-control);
+    background: var(--cookie-surface);
+    color: var(--color-text);
+  }
+  .c-cookie-banner[hidden] { display: none; }
+
+  .c-cookie-banner__head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-1) var(--space-4);
+  }
+  .c-cookie-banner__title,
+  .c-cookie-panel__title {
+    margin: 0;
+    font-size: var(--fs-h6);
+    line-height: var(--lh-snug);
+  }
+  .c-cookie-banner__skip {
+    display: inline-flex;
+    align-items: center;
+    min-block-size: var(--tap-min);
+    margin-inline-start: auto;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: var(--color-text-muted);
+    font-size: var(--fs-caption);
+    font-weight: var(--fw-medium);
+    text-decoration-line: underline;
+    text-decoration-thickness: var(--underline-thickness);
+    text-underline-offset: 0.18em;
+    cursor: pointer;
+    transition: --underline-thickness var(--dur-short) var(--ease-out);
+  }
+  .c-cookie-banner__skip:hover { --underline-thickness: var(--border-width-strong); color: var(--color-text); }
+
+  .c-cookie-banner__text {
+    margin: 0;
+    font-size: var(--fs-small);
+    line-height: var(--lh-body);
+  }
+
+  .c-cookie-banner__actions,
+  .c-cookie-panel__footer {
+    display: grid;
+    gap: var(--space-2);
+  }
+  .c-cookie-banner__button,
+  .c-cookie-panel__button { inline-size: 100%; }
+
+  /* Entrée : translateY(1rem) + fondu, --dur-intro --ease-out ; sortie --dur-outro --ease-in */
+  @media (prefers-reduced-motion: no-preference) {
+    .c-cookie-banner {
+      opacity: 0;
+      translate: 0 var(--space-4);
+      transition:
+        opacity var(--dur-outro) var(--ease-in),
+        translate var(--dur-outro) var(--ease-in);
+    }
+    .c-cookie-banner.is-visible {
+      opacity: 1;
+      translate: 0 0;
+      transition-duration: var(--dur-intro);
+      transition-timing-function: var(--ease-out);
+    }
+  }
+
+  @media (width >= 30em) {
+    .c-cookie-banner__actions { grid-template-columns: repeat(3, 1fr); }
+    .c-cookie-banner__button { padding-inline: var(--space-2); }
+  }
+
+  /* Desktop : carte flottante en bas à DROITE (à gauche, elle masquait le bloc titre du hero),
+     ombre pleine Pousse décalée */
+  @media (width >= 48em) {
+    .c-cookie-banner {
+      inset: auto var(--space-6) var(--space-6) auto;
+      max-inline-size: var(--cookie-banner-w);
+      padding: var(--space-6);
+      border: var(--border-width) solid var(--color-border-control);
+      box-shadow: var(--shadow-step);
+    }
+  }
+
+  /* ---------- Panneau de préférences (<dialog>) ---------- */
+  .c-cookie-panel {
+    inline-size: 100%;
+    max-inline-size: none;
+    block-size: 100%;
+    max-block-size: none;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: var(--cookie-surface);
+    color: var(--color-text);
+  }
+  .c-cookie-panel[open] {
+    display: flex;
+    flex-direction: column;
+  }
+  .c-cookie-panel::backdrop { background: var(--cookie-backdrop); }
+
+  .c-cookie-panel__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+    padding: var(--space-4) var(--gutter);
+    border-block-end: var(--border-width) solid var(--color-border-subtle);
+  }
+  .c-cookie-panel__close {
+    display: grid;
+    place-items: center;
+    flex: none;
+    inline-size: var(--tap-min);
+    block-size: var(--tap-min);
+    margin-inline-end: calc(-1 * var(--space-2));
+    padding: 0;
+    border: 0;
+    border-radius: var(--radius-control);
+    background: none;
+    color: var(--color-text);
+    cursor: pointer;
+    transition: background-color var(--dur-short) var(--ease-out);
+  }
+  .c-cookie-panel__close:hover { background: var(--color-surface-tint); }
+
+  .c-cookie-panel__body {
+    flex: 1 1 auto;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding: var(--space-5) var(--gutter) var(--space-6);
+  }
+  .c-cookie-panel__intro {
+    margin: 0 0 var(--space-6);
+    font-size: var(--fs-small);
+    line-height: var(--lh-body);
+  }
+  .c-cookie-panel__subtitle {
+    margin: 0 0 var(--space-3);
+    font-size: var(--fs-footer-title-md);
+    line-height: var(--lh-tight);
+    letter-spacing: var(--ls-overline);
+    text-transform: uppercase;
+  }
+
+  .c-cookie-panel__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border-block-start: var(--border-width) solid var(--color-border-control);
+  }
+  .c-cookie-panel__cat { border-block-end: var(--border-width) solid var(--color-border-control); }
+  .c-cookie-panel__cat-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+  }
+
+  /* Accordéon : grid-template-rows 0fr → 1fr, chevron rotate(.5turn) — menu mobile de Prosper */
+  .c-cookie-panel__toggle {
+    display: flex;
+    flex: 1 1 auto;
+    align-items: center;
+    gap: var(--space-2);
+    min-block-size: var(--tap-comfort);
+    padding: var(--space-2) 0;
+    border: 0;
+    background: none;
+    color: var(--color-text);
+    font-family: var(--font-condensed);
+    font-stretch: var(--font-stretch-condensed);
+    font-size: var(--fs-h6);
+    font-weight: var(--fw-bold);
+    line-height: var(--lh-snug);
+    letter-spacing: var(--ls-condensed);
+    text-align: start;
+    cursor: pointer;
+  }
+  .c-cookie-panel__toggle:hover .c-cookie-panel__cat-title {
+    text-decoration-line: underline;
+    text-decoration-thickness: var(--border-width);
+    text-underline-offset: 0.18em;
+  }
+  .c-cookie-panel__chevron { transition: rotate var(--dur-menu) var(--ease-out); }
+  .c-cookie-panel__cat.is-open .c-cookie-panel__chevron { rotate: 0.5turn; }
+
+  .c-cookie-panel__cat-body {
+    display: grid;
+    grid-template-rows: 0fr;
+    visibility: hidden;
+    transition:
+      grid-template-rows var(--dur-menu) var(--ease-out),
+      visibility 0s linear var(--dur-menu);
+  }
+  .c-cookie-panel__cat.is-open .c-cookie-panel__cat-body {
+    grid-template-rows: 1fr;
+    visibility: visible;
+    transition:
+      grid-template-rows var(--dur-menu) var(--ease-out),
+      visibility 0s;
+  }
+  .c-cookie-panel__cat-inner { min-block-size: 0; overflow: hidden; }
+  .c-cookie-panel__cat-text {
+    margin: 0;
+    padding: 0 0 var(--space-4) var(--space-8);
+    color: var(--color-text-muted);
+    font-size: var(--fs-small);
+    line-height: var(--lh-body);
+  }
+
+  .c-cookie-panel__table {
+    inline-size: calc(100% - var(--space-8));
+    margin: 0 0 var(--space-4) var(--space-8);
+    border-collapse: collapse;
+    font-size: var(--fs-caption);
+    line-height: var(--lh-caption);
+  }
+  .c-cookie-panel__table th,
+  .c-cookie-panel__table td {
+    padding: var(--space-2);
+    border: var(--border-width) solid var(--color-border-subtle);
+    text-align: start;
+    vertical-align: top;
+  }
+  .c-cookie-panel__table th { background: var(--color-surface-soft); font-weight: var(--fw-semibold); }
+
+  .c-cookie-panel__always {
+    flex: none;
+    color: var(--color-text-brand);
+    font-size: var(--fs-small);
+    font-weight: var(--fw-bold);
+  }
+
+  /* Interrupteur : piste 44 × 24 bord 2 px Forêt ; activé = piste Forêt, curseur Pousse + coche */
+  .c-cookie-panel__switch {
+    display: inline-flex;
+    flex: none;
+    align-items: center;
+    gap: var(--space-2);
+    min-block-size: var(--tap-min);
+    padding: 0;
+    border: 0;
+    background: none;
+    color: var(--color-text);
+    font-size: var(--fs-caption);
+    font-weight: var(--fw-semibold);
+    cursor: pointer;
+  }
+  .c-cookie-panel__switch-state { min-inline-size: var(--space-16); text-align: end; }
+  .c-cookie-panel__switch-track {
+    position: relative;
+    display: block;
+    flex: none;
+    inline-size: var(--switch-w);
+    block-size: var(--switch-h);
+    border: var(--border-width-strong) solid var(--color-border-control);
+    border-radius: var(--switch-h);
+    background: var(--cookie-surface);
+    transition: background-color var(--dur-short) var(--ease-out);
+  }
+  .c-cookie-panel__switch-thumb {
+    position: absolute;
+    inset-block-start: 50%;
+    inset-inline-start: var(--space-1);
+    display: grid;
+    place-items: center;
+    inline-size: var(--switch-thumb);
+    block-size: var(--switch-thumb);
+    border-radius: var(--radius-round);
+    background: var(--color-border-control);
+    color: transparent;
+    translate: 0 -50%;
+    transition:
+      translate var(--dur-short) var(--ease-out),
+      background-color var(--dur-short) var(--ease-out);
+  }
+  .c-cookie-panel__switch-thumb .c-icon { --_s: var(--space-3); }
+  .c-cookie-panel__switch[aria-checked="true"] .c-cookie-panel__switch-track { background: var(--color-border-control); }
+  .c-cookie-panel__switch[aria-checked="true"] .c-cookie-panel__switch-thumb {
+    background: var(--color-surface-signature);
+    color: var(--color-border-control);
+    translate: calc(var(--switch-w) - var(--switch-thumb) - 2 * var(--space-1) - 2 * var(--border-width-strong)) -50%;
+  }
+  .c-cookie-panel__switch:hover .c-cookie-panel__switch-track {
+    box-shadow: 0 0 0 var(--border-width) var(--color-border-control);
+  }
+
+  .c-cookie-panel__footer {
+    padding: var(--space-4) var(--gutter) max(var(--space-4), env(safe-area-inset-bottom));
+    border-block-start: var(--border-width) solid var(--color-border-subtle);
+    background: var(--cookie-surface);
+  }
+
+  @media (width >= 30em) {
+    .c-cookie-panel__footer { grid-template-columns: repeat(3, auto); justify-content: end; }
+    .c-cookie-panel__button { inline-size: auto; }
+  }
+
+  /* Desktop : centré, 40 rem, ombre pleine décalée */
+  @media (width >= 48em) {
+    .c-cookie-panel {
+      inline-size: calc(100% - 2 * var(--space-6));
+      max-inline-size: var(--cookie-panel-w);
+      block-size: fit-content;
+      max-block-size: calc(100dvh - 2 * var(--space-12));
+      margin: auto;
+      border: var(--border-width) solid var(--color-border-control);
+      box-shadow: var(--shadow-step);
+      overflow: visible;
+    }
+    .c-cookie-panel__header,
+    .c-cookie-panel__body,
+    .c-cookie-panel__footer { padding-inline: var(--space-8); }
+    .c-cookie-panel__header { padding-block: var(--space-5); }
+  }
+
+  /* Entrée ET sortie animées, en CSS natif : @starting-style pour l'entrée, transitions
+     discrètes (display, overlay) pour que la fermeture se joue avant que le dialogue ne
+     quitte la couche supérieure. Navigateurs plus anciens : ouverture/fermeture sèches. */
+  @media (prefers-reduced-motion: no-preference) {
+    .c-cookie-panel,
+    .c-cookie-panel::backdrop {
+      opacity: 0;
+      transition:
+        opacity var(--dur-outro) var(--ease-in),
+        translate var(--dur-outro) var(--ease-in),
+        display var(--dur-outro) allow-discrete,
+        overlay var(--dur-outro) allow-discrete;
+    }
+    .c-cookie-panel { translate: 0 var(--space-4); }
+    .c-cookie-panel[open],
+    .c-cookie-panel[open]::backdrop {
+      opacity: 1;
+      translate: 0 0;
+      transition-duration: var(--dur-intro);
+      transition-timing-function: var(--ease-out);
+    }
+    @starting-style {
+      .c-cookie-panel[open] { opacity: 0; translate: 0 var(--space-4); }
+      .c-cookie-panel[open]::backdrop { opacity: 0; }
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .c-cookie-panel__chevron,
+    .c-cookie-panel__cat-body,
+    .c-cookie-panel__switch-thumb,
+    .c-cookie-panel__switch-track { transition: none; }
+  }
+
+}

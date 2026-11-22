@@ -1,0 +1,22 @@
+/* Hub « Nos actions » — intro (Prosper « Responding to crisis… » : colonne de 690 px) */
+@layer components {
+  .c-actions-intro {
+    padding-block: var(--space-section-sm) 0;
+  }
+  .c-actions-intro h2 {
+    font-size: var(--fs-h3);
+    text-wrap: balance;
+  }
+  /* Bilan : petite ligne posée sur un filet vert, comme une note de bas de colonne */
+  .c-actions-intro__tally {
+    padding-block-start: var(--space-4);
+    border-block-start: var(--border-width-strong) solid var(--color-brand);
+    inline-size: fit-content;
+    color: var(--color-text-muted);
+    font-size: var(--fs-small);
+  }
+  .c-actions-intro__tally strong {
+    color: var(--color-text);
+    font-weight: var(--fw-heavy);
+  }
+}

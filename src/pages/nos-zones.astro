@@ -1,0 +1,40 @@
+---
+/**
+ * Nos zones — équivalent APSUD de « Where we work » (PROSPER_STRUCTURE §5.12, §13.1) :
+ * H1 → carte interactive de la RCA (section de l'accueil réutilisée telle quelle)
+ * → liste zone par zone avec ancres du méga-menu → double CTA.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/layout/PageHeader.astro';
+import CtaTwoUp from '../components/ui/CtaTwoUp.astro';
+import HomeZones from '../sections/home/HomeZones.astro';
+import ZonesList from '../sections/zones/ZonesList.astro';
+import { zonesSummary as s, plural } from '../data/zones';
+
+const intro = `APSUD intervient ${s.bangui ? 'à Bangui et ' : ''}dans ${plural(s.prefectures, 'préfecture', 'préfectures')} de la Centrafrique, au plus près des communautés touchées par la crise. Sélectionnez une zone sur la carte ou dans la liste pour découvrir les projets qui y sont menés.`;
+---
+
+<BaseLayout
+  title="Nos zones d’intervention"
+  description={`Carte des zones d’intervention d’APSUD en République centrafricaine : Bangui et ${s.prefectures} préfectures, projets en cours et réalisés, zone par zone.`}
+>
+  <PageHeader
+    title="Où nous intervenons"
+    intro={intro}
+    breadcrumb={[{ label: 'Nos zones' }]}
+  />
+  <HomeZones />
+  <ZonesList />
+  <CtaTwoUp
+    primary={{
+      title: 'Agir dans ces territoires',
+      text: 'Bailleurs, agences et ONG : construisons ensemble les prochaines réponses, au plus près des communautés.',
+      cta: { label: 'Devenir partenaire', href: '/agir/partenariat' },
+    }}
+    secondary={{
+      title: 'Tous nos projets',
+      text: 'Parcourez les projets d’APSUD par domaine, par zone et par bailleur.',
+      cta: { label: 'Voir les projets', href: '/projets' },
+    }}
+  />
+</BaseLayout>

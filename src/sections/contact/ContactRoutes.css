@@ -1,0 +1,39 @@
+/* /contact — aiguillage (liens fléchés en 2 colonnes) */
+@layer components {
+  .c-contact-routes { padding-block: var(--space-4) var(--space-12); }
+  .c-contact-routes__title { font-size: var(--fs-h5); margin-block-end: var(--space-6); }
+  .c-contact-routes__list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--agir-reason-min)), 1fr));
+    gap: 0 var(--space-12);
+    padding: 0;
+    list-style: none;
+    border-block-start: var(--border-width) solid var(--color-border-subtle);
+  }
+  .c-contact-route {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-6);
+    min-block-size: var(--drawer-row-min);
+    padding-block: var(--space-4);
+    border-block-end: var(--border-width) solid var(--color-border-subtle);
+    text-decoration: none;
+  }
+  .c-contact-route__body { display: grid; gap: var(--space-1); }
+  .c-contact-route__label {
+    font-weight: var(--fw-heavy);
+    text-decoration: underline;
+    text-decoration-color: var(--color-link-decoration);
+    text-decoration-thickness: var(--underline-thickness);
+    text-underline-offset: 0.18em;
+  }
+  .c-contact-route__text { font-size: var(--fs-small); color: var(--color-text-muted); }
+  .c-contact-route__icon { color: var(--color-text-brand); transition: translate var(--dur-short) var(--ease-out); }
+  .c-contact-route:hover { --underline-thickness: 2px; }
+  .c-contact-route:hover .c-contact-route__icon,
+  .c-contact-route:focus-visible .c-contact-route__icon { translate: var(--space-2) 0; }
+  @media (prefers-reduced-motion: reduce) {
+    .c-contact-route__icon { transition: none; }
+  }
+}

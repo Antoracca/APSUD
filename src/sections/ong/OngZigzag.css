@@ -1,0 +1,12 @@
+/* Qui sommes-nous — zigzag (même rythme que « Notre façon de travailler » de l'accueil) */
+@layer components {
+  .c-ong-zigzag {
+    margin-block: var(--space-section);
+  }
+  .c-ong-zigzag__title {
+    margin: 0 0 var(--space-12);
+    font-size: var(--fs-h2);
+    line-height: var(--lh-heading);
+  }
+  /* L’écart entre rangées est porté par SideBySide (margin-block-end) */
+}

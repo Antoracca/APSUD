@@ -1,0 +1,25 @@
+---
+/**
+ * /agir/partenariat — modalités de collaboration (Prosper /partners « Ways to partner » :
+ * H2 centré + boîtes 3 colonnes). Exemples tirés des projets réels (agirData.modalities).
+ * Innovation APSUD : les boîtes sont posées en escalier (marches du pied de page), chaque
+ * boîte un cran plus bas que la précédente à partir de 60em.
+ */
+import { modalities } from './agirData';
+import './PartnerModalities.css';
+---
+
+<section class="c-partner-modes l-section" aria-labelledby="partner-modes-title">
+  <div class="l-constrain">
+    <h2 id="partner-modes-title" class="c-partner-modes__title" data-reveal>Comment collaborer</h2>
+    <ol class="c-partner-modes__grid" role="list">
+      {modalities.map((m, i) => (
+        <li class="c-partner-mode" data-reveal data-reveal-delay={String(i * 150)} style={`--_step: ${i}`}>
+          <span class="c-partner-mode__num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+          <h3 class="c-partner-mode__title">{m.title}</h3>
+          <p class="c-partner-mode__text">{m.text}</p>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>

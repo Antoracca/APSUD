@@ -1,0 +1,69 @@
+/* Liste d'offres (carrières, appels d'offres) */
+@layer components {
+  .c-offers {
+    padding-block: var(--space-section);
+  }
+
+  .c-offers__head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-2) var(--space-8);
+    margin-block-end: var(--space-8);
+  }
+  .c-offers__title {
+    font-size: var(--fs-h2);
+    line-height: var(--lh-heading);
+  }
+  .c-offers__count {
+    display: inline-flex;
+    align-items: baseline;
+    gap: var(--space-2);
+    font-size: var(--fs-small);
+    font-weight: var(--fw-semibold);
+    color: var(--color-text-muted);
+  }
+  .c-offers__count-num {
+    font-family: var(--font-condensed);
+    font-stretch: var(--font-stretch-condensed);
+    font-weight: var(--fw-heavy);
+    font-size: var(--fs-h4);
+    color: var(--color-text-brand);
+  }
+
+  /* Archive repliée */
+  .c-offers__archive { margin-block-start: var(--space-10); }
+  .c-offers__archive-summary {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    min-block-size: var(--tap-min);
+    font-weight: var(--fw-bold);
+    cursor: pointer;
+    list-style: none;
+  }
+  .c-offers__archive-summary::-webkit-details-marker { display: none; }
+  .c-offers__archive-chevron { transition: rotate var(--dur-short) var(--ease-out); }
+  .c-offers__archive[open] .c-offers__archive-chevron { rotate: 180deg; }
+
+  /* Encadré de vigilance : Soleil 100, filet gauche Soleil 800 (DESIGN §5.7 n° 5) */
+  .c-offers__notice {
+    display: grid;
+    gap: var(--space-2);
+    max-inline-size: var(--measure-text);
+    margin-block-start: var(--space-12);
+    padding: var(--space-6) var(--space-8);
+    border-inline-start: var(--space-1) solid var(--color-warning-text);
+    background: var(--color-warning-bg);
+  }
+  .c-offers__notice-title {
+    font-size: var(--fs-h6);
+    line-height: var(--lh-snug);
+  }
+  .c-offers__notice a { font-weight: var(--fw-semibold); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .c-offers__archive-chevron { transition: none; }
+  }
+}

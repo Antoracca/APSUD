@@ -1,0 +1,34 @@
+---
+/**
+ * Sous-pages de « Qui sommes-nous » dont le contenu n'est pas encore fourni par APSUD
+ * (équipe, rapports) : état vide honnête (EmptyState) + colonne « Voir aussi ».
+ * On n'invente ni noms, ni fonctions, ni documents : on le dit et on propose le contact.
+ * Slot par défaut : contenu réel disponible au-dessus de l'état vide (citation d'une valeur…).
+ */
+import EmptyState from '../../components/ui/EmptyState.astro';
+import ArrowLink from '../../components/ui/ArrowLink.astro';
+import './OngPending.css';
+
+interface Props {
+  empty: { title: string; text: string; icon: string };
+  related: { label: string; href: string }[];
+}
+const { empty, related } = Astro.props;
+---
+
+<section class="c-ong-pending" aria-label="Contenu en préparation">
+  <div class="l-constrain l-constrain--media">
+    {Astro.slots.has('default') && <div class="c-ong-pending__lead"><slot /></div>}
+    <div class="c-ong-pending__grid">
+      <EmptyState title={empty.title} text={empty.text} icon={empty.icon} align="start" class="c-ong-pending__empty" />
+      <nav class="c-ong-pending__aside" aria-labelledby="ong-pending-related">
+        <h2 id="ong-pending-related" class="c-ong-pending__aside-title">Voir aussi</h2>
+        <ul class="c-ong-pending__links" role="list">
+          {related.map((l) => (
+            <li><ArrowLink href={l.href}>{l.label}</ArrowLink></li>
+          ))}
+        </ul>
+      </nav>
+    </div>
+  </div>
+</section>

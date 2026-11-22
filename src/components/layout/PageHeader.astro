@@ -1,0 +1,89 @@
+---
+/**
+ * En-tête de page interne — Prosper `l-preface` + `c-page-title` (DESIGN.md §4.7, STRUCTURE §4.2).
+ *
+ *  - `standard` (gabarit B) : fil d'Ariane → H1 grand, aligné à gauche dans la mesure « média »
+ *    (996 px, 10 colonnes) → chapeau facultatif → photo 16:9 pleine largeur + légende-cartouche.
+ *  - `text` (gabarit C) : H1 sur 7 colonnes, calé sur la colonne de lecture (690 px), sans image.
+ *  - `compact` : H1 au gabarit h2, marges réduites (sous-pages, listes).
+ *
+ * Slots : `eyebrow` (sur-titre, ex. badge de statut au-dessus du H1), `meta` (date de mise à jour…),
+ * défaut (contenu libre sous le chapeau, ex. boutons).
+ * Innovation APSUD (CSS seul, coupée si « animations réduites ») : le H1 monte derrière un masque
+ * et la photo s'ouvre par volet depuis le bas, comme les cartes projets de l'accueil.
+ */
+import { Picture } from 'astro:assets';
+import Breadcrumb, { type Crumb } from './Breadcrumb.astro';
+import CaptionImage from '../ui/CaptionImage.astro';
+import { getImage } from '../../lib/images';
+import './PageHeader.css';
+
+interface Props {
+  title: string;
+  intro?: string;
+  /** Chemin `assets/...` (src/lib/images.ts) */
+  image?: string;
+  imageAlt?: string;
+  caption?: string;
+  credit?: string;
+  breadcrumb?: Crumb[];
+  variant?: 'standard' | 'text' | 'compact';
+  /** id du H1 (pour aria-labelledby) */
+  id?: string;
+  class?: string;
+}
+
+const {
+  title,
+  intro,
+  image,
+  imageAlt = '',
+  caption,
+  credit,
+  breadcrumb,
+  variant = 'standard',
+  id = 'page-title',
+  class: className,
+} = Astro.props;
+
+const showImage = variant !== 'text' && !!image;
+const measure = variant === 'text' ? 'l-constrain--text' : 'l-constrain--media';
+const plain = showImage && !caption ? getImage(image!) : null;
+---
+
+<header class:list={['c-page-header', `c-page-header--${variant}`, { 'c-page-header--has-media': showImage }, className]}>
+  <div class:list={['l-constrain', measure, 'c-page-header__inner']}>
+    {breadcrumb && breadcrumb.length > 0 && <Breadcrumb items={breadcrumb} class="c-page-header__breadcrumb" />}
+    {Astro.slots.has('eyebrow') && <div class="c-page-header__eyebrow"><slot name="eyebrow" /></div>}
+    <h1 id={id} class="c-page-header__title"><span class="c-page-header__title-line">{title}</span></h1>
+    {intro && <p class="c-page-header__intro">{intro}</p>}
+    {Astro.slots.has('meta') && <div class="c-page-header__meta"><slot name="meta" /></div>}
+    {Astro.slots.has('default') && <div class="c-page-header__extra"><slot /></div>}
+  </div>
+
+  {showImage && (
+    <div class="c-page-header__media">
+      {caption ? (
+        <CaptionImage
+          src={image!}
+          alt={imageAlt}
+          caption={caption}
+          credit={credit}
+          loading="eager"
+          sizes="(min-width: 100em) 100rem, 100vw"
+        />
+      ) : (
+        <Picture
+          src={plain!}
+          alt={imageAlt}
+          formats={['avif', 'webp']}
+          widths={[480, 768, 1024, 1440, 1920].filter((w) => w <= plain!.width)}
+          sizes="(min-width: 100em) 100rem, 100vw"
+          loading="eager"
+          fetchpriority="high"
+          class="c-page-header__img"
+        />
+      )}
+    </div>
+  )}
+</header>

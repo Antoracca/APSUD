@@ -1,0 +1,63 @@
+---
+/**
+ * /agir — « Agir avec nous », hub de toutes les façons d'aider (Prosper « How to help »,
+ * PROSPER_STRUCTURE §5.13, gabarit A) : hero photo + bloc → double CTA don / partenariat
+ * → boîtes des façons d'agir → côte-à-côte « ONG et bailleurs » → contact.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AgirHero from '../../sections/agir/AgirHero.astro';
+import AgirWays from '../../sections/agir/AgirWays.astro';
+import CtaTwoUp from '../../components/ui/CtaTwoUp.astro';
+import SideBySide from '../../components/ui/SideBySide.astro';
+import { facts, projectPhoto } from '../../sections/agir/agirData';
+
+const parsoc = projectPhoto('projet-parsoc-lancement-officiel-bangui-01.jpg');
+---
+
+<BaseLayout
+  title="Agir avec nous"
+  description="Faire un don, devenir partenaire, rejoindre l’équipe ou répondre à un appel d’offres : toutes les façons d’agir avec APSUD, ONG nationale centrafricaine."
+>
+  <AgirHero />
+
+  <CtaTwoUp
+    id="agir-duo-title"
+    theme="t-blanc"
+    title="Soutenir l’action d’APSUD"
+    primary={{
+      title: 'Financer le terrain',
+      text: 'Un don aide nos équipes à intervenir là où les besoins sont les plus forts : eau, hygiène, revenus, protection.',
+      cta: { label: 'Faire un don', href: '/faire-un-don' },
+    }}
+    secondary={{
+      title: 'Mettre en œuvre ensemble',
+      text: `Bailleurs, agences des Nations unies, ONG internationales : ${facts.projets} projets publiés, dans ${facts.prefectures} préfectures${facts.bangui ? ' et à Bangui' : ''}.`,
+      cta: { label: 'Devenir partenaire', href: '/agir/partenariat' },
+    }}
+  />
+
+  <AgirWays />
+
+  <section class="l-section t-coton" aria-labelledby="agir-ong-title">
+    <div class="l-constrain">
+      <h2 id="agir-ong-title" class="u-visually-hidden">ONG et bailleurs</h2>
+      <SideBySide
+        image={parsoc.src}
+        imageAlt={parsoc.alt}
+        title="ONG et bailleurs : collaborer avec APSUD"
+        text="Mise en œuvre de programmes, consortium avec une ONG internationale, renforcement d’organisations locales : APSUD apporte sa connaissance du terrain centrafricain et sa pratique des procédures des bailleurs."
+        link={{ label: 'Découvrir le partenariat', href: '/agir/partenariat' }}
+        framed
+      />
+    </div>
+  </section>
+
+  <CtaTwoUp
+    id="agir-contact-title"
+    primary={{
+      title: 'Une question avant d’agir ?',
+      text: 'L’équipe d’APSUD vous répond et vous oriente vers la bonne personne.',
+      cta: { label: 'Nous contacter', href: '/contact' },
+    }}
+  />
+</BaseLayout>

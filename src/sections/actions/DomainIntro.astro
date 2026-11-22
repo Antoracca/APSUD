@@ -1,0 +1,42 @@
+---
+/**
+ * Page domaine §2 — Chapeau (Prosper : texte d'introduction dans la colonne de 690 px sous la photo).
+ * Intitulé officiel et détail du domaine (organisation.json), puis l'objectif spécifique d'APSUD
+ * rattaché à ce domaine (ancien site, à faire valider), en encart à filet Soleil.
+ */
+import Prose from '../../components/ui/Prose.astro';
+import { domainObjective, domainStats, type Domaine } from './actionsData';
+import './DomainIntro.css';
+
+interface Props {
+  domain: Domaine;
+}
+const { domain: d } = Astro.props;
+const objectif = domainObjective(d.slug);
+const s = domainStats(d.slug);
+const n = (k: number, one: string, many: string) => `${k} ${k > 1 ? many : one}`;
+/* Phrase-bilan calculée depuis les fiches projets (aucun chiffre saisi à la main) */
+const when = s.periode?.includes('–') ? `De ${s.periode.replace('–', ' à ')}` : s.periode ? `En ${s.periode}` : 'À ce jour';
+const bilan = `${when}, APSUD a conduit ${n(s.projets, 'projet', 'projets')} dans ce domaine, dans ${n(s.prefectures.length, 'préfecture', 'préfectures')} de la République centrafricaine${s.enCours ? `, dont ${n(s.enCours, 'projet toujours en cours', 'projets toujours en cours')}` : ''}.`;
+---
+
+<section class="c-domain-intro" aria-label="Présentation du domaine">
+  <Prose lead>
+    <p data-reveal>{d.intro}</p>
+    <p data-reveal>{bilan}</p>
+    {!d.officiel && (
+      <p data-reveal>
+        Cet axe de travail réunit les projets récents d’APSUD consacrés au renforcement des organisations
+        locales et à la localisation de l’aide.
+      </p>
+    )}
+  </Prose>
+  {objectif && (
+    <div class="l-constrain l-constrain--text">
+      <p class="c-domain-intro__goal" data-reveal>
+        <span class="c-domain-intro__goal-label">Notre objectif</span>
+        <span class="c-domain-intro__goal-text">{objectif}.</span>
+      </p>
+    </div>
+  )}
+</section>

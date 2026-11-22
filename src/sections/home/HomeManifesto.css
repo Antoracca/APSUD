@@ -1,0 +1,176 @@
+/* Manifeste + chiffres clés — Prosper `.c-quick-stats` / `.c-stat` (styles.css), DESIGN.md §4.15 */
+@layer components {
+  .c-stats {
+    overflow: clip;   /* la goutte arrive du bas gauche, hors champ : la section la coupe */
+  }
+  .c-stats__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-12);
+    max-inline-size: var(--container-wide);
+    margin-inline: auto;
+  }
+
+  /* ---------- La phrase-manifeste ---------- */
+  /* Rendu réel de Prosper (animations/prosper-chiffres/frame-00) : « Prosper Sans Headline » en
+     graisse normale, à peine resserrée, très grande, interligne 1. Avec Mona Sans : largeur 95 %, graisse 400. */
+  .c-stats__statement {
+    max-inline-size: 90%;
+    padding-block-start: var(--space-16);
+    color: var(--color-heading);
+    font-family: var(--font-headline);
+    font-size: var(--fs-display);
+    font-stretch: var(--font-stretch-manifesto);
+    font-weight: var(--fw-manifesto);
+    line-height: var(--lh-tight);
+    letter-spacing: var(--ls-manifesto);
+    text-wrap: pretty;
+  }
+
+  /* Chiffres : grands et légers (Prosper .c-stat__stat, graisse normale, largeur normale) */
+  .c-stats__number {
+    font-family: var(--font-headline);
+    font-stretch: var(--font-stretch-stat);
+    font-weight: var(--fw-stat-light);
+    letter-spacing: var(--ls-manifesto);
+  }
+
+  /* ---------- Grille [goutte | panneau] (mobile) → [goutte | marche | panneau] (≥ 30em) ---------- */
+  .c-stats__content {
+    display: grid;
+    grid-template-columns: max-content minmax(0, var(--stats-panel-w-sm));
+    justify-content: end;
+    align-items: end;
+    inline-size: 100%;
+  }
+
+  .c-stats__drop {
+    grid-column: 1;
+    grid-row: 1;
+    inline-size: var(--stats-drop-w-sm);
+    padding-block-end: var(--seal-line-w);   /* le liseré du sceau ne doit pas être rogné par le bas de la section */
+  }
+
+  .c-stats__step { display: none; }
+
+  .c-stats__panel {
+    grid-column: 2;
+    grid-row: 1;
+    container-type: inline-size;      /* marges et écarts suivent la largeur réelle du panneau */
+  }
+
+  .c-stats__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-5);
+    padding: var(--space-4);
+  }
+  .c-stats__stat {
+    container-type: inline-size;      /* le chiffre se dimensionne sur SA colonne (cqi) */
+    display: flex;
+    flex-direction: column-reverse;   /* chiffre au-dessus, libellé dessous ; ordre de lecture : libellé puis chiffre */
+    justify-content: start;
+    gap: var(--space-5);
+  }
+  .c-stats__number {
+    margin: 0;
+    color: var(--color-text);
+    /* Jamais plus large que sa colonne : le plus long chiffre (« 250 000 » ≈ 3,8 em) tient dans
+       --stats-number-fit de la colonne ; l'écart de grille entre deux cartes reste donc toujours libre. */
+    font-size: min(var(--fs-stat-panel), var(--stats-number-fit));
+    line-height: var(--lh-quote);
+    font-variant-numeric: lining-nums;   /* chiffres proportionnels, comme Prosper */
+    white-space: nowrap;
+  }
+  .c-stats__label {
+    color: var(--color-text);
+    font-size: var(--fs-body);
+    line-height: var(--lh-quote);
+    text-wrap: pretty;
+  }
+
+  @media (width >= 30em) {
+    .c-stats__content {
+      grid-template-columns:
+        min(22%, var(--stats-drop-w))
+        min(20%, var(--stats-step-w))
+        min(60%, var(--stats-panel-w));
+    }
+    .c-stats__drop { inline-size: 100%; }
+    .c-stats__panel { grid-column: 3; }
+
+    /* La marche : rectangle Pousse pâle collé au panneau, à partir de 28 % de sa hauteur */
+    .c-stats__step {
+      position: relative;
+      display: block;
+      grid-column: 2;
+      grid-row: 1;
+      align-self: stretch;
+    }
+    .c-stats__step::before {
+      content: "";
+      position: absolute;
+      inset: var(--stats-step-gap) 0 0;
+      background: var(--color-surface-tint);
+      transform-origin: 50% 100%;
+    }
+  }
+
+  @media (width >= 48em) {
+    .c-stats__inner { align-items: flex-start; }
+    .c-stats__statement {
+      /* Prosper : 80 %. La mission d'APSUD est ~50 % plus longue que la phrase de Prosper :
+         on lui laisse toute la largeur entre deux marges de 120 px (6 lignes en 1440). */
+      max-inline-size: none;
+      padding-inline-end: var(--space-30);
+      padding-block-start: var(--space-24);
+      padding-inline-start: var(--space-30);
+    }
+    .c-stats__content { padding-inline-start: var(--space-20); }
+    /* Panneau étroit (tablette : ~460 px) : marges et écarts se resserrent avec lui (Prosper : 48 / 64 à 720) */
+    .c-stats__grid {
+      gap: clamp(var(--space-6), var(--stats-gap-fluid), var(--space-12));
+      padding: clamp(var(--space-6), var(--stats-pad-fluid), var(--space-16));
+    }
+  }
+
+  /* ---------- Animation d'entrée (seulement si le mouvement est permis et le JS actif) ---------- */
+  @media (prefers-reduced-motion: no-preference) {
+    .js-reveal .c-stats__drop {
+      translate: var(--stats-drop-from);
+    }
+    @media (width >= 30em) {
+      .js-reveal .c-stats__drop { translate: var(--stats-drop-from-lg); }
+    }
+    .js-reveal .c-stats__drop {
+      transition: translate var(--dur-signature) var(--ease-out) var(--delay-signature);
+    }
+    .js-reveal .c-stats__step::before {
+      scale: 1 0;
+      transition: scale var(--dur-signature) var(--ease-out) var(--delay-signature);
+    }
+    .js-reveal .c-stats__content.is-inview .c-stats__drop { translate: 0 0; }
+    .js-reveal .c-stats__content.is-inview .c-stats__step::before { scale: 1 1; }
+  }
+
+  /* ---------- Innovation : la phrase s'encre mot à mot au fil du défilement ----------
+     Chaque mot a sa propre timeline de vue ; sa plage est décalée de --manifesto-ink-step × rang,
+     d'où un balayage gauche → droite dans chaque ligne. Repli (sans support / mouvement réduit) :
+     texte plein, aucune différence de mise en page. */
+  @supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+      .c-stats__word {
+        animation: c-stats-ink linear both;
+        animation-timeline: view();
+        animation-range:
+          cover calc(var(--i, 0) * var(--manifesto-ink-step))
+          cover calc(30% + var(--i, 0) * var(--manifesto-ink-step));
+      }
+    }
+  }
+  @keyframes c-stats-ink {
+    from { color: var(--manifesto-ink-from); }
+    to   { color: var(--color-heading); }
+  }
+}

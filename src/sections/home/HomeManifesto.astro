@@ -1,0 +1,83 @@
+---
+/**
+ * Accueil · section 2 — Manifeste + chiffres clés (Prosper `.c-quick-stats`, DESIGN.md §4.15).
+ *
+ *  - Fond Coton ; la mission en une très grande phrase en coupe Headline LÉGÈRE (graisse normale,
+ *    presque pas condensée, interligne 1), comme le rendu réel de Prosper. Ce n'est pas un titre :
+ *    le h2 de la section est masqué (« APSUD en chiffres »).
+ *  - Innovation : chaque mot passe de l'encre pâle à l'encre pleine au fil du défilement
+ *    (animation-timeline: view(), balayage gauche → droite). Navigateur sans cette propriété,
+ *    « animations réduites » ou sans JS : texte plein d'emblée.
+ *  - Grille [goutte-feuille | marche | panneau] calée à droite : la goutte-feuille géante (vert APSUD)
+ *    joue le rôle du chevron « Amara » de Prosper, la marche Pousse pâle monte derrière, le panneau
+ *    Pousse contient les 4 chiffres en 2 colonnes.
+ *  - Animation (src/scripts/counters.ts) : à l'entrée dans l'écran, la goutte glisse en place,
+ *    la marche grandit depuis le bas, puis les compteurs montent de 0 à leur valeur (fr-FR, cascade).
+ *  - Innovation (2026-11-22) : la goutte est un « sceau » (LeafSeal.astro). Son contour se trace
+ *    pendant le glissement, le symbole et le sigle APSUD l'accompagnent à gauche, puis s'y posent ;
+ *    une onde blanche remplit la forme et le logo ressort sur blanc, liseré de vert.
+ *  - Chiffres : taille calée sur la largeur de leur colonne (unités cqi) pour que « 250 000 » ne
+ *    déborde jamais sur le chiffre voisin, à toutes les largeurs.
+ *    Sans JS ou en mouvement réduit : tout est affiché à l'état final (valeurs dans le HTML).
+ */
+import LeafSeal from '../../components/ui/LeafSeal.astro';
+import { manifesto } from '../../data/home';
+import './HomeManifesto.css';
+
+type Stat = (typeof manifesto.stats)[number] & { prefix?: string };
+
+/* fr-FR sépare les milliers par une espace fine insécable (U+202F), presque invisible en Titre 800 :
+   on prend l'espace insécable normale (U+00A0), plus lisible à cette taille (« 250 000 »). */
+const nf = new Intl.NumberFormat('fr-FR');
+const formatFr = (n: number) => nf.format(n).replace(/ /g, ' ');
+const stats = manifesto.stats as Stat[];
+
+/* Mots de la phrase-manifeste (l'espace est gardée dans le texte : lecture d'écran intacte) */
+const words = manifesto.statement.split(/[ \t\n]+/).filter(Boolean);
+---
+
+<section class="c-stats t-coton" aria-labelledby="stats-title">
+  <div class="c-stats__inner">
+    <h2 id="stats-title" class="u-visually-hidden">APSUD en chiffres</h2>
+    <p class="c-stats__statement">
+      {words.map((w, i) => (
+        <><span class="c-stats__word" style={`--i: ${i}`}>{w}</span>{i < words.length - 1 && ' '}</>
+      ))}
+    </p>
+
+    <div class="c-stats__content" data-stats>
+      <div class="c-stats__drop">
+        <LeafSeal />
+      </div>
+      <div class="c-stats__step" aria-hidden="true"></div>
+
+      <div class="c-stats__panel t-pousse">
+        <dl class="c-stats__grid">
+          {stats.map((s, i) => {
+            const final = `${s.prefix ?? ''}${formatFr(s.value)}${s.suffix}`;
+            return (
+              <div class="c-stats__stat">
+                <dt class="c-stats__label">{s.label}</dt>
+                <dd class="c-stats__number">
+                  <span
+                    class="c-stats__value"
+                    aria-hidden="true"
+                    data-count={s.value}
+                    data-prefix={s.prefix ?? ''}
+                    data-suffix={s.suffix}
+                    data-index={i}
+                  >{final}</span>
+                  <span class="u-visually-hidden">{final}</span>
+                </dd>
+              </div>
+            );
+          })}
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import '../../scripts/counters';
+</script>

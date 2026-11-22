@@ -1,0 +1,61 @@
+---
+/**
+ * /projets/<slug> — fiche projet (équivalent des pages programme / article de Prosper).
+ * En-tête (fil d'Ariane, badge de statut + domaines, H1, résumé, photo 16:9 légendée)
+ * → bandeau de métadonnées → Points clés + carte de situation → objectifs → galerie en
+ * diptyques → activités et résultats → bailleurs (logos) → projets liés → double CTA.
+ * Toutes les données viennent de src/data/projects.ts (data/apsud/projets.json).
+ */
+import type { GetStaticPaths } from 'astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/layout/PageHeader.astro';
+import CtaTwoUp from '../../components/ui/CtaTwoUp.astro';
+import { getProjects, type Projet } from '../../data/projects';
+import { getDomain } from '../../data/domains';
+import { ctaTwoUp } from '../../data/home';
+import ProjetStatut from '../../sections/projets/ProjetStatut.astro';
+import ProjetMeta from '../../sections/projets/ProjetMeta.astro';
+import ProjetEssentiel from '../../sections/projets/ProjetEssentiel.astro';
+import ProjetContenu from '../../sections/projets/ProjetContenu.astro';
+import ProjetGalerie from '../../sections/projets/ProjetGalerie.astro';
+import ProjetBailleurs from '../../sections/projets/ProjetBailleurs.astro';
+import ProjetLies from '../../sections/projets/ProjetLies.astro';
+
+export const getStaticPaths = (() =>
+  getProjects().map((projet) => ({ params: { slug: projet.slug }, props: { projet } }))) satisfies GetStaticPaths;
+
+interface Props {
+  projet: Projet;
+}
+
+const { projet: p } = Astro.props;
+const [hero, ...autres] = p.images;
+const domaines = p.domaines.map(getDomain).filter((d) => d !== undefined);
+const description = (p.resume || p.titre).slice(0, 300);
+---
+
+<BaseLayout title={p.titreCourt} description={description}>
+  <PageHeader
+    variant="standard"
+    class="c-projet-header"
+    title={p.titreCourt}
+    intro={p.resume}
+    image={hero?.src}
+    imageAlt={hero?.alt}
+    caption={hero?.legende ?? undefined}
+    breadcrumb={[{ label: 'Nos projets', href: '/projets' }, { label: p.titreCourt }]}
+  >
+    <ProjetStatut slot="eyebrow" projet={p} domaines={domaines} />
+    {p.titre !== p.titreCourt && <p slot="meta">Intitulé officiel : {p.titre}</p>}
+  </PageHeader>
+
+  <ProjetMeta projet={p} />
+  <ProjetEssentiel projet={p} />
+  <ProjetContenu projet={p} part="objectifs" />
+  <ProjetGalerie images={autres} titre={p.titreCourt} />
+  <ProjetContenu projet={p} part="actions" />
+  <ProjetBailleurs projet={p} />
+  <ProjetLies projet={p} />
+
+  <CtaTwoUp primary={ctaTwoUp.primary} secondary={ctaTwoUp.secondary} />
+</BaseLayout>

@@ -1,0 +1,73 @@
+/* /cookies — état en direct des choix + bouton du panneau de préférences */
+@layer components {
+  .c-cookie-choices {
+    display: grid;
+    gap: var(--space-4);
+    padding: var(--space-6);
+    background: var(--color-surface-soft);
+    border-block-start: var(--border-width-strong) solid var(--color-brand);
+  }
+  .c-cookie-choices__title {
+    font-size: var(--fs-h6);
+    font-weight: var(--fw-bold);
+    line-height: var(--lh-snug);
+  }
+  .c-cookie-choices__list { display: grid; }
+  .c-cookie-choices__item {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-2) var(--space-4);
+    padding-block: var(--space-3);
+    border-block-end: var(--border-width) solid var(--color-border-subtle);
+  }
+  /* Neutralise la puce goutte-feuille de Prose : la liste est un tableau de bord */
+  .c-cookie-choices__item::before,
+  .c-prose .c-cookie-choices__item::before { content: none; }
+  .c-prose .c-cookie-choices__item { padding-inline-start: 0; margin-block-start: 0; }
+  .c-cookie-choices__name { font-weight: var(--fw-semibold); }
+
+  .c-cookie-choices__state {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-control);
+    font-size: var(--fs-small);
+    font-weight: var(--fw-bold);
+    background: var(--color-status-closed-bg);
+    color: var(--color-status-closed-text);
+    transition: background-color var(--dur-short) var(--ease-out), color var(--dur-short) var(--ease-out);
+  }
+  /* Pastille en goutte-feuille devant l'état */
+  .c-cookie-choices__state::before {
+    content: "";
+    inline-size: var(--leaf-drop-xs);
+    block-size: var(--leaf-drop-xs);
+    border-radius: var(--radius-goutte);
+    background: currentColor;
+  }
+  .c-cookie-choices__state[data-state="on"] {
+    background: var(--color-status-done-bg);
+    color: var(--color-status-done-text);
+  }
+  .c-cookie-choices__state[data-state="off"] {
+    background: var(--color-error-bg);
+    color: var(--color-error);
+  }
+
+  .c-cookie-choices__date {
+    font-size: var(--fs-small);
+    color: var(--color-text-muted);
+  }
+  .c-cookie-choices__nojs {
+    font-size: var(--fs-small);
+    color: var(--color-text-muted);
+  }
+  :root.js .c-cookie-choices__nojs { display: none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .c-cookie-choices__state { transition: none; }
+  }
+}

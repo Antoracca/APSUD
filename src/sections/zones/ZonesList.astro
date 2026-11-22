@@ -1,0 +1,137 @@
+---
+/**
+ * /nos-zones — liste des zones, préfecture par préfecture (Prosper /where-we-work §4 :
+ * « liste des pays par région », ancres utilisées par le méga-menu).
+ *
+ * Disposition : sommaire collant à gauche (préfecture + nombre de projets), fiches de zone à droite.
+ * Chaque fiche porte l'ancre du méga-menu (#bangui, #ombella-mpoko, #ouaka, #haute-kotto…).
+ *
+ * Innovations APSUD (CSS natif, coupées si « animations réduites ») :
+ *  - la zone visée par l'ancre (:target) reçoit un filet Soleil qui se dessine de haut en bas ;
+ *  - le sommaire suit la lecture (lien courant souligné, IntersectionObserver, sans dépendance) ;
+ *  - lignes de projet : la flèche glisse et le fond Coton se pose au survol / focus.
+ * Sans JS : sommaire et ancres fonctionnent, seule la mise en évidence du lien courant manque.
+ */
+import Icon from '../../components/ui/Icon.astro';
+import EmptyState from '../../components/ui/EmptyState.astro';
+import { plural } from '../../data/zones';
+import { zoneEntries } from './zonesData';
+import './ZonesList.css';
+
+const count = (n: number) => plural(n, 'projet', 'projets');
+---
+
+<section class="c-zones-list l-section" aria-labelledby="zones-list-title" data-zones-list>
+  <div class="l-constrain">
+    <header class="c-zones-list__head" data-reveal>
+      <h2 id="zones-list-title" class="c-zones-list__title">Zone par zone</h2>
+      <p class="c-zones-list__lead">
+        Les préfectures où APSUD a mené ou mène un projet, et les projets qui y sont documentés. Cette liste
+        s’enrichit au fil de nos interventions.
+      </p>
+    </header>
+
+    <div class="c-zones-list__layout">
+      <nav class="c-zones-list__index" aria-label="Aller à une zone">
+        <p class="c-zones-list__index-title" aria-hidden="true">Préfectures</p>
+        <ol class="c-zones-list__index-list" role="list">
+          {zoneEntries.map((z) => (
+            <li>
+              <a class="c-zones-list__index-link" href={`#${z.anchor}`} data-index-link={z.anchor}>
+                <span class:list={['c-zones-list__index-dot', `c-zones-list__index-dot--${z.status}`]} aria-hidden="true"></span>
+                <span class="c-zones-list__index-name">{z.nom}</span>
+                <span class="c-zones-list__index-count">
+                  {z.projets.length}
+                  <span class="u-visually-hidden"> {z.projets.length > 1 ? 'projets' : 'projet'}</span>
+                </span>
+              </a>
+            </li>
+          ))}
+        </ol>
+      </nav>
+
+      <div class="c-zones-list__entries">
+        {zoneEntries.map((z) => (
+          <article class="c-zone-entry" id={z.anchor} aria-labelledby={`${z.anchor}-titre`} data-zone-entry>
+            <header class="c-zone-entry__head">
+              <p class="c-zone-entry__overline">
+                <Icon name={z.type === 'Capitale' ? 'localisation-rca' : 'map-pin'} size="sm" />
+                {z.type}
+                {z.declaree && <span class="c-zone-entry__flag">Zone d’intervention déclarée</span>}
+              </p>
+              <h3 id={`${z.anchor}-titre`} class="c-zone-entry__name">{z.nom}</h3>
+              {z.localites.length > 0 && (
+                <p class="c-zone-entry__places">
+                  <span class="c-zone-entry__places-label">Localités&nbsp;:</span> {z.localites.join(', ')}
+                </p>
+              )}
+              {z.projets.length > 0 && (
+                <dl class="c-zone-entry__stats">
+                  <div class="c-zone-entry__stat c-zone-entry__stat--ongoing">
+                    <dt>En cours</dt>
+                    <dd>{z.enCours}</dd>
+                  </div>
+                  <div class="c-zone-entry__stat c-zone-entry__stat--done">
+                    <dt>{z.realises > 1 ? 'Réalisés' : 'Réalisé'}</dt>
+                    <dd>{z.realises}</dd>
+                  </div>
+                </dl>
+              )}
+            </header>
+
+            {z.projets.length > 0 ? (
+              <ul class="c-zone-entry__projects" role="list" aria-label={`${count(z.projets.length)} en ${z.nom}`}>
+                {z.projets.map((p) => (
+                  <li>
+                    <a class="c-zone-entry__project" href={`/projets/${p.slug}`}>
+                      <span class:list={['c-zone-entry__status', `c-zone-entry__status--${p.statut}`]}>{p.statutLibelle}</span>
+                      <span class="c-zone-entry__project-body">
+                        <span class="c-zone-entry__project-title">{p.titre}</span>
+                        <span class="c-zone-entry__project-meta">
+                          {[p.annees, p.domaine, p.bailleurs.length ? `Financement : ${p.bailleurs.join(', ')}` : null]
+                            .filter(Boolean)
+                            .join(' · ')}
+                        </span>
+                      </span>
+                      <Icon name="arrow-right" class="c-zone-entry__arrow" />
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <EmptyState
+                class="c-zone-entry__empty"
+                tone="plain"
+                align="start"
+                headingLevel="h4"
+                icon="map-pin"
+                title="Aucun projet publié pour l’instant"
+                text={`APSUD cite ${z.nom === 'Haute-Kotto' ? 'la Haute-Kotto (Bria)' : z.nom} parmi ses zones d’intervention. Les projets qui y ont été menés seront présentés ici dès que leur fiche sera disponible.`}
+              />
+            )}
+          </article>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  /* Sommaire : souligne la zone en cours de lecture (amélioration progressive). */
+  const root = document.querySelector<HTMLElement>('[data-zones-list]');
+  if (root && 'IntersectionObserver' in window) {
+    const links = new Map(
+      [...root.querySelectorAll<HTMLAnchorElement>('[data-index-link]')].map((a) => [a.dataset.indexLink!, a]),
+    );
+    const setCurrent = (id: string) =>
+      links.forEach((a, key) => (key === id ? a.setAttribute('aria-current', 'location') : a.removeAttribute('aria-current')));
+    const io = new IntersectionObserver(
+      (entries) => {
+        const visible = entries.filter((e) => e.isIntersecting).sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+        if (visible[0]) setCurrent((visible[0].target as HTMLElement).id);
+      },
+      { rootMargin: '-25% 0px -60% 0px' },
+    );
+    root.querySelectorAll<HTMLElement>('[data-zone-entry]').forEach((el) => io.observe(el));
+  }
+</script>

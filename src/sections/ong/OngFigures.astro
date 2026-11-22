@@ -1,0 +1,67 @@
+---
+/**
+ * Qui sommes-nous §7 — Chiffres clés : même composition que le manifeste de l'accueil
+ * (Prosper `.c-quick-stats`) — grande phrase qui s'encre mot à mot au défilement, goutte-feuille
+ * géante, marche Pousse pâle et panneau des 4 compteurs (src/scripts/counters.ts).
+ * On réutilise tel quel le style de l'accueil (HomeManifesto.css) : une seule source de vérité.
+ * Phrase propre à cette page (ong.ts) ; chiffres identiques à l'accueil (⚠ à valider par APSUD).
+ */
+import LeafDrop from '../../components/ui/LeafDrop.astro';
+import { figures } from './ong';
+import '../home/HomeManifesto.css';
+import './OngFigures.css';
+
+type Stat = (typeof figures.stats)[number] & { prefix?: string };
+
+/* Espace insécable normale pour les milliers (comme l'accueil : plus lisible à cette taille) */
+const nf = new Intl.NumberFormat('fr-FR');
+const formatFr = (n: number) => nf.format(n).replace(/ /g, ' ');
+const stats = figures.stats as Stat[];
+const words = figures.statement.split(/[ \t\n]+/).filter(Boolean);
+---
+
+<section class="c-stats c-ong-figures t-coton" aria-labelledby="ong-figures-title">
+  <div class="c-stats__inner">
+    <h2 id="ong-figures-title" class="u-visually-hidden">APSUD en chiffres</h2>
+    <p class="c-stats__statement">
+      {words.map((w, i) => (
+        <><span class="c-stats__word" style={`--i: ${i}`}>{w}</span>{i < words.length - 1 && ' '}</>
+      ))}
+    </p>
+
+    <div class="c-stats__content" data-stats>
+      <div class="c-stats__drop">
+        <LeafDrop shape="cap" size="fill" color="brand" />
+      </div>
+      <div class="c-stats__step" aria-hidden="true"></div>
+
+      <div class="c-stats__panel t-pousse">
+        <dl class="c-stats__grid">
+          {stats.map((s, i) => {
+            const final = `${s.prefix ?? ''}${formatFr(s.value)}${s.suffix}`;
+            return (
+              <div class="c-stats__stat">
+                <dt class="c-stats__label">{s.label}</dt>
+                <dd class="c-stats__number">
+                  <span
+                    class="c-stats__value"
+                    aria-hidden="true"
+                    data-count={s.value}
+                    data-prefix={s.prefix ?? ''}
+                    data-suffix={s.suffix}
+                    data-index={i}
+                  >{final}</span>
+                  <span class="u-visually-hidden">{final}</span>
+                </dd>
+              </div>
+            );
+          })}
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import '../../scripts/counters';
+</script>

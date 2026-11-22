@@ -1,0 +1,57 @@
+/* Goutte-feuille — DESIGN.md §1.6 a ; rôle du chevron « Amara » (PROSPER_TOKENS §10.2, §13) */
+@layer components {
+  .c-leaf-drop {
+    --_size: var(--leaf-drop-md);
+    --_color: var(--color-brand);
+
+    display: block;
+    flex: none;
+    inline-size: var(--_size);
+    line-height: 0;
+  }
+  .c-leaf-drop__svg {
+    display: block;
+    inline-size: 100%;
+    block-size: auto;
+    overflow: visible;
+    fill: var(--_color);
+  }
+
+  /* Tailles */
+  .c-leaf-drop--xs   { --_size: var(--leaf-drop-xs); }
+  .c-leaf-drop--sm   { --_size: var(--leaf-drop-sm); }
+  .c-leaf-drop--md   { --_size: var(--leaf-drop-md); }
+  .c-leaf-drop--lg   { --_size: var(--leaf-drop-lg); }
+  .c-leaf-drop--fill { --_size: 100%; }
+
+  /* Couleurs (jetons sémantiques uniquement) */
+  .c-leaf-drop--brand     { --_color: var(--color-brand); }
+  .c-leaf-drop--signature { --_color: var(--color-surface-signature); }
+  .c-leaf-drop--tint      { --_color: var(--color-surface-tint); }
+  .c-leaf-drop--accent    { --_color: var(--color-accent); }
+  .c-leaf-drop--strong    { --_color: var(--color-surface-strong); }
+  .c-leaf-drop--soft      { --_color: var(--color-surface-soft); }
+  .c-leaf-drop--current   { --_color: currentColor; }
+
+  /* Angle libre */
+  .c-leaf-drop--rotated .c-leaf-drop__svg { rotate: var(--leaf-drop-rotate, 0deg); }
+
+  /* Glissement d'entrée (chevron Prosper : translateX depuis le bord de page → 0,
+     1,2 s, délai 0,4 s, ease-out). Sans JS ou en mouvement réduit : forme en place. */
+  @media (prefers-reduced-motion: no-preference) {
+    /* neutralise le fondu-montée générique de [data-reveal] (couche utilities) :
+       la forme glisse, elle ne s'estompe pas. */
+    .js-reveal .c-leaf-drop--slide[data-reveal] {
+      opacity: 1 !important;
+      transform: none !important;
+    }
+    .js-reveal .c-leaf-drop--slide .c-leaf-drop__svg {
+      translate: var(--leaf-drop-from, -100vw) 0;
+      transition: translate var(--dur-signature) var(--ease-out) var(--delay-signature);
+    }
+    .js-reveal .c-leaf-drop--slide.is-revealed .c-leaf-drop__svg,
+    .js-reveal .is-revealed .c-leaf-drop--slide .c-leaf-drop__svg {
+      translate: 0 0;
+    }
+  }
+}

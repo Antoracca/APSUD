@@ -1,0 +1,86 @@
+/* Fiche projet — Points clés (Prosper .c-key-takeaways) + carte de situation */
+@layer components {
+  .c-projet-essentiel {
+    display: grid;
+    gap: var(--space-10);
+    margin-block: var(--space-16);
+  }
+  @media (width >= 56em) {
+    .c-projet-essentiel--map {
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+      align-items: start;
+      column-gap: var(--space-12);
+    }
+  }
+
+  .c-key-takeaways {
+    position: relative;
+    padding: var(--space-8);
+    background: var(--color-surface-soft);
+  }
+  /* Filet Vert APSUD au coin haut gauche : signe la boîte comme un résumé */
+  .c-key-takeaways::before {
+    content: "";
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline-start: 0;
+    inline-size: var(--space-16);
+    block-size: var(--space-1);
+    background: var(--color-brand);
+  }
+  .c-key-takeaways__title {
+    margin: 0 0 var(--space-6);
+    font-size: var(--fs-h5);
+    line-height: var(--lh-snug);
+  }
+  .c-key-takeaways__list { display: grid; gap: var(--space-6); margin: 0; }
+  .c-key-takeaways__item dt {
+    margin-block-end: var(--space-2);
+    font-family: var(--font-condensed);
+    font-stretch: var(--font-stretch-condensed);
+    font-size: var(--fs-overline);
+    font-weight: var(--fw-heavy);
+    letter-spacing: var(--ls-overline);
+    text-transform: uppercase;
+    color: var(--color-text-brand);
+  }
+  .c-key-takeaways__item dd { margin: 0; }
+  .c-key-takeaways__item p { margin: 0; }
+  .c-key-takeaways__item ul {
+    display: grid;
+    gap: var(--space-2);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .c-key-takeaways__item li {
+    position: relative;
+    padding-inline-start: var(--space-6);
+    line-height: var(--lh-caption);
+  }
+  .c-key-takeaways__item li::before {
+    content: "";
+    position: absolute;
+    inset-inline-start: 0;
+    inset-block-start: calc(0.7lh - var(--leaf-drop-xs) / 2);
+    inline-size: var(--leaf-drop-xs);
+    block-size: var(--leaf-drop-xs);
+    border-radius: var(--radius-goutte);
+    background: var(--color-brand);
+  }
+  .c-key-takeaways__figure {
+    font-family: var(--font-condensed);
+    font-stretch: var(--font-stretch-condensed);
+    font-size: var(--fs-h4);
+    font-weight: var(--fw-heavy);
+    line-height: var(--lh-tight);
+    font-variant-numeric: tabular-nums;
+  }
+  .c-key-takeaways__note {
+    display: block;
+    margin-block-start: var(--space-1);
+    font-size: var(--fs-caption);
+    color: var(--color-warning-text);
+  }
+  .c-key-takeaways__empty { color: var(--color-text-muted); }
+}

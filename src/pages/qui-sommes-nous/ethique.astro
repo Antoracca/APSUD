@@ -1,0 +1,31 @@
+---
+/**
+ * /qui-sommes-nous/ethique — équivalent de la page « Ethics and policies » de Prosper (§5.18),
+ * en attente : APSUD n'a pas encore publié ses politiques. Citation de la valeur « Respect »
+ * (texte officiel) puis état vide honnête avec contact. Même gabarit que /rapports.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/layout/PageHeader.astro';
+import Prose from '../../components/ui/Prose.astro';
+import CtaTwoUp from '../../components/ui/CtaTwoUp.astro';
+import OngPending from '../../sections/ong/OngPending.astro';
+import { ethicsPage, cta } from '../../sections/ong/ong';
+---
+
+<BaseLayout title={ethicsPage.title} description={ethicsPage.description}>
+  <PageHeader
+    variant="compact"
+    title={ethicsPage.title}
+    intro={ethicsPage.intro}
+    breadcrumb={[{ label: 'Qui sommes-nous', href: '/qui-sommes-nous' }, { label: ethicsPage.title }]}
+  />
+  <OngPending empty={ethicsPage.empty} related={ethicsPage.related}>
+    <Prose contained={false}>
+      <blockquote>
+        <p>{ethicsPage.quote.text}</p>
+        <footer>{ethicsPage.quote.source}</footer>
+      </blockquote>
+    </Prose>
+  </OngPending>
+  <CtaTwoUp primary={cta.primary} secondary={cta.secondary} />
+</BaseLayout>

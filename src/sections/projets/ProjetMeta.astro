@@ -1,0 +1,50 @@
+---
+/**
+ * Fiche projet — bandeau de métadonnées sous la photo d'en-tête (équivalent de la ligne
+ * « date + partage » des articles Prosper, enrichie) : période, lieux, bailleurs, budget,
+ * partenaires de mise en œuvre. Liste de définitions (<dl>) : lisible par les lecteurs d'écran.
+ * Rien n'est inventé : un champ absent n'est pas affiché ; une devise douteuse est signalée.
+ */
+import type { Projet } from '../../data/projects';
+import { donorLabel, isoMois, periode } from './projets';
+import './ProjetMeta.css';
+
+interface Props {
+  projet: Projet;
+}
+
+const { projet: p } = Astro.props;
+interface Item { dt: string; text: string; time?: boolean; note?: string | null }
+const items: Item[] = [
+  { dt: 'Période', text: periode(p), time: true },
+  { dt: p.bailleurs.length > 1 ? 'Bailleurs' : 'Bailleur', text: p.bailleurs.map(donorLabel).join(', ') },
+  { dt: 'Budget', text: p.budget?.texte ?? '', note: p.budget?.aVerifier ? 'Devise à confirmer' : null },
+  { dt: 'Mise en œuvre', text: p.partenaires.length ? `APSUD avec ${p.partenaires.join(', ')}` : '' },
+].filter((i) => i.text);
+---
+
+<div class="c-projet-meta l-constrain l-constrain--media">
+  <dl class="c-projet-meta__list">
+    {items.map((i) => (
+      <div class="c-projet-meta__item">
+        <dt class="c-projet-meta__term">{i.dt}</dt>
+        <dd class="c-projet-meta__value">
+          {i.time && p.dateDebut ? (
+            <>
+              <time datetime={isoMois(p.dateDebut)}>{i.text.split(' – ')[0]}</time>
+              {p.dateFin && (
+                <>
+                  {' – '}
+                  <time datetime={isoMois(p.dateFin)}>{i.text.split(' – ')[1]}</time>
+                </>
+              )}
+            </>
+          ) : (
+            i.text
+          )}
+          {i.note && <span class="c-projet-meta__note">{i.note}</span>}
+        </dd>
+      </div>
+    ))}
+  </dl>
+</div>

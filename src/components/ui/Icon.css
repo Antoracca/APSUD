@@ -1,0 +1,14 @@
+/* Icône — DESIGN.md §3.6 */
+@layer components {
+  .c-icon {
+    display: inline-flex;
+    flex: none;
+    inline-size: var(--_s, var(--icon-size));
+    block-size: var(--_s, var(--icon-size));
+  }
+  .c-icon svg { inline-size: 100%; block-size: 100%; }
+  .c-icon--sm { --_s: 1.125rem; }
+  .c-icon--md { --_s: var(--icon-size); }
+  .c-icon--lg { --_s: 2rem; }
+  .c-icon--xl { --_s: 3rem; }
+}

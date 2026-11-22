@@ -1,0 +1,141 @@
+/* /contact — formulaire (champs Prosper : 48 px, contour Forêt, rayon 4 px) */
+@layer components {
+  .c-contact-form {
+    padding: var(--space-8);
+    background: var(--color-surface-soft);
+  }
+  @media (width >= 48em) {
+    .c-contact-form { padding: var(--space-12); }
+  }
+  .c-contact-form__title { font-size: var(--fs-h4); }
+  .c-contact-form__intro { margin-block: var(--space-2) var(--space-8); font-size: var(--fs-small); color: var(--color-text-muted); }
+  .c-contact-form__form { display: grid; gap: var(--space-6); }
+
+  .c-contact-form__errors {
+    margin-block-end: var(--space-6);
+    padding: var(--space-5) var(--space-6);
+    border-inline-start: var(--border-width-strong) solid var(--color-error);
+    background: var(--color-error-bg);
+    color: var(--color-error);
+  }
+  .c-contact-form__errors-title { font-weight: var(--fw-heavy); }
+  .c-contact-form__errors ul { margin-block-start: var(--space-2); padding-inline-start: var(--space-5); }
+  .c-contact-form__errors a { color: inherit; text-decoration-color: currentColor; }
+
+  .c-field { display: grid; gap: var(--space-2); }
+  .c-field__row { display: flex; justify-content: space-between; align-items: baseline; gap: var(--space-4); }
+  .c-field__label { font-weight: var(--fw-semibold); }
+  .c-field__hint { font-size: var(--fs-small); color: var(--color-text-muted); }
+  .c-field__count { font-size: var(--fs-caption); color: var(--color-text-muted); font-variant-numeric: tabular-nums; }
+  .c-field__input {
+    inline-size: 100%;
+    min-block-size: var(--control-h);
+    padding: var(--space-3) var(--space-4);
+    border: var(--border-width) solid var(--color-border-control);
+    border-radius: var(--radius-control);
+    background: var(--field-bg);
+    color: var(--color-text);
+    font: inherit;
+    transition: box-shadow var(--dur-short) var(--ease-out);
+  }
+  .c-field__input--area { resize: vertical; line-height: var(--lh-body); }
+  /* focus : la marche Pousse apparaît sous le champ (ombre pleine décalée, signature APSUD) */
+  .c-field__input:focus-visible {
+    outline: var(--focus-width) solid var(--color-focus);
+    outline-offset: var(--focus-offset);
+    box-shadow: var(--shadow-step);
+  }
+  .c-field__input[aria-invalid="true"] {
+    border-color: var(--color-error);
+    background: var(--color-error-bg);
+  }
+  .c-field__error {
+    display: flex;
+    gap: var(--space-2);
+    font-size: var(--fs-small);
+    font-weight: var(--fw-semibold);
+    color: var(--color-error);
+  }
+  .c-field__error[hidden] { display: none; }
+
+  .c-field__select { position: relative; }
+  .c-field__select .c-field__input { appearance: none; padding-inline-end: var(--space-12); }
+  .c-field__chevron {
+    position: absolute;
+    inset-block-start: 50%;
+    inset-inline-end: var(--space-4);
+    translate: 0 -50%;
+    pointer-events: none;
+  }
+
+  .c-field--check {
+    grid-template-columns: auto 1fr;
+    align-items: start;
+    column-gap: var(--space-3);
+  }
+  .c-field--check .c-field__error { grid-column: 1 / -1; }
+  .c-field__check {
+    inline-size: var(--checkbox-size);
+    block-size: var(--checkbox-size);
+    margin-block-start: var(--space-1);
+    accent-color: var(--color-brand);
+  }
+  .c-field__check-label { font-size: var(--fs-small); }
+
+  .c-contact-form__trap {
+    position: absolute;
+    inline-size: 1px;
+    block-size: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+  }
+
+  /* Confirmation en place */
+  .c-contact-form__done { display: grid; gap: var(--space-4); justify-items: start; }
+  .c-contact-form__done[hidden] { display: none; }
+  .c-contact-form__done:focus { outline: none; }
+  .c-contact-form__done-badge {
+    display: grid;
+    place-items: center;
+    inline-size: var(--space-16);
+    block-size: var(--space-16);
+    border-radius: var(--radius-goutte);
+    background: var(--color-brand);
+    color: var(--button-primary-text);
+  }
+  .c-contact-form__done-title { font-size: var(--fs-h4); }
+  .c-contact-form__done-note { font-size: var(--fs-small); color: var(--color-text-muted); }
+  .c-contact-form__again {
+    min-block-size: var(--tap-min);
+    padding: 0;
+    border: 0;
+    background: none;
+    color: var(--color-link);
+    font: inherit;
+    font-weight: var(--fw-heavy);
+    text-decoration: underline;
+    text-decoration-color: var(--color-link-decoration);
+    text-underline-offset: 0.18em;
+    cursor: pointer;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .c-contact-form__done:not([hidden]) .c-contact-form__done-badge {
+      animation: c-contact-drop var(--dur-signature) var(--ease-out) both;
+    }
+    .c-contact-form__done:not([hidden]) > :not(.c-contact-form__done-badge) {
+      animation: c-contact-rise var(--dur-long) var(--ease-out) var(--dur-intro) both;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .c-field__input { transition: none; }
+  }
+  @keyframes c-contact-drop {
+    from { translate: 0 calc(-1 * var(--space-6)); rotate: -135deg; scale: 0.4; }
+    to   { translate: 0 0; rotate: 0deg; scale: 1; }
+  }
+  @keyframes c-contact-rise {
+    from { opacity: 0; translate: 0 var(--space-3); }
+    to   { opacity: 1; translate: 0 0; }
+  }
+}

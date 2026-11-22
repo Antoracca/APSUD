@@ -1,0 +1,30 @@
+/* /projets — grille de cartes (Prosper : 3 colonnes à 1200 px, gouttière 2 rem) */
+@layer components {
+  .c-projets-listing { padding-block-start: 0; }
+
+  .c-projets-listing__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, calc(3 * var(--space-30))), 1fr));
+    gap: var(--space-16) var(--grid-gap);
+    margin: var(--space-12) 0 0;
+    padding: 0;
+    list-style: none;
+  }
+  .c-projets-listing__item { display: grid; }
+  .c-projets-listing__item[hidden] { display: none; }
+
+  /* Retour d'une carte après filtrage : montée en fondu (rejouée à chaque réapparition) */
+  @media (prefers-reduced-motion: no-preference) {
+    .c-projets-listing.is-filtered .c-projets-listing__item:not([hidden]) {
+      animation: c-projets-listing-in var(--dur-long) var(--ease-out) both;
+      animation-delay: calc(var(--_n, 0) * var(--dur-shortest) / 3);
+    }
+  }
+  @keyframes c-projets-listing-in {
+    from { opacity: 0; translate: 0 var(--space-4); }
+  }
+
+  .c-projets-listing__empty { margin-block-start: var(--space-12); }
+  .c-projets-listing__empty[hidden] { display: none; }
+
+}

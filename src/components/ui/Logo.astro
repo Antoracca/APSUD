@@ -1,0 +1,56 @@
+---
+/**
+ * Logo APSUD, composé comme le logo de Prosper Global :
+ *   [symbole]  APSUD   Action pour la Population
+ *                      et le Développement Durable
+ * (le nom complet sur deux lignes joue le rôle de la mention « formerly Mercy Corps »).
+ *
+ * Le symbole vient du seul fichier existant (JPEG 85 × 102, fond blanc) : on n'en garde que
+ * la partie haute (cercle aux trois feuilles + mains, lignes 0–75) par un recadrage CSS,
+ * et `mix-blend-mode: multiply` fait disparaître le fond blanc sur les fonds clairs.
+ * À remplacer par le SVG vectorisé dès qu'APSUD l'aura validé (DESIGN.md §1.8).
+ *
+ * Variantes : header (défaut) · footer (plus grand) · compact (mobile, sans le nom complet).
+ */
+import { Image } from 'astro:assets';
+import { getImage } from '../../lib/images';
+import { site } from '../../data/site';
+import './Logo.css';
+
+interface Props {
+  variant?: 'header' | 'footer' | 'compact';
+  href?: string;
+  class?: string;
+}
+
+const { variant = 'header', href = '/', class: className } = Astro.props;
+
+const mark = getImage('assets/apsud/logo/apsud-logo-original.jpg');
+
+/* « Action pour la Population et le Développement Durable » → 2 lignes, coupure avant « et ». */
+const cut = site.nom.indexOf(' et ');
+const mention = cut > 0 ? [site.nom.slice(0, cut), site.nom.slice(cut + 1)] : [site.nom];
+const label = `${site.sigle}, ${site.nom} : retour à l’accueil`;
+---
+
+<a href={href} class:list={['c-logo', `c-logo--${variant}`, className]} aria-label={label}>
+  <span class="c-logo__mark">
+    <Image
+      src={mark}
+      alt=""
+      width={mark.width}
+      height={mark.height}
+      format="webp"
+      quality={90}
+      loading="eager"
+      decoding="async"
+      class="c-logo__img"
+    />
+  </span>
+  <span class="c-logo__word" aria-hidden="true">{site.sigle}</span>
+  {variant !== 'compact' && (
+    <span class="c-logo__mention" aria-hidden="true">
+      {mention.map((line) => <span class="c-logo__mention-line">{line}</span>)}
+    </span>
+  )}
+</a>

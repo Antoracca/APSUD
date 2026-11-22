@@ -1,0 +1,61 @@
+---
+/**
+ * Fiche projet — « Points clés » (Prosper `.c-key-takeaways` des articles : boîte Coton,
+ * titre court, liste à puces) posés à côté de la carte de situation RCA.
+ * Contenu tiré de la fiche : bénéficiaires, budget, zone. Ce qui manque n'est pas affiché ;
+ * sans bénéficiaires renseignés, on le dit simplement.
+ */
+import type { Projet } from '../../data/projects';
+import ProjetCarte from './ProjetCarte.astro';
+import './ProjetEssentiel.css';
+
+interface Props {
+  projet: Projet;
+}
+
+const { projet: p } = Astro.props;
+const zone = [...new Set([...p.lieux, ...p.prefectures.map((x) => x.nom)])].join(', ');
+const hasMap = p.prefectures.length > 0;
+---
+
+<section
+  class:list={['c-projet-essentiel l-constrain l-constrain--media', { 'c-projet-essentiel--map': hasMap }]}
+  aria-labelledby="projet-essentiel-titre"
+>
+  <div class="c-key-takeaways" data-reveal>
+    <h2 id="projet-essentiel-titre" class="c-key-takeaways__title">Points clés</h2>
+    <dl class="c-key-takeaways__list">
+      <div class="c-key-takeaways__item">
+        <dt>Bénéficiaires</dt>
+        <dd>
+          {p.beneficiaires.length > 0 ? (
+            <ul role="list">
+              {p.beneficiaires.map((b) => <li>{b}</li>)}
+            </ul>
+          ) : (
+            <p class="c-key-takeaways__empty">Chiffres en cours de consolidation avec l’équipe d’APSUD.</p>
+          )}
+        </dd>
+      </div>
+      {p.budget && (
+        <div class="c-key-takeaways__item">
+          <dt>Budget</dt>
+          <dd>
+            <p>
+              <strong class="c-key-takeaways__figure">{p.budget.texte}</strong>
+              {p.budget.aVerifier && <span class="c-key-takeaways__note">Devise à confirmer avec APSUD.</span>}
+            </p>
+          </dd>
+        </div>
+      )}
+      {zone && (
+        <div class="c-key-takeaways__item">
+          <dt>Zone d’intervention</dt>
+          <dd><p>{zone}</p></dd>
+        </div>
+      )}
+    </dl>
+  </div>
+
+  {hasMap && <ProjetCarte projet={p} />}
+</section>

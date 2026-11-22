@@ -1,0 +1,47 @@
+---
+/**
+ * Qui sommes-nous §5 — Gouvernance : schéma horizontal des cinq niveaux cités par APSUD
+ * (valeur « Cohérence ») : Assemblée générale → Conseil d'administration → Bureau exécutif
+ * → antennes → terrain. Fond Forêt, liste ordonnée (lisible telle quelle par un lecteur d'écran).
+ * Chaque niveau est un repère (goutte-feuille pointe en bas) posé sur un fil commun.
+ * Innovation APSUD (hors animations réduites) : à l'entrée dans l'écran, le fil se remplit
+ * de gauche à droite, du siège vers le terrain, et chaque repère se pose à son passage.
+ * Réutilisée sur /qui-sommes-nous/equipe (`link={false}`).
+ */
+import ArrowLink from '../../components/ui/ArrowLink.astro';
+import { governance } from './ong';
+import './OngGovernance.css';
+
+interface Props {
+  link?: boolean;
+  title?: string;
+}
+const { link = true, title = governance.title } = Astro.props;
+---
+
+<section class="c-ong-gov t-foret" aria-labelledby="ong-gov-title">
+  <div class="l-constrain">
+    <div class="c-ong-gov__head">
+      <h2 id="ong-gov-title" class="c-ong-gov__title">{title}</h2>
+      <figure class="c-ong-gov__quote">
+        <blockquote><p>{governance.intro}</p></blockquote>
+        <figcaption class="c-ong-gov__source">{governance.source}</figcaption>
+      </figure>
+    </div>
+
+    <ol class="c-ong-gov__flow" role="list" data-reveal style={`--n: ${governance.levels.length}`}>
+      {governance.levels.map((level, i) => (
+        <li class="c-ong-gov__level" style={`--i: ${i}`}>
+          <span class="c-ong-gov__marker" aria-hidden="true"><span>{i + 1}</span></span>
+          <span class="c-ong-gov__name">{level}</span>
+        </li>
+      ))}
+    </ol>
+
+    {link && (
+      <div class="c-ong-gov__link">
+        <ArrowLink href={governance.link.href}>{governance.link.label}</ArrowLink>
+      </div>
+    )}
+  </div>
+</section>

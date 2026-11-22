@@ -1,0 +1,58 @@
+/* /agir/partenariat — chiffres + raisons */
+@layer components {
+  .c-partner-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--agir-stat-min)), 1fr));
+    gap: var(--space-8);
+    padding: var(--space-10) var(--space-8);
+    margin-block-end: var(--space-section-sm);
+    list-style: none;
+    box-shadow: var(--shadow-step-strong);
+  }
+  .c-partner-stats__item { display: grid; gap: var(--space-2); align-content: start; }
+  .c-partner-stats__value {
+    font-size: var(--fs-stat);
+    font-weight: var(--fw-stat-light);
+    font-stretch: var(--font-stretch-stat);
+    line-height: var(--lh-tight);
+    font-variant-numeric: tabular-nums;
+  }
+  .c-partner-stats__label { font-size: var(--fs-small); }
+
+  .c-partner-reasons__title { font-size: var(--fs-h2); margin-block-end: var(--space-12); }
+  .c-partner-reasons__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--agir-reason-min)), 1fr));
+    gap: var(--space-12) var(--space-16);
+    padding: 0;
+    list-style: none;
+  }
+  .c-reason {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: var(--space-6);
+    align-items: start;
+  }
+  .c-reason__badge {
+    display: grid;
+    place-items: center;
+    inline-size: var(--space-16);
+    block-size: var(--space-16);
+    border-radius: var(--radius-goutte);
+    background: var(--color-surface-tint);
+    color: var(--color-text-brand);
+  }
+  .c-reason__title { font-size: var(--fs-h5); }
+  .c-reason__text { margin-block-start: var(--space-3); color: var(--color-text-muted); }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .js-reveal .c-reason .c-reason__badge {
+      translate: 0 calc(-1 * var(--space-6));
+      rotate: -45deg;
+      transition:
+        translate var(--dur-signature) var(--ease-out) calc(var(--reveal-delay, 0ms) + var(--dur-intro)),
+        rotate var(--dur-signature) var(--ease-out) calc(var(--reveal-delay, 0ms) + var(--dur-intro));
+    }
+    .js-reveal .c-reason.is-revealed .c-reason__badge { translate: 0 0; rotate: 0deg; }
+  }
+}

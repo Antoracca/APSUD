@@ -1,0 +1,209 @@
+---
+/**
+ * Pied de page — calque de .c-footer-desktop de Prosper Global (PROSPER_TOKENS §12,
+ * PROSPER_VISUEL §7.9, PROSPER_STRUCTURE §3.4, DESIGN.md §4.24).
+ *
+ *   [marches en escalier : 0 / 4,3125 rem / 8,5625 rem]           ← « mordent » dans la section du dessus
+ *   [signature + coordonnées] [L'ONG] [Agir avec nous] [Restez informés]   ← aplat Pousse (aqua chez Prosper)
+ *                             [réseaux]
+ *   [logo] [statut, liens légaux, Gérer les cookies, ©] [pastille de preuve]  ← sous-footer Coton
+ *
+ * Raccord : le fond derrière les marches reprend la couleur de la dernière section de la page
+ * (CSS :has() sur les thèmes t-*, et footer.ts pour les autres fonds) ; si cette section est
+ * déjà en Pousse, les marches disparaissent et l'aplat se colle à elle.
+ *
+ * Lettre d'information : AUCUN ENVOI RÉEL pour l'instant. footer.ts valide le formulaire
+ * puis affiche le message de remerciement en place. À brancher sur le back-end (double opt-in)
+ * quand il existera : remplacer le bloc « TODO back-end » de src/scripts/footer.ts.
+ */
+import Logo from '../ui/Logo.astro';
+import Icon from '../ui/Icon.astro';
+import Button from '../ui/Button.astro';
+import { site, telHref } from '../../data/site';
+import { footerNav, legalNav } from '../../data/navigation';
+import { manifesto } from '../../data/home';
+import './Footer.css';
+
+const year = new Date().getFullYear();
+
+/*
+ * Pastille de preuve (à la place de l'anneau « 86 % » de Prosper).
+ * ⚠ CHIFFRE À VALIDER PAR APSUD : « 60+ projets depuis 2015 » vient de src/data/home.ts
+ * (déduit des fiches projets et de l'ancien site). Ne pas publier avant confirmation.
+ */
+const projectsStat = manifesto.stats[0];
+const proof = {
+  value: projectsStat.value,
+  suffix: projectsStat.suffix,
+  text: `Plus de ${projectsStat.value} ${projectsStat.label}.`,
+  link: { label: 'Voir nos projets', href: '/projets' },
+};
+const ids = { newsletter: 'footer-newsletter', email: 'footer-nl-email', consent: 'footer-nl-consent' };
+---
+
+<footer class="c-footer" data-footer>
+  <div class="c-footer__inner">
+    {/* Innovation APSUD : les marches se dressent l'une après l'autre à l'arrivée (footer.ts),
+        et la plus haute porte le retour en haut de page (#top = haut du document, même sans JS). */}
+    <div class="c-footer__top" data-footer-stairs>
+      <div class="c-footer__step c-footer__step--one" aria-hidden="true"></div>
+      <div class="c-footer__step c-footer__step--two" aria-hidden="true"></div>
+      <div class="c-footer__step c-footer__step--three" aria-hidden="true"></div>
+      <a class="c-footer__totop" href="#top" data-footer-totop>
+        <span class="c-footer__totop-label">Haut de page</span>
+        <span class="c-footer__totop-icon" aria-hidden="true"><Icon name="arrow-right" size="sm" /></span>
+      </a>
+    </div>
+
+    <div class="c-footer__middle t-pousse">
+      <div class="c-footer__lead">
+        <p class="c-footer__tagline">{site.slogan}</p>
+
+        <address class="c-footer__contact">
+          <span class="c-footer__contact-title">Nous trouver</span>
+          <span class="c-footer__contact-line">
+            <Icon name="map-pin" size="sm" class="c-footer__contact-icon" />
+            <span>{site.contact.adresse}<br />{site.contact.boitePostale}<br />{site.contact.pays}</span>
+          </span>
+          <span class="c-footer__contact-line">
+            <Icon name="phone" size="sm" class="c-footer__contact-icon" />
+            <span class="c-footer__contact-list">
+              {site.contact.telephones.map((tel) => (
+                <a class="c-footer__contact-link" href={telHref(tel)}>{tel.replace(/ /g, ' ')}</a>
+              ))}
+            </span>
+          </span>
+          <span class="c-footer__contact-line">
+            <Icon name="mail" size="sm" class="c-footer__contact-icon" />
+            <a class="c-footer__contact-link" href={`mailto:${site.contact.email}`}>{site.contact.email}</a>
+          </span>
+        </address>
+      </div>
+
+      <div class="c-footer__menu-container">
+        <div class="c-footer__menu">
+          {footerNav.map((group, i) => (
+            <nav class="c-footer__group" aria-labelledby={`footer-nav-${i}`}>
+              <span class="c-footer__group-title" id={`footer-nav-${i}`}>
+                <a href={group.href}>{group.label}</a>
+              </span>
+              <ul class="c-footer__group-children" role="list">
+                {group.links.map((link) => (
+                  <li class="c-footer__group-child"><a href={link.href}>{link.label}</a></li>
+                ))}
+              </ul>
+            </nav>
+          ))}
+        </div>
+
+        <ul class="c-footer__social" role="list" aria-label="APSUD sur les réseaux sociaux">
+          {site.reseaux.map((r) => (
+            <li>
+              <a class="c-footer__social-link" href={r.url} target="_blank" rel="noopener">
+                <Icon name={r.icone} size="sm" />
+                <span class="u-visually-hidden">{r.nom} (nouvel onglet)</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="c-footer__newsletter" id={ids.newsletter}>
+        <h2 class="c-footer__newsletter-label">Restez informés</h2>
+        <form class="c-footer__form" method="post" novalidate data-newsletter-form aria-describedby={`${ids.email}-help`}>
+          <div class="c-footer__field">
+            <label class="u-visually-hidden" for={ids.email}>Votre adresse e-mail (obligatoire)</label>
+            <input
+              class="c-footer__input"
+              type="email"
+              id={ids.email}
+              name="email"
+              autocomplete="email"
+              inputmode="email"
+              placeholder="Adresse e-mail"
+              required
+              aria-describedby={`${ids.email}-help ${ids.email}-error`}
+            />
+            <p class="c-footer__help" id={`${ids.email}-help`}>
+              Champ obligatoire ; désinscription possible à tout moment.
+            </p>
+            <p class="c-footer__error" id={`${ids.email}-error`} data-error-for="email" hidden></p>
+          </div>
+
+          <div class="c-footer__field">
+            <div class="c-footer__check">
+              <input
+                class="c-footer__check-input"
+                type="checkbox"
+                id={ids.consent}
+                name="consent"
+                required
+                aria-describedby={`${ids.consent}-error`}
+              />
+              <span class="c-footer__check-box" aria-hidden="true"><Icon name="check" size="sm" /></span>
+              <label class="c-footer__check-label" for={ids.consent}>
+                J’accepte de recevoir la lettre d’information d’{site.sigle}.
+              </label>
+            </div>
+            <p class="c-footer__error" id={`${ids.consent}-error`} data-error-for="consent" hidden></p>
+          </div>
+
+          <p class="c-footer__privacy">
+            Vos données servent uniquement à l’envoi de la lettre et ne sont jamais cédées.{" "}
+            <a href={legalNav[1].href}>Politique de confidentialité</a>
+          </p>
+
+          <Button type="submit" variant="ink" class="c-footer__newsletter-button">S’inscrire</Button>
+        </form>
+        <p class="c-footer__thankyou" role="status" tabindex="-1" data-newsletter-thanks hidden>
+          Merci ! Votre demande d’inscription est bien prise en compte.
+        </p>
+      </div>
+    </div>
+
+    <div class="c-footer__bottom t-coton">
+      <div class="c-footer__logo-link">
+        <Logo variant="footer" />
+      </div>
+
+      <div class="c-footer__info">
+        <p class="c-footer__info-org">
+          <span>{site.sigle}, ONG nationale de droit centrafricain</span>
+          {/* Numéro d'agrément à obtenir auprès d'APSUD (DESIGN.md §4.24) avant de l'afficher ici. */}
+        </p>
+        <ul class="c-footer__info-links" role="list">
+          {legalNav.map((link) => (
+            <li><a class="c-footer__info-link" href={link.href}>{link.label}</a></li>
+          ))}
+          <li>
+            <button type="button" class="c-footer__info-link c-footer__info-button" data-cookie-open aria-haspopup="dialog">
+              Gérer les cookies
+            </button>
+          </li>
+        </ul>
+        <p class="c-footer__info-copyright">© {year} {site.sigle} · {site.nom}</p>
+      </div>
+
+      <div class="c-footer__proof" data-proof>
+        <div class="c-footer__proof-badge" aria-hidden="true">
+          <svg class="c-footer__proof-svg" viewBox="0 0 80 80" focusable="false">
+            <circle class="c-footer__proof-disc" cx="40" cy="40" r="40" />
+            <circle class="c-footer__proof-track" cx="40" cy="40" r="31.2" fill="none" stroke-width="7" pathLength="100" />
+            <circle class="c-footer__proof-ring" cx="40" cy="40" r="31.2" fill="none" stroke-width="7" pathLength="100" transform="rotate(-90 40 40)" />
+          </svg>
+          <span class="c-footer__proof-value">
+            <span data-proof-count data-target={proof.value}>{proof.value}</span>{proof.suffix}
+          </span>
+        </div>
+        <p class="c-footer__proof-text">
+          {proof.text}{" "}
+          <a href={proof.link.href}>{proof.link.label}</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  import '../../scripts/footer';
+</script>

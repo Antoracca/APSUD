@@ -1,0 +1,73 @@
+/* Bouton — DESIGN.md §4.10 */
+@layer components {
+  .c-button {
+    --_bg: var(--button-primary-bg);
+    --_bg-hover: var(--button-primary-bg-hover);
+    --_bg-active: var(--button-primary-bg-active);
+    --_fg: var(--button-primary-text);
+    --_border: transparent;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    min-height: var(--button-min-h);
+    padding: var(--button-pad-block) var(--button-pad-inline);
+    border: var(--border-width) solid var(--_border);
+    border-radius: var(--radius-control);
+    background: var(--_bg);
+    color: var(--_fg);
+    font-family: var(--font-condensed);
+    font-stretch: var(--font-stretch-condensed);
+    font-size: var(--fs-button);
+    font-weight: var(--fw-heavy);
+    line-height: var(--lh-snug);
+    letter-spacing: var(--ls-condensed);
+    text-decoration: none;
+    text-align: center;
+    outline: 0 solid var(--_border);
+    transition:
+      background-color var(--dur-short) var(--ease-in),
+      color var(--dur-short) var(--ease-in),
+      outline-width var(--dur-shortest) var(--ease-out);
+  }
+  .c-button:hover { background: var(--_bg-hover); }
+  .c-button:active { background: var(--_bg-active); }
+  .c-button:focus-visible {
+    outline: var(--focus-width) solid var(--color-focus);
+    outline-offset: var(--focus-offset);
+  }
+
+  .c-button--sm { --button-pad-block: var(--space-2); --button-pad-inline: var(--space-4); font-size: var(--fs-small); }
+  .c-button--lg { --button-pad-block: var(--space-4); --button-pad-inline: var(--space-8); font-size: var(--fs-button-lg); }
+
+  .c-button--donate {
+    --_bg: var(--button-donate-bg);
+    --_bg-hover: var(--button-donate-bg-hover);
+    --_bg-active: var(--button-donate-bg-active);
+    --_fg: var(--button-donate-text);
+  }
+  .c-button--ink {
+    --_bg: var(--button-ink-bg);
+    --_bg-hover: var(--button-ink-bg-hover);
+    --_bg-active: var(--button-ink-bg-active);
+    --_fg: var(--button-ink-text);
+  }
+  .c-button--on-dark {
+    --_bg: var(--button-on-dark-bg);
+    --_bg-hover: var(--button-on-dark-bg-hover);
+    --_bg-active: var(--button-on-dark-bg-active);
+    --_fg: var(--button-on-dark-text);
+  }
+  .c-button--outline {
+    --_bg: transparent;
+    --_bg-hover: transparent;
+    --_bg-active: var(--color-surface-tint);
+    --_fg: var(--color-text);
+    --_border: var(--color-border-control);
+  }
+  .c-button--outline:hover {
+    outline: var(--outline-hover) solid var(--_border);
+    outline-offset: calc(-1 * var(--border-width));
+  }
+}

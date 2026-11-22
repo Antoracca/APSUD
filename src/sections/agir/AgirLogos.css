@@ -1,0 +1,41 @@
+/* Grille de logos (Prosper .l-logo-grid / .c-logo) */
+@layer components {
+  .c-agir-logos {
+    --_h: var(--space-16);
+    --_min: var(--agir-chip-min);
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(var(--_min), 1fr));
+    gap: var(--space-4);
+    padding: 0;
+    list-style: none;
+  }
+  .c-agir-logos--sm { --_h: var(--space-10); --_min: var(--agir-logo-min-sm); gap: var(--space-2); }
+
+  .c-agir-logos__link {
+    display: grid;
+    place-items: center;
+    block-size: calc(var(--_h) + 2 * var(--space-4));
+    padding: var(--space-4);
+    background: var(--color-bg);
+    outline: 0 solid var(--color-brand);
+    transition: outline-width var(--dur-short) var(--ease-out);
+  }
+  .c-agir-logos__img {
+    max-inline-size: 100%;
+    max-block-size: var(--_h);
+    inline-size: auto;
+    block-size: auto;
+    object-fit: contain;
+    filter: grayscale(1);
+    opacity: 0.75;
+    transition: opacity var(--dur-standard) var(--ease-out);
+  }
+  .c-agir-logos__link:hover,
+  .c-agir-logos__link:focus-visible { outline-width: var(--border-width-strong); }
+  .c-agir-logos__link:hover .c-agir-logos__img,
+  .c-agir-logos__link:focus-visible .c-agir-logos__img { filter: none; opacity: 1; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .c-agir-logos__link, .c-agir-logos__img { transition: none; }
+  }
+}

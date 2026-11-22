@@ -1,0 +1,133 @@
+/* ==========================================================================
+   APSUD — Base : reset, typographie, conteneurs, utilitaires
+   Ne contient AUCUNE valeur en dur : uniquement des tokens (tokens.css).
+   Les styles des composants vivent à côté de chaque composant (Composant.css).
+   ========================================================================== */
+
+@layer reset, base, layout, components, utilities;
+
+@layer reset {
+  *, *::before, *::after { box-sizing: border-box; }
+  * { margin: 0; }
+  html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+  img, picture, video, svg, canvas { display: block; max-width: 100%; }
+  img, video { height: auto; }
+  input, button, textarea, select { font: inherit; color: inherit; }
+  button { cursor: pointer; background: none; border: 0; padding: 0; }
+  ul[role="list"], ol[role="list"] { list-style: none; padding: 0; }
+  p, h1, h2, h3, h4, h5, h6 { overflow-wrap: break-word; }
+  h1, h2, h3, h4, h5, h6 { text-wrap: balance; }
+  p { text-wrap: pretty; }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: calc(var(--header-h) + var(--eyebrow-h) + var(--space-4));
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
+
+  body {
+    background: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-text);
+    font-stretch: var(--font-stretch-text);
+    font-size: var(--fs-body);
+    font-weight: var(--fw-regular);
+    line-height: var(--lh-body);
+    font-optical-sizing: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body.is-locked { overflow: hidden; }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--color-heading);
+    font-family: var(--font-condensed);
+    font-stretch: var(--font-stretch-condensed);
+    font-weight: var(--fw-bold);
+    line-height: var(--lh-heading);
+    letter-spacing: var(--ls-condensed);
+  }
+  h1 { font-size: var(--fs-h1); }
+  h2 { font-size: var(--fs-h2); }
+  h3 { font-size: var(--fs-h3); line-height: var(--lh-snug); }
+  h4 { font-size: var(--fs-h4); line-height: var(--lh-snug); }
+  h5 { font-size: var(--fs-h5); line-height: var(--lh-snug); }
+  h6 { font-size: var(--fs-h6); line-height: var(--lh-snug); }
+
+  a {
+    color: var(--color-link);
+    text-decoration-line: underline;
+    text-decoration-color: var(--color-link-decoration);
+    text-decoration-thickness: var(--underline-thickness);
+    text-underline-offset: 0.18em;
+    transition: --underline-thickness var(--dur-short) var(--ease-out);
+  }
+  a:hover { --underline-thickness: 2px; }
+
+  :focus-visible {
+    outline: var(--focus-width) solid var(--color-focus);
+    outline-offset: var(--focus-offset);
+  }
+
+  strong, b { font-weight: var(--fw-heavy); }
+}
+
+@layer layout {
+  /* Conteneurs nommés (échelle de largeurs « éditoriale » de Prosper) */
+  .l-constrain {
+    width: 100%;
+    max-width: calc(var(--container) + 2 * var(--gutter));
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+  }
+  .l-constrain--wide  { max-width: calc(var(--container-wide) + 2 * var(--gutter)); }
+  .l-constrain--media { max-width: calc(var(--measure-media) + 2 * var(--gutter)); }
+  .l-constrain--text  { max-width: calc(var(--measure-text) + 2 * var(--gutter)); }
+  .l-constrain--intro { max-width: calc(var(--measure-intro) + 2 * var(--gutter)); }
+
+  .l-section    { padding-block: var(--space-section); }
+  .l-section--sm { padding-block: var(--space-section-sm); }
+  .l-stack > * + * { margin-block-start: var(--space-stack); }
+}
+
+@layer utilities {
+  .u-visually-hidden {
+    position: absolute !important;
+    width: 1px; height: 1px;
+    padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0 0 0 0);
+    white-space: nowrap; border: 0;
+  }
+
+  .u-headline {
+    font-family: var(--font-headline);
+    font-stretch: var(--font-stretch-headline);
+    font-weight: var(--fw-headline);
+    letter-spacing: var(--ls-headline);
+  }
+
+  .u-lead { font-size: var(--fs-lead); line-height: var(--lh-lead); }
+
+  /* Révélation au défilement : le contenu reste visible sans JS.
+     Le script n'ajoute .js-reveal que lorsque l'animation est permise. */
+  @media (prefers-reduced-motion: no-preference) {
+    .js-reveal [data-reveal] {
+      opacity: 0;
+      transform: translateY(var(--space-6));
+      transition:
+        opacity var(--dur-long) var(--ease-out),
+        transform var(--dur-signature) var(--ease-out);
+      transition-delay: var(--reveal-delay, 0ms);
+    }
+    .js-reveal [data-reveal].is-revealed {
+      opacity: 1;
+      transform: none;
+    }
+  }
+}

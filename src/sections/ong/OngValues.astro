@@ -1,0 +1,42 @@
+---
+/**
+ * Qui sommes-nous §4 — Les six valeurs (ancre #valeurs, lien « Mission et valeurs » du menu).
+ * Grille 3 × 2 sur fond Coton. Chaque valeur : pictogramme maison posé sur une goutte-feuille,
+ * nom, mots-clés (1ʳᵉ phrase du texte officiel), puis la définition complète.
+ * Innovation APSUD (survol / focus dans la carte, hors animations réduites) : un filet vert
+ * se remplit en haut de la carte et la goutte-feuille pivote d'un quart de tour, comme une feuille.
+ * Pictogrammes : src/sections/ong/icons/*.svg (grille 24, trait 2, extrémités rondes : DESIGN.md §3).
+ */
+import { values } from './ong';
+import '../../components/ui/Icon.css';
+import './OngValues.css';
+
+const raw = import.meta.glob<string>('./icons/*.svg', { query: '?raw', import: 'default', eager: true });
+const svg = (name: string) => {
+  const s = raw[`./icons/${name}.svg`];
+  if (!s) throw new Error(`Pictogramme introuvable : src/sections/ong/icons/${name}.svg`);
+  return s.replace('<svg', '<svg focusable="false" aria-hidden="true"');
+};
+---
+
+<section id="valeurs" class="c-ong-values" aria-labelledby="ong-values-title">
+  <div class="l-constrain">
+    <header class="c-ong-values__head">
+      <h2 id="ong-values-title" class="c-ong-values__title">{values.title}</h2>
+      <p class="c-ong-values__intro">{values.intro}</p>
+    </header>
+
+    <ol class="c-ong-values__grid" role="list">
+      {values.items.map((v, i) => (
+        <li class="c-ong-values__card" data-reveal data-reveal-delay={String((i % 3) * 120)}>
+          <span class="c-ong-values__badge" aria-hidden="true">
+            <span class="c-icon c-icon--lg" set:html={svg(values.icons[i])} />
+          </span>
+          <h3 class="c-ong-values__name">{v.name}</h3>
+          <p class="c-ong-values__keywords">{v.keywords}</p>
+          {v.text && <p class="c-ong-values__text">{v.text}</p>}
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>

@@ -1,0 +1,97 @@
+/* Accueil — Double CTA (Prosper .c-cta-two-up--secondary + .c-cta--one-up) */
+@layer components {
+  .c-cta-two-up {
+    padding-block: var(--space-16) var(--space-24);
+  }
+
+  /* Titre de groupe centré (Prosper .c-cta-two-up__title : h3, 1,5 rem dessous) */
+  .c-cta-two-up__title {
+    margin-block-end: var(--space-6);
+    font-size: var(--fs-h3);
+    line-height: var(--lh-heading);
+    text-align: center;
+  }
+
+  .c-cta-two-up__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+  }
+
+  /* Panneau (Prosper .c-cta : padding 1,5 rem → 3 rem, sans arrondi ni ombre) */
+  .c-cta-two-up__panel {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: var(--space-6);
+  }
+
+  .c-cta-two-up__panel-title {
+    font-size: var(--fs-cta-title);
+    font-weight: var(--fw-heavy);
+    line-height: var(--lh-heading);
+  }
+
+  .c-cta-two-up__text {
+    margin-block-start: var(--space-4);
+    max-inline-size: var(--measure-intro);
+    font-size: var(--fs-body);
+    line-height: var(--lh-body);
+  }
+
+  .c-cta-two-up__button {
+    margin-block-start: var(--space-8);
+  }
+  /* Bouton de CTA un cran plus grand (Prosper .c-cta__button .c-button : 18 → 24 px) */
+  .c-cta-two-up__button .c-button {
+    font-size: var(--fs-h6);
+  }
+
+  @media (width >= 48em) {
+    .c-cta-two-up__panel { padding: var(--space-12); }
+    .c-cta-two-up__panel-title { line-height: var(--lh-tight); }
+  }
+
+  /* Côte à côte : 2 × 30,375 rem + 1,5 rem = 62,25 rem (mesure « média ») */
+  @media (width >= 55em) {
+    .c-cta-two-up__wrapper {
+      flex-direction: row;
+      justify-content: center;
+    }
+    .c-cta-two-up__panel {
+      flex: 1 1 0;
+      min-inline-size: 0;
+    }
+    .c-cta-two-up__text { margin-block-start: var(--space-6); }
+  }
+
+  /* Innovation APSUD : « marche » d'angle, écho des marches du pied de page.
+     Teinte dérivée du texte du thème (aucune couleur en dur) ; deux marches basses au repos,
+     qui se lèvent au survol / focus (interpolation de clip-path, même nombre de points). */
+  .c-cta-two-up__panel {
+    position: relative;
+    isolation: isolate;
+  }
+  .c-cta-two-up__panel::after {
+    content: "";
+    position: absolute;
+    inset-block-end: 0;
+    inset-inline-end: 0;
+    z-index: -1;
+    inline-size: calc(2 * var(--cta-step));
+    block-size: calc(2 * var(--cta-step));
+    background: color-mix(in srgb, var(--color-text) 9%, transparent);
+    clip-path: polygon(0 100%, 0 75%, 50% 75%, 50% 50%, 100% 50%, 100% 100%);
+    pointer-events: none;
+  }
+  .c-cta-two-up__panel:hover::after,
+  .c-cta-two-up__panel:has(:focus-visible)::after {
+    clip-path: polygon(0 100%, 0 50%, 50% 50%, 50% 0, 100% 0, 100% 100%);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .c-cta-two-up__panel::after {
+      transition: clip-path var(--dur-long) var(--ease-in-out);
+    }
+  }
+}

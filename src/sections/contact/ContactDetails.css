@@ -1,0 +1,76 @@
+/* /contact — coordonnées + encart réseaux */
+@layer components {
+  .c-contact-details { display: grid; gap: var(--space-8); align-content: start; }
+  .c-contact-details__title { font-size: var(--fs-h4); }
+  .c-contact-details__list { display: grid; margin: 0; border-block-start: var(--border-width) solid var(--color-border-subtle); }
+  .c-contact-details__row {
+    display: grid;
+    gap: var(--space-2);
+    padding-block: var(--space-5);
+    border-block-end: var(--border-width) solid var(--color-border-subtle);
+  }
+  .c-contact-details__row dt {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    font-size: var(--fs-overline);
+    font-weight: var(--fw-heavy);
+    letter-spacing: var(--ls-overline);
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+  }
+  .c-contact-details__row dt .c-icon { color: var(--color-text-brand); }
+  .c-contact-details__row dd { margin: 0; padding-inline-start: calc(var(--icon-size) + var(--space-3)); }
+  .c-contact-details__row address { font-style: normal; font-size: var(--fs-lead); line-height: var(--lh-lead); }
+  .c-contact-details__phones { display: grid; padding: 0; list-style: none; }
+  .c-contact-details__tel,
+  .c-contact-details__mail {
+    display: inline-flex;
+    align-items: center;
+    min-block-size: var(--tap-comfort);
+    font-size: var(--fs-lead);
+    font-weight: var(--fw-heavy);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+
+  .c-contact-social {
+    position: relative;
+    isolation: isolate;
+    padding: var(--space-8);
+    overflow: clip;
+  }
+  /* coin goutte-feuille Pousse, écho de la signature APSUD */
+  .c-contact-social::after {
+    content: "";
+    position: absolute;
+    inset-block-start: calc(-1 * var(--space-8));
+    inset-inline-end: calc(-1 * var(--space-8));
+    inline-size: var(--space-24);
+    block-size: var(--space-24);
+    border-radius: var(--radius-goutte);
+    background: var(--color-surface-signature);
+    rotate: 180deg;
+    z-index: var(--z-below);
+  }
+  .c-contact-social__title { font-size: var(--fs-h5); }
+  .c-contact-social__text { margin-block: var(--space-2) var(--space-5); color: var(--color-text-muted); max-inline-size: 80%; }
+  .c-contact-social__list { display: flex; flex-wrap: wrap; gap: var(--space-3); padding: 0; list-style: none; }
+  .c-contact-social__link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    min-block-size: var(--tap-comfort);
+    padding-inline: var(--space-4);
+    border: var(--border-width) solid var(--color-border-control);
+    border-radius: var(--radius-control);
+    font-weight: var(--fw-heavy);
+    text-decoration: none;
+    outline: 0 solid var(--color-border-control);
+    transition: outline-width var(--dur-short) var(--ease-out);
+  }
+  .c-contact-social__link:hover { outline-width: var(--outline-hover); }
+  @media (prefers-reduced-motion: reduce) {
+    .c-contact-social__link { transition: none; }
+  }
+}

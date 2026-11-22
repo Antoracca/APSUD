@@ -1,0 +1,238 @@
+---
+/**
+ * En-tête du site — calque de `.l-main-navigation` de Prosper Global
+ * (PROSPER_VISUEL §7.1-7.3, PROSPER_STRUCTURE §3.2-3.3, PROSPER_TOKENS §11, DESIGN.md §4.2-4.5).
+ *
+ * Desktop (≥ 48em) : barre blanche FIXE sous le bandeau d'annonce (top = --eyebrow-h) ;
+ *   logo à gauche · 4 « portes » centrées · loupe · bouton « Faire un don ».
+ *   Méga-menu « tiroir commun » : au survol (délai 300 ms) ou au focus clavier de n'importe quelle
+ *   porte, les sous-liens des 4 colonnes descendent ENSEMBLE, chacun sous sa porte, sur un fond blanc
+ *   commun de toute la largeur de la barre (comme Prosper aujourd'hui). 100 % CSS : la rangée 2 de la
+ *   barre est partagée en subgrid (barre → nav → portes → colonne), donc le fond et les 4 colonnes
+ *   prennent la hauteur de la plus longue sans calcul JS (Prosper la mesure en JS) ;
+ *   le JS n'ajoute que Échap et le double toucher sur tablette.
+ *
+ * Mobile (< 48em) : logo compact · bouton don · burger (<button aria-expanded>) ;
+ *   panneau plein écran qui descend du haut, portes en très grande Condensée, accordéons.
+ *
+ * Bouton de don : variante `ink` (Forêt, texte Pousse). C'est la transposition exacte du « Donate »
+ * de Prosper (#003634 sur aqua #4AFFF4) : même contraste, même poids visuel en haut à droite.
+ * La variante `donate` (Soleil) est gardée pour les appels au don dans les pages, comme l'orange
+ * `--quaternary` de Prosper n'apparaît que dans les campagnes.
+ *
+ * Adaptation APSUD demandée : la barre se RÉDUIT au défilement (80 → 64 px, 64 → 56 px en mobile)
+ * avec un filet discret, sans jamais disparaître (src/scripts/header.ts).
+ *
+ * Innovations APSUD (au-delà de Prosper) :
+ *   - 5ᵉ colonne « À la une » dans le tiroir (≥ 90em) : la carte du projet phare (1ᵉʳ projet de
+ *     `featuredProjects`, src/data/home.ts), qui descend avec les 4 colonnes ; sa photo se dévoile
+ *     en rideau (clip-path) juste après le tiroir. Même zone de survol continue que les portes.
+ *   - Barre de lecture : un filet Vert sous la barre suit la progression dans la page, 100 % CSS
+ *     (animation-timeline: scroll()), absent des navigateurs qui ne le gèrent pas.
+ */
+import Logo from '../ui/Logo.astro';
+import Icon from '../ui/Icon.astro';
+import Button from '../ui/Button.astro';
+import ArrowLink from '../ui/ArrowLink.astro';
+import { Picture } from 'astro:assets';
+import { getImage } from '../../lib/images';
+import { featuredProjects } from '../../data/home';
+import { mainNav, donateLink, searchLink } from '../../data/navigation';
+import { site, telHref } from '../../data/site';
+import './Header.css';
+
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const clean = (href: string) => href.split('#')[0].replace(/\/$/, '') || '/';
+const isCurrent = (href: string) => !href.includes('#') && clean(href) === path;
+const inSection = (href: string) => path === clean(href) || path.startsWith(`${clean(href)}/`);
+
+/* « À la une » : projet phare, photo recadrée en 16:9 au build (seuls les pixels affichés sont servis) */
+const feature = featuredProjects.items[0];
+const featureSrc = getImage(feature.image);
+const featureW = Math.round(Math.min(featureSrc.width, (featureSrc.height * 16) / 9));
+const featureH = Math.round((featureW * 9) / 16);
+const featureWidths = [320, 640].filter((w) => w < featureW).concat(featureW).filter((w) => w <= 640);
+---
+
+<header class="c-header" data-header>
+  <div class="c-header__bar">
+    <div class="c-header__inner">
+      <Logo variant="header" class="c-header__logo" />
+
+      {/* Fond commun du tiroir (Prosper `.c-main-navigation__drawer-backdrop`) : toute la largeur de la barre,
+          hauteur de la colonne la plus longue (rangée 2 partagée en subgrid), descend avec les colonnes. */}
+      <div class="c-header__backdrop-clip" aria-hidden="true">
+        <span class="c-header__backdrop"></span>
+      </div>
+
+      <nav class="c-header__nav" aria-label="Navigation principale">
+        <ul class="c-header__doors" role="list" data-header-doors>
+          {mainNav.map((group) => (
+            <li class:list={['c-header__door', { 'is-current': inSection(group.href) }]}>
+              <a
+                class="c-header__door-link"
+                href={group.href}
+                aria-current={isCurrent(group.href) ? 'page' : undefined}
+              >
+                {group.label}
+              </a>
+              <div class="c-header__clip">
+                <ul class="c-header__links" role="list">
+                  {group.links.map((link) => (
+                    <li class="c-header__item">
+                      <a
+                        class="c-header__link"
+                        href={link.href}
+                        aria-current={isCurrent(link.href) ? 'page' : undefined}
+                      >
+                        {link.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
+      {/* 5ᵉ colonne du tiroir : projet phare (≥ 90em) */}
+      <aside class="c-header__feature" aria-labelledby="header-feature-label" data-header-feature>
+        <div class="c-header__feature-body">
+          <p class="c-header__feature-label" id="header-feature-label">À la une</p>
+          <article class="c-header__feature-card">
+            <span class="c-header__feature-media">
+              <Picture
+                src={featureSrc}
+                alt=""
+                width={featureW}
+                height={featureH}
+                widths={featureWidths}
+                sizes="18rem"
+                fit="cover"
+                formats={['avif', 'webp']}
+                loading="lazy"
+                decoding="async"
+                class="c-header__feature-img"
+              />
+            </span>
+            <p class="c-header__feature-meta">{feature.meta}</p>
+            <p class="c-header__feature-title">{feature.title}</p>
+            <ArrowLink href={feature.href} stretched class="c-header__feature-link">
+              En savoir plus<span class="u-visually-hidden">&nbsp;: {feature.title}</span>
+            </ArrowLink>
+          </article>
+        </div>
+      </aside>
+
+      <div class="c-header__actions">
+        <a class="c-header__search" href={searchLink.href}>
+          <Icon name="search" />
+          <span class="u-visually-hidden">{searchLink.label}</span>
+        </a>
+        <Button href={donateLink.href} variant="ink" class="c-header__donate">{donateLink.label}</Button>
+        <button
+          type="button"
+          class="c-header__burger"
+          aria-expanded="false"
+          aria-controls="menu-mobile"
+          data-header-burger
+        >
+          <span class="c-header__burger-icon" aria-hidden="true">
+            <span class="c-header__burger-bar"></span>
+            <span class="c-header__burger-bar"></span>
+            <span class="c-header__burger-bar"></span>
+          </span>
+          <span class="u-visually-hidden" data-header-burger-label>Ouvrir le menu</span>
+        </button>
+      </div>
+    </div>
+    {/* Barre de lecture (décorative) : progression dans la page, animée par le défilement en CSS */}
+    <span class="c-header__progress" aria-hidden="true"></span>
+  </div>
+
+  <div class="c-header__drawer" id="menu-mobile" data-header-drawer>
+    <div class="c-header__drawer-body">
+      <nav class="c-header__drawer-nav" aria-label="Menu principal">
+        <ul class="c-header__drawer-doors" role="list">
+          {mainNav.map((group, i) => (
+            <li class="c-header__drawer-door" data-header-accordion>
+              <div class="c-header__drawer-row">
+                <a
+                  class="c-header__drawer-title"
+                  href={group.href}
+                  aria-current={isCurrent(group.href) ? 'page' : undefined}
+                >
+                  {group.label}
+                </a>
+                <button
+                  type="button"
+                  class="c-header__drawer-toggle"
+                  aria-expanded="false"
+                  aria-controls={`menu-mobile-${i + 1}`}
+                  data-header-toggle
+                >
+                  <Icon name="chevron-down" class="c-header__drawer-chevron" />
+                  <span class="u-visually-hidden">Sous-menu {group.label}</span>
+                </button>
+              </div>
+              <div class="c-header__drawer-clip" id={`menu-mobile-${i + 1}`}>
+                <ul class="c-header__drawer-links" role="list">
+                  {group.links.map((link) => (
+                    <li>
+                      <a
+                        class="c-header__drawer-link"
+                        href={link.href}
+                        aria-current={isCurrent(link.href) ? 'page' : undefined}
+                      >
+                        {link.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </li>
+          ))}
+        </ul>
+        <a class="c-header__drawer-search" href={searchLink.href}>
+          <Icon name="search" />
+          <span>{searchLink.label}</span>
+        </a>
+      </nav>
+
+      <div class="c-header__drawer-foot t-coton">
+        <p class="c-header__drawer-foot-title">Nous joindre</p>
+        <ul class="c-header__contact" role="list">
+          {site.contact.telephones.map((tel) => (
+            <li>
+              <a class="c-header__contact-link" href={telHref(tel)}>
+                <Icon name="phone" />
+                <span>{tel}</span>
+              </a>
+            </li>
+          ))}
+          <li>
+            <a class="c-header__contact-link" href={`mailto:${site.contact.email}`}>
+              <Icon name="mail" />
+              <span>{site.contact.email}</span>
+            </a>
+          </li>
+        </ul>
+        <ul class="c-header__social" role="list">
+          {site.reseaux.map((r) => (
+            <li>
+              <a class="c-header__social-link" href={r.url} rel="noopener" target="_blank">
+                <Icon name={r.icone} />
+                <span class="u-visually-hidden">{r.nom} (nouvel onglet)</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+  import '../../scripts/header';
+</script>

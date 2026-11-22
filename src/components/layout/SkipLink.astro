@@ -1,0 +1,14 @@
+---
+/**
+ * Lien d'évitement — premier élément du <body> (PROSPER_STRUCTURE §3.1, DESIGN.md §4.0).
+ * Caché hors écran, il apparaît en haut à gauche au premier Tab et mène à <main id="contenu">.
+ */
+import './SkipLink.css';
+
+interface Props {
+  target?: string;
+}
+const { target = '#contenu' } = Astro.props;
+---
+
+<a href={target} class="c-skiplink">Aller au contenu</a>

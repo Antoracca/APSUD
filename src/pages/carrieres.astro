@@ -1,0 +1,97 @@
+---
+/**
+ * /carrieres — Offres d'emploi (gabarit B, PROSPER_STRUCTURE §5.4, DESIGN.md §5.7).
+ * 1. En-tête : H1 + photo de l'équipe légendée
+ * 2. Pitch employeur (identité et mission réelles d'APSUD)
+ * 3. Valeurs (Coton)
+ * 4. Offres ouvertes (src/data/jobs.ts) — vide aujourd'hui : état vide honnête + vigilance
+ * 5. Double CTA : appels d'offres / projets
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/layout/PageHeader.astro';
+import Prose from '../components/ui/Prose.astro';
+import JobRow from '../components/ui/JobRow.astro';
+import CtaTwoUp from '../components/ui/CtaTwoUp.astro';
+import CareersValues from '../sections/carrieres/CareersValues.astro';
+import OffersListing from '../sections/offres/OffersListing.astro';
+import { openJobs, closedJobs, contractLabels, type Job } from '../data/jobs';
+import { site } from '../data/site';
+import organisation from '../../data/apsud/organisation.json';
+
+const open = openJobs();
+const closed = closedJobs();
+
+const rowProps = (j: Job) => ({
+  href: `/carrieres/${j.slug}`,
+  title: j.intitule,
+  badges: [contractLabels[j.typeContrat]],
+  meta: [{ icon: 'map-pin', label: j.lieu }, ...(j.projetLie ? [{ label: j.projetLie }] : [])],
+  reference: j.reference,
+  deadline: j.dateLimite,
+});
+---
+
+<BaseLayout
+  title="Carrières"
+  description="Travailler chez APSUD, ONG nationale centrafricaine de développement et d’action humanitaire : nos valeurs et nos offres d’emploi, de consultance et de stage."
+>
+  <PageHeader
+    title="Carrières"
+    breadcrumb={[{ label: 'L’ONG', href: '/qui-sommes-nous' }, { label: 'Carrières' }]}
+    image="assets/apsud/images/a-propos/equipe-staff-apsud-devant-siege.jpg"
+    imageAlt="Le staff d’APSUD, en t-shirts orange et verts et masques, pose devant le panneau du siège de l’ONG"
+    caption="L’équipe d’APSUD devant le siège de l’ONG, quartier Micheline, à Bimbo."
+  />
+
+  <section class="l-section--sm" aria-label="Travailler chez APSUD">
+    <Prose lead>
+      <p>
+        {site.nom} est une organisation non gouvernementale nationale de développement et d’action
+        humanitaire, à but non lucratif. {organisation.identite.independance}
+      </p>
+      <p>{site.mission}</p>
+      <p>
+        Nos équipes travaillent depuis le siège de Bimbo, dans les antennes et sur le terrain, aux côtés des
+        communautés et des organisations locales de la République centrafricaine. Les offres ouvertes sont
+        présentées ci-dessous.
+      </p>
+    </Prose>
+  </section>
+
+  <CareersValues />
+
+  <OffersListing
+    id="offres-titre"
+    title="Offres ouvertes"
+    count={open.length}
+    singular="offre ouverte"
+    plural="offres ouvertes"
+    emptyTitle="Aucune offre ouverte pour le moment"
+    emptyText="Les prochaines offres d’emploi, de consultance et de stage d’APSUD paraîtront ici, avec leurs termes de référence, le lieu d’affectation et la date limite de candidature."
+    emptyLink={{ label: 'Une question sur le recrutement ? Écrivez-nous', href: '/contact' }}
+    archiveCount={closed.length}
+    notice={{
+      title: 'Restez vigilant face aux fausses offres',
+      text: 'Ne versez jamais d’argent pour obtenir un emploi, un entretien ou un stage. En cas de doute sur une offre qui circule au nom d’APSUD, vérifiez-la auprès de nous avant d’y répondre.',
+      link: { label: `Vérifier une offre : ${site.contact.email}`, href: `mailto:${site.contact.email}` },
+    }}
+  >
+    {open.map((j) => <JobRow {...rowProps(j)} />)}
+    <Fragment slot="archive">
+      {closed.map((j) => <JobRow {...rowProps(j)} closed />)}
+    </Fragment>
+  </OffersListing>
+
+  <CtaTwoUp
+    primary={{
+      title: 'Fournisseurs et prestataires',
+      text: 'Travaux, fournitures, services et consultances : consultez les appels d’offres d’APSUD.',
+      cta: { label: 'Voir les appels d’offres', href: '/agir/appels-d-offres' },
+    }}
+    secondary={{
+      title: 'Découvrir nos projets',
+      text: 'Les actions menées par APSUD en République centrafricaine, réalisées et en cours.',
+      cta: { label: 'Voir les projets', href: '/projets' },
+    }}
+  />
+</BaseLayout>

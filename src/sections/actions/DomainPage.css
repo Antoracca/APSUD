@@ -1,0 +1,23 @@
+/* Page domaine — sur-titre de l'en-tête (« Domaine d'intervention » + pictogramme) */
+@layer components {
+  .c-domain-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-3);
+    margin: 0;
+    color: var(--color-text-brand);
+    font-size: var(--fs-overline);
+    font-weight: var(--fw-heavy);
+    letter-spacing: var(--ls-overline);
+    text-transform: uppercase;
+  }
+  .c-domain-kicker__icon {
+    display: inline-grid;
+    place-items: center;
+    inline-size: var(--tap-min);
+    block-size: var(--tap-min);
+    border-radius: var(--radius-goutte);
+    background: var(--color-surface-signature);
+    color: var(--color-text);
+  }
+}

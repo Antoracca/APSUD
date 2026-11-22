@@ -1,0 +1,107 @@
+/* Fiche projet — carte de situation RCA (couleurs de la carte de l'accueil) */
+@layer components {
+  .c-projet-carte {
+    --_on: var(--color-map-done);
+    display: grid;
+    gap: var(--space-4);
+    margin: 0;
+  }
+  .c-projet-carte--ongoing { --_on: var(--color-map-ongoing); }
+
+  .c-projet-carte__map {
+    display: block;
+    inline-size: 100%;
+    block-size: auto;
+    overflow: visible;
+  }
+  .c-projet-carte__pref {
+    fill: var(--color-map-none);
+    stroke: var(--color-border-subtle);
+    stroke-width: var(--border-width);
+    stroke-linejoin: round;
+    vector-effect: non-scaling-stroke;
+  }
+  .c-projet-carte__pref--on {
+    fill: var(--_on);
+    stroke: var(--color-map-stroke);
+    stroke-width: var(--border-width-strong);
+  }
+  .c-projet-carte__dot {
+    fill: var(--color-map-stroke);
+    stroke: var(--color-map-boundary);
+    stroke-width: var(--border-width-strong);
+    vector-effect: non-scaling-stroke;
+  }
+  .c-projet-carte__dot--capital { fill: var(--_on); stroke: var(--color-map-stroke); }
+
+  /* Entrée : les préfectures du projet se colorent en cascade, puis les points se posent */
+  @media (prefers-reduced-motion: no-preference) {
+    .js-reveal .c-projet-carte[data-reveal] .c-projet-carte__pref--on {
+      fill: var(--color-map-none);
+      stroke: var(--color-border-subtle);
+      transition:
+        fill var(--dur-long) var(--ease-out),
+        stroke var(--dur-long) var(--ease-out);
+      transition-delay: calc(var(--dur-standard) + var(--i, 0) * var(--zones-cascade-step) * 2);
+    }
+    .js-reveal .c-projet-carte[data-reveal] .c-projet-carte__dot {
+      scale: 0;
+      transition: scale var(--dur-standard) var(--ease-out);
+      transition-delay: calc(var(--dur-signature) + var(--i, 0) * var(--zones-cascade-step));
+    }
+    .js-reveal .c-projet-carte[data-reveal].is-revealed .c-projet-carte__pref--on {
+      fill: var(--_on);
+      stroke: var(--color-map-stroke);
+    }
+    .js-reveal .c-projet-carte[data-reveal].is-revealed .c-projet-carte__dot { scale: 1; }
+  }
+
+  /* Légende : préfectures du projet, liens vers la liste filtrée */
+  .c-projet-carte__caption { display: grid; gap: var(--space-2); }
+  .c-projet-carte__label {
+    font-family: var(--font-condensed);
+    font-stretch: var(--font-stretch-condensed);
+    font-size: var(--fs-overline);
+    font-weight: var(--fw-heavy);
+    letter-spacing: var(--ls-overline);
+    text-transform: uppercase;
+    color: var(--color-text-brand);
+  }
+  .c-projet-carte__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .c-projet-carte__link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    min-block-size: var(--tap-min);
+    padding-inline: var(--space-3);
+    border: var(--border-width) solid var(--color-border-subtle);
+    border-radius: var(--radius-control);
+    font-size: var(--fs-small);
+    font-weight: var(--fw-bold);
+    text-decoration: none;
+    transition: border-color var(--dur-short) var(--ease-out), background-color var(--dur-short) var(--ease-out);
+  }
+  .c-projet-carte__link::before {
+    content: "";
+    inline-size: var(--leaf-drop-xs);
+    block-size: var(--leaf-drop-xs);
+    border-radius: var(--radius-goutte);
+    background: var(--_on);
+    box-shadow: 0 0 0 var(--border-width) var(--color-map-stroke);
+  }
+  .c-projet-carte__link:hover {
+    border-color: var(--color-border-control);
+    background: var(--color-bg);
+  }
+  .c-projet-carte__link:focus-visible {
+    outline: var(--focus-width) solid var(--color-focus);
+    outline-offset: var(--focus-offset);
+  }
+}

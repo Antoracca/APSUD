@@ -1,0 +1,105 @@
+---
+/**
+ * /agir/appels-d-offres — Appels d'offres (gabarit B sans image, DESIGN.md §4.14 variante
+ * `--appel-offres`, PROSPER_STRUCTURE §14.7).
+ * 1. En-tête compact + fil d'Ariane
+ * 2. Avis ouverts (src/data/tenders.ts) — vide aujourd'hui : état vide honnête ; avis clos en archive
+ * 3. Ce que contient chaque avis (structure du type de contenu, aucune donnée inventée)
+ * 4. Double CTA : contact / carrières
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/layout/PageHeader.astro';
+import Prose from '../../components/ui/Prose.astro';
+import JobRow from '../../components/ui/JobRow.astro';
+import CtaTwoUp from '../../components/ui/CtaTwoUp.astro';
+import OffersListing from '../../sections/offres/OffersListing.astro';
+import {
+  openTenders,
+  pastTenders,
+  tenderTypeLabels,
+  tenderStatusLabels,
+  type Tender,
+} from '../../data/tenders';
+import { site } from '../../data/site';
+
+const open = openTenders();
+const past = pastTenders();
+
+const rowProps = (t: Tender) => ({
+  href: `/agir/appels-d-offres/${t.slug}`,
+  title: t.objet,
+  reference: t.reference,
+  badges: [tenderTypeLabels[t.type]],
+  meta: [
+    ...(t.zone ? [{ icon: 'map-pin', label: t.zone }] : []),
+    ...(t.projetLie ? [{ label: t.projetLie }] : []),
+    ...(t.lots?.length ? [{ label: `${t.lots.length} lot${t.lots.length > 1 ? 's' : ''}` }] : []),
+  ],
+  deadline: t.dateLimiteDepot,
+  variant: 'appel-offres' as const,
+});
+---
+
+<BaseLayout
+  title="Appels d’offres"
+  description="Les appels d’offres d’APSUD : travaux, fournitures, services et consultances liés à ses projets en République centrafricaine."
+>
+  <PageHeader
+    variant="compact"
+    title="Appels d’offres"
+    intro="Travaux, fournitures, services et consultances : APSUD publie ici les avis liés à ses projets, avec le dossier à télécharger et la date limite de dépôt."
+    breadcrumb={[{ label: 'Agir avec nous', href: '/agir' }, { label: 'Appels d’offres' }]}
+  />
+
+  <OffersListing
+    id="avis-titre"
+    title="Avis en cours"
+    count={open.length}
+    singular="avis ouvert"
+    plural="avis ouverts"
+    emptyTitle="Aucun appel d’offres en cours"
+    emptyText="Aucun avis n’est publié pour le moment. Les prochains appels d’offres d’APSUD paraîtront sur cette page, avec leur dossier complet et la date limite de dépôt."
+    emptyLink={{ label: 'Une question ? Écrivez-nous', href: '/contact' }}
+    archiveLabel="Avis clos ou attribués"
+    archiveCount={past.length}
+    notice={{
+      title: 'Avant de répondre à un avis',
+      text: 'Vérifiez qu’il figure bien sur cette page. En cas de doute sur un avis qui circule au nom d’APSUD, contactez-nous avant d’engager le moindre frais.',
+      link: { label: `Vérifier un avis : ${site.contact.email}`, href: `mailto:${site.contact.email}` },
+    }}
+  >
+    {open.map((t) => <JobRow {...rowProps(t)} />)}
+    <Fragment slot="archive">
+      {past.map((t) => <JobRow {...rowProps(t)} closed closedLabel={tenderStatusLabels[t.statut]} />)}
+    </Fragment>
+  </OffersListing>
+
+  <section class="l-section--sm t-coton" aria-labelledby="contenu-avis-titre">
+    <Prose>
+      <h2 id="contenu-avis-titre">Ce que contient chaque avis</h2>
+      <p>Chaque appel d’offres publié sur cette page précise :</p>
+      <ol>
+        <li>sa référence, son objet et son type (travaux, fournitures, services ou consultance) ;</li>
+        <li>les lots éventuels, le projet et la zone concernés ;</li>
+        <li>la date de publication et la date limite de dépôt des offres ;</li>
+        <li>le lieu et les modalités de dépôt ;</li>
+        <li>le dossier d’appel d’offres à télécharger, puis les additifs et éclaircissements datés ;</li>
+        <li>une fois la procédure close, son statut (clos, attribué ou annulé) et son résultat.</li>
+      </ol>
+    </Prose>
+  </section>
+
+  <CtaTwoUp
+    theme="t-blanc"
+    primary={{
+      title: 'Une question sur un avis ?',
+      text: 'Écrivez à l’équipe d’APSUD en rappelant la référence de l’avis.',
+      cta: { label: 'Nous contacter', href: '/contact' },
+    }}
+    secondary={{
+      title: 'Travailler chez APSUD',
+      text: 'Offres d’emploi, de consultance et de stage.',
+      cta: { label: 'Voir les carrières', href: '/carrieres' },
+    }}
+  />
+</BaseLayout>

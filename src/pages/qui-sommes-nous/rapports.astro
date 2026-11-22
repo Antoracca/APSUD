@@ -1,0 +1,31 @@
+---
+/**
+ * /qui-sommes-nous/rapports — équivalent des pages de transparence de Prosper (§5.18), en attente :
+ * aucun rapport publié par APSUD pour l'instant. Citation de la valeur « Responsabilité »
+ * (texte officiel) puis état vide honnête avec contact.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/layout/PageHeader.astro';
+import Prose from '../../components/ui/Prose.astro';
+import CtaTwoUp from '../../components/ui/CtaTwoUp.astro';
+import OngPending from '../../sections/ong/OngPending.astro';
+import { reportsPage, cta } from '../../sections/ong/ong';
+---
+
+<BaseLayout title={reportsPage.title} description={reportsPage.description}>
+  <PageHeader
+    variant="compact"
+    title={reportsPage.title}
+    intro={reportsPage.intro}
+    breadcrumb={[{ label: 'Qui sommes-nous', href: '/qui-sommes-nous' }, { label: reportsPage.title }]}
+  />
+  <OngPending empty={reportsPage.empty} related={reportsPage.related}>
+    <Prose contained={false}>
+      <blockquote>
+        <p>{reportsPage.quote.text}</p>
+        <footer>{reportsPage.quote.source}</footer>
+      </blockquote>
+    </Prose>
+  </OngPending>
+  <CtaTwoUp primary={cta.primary} secondary={cta.secondary} />
+</BaseLayout>

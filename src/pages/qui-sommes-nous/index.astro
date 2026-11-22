@@ -1,0 +1,40 @@
+---
+/**
+ * /qui-sommes-nous — équivalent de « Who we are » de Prosper (PROSPER_STRUCTURE §5.2, gabarit B).
+ * En-tête (H1 + photo du staff + légende) → présentation → mission / vision / objectif
+ * → 6 valeurs (#valeurs) → gouvernance → domaines d'intervention → chiffres clés
+ * → zigzag → double CTA. Sections : src/sections/ong/ ; contenus : src/sections/ong/ong.ts.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/layout/PageHeader.astro';
+import CtaTwoUp from '../../components/ui/CtaTwoUp.astro';
+import OngIntro from '../../sections/ong/OngIntro.astro';
+import OngPurpose from '../../sections/ong/OngPurpose.astro';
+import OngValues from '../../sections/ong/OngValues.astro';
+import OngGovernance from '../../sections/ong/OngGovernance.astro';
+import OngDomains from '../../sections/ong/OngDomains.astro';
+import OngFigures from '../../sections/ong/OngFigures.astro';
+import OngZigzag from '../../sections/ong/OngZigzag.astro';
+import { header, cta } from '../../sections/ong/ong';
+---
+
+<BaseLayout
+  title="Qui sommes-nous"
+  description="APSUD, ONG nationale centrafricaine de développement et d’action humanitaire, indépendante : mission, vision, valeurs, gouvernance et domaines d’intervention."
+>
+  <PageHeader
+    title={header.title}
+    image={header.image}
+    imageAlt={header.imageAlt}
+    caption={header.caption}
+    breadcrumb={[{ label: 'Qui sommes-nous' }]}
+  />
+  <OngIntro />
+  <OngPurpose />
+  <OngValues />
+  <OngGovernance />
+  <OngDomains />
+  <OngFigures />
+  <OngZigzag />
+  <CtaTwoUp primary={cta.primary} secondary={cta.secondary} />
+</BaseLayout>

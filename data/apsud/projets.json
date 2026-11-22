@@ -1,0 +1,1530 @@
+{
+ "genere_le": "2026-11-21",
+ "source": "https://apsud.org/liste_projets",
+ "nb_projets": 14,
+ "projets": [
+  {
+   "id_source": 20,
+   "slug": "innovation-numerique-faim-agriapps",
+   "titre": "Innovation numérique contre la faim en RCA Upscale AgriApps",
+   "titre_court": "Innovation numérique contre la faim (FINIYAKA)",
+   "sigle": "Upscale AgriApps",
+   "code_projet": "CAF 1041",
+   "statut": "en_cours",
+   "statut_libelle_site": "Projet en cours",
+   "statut_source": "site",
+   "statut_note": "Statut affiché sur /liste_projets (« Projet en cours » / « Projet réalisé ») ; cohérent avec les dates de fin au 21/11/2026.",
+   "date_debut": "2025-03-14",
+   "date_fin": "2026-12-31",
+   "annee_debut": 2025,
+   "annee_fin": 2026,
+   "zone_source": "Bangui et ses environs, préfecture de la Lobaye, préfecture de la Kemo",
+   "lieux": [
+    {
+     "lieu": "Bangui et ses environs",
+     "prefecture": "Bangui"
+    },
+    {
+     "lieu": null,
+     "prefecture": "Lobaye"
+    },
+    {
+     "lieu": null,
+     "prefecture": "Kémo"
+    },
+    {
+     "lieu": "Ngou Lekpa (village cité dans les légendes photo)",
+     "prefecture": null
+    }
+   ],
+   "domaines": [
+    "Sécurité alimentaire et moyens de subsistance"
+   ],
+   "bailleurs": [
+    "BMZ"
+   ],
+   "bailleurs_noms_complets": [
+    "Ministère fédéral allemand de la Coopération économique et du Développement (BMZ) — développement du sigle déduit"
+   ],
+   "partenaires_mise_en_oeuvre": [
+    "WHH (Welthungerhilfe)"
+   ],
+   "champs_source": {
+    "bailleur": "BMZ",
+    "partenaire_mise_en_oeuvre": "WHH",
+    "budget": "159214£"
+   },
+   "budget": {
+    "montant": 159214,
+    "devise_affichee": "£",
+    "devise_probable": "EUR",
+    "texte_source": "159214£",
+    "note": "Le symbole £ est très probablement une erreur de saisie pour € (financement allemand BMZ/WHH) : à confirmer."
+   },
+   "beneficiaires": [
+    "Les agriculteurs",
+    "Les éleveurs",
+    "Les entreprises de transformation agricole",
+    "Les groupements agricoles et multiplicateurs de semences"
+   ],
+   "beneficiaires_source": "- Les agriculteurs - Les éleveurs - Les entreprises de transformation agricole - Les groupements agricoles et multiplicateurs de semences",
+   "resume": "Projet d'innovation numérique contre la faim : développement et diffusion de l'application agricole FINIYAKA, qui facilite l'accès des producteurs à l'information, aux marchés et aux conseils techniques, à Bangui, dans la Lobaye et la Kémo.",
+   "resume_source": "rédigé (synthèse éditoriale à valider par APSUD)",
+   "objectif_general": "Contribuer à l’éradication de la faim et de la malnutrition en améliorant la production alimentaire locale, l’accès aux ressources agricoles et la résilience des petits exploitants agricoles grâce à l’usage des technologies numériques adaptées",
+   "objectifs": [
+    "Promouvoir l’innovation numérique pour faciliter l’accès à l’information, aux marchés et aux services agricoles et ainsi augmenter la productivité et la durabilité des systèmes alimentaires locaux",
+    "Utiliser les plateformes numériques pour mutualiser les ressources, coordonnées les actions et améliorer la gestion des projets de lutte contre la faim dans les pays francophones"
+   ],
+   "activites": [
+    "Création de 06 contenus de 06 spéculations différentes et mis en ligne sur l’application FINIYAKA",
+    "Lancement officiel de l’application FINIYAKA à Bangui en date du 07 Novembre 2025",
+    "Inscription de plus de 244 utilisateurs sont l’application FINIYAKA en RCA",
+    "Signature de deux accords de collaboration avec des entreprises de transformation agricole",
+    "Deux contrats de collaborations ont été signé avec les entreprises SAGINCO Group et SMCAF autour de l’application FINIYAKA"
+   ],
+   "resultats": [
+    "L’accès à l’information et aux services agricoles est amélioré grâce à l’adoption de l’application FINIYAKA",
+    "Les systèmes alimentaires locaux sont renforcés par la réduction des intermédiaires et l’amélioration de la traçabilité qui garantit la qualité des produits",
+    "Les ressources sont mutualisées grâce à la création d'un espace numérique de partage de données, de bonnes pratiques et d'expertises en matière d’agriculture et d’élevage"
+   ],
+   "resultats_nature": "Résultats attendus (tels que formulés sur le site)",
+   "description_complete": "Objectif général du projet\nContribuer à l’éradication de la faim et de la malnutrition en améliorant la production alimentaire locale, l’accès aux ressources agricoles et la résilience des petits exploitants agricoles grâce à l’usage des technologies numériques adaptées\n\nObjectifs spécifiques du projet\n- Promouvoir l’innovation numérique pour faciliter l’accès à l’information, aux marchés et aux services agricoles et ainsi augmenter la productivité et la durabilité des systèmes alimentaires locaux\n- Utiliser les plateformes numériques pour mutualiser les ressources, coordonnées les actions et améliorer la gestion des projets de lutte contre la faim dans les pays francophones\n\nRésultats attendus du projet\n- L’accès à l’information et aux services agricoles est amélioré grâce à l’adoption de l’application FINIYAKA\n- Les systèmes alimentaires locaux sont renforcés par la réduction des intermédiaires et l’amélioration de la traçabilité qui garantit la qualité des produits\n- Les ressources sont mutualisées grâce à la création d'un espace numérique de partage de données, de bonnes pratiques et d'expertises en matière d’agriculture et d’élevage\n\nActivités réalisées\n- Création de 06 contenus de 06 spéculations différentes et mis en ligne sur l’application FINIYAKA\n- Lancement officiel de l’application FINIYAKA à Bangui en date du 07 Novembre 2025\n- Inscription de plus de 244 utilisateurs sont l’application FINIYAKA en RCA\n- Signature de deux accords de collaboration avec des entreprises de transformation agricole\n- Deux contrats de collaborations ont été signé avec les entreprises SAGINCO Group et SMCAF autour de l’application FINIYAKA",
+   "images": [
+    {
+     "chemin": "assets/apsud/images/projets/innovation-numerique-faim-agriapps/projet-agriapps-lancement-finiyaka-01.jpg",
+     "alt": "Photo de groupe lors du lancement officiel de l'application FINIYAKA à Bangui, le 7 novembre 2025",
+     "legende": "Lancement officiel de l'application FINIYAKA dans la salle de conférence BEA AFRICA le 7 Novembre 2025"
+    },
+    {
+     "chemin": "assets/apsud/images/projets/innovation-numerique-faim-agriapps/projet-agriapps-caravane-finiyaka-02.jpg",
+     "alt": "Caravane de présentation de l'application FINIYAKA au grand public sur un camion podium, le 7 novembre 2025",
+     "legende": "Carnaval avec l'artiste Strong Berry pour la présentation de l'application au grand le 7 Novembre 2025"
+    },
+    {
+     "chemin": "assets/apsud/images/projets/innovation-numerique-faim-agriapps/projet-agriapps-presentation-productrice-03.jpg",
+     "alt": "Un agent d'APSUD présente l'application FINIYAKA sur smartphone à une productrice agricole à Ngou Lekpa",
+     "legende": "Présentation de l'application à une productrice agricole à Ngou Lekpa le 23 Avril 2026"
+    },
+    {
+     "chemin": "assets/apsud/images/projets/innovation-numerique-faim-agriapps/projet-agriapps-presentation-producteurs-04.jpg",
+     "alt": "Présentation de l'application FINIYAKA à des producteurs agricoles dans un champ à Ngou Lekpa",
+     "legende": "Présentation de l'application à quelques producteurs performants à Ngou lekpa le 24 Avril 2026"
+    }
+   ],
+   "url_source": "https://apsud.org/detail-projet/20/Innovation%20num%C3%A9rique%20contre%20la%20faim%20en%20RCA%20%20Upscale%20AgriApps",
+   "controle_qualite": {
+    "verifie_le": "2026-11-21",
+    "conforme_site_actuel": true,
+    "note": "Champs comparés ligne à ligne avec la fiche en ligne : conformes."
+   }
+  },
+  {
+   "id_source": 19,
+   "slug": "autonomisation-ong-femmes-leadership",
+   "titre": "Autonomisation des organisations nationales de femmes à travers leur renforcement et la promotion du leadership humanitaire local féminin)",
+   "titre_court": "Autonomisation des ONG nationales de femmes",
+   "sigle": null,
+   "code_projet": "FH33207",
+   "statut": "realise",
+   "statut_libelle_site": "Projet réalisé",
+   "statut_source": "site",
+   "statut_note": "Statut affiché sur /liste_projets (« Projet en cours » / « Projet réalisé ») ; cohérent avec les dates de fin au 21/11/2026.",
+   "date_debut": "2025-02-01",
+   "date_fin": "2026-03-31",
+   "annee_debut": 2025,
+   "annee_fin": 2026,
+   "zone_source": "Boguila, Markounda",
+   "lieux": [
+    {
+     "lieu": "Boguila",
+     "prefecture": "Ouham (déduit)"
+    },
+    {
+     "lieu": "Markounda",
+     "prefecture": "Ouham (déduit)"
+    }
+   ],
+   "domaines": [
+    "Protection/Genre",
+    "WASH",
+    "Renforcement de capacités / localisation"
+   ],
+   "bailleurs": [
+    "FH"
+   ],
+   "bailleurs_noms_complets": [
+    "Fonds Humanitaire pour la République centrafricaine (FH RCA, fonds commun géré par OCHA) — développement du sigle déduit"
+   ],
+   "partenaires_mise_en_oeuvre": [],
+   "ong_beneficiaires": [
+    "ARFAD",
+    "FEVA",
+    "FSFD",
+    "JFDDH",
+    "AM",
+    "AVN"
+   ],
+   "champs_source": {
+    "bailleur": "FH",
+    "partenaire_mise_en_oeuvre": "",
+    "budget": "1.000.000 USD"
+   },
+   "budget": {
+    "montant": 1000000,
+    "devise_affichee": "USD",
+    "devise_probable": "USD",
+    "texte_source": "1.000.000 USD",
+    "note": null
+   },
+   "beneficiaires": [
+    "06 ONG nationales dirigées par les femmes (ARFAD, FEVA, FSFD, JFDDH, AM et AVN)",
+    "8.000 personnes à Boguila et Markounda"
+   ],
+   "beneficiaires_source": "06 ONG nationales dirigées par les femmes (ARFAD, FEVA, FSFD, JFDDH, AM et AVN), 8.000 personnes à Boguila et Markounda",
+   "resume": "Renforcement de six ONG nationales dirigées par des femmes pour qu'elles deviennent autonomes, éligibles au Fonds Humanitaire et capables de piloter une réponse humanitaire, combiné à une réponse WASH (eau, assainissement, hygiène) pour 8 000 personnes à Boguila et Markounda.",
+   "resume_source": "rédigé (synthèse éditoriale à valider par APSUD)",
+   "objectif_general": "Contribuer à rendre autonomes les organisations nationales de femmes afin qu’elles soient fiables et éligibles au Fonds Humanitaire, capables de concevoir et mettre en œuvre des projets humanitaires et de participer aux structures de coordination nationales",
+   "objectifs": [
+    "Renforcer les capacités des ONG nationales de femmes et dirigées par les femmes dans tous les secteurs d’une vie associative, leur donner des moyens techniques afin qu’elles aient des compétences suffisantes et qu’elles soient capables de prendre le lead d’une réponse humanitaire tout en participant aux mécanismes de coordination et de prise de décision",
+    "Améliorer l’accès inclusif, adapté et équitable aux infrastructures d’eau potable, aux infrastructures d’assainissement et aux programmes de changement de comportement en faveur de bonnes pratiques d’hygiène à Markounda et à Boguila"
+   ],
+   "activites": [
+    "Evaluation de capacités des ONG nationales de femmes ciblées par la Chargée de Partenariat et de localisation",
+    "Elaboration et validation d’un plan de renforcement de capacités pour chaque ONG évaluée",
+    "Appui dans l’élaboration, la validation et l’appropriation des politiques et manuels de procédures pour garantir une bonne gouvernance et un contrôle interne efficace",
+    "Organisation des ateliers de formation en salle des responsables des départements des ONG bénéficiaires en fonction du plan de renforcement de capacités",
+    "Coaching des ONG partenaires sous forme de stage au sein du bureau d’APSUD",
+    "Suivi de la réalisation des activités par les ONG nationales de femmes",
+    "Atelier de capitalisation et de partage d’expériences entre les ONG bénéficiaires et APSUD",
+    "Evaluation à mi-parcours de la stratégie de renforcement de capacités",
+    "Auto évaluation de chaque organisation de femmes soutenue",
+    "Réhabilitation de 16 points d'eau à Markounda et Boguila",
+    "Mise en place/redynamisation et équipement en kits de rechange de pièces de PMH (Pompe à Motricité Humaine) aux 16 Comités de Gestion des Points d’Eau (CGPE) dans les villages bénéficiaires pour s’assurer de l’entretien des pompes et continuer la sensibilisation même après le projet (activité réalisée par les 06 ONG bénéficiaires",
+    "Formation des artisans réparateurs et leur dotation en kits de rechange et caisse à outils",
+    "Remise des points d'eau réhabilités aux autorités locales en présence des leaders communautaires",
+    "Appui à la construction de 1200 latrines familiales par la stratégie de la participation communautaire en utilisant les matériaux locaux (Activité réalisée par les 6 ONG bénéficiaires)",
+    "Aménagement de 06 décharges de transit (Activité réalisée par les 6 ONG bénéficiaires)",
+    "Construction d’une fosse à ordures sécurisée à Markounda et une autre à Boguila",
+    "Distribution des bacs à ordures de 100 litres chacun (Activité réalisée par les 6 ONG bénéficiaires)",
+    "Dotation en kits de collecte secondaire de déchets solides aux 06 comités locaux d'assainissements mis en place et formés",
+    "Dotation des mairies de Markounda et de Boguila en motos 03 roues pour faciliter l’évacuation des déchets",
+    "Evacuation des déchets",
+    "Construction de 8 blocs de 2 latrines durables",
+    "Promotion à l'hygiène (séances de sensibilisation)",
+    "Distribution des kits d'hygiène incluant des items d'hygiène intimes spécifique pour les femmes et jeunes filles accompagnée de la sensibilisation aux bonnes pratiques d’hygiène pendant les distributions dans les communautés (activité réalisée par les 6 ONG bénéficiaires)",
+    "Réalisation d’enquête CAP initiale, finale et d’un PDM après la distribution des kits (activité réalisée par les 6 ONG bénéficiaires)",
+    "Formation de 24 relais communautaires dont 50% sont les femmes",
+    "Distribution de kits d'hygiène intime aux filles à l'âge de procréer et aux femmes ayant subi un choc dans les zones du projet",
+    "Séances de sensibilisation (masse, focus-group par sexe) des membres des communautés d’intervention sur les principes clés interdisant l’EAS et les mécanismes de signalement mis en place conformes à leur choix à Markounda et Boguila",
+    "Tenue des réunions mensuelles de suivi-évaluation redevabilité et apprentissage",
+    "Main streaming protection autour des thématiques liées à l’accès à l’eau l’hygiène et l’assainissement",
+    "Séances d’information auprès des bénéficiaires et fournisseurs sur le code de conduite d’APSUD, les procédures de signalement des cas de PSEA, les mécanismes de plainte",
+    "Formation du personnel de terrain sur les principes humanitaires, les actions de luttes contre les abus et exploitation sexuels, la fraude et la corruption"
+   ],
+   "resultats": [
+    "Les organisations nationales de femmes ont acquis des capacités et possibilités équitables d’assumer des rôles de leadership humanitaire, de mener une bonne gouvernance associative, de mobiliser les ressources et les gérer rationnellement pour une réponse humanitaire",
+    "8 000 personnes (femmes, hommes, filles et garçons) ciblées ont un accès sécurisé à l’eau en qualité et quantité suffisante dans la sous-préfecture de Markounda et Boguila",
+    "8 000 personnes (femmes, hommes, filles et garçons) ont un accès amélioré à l’assainissement dans Markounda et Boguila couvrant aussi les besoins des retournés",
+    "20 000 personnes (femmes, hommes, filles et garçons) bénéficiaires comprennent et mettent en pratique les connaissances acquises en pratique d’hygiène et sont sensibilisés à la construction de latrines familiales",
+    "La redevabilité envers les bénéficiaires est assurée ainsi que la lutte contre les exploitations et abus sexuels"
+   ],
+   "resultats_nature": "Résultats attendus (tels que formulés sur le site)",
+   "description_complete": "Objectif général du projet\nContribuer à rendre autonomes les organisations nationales de femmes afin qu’elles soient fiables et éligibles au Fonds Humanitaire, capables de concevoir et mettre en œuvre des projets humanitaires et de participer aux structures de coordination nationales\n\nObjectifs spécifiques du projet\n- Renforcer les capacités des ONG nationales de femmes et dirigées par les femmes dans tous les secteurs d’une vie associative, leur donner des moyens techniques afin qu’elles aient des compétences suffisantes et qu’elles soient capables de prendre le lead d’une réponse humanitaire tout en participant aux mécanismes de coordination et de prise de décision\n- Améliorer l’accès inclusif, adapté et équitable aux infrastructures d’eau potable, aux infrastructures d’assainissement et aux programmes de changement de comportement en faveur de bonnes pratiques d’hygiène à Markounda et à Boguila\n\nRésultats attendus du projet\n- Les organisations nationales de femmes ont acquis des capacités et possibilités équitables d’assumer des rôles de leadership humanitaire, de mener une bonne gouvernance associative, de mobiliser les ressources et les gérer rationnellement pour une réponse humanitaire\n- 8 000 personnes (femmes, hommes, filles et garçons) ciblées ont un accès sécurisé à l’eau en qualité et quantité suffisante dans la sous-préfecture de Markounda et Boguila\n- 8 000 personnes (femmes, hommes, filles et garçons) ont un accès amélioré à l’assainissement dans Markounda et Boguila couvrant aussi les besoins des retournés\n- 20 000 personnes (femmes, hommes, filles et garçons) bénéficiaires comprennent et mettent en pratique les connaissances acquises en pratique d’hygiène et sont sensibilisés à la construction de latrines familiales\n- La redevabilité envers les bénéficiaires est assurée ainsi que la lutte contre les exploitations et abus sexuels\n\nActivités réalisées\n- Evaluation de capacités des ONG nationales de femmes ciblées par la Chargée de Partenariat et de localisation\n- Elaboration et validation d’un plan de renforcement de capacités pour chaque ONG évaluée\n- Appui dans l’élaboration, la validation et l’appropriation des politiques et manuels de procédures pour garantir une bonne gouvernance et un contrôle interne efficace\n- Organisation des ateliers de formation en salle des responsables des départements des ONG bénéficiaires en fonction du plan de renforcement de capacités\n- Coaching des ONG partenaires sous forme de stage au sein du bureau d’APSUD\n- Suivi de la réalisation des activités par les ONG nationales de femmes\n- Atelier de capitalisation et de partage d’expériences entre les ONG bénéficiaires et APSUD\n- Evaluation à mi-parcours de la stratégie de renforcement de capacités\n- Auto évaluation de chaque organisation de femmes soutenue\n- Réhabilitation de 16 points d'eau à Markounda et Boguila\n- Mise en place/redynamisation et équipement en kits de rechange de pièces de PMH (Pompe à Motricité Humaine) aux 16 Comités de Gestion des Points d’Eau (CGPE) dans les villages bénéficiaires pour s’assurer de l’entretien des pompes et continuer la sensibilisation même après le projet (activité réalisée par les 06 ONG bénéficiaires\n- Formation des artisans réparateurs et leur dotation en kits de rechange et caisse à outils\n- Remise des points d'eau réhabilités aux autorités locales en présence des leaders communautaires\n- Appui à la construction de 1200 latrines familiales par la stratégie de la participation communautaire en utilisant les matériaux locaux (Activité réalisée par les 6 ONG bénéficiaires)\n- Aménagement de 06 décharges de transit (Activité réalisée par les 6 ONG bénéficiaires)\n- Construction d’une fosse à ordures sécurisée à Markounda et une autre à Boguila\n- Distribution des bacs à ordures de 100 litres chacun (Activité réalisée par les 6 ONG bénéficiaires)\n- Dotation en kits de collecte secondaire de déchets solides aux 06 comités locaux d'assainissements mis en place et formés\n- Dotation des mairies de Markounda et de Boguila en motos 03 roues pour faciliter l’évacuation des déchets\n- Evacuation des déchets\n- Construction de 8 blocs de 2 latrines durables\n- Promotion à l'hygiène (séances de sensibilisation)\n- Distribution des kits d'hygiène incluant des items d'hygiène intimes spécifique pour les femmes et jeunes filles accompagnée de la sensibilisation aux bonnes pratiques d’hygiène pendant les distributions dans les communautés (activité réalisée par les 6 ONG bénéficiaires)\n- Réalisation d’enquête CAP initiale, finale et d’un PDM après la distribution des kits (activité réalisée par les 6 ONG bénéficiaires)\n- Formation de 24 relais communautaires dont 50% sont les femmes\n- Distribution de kits d'hygiène intime aux filles à l'âge de procréer et aux femmes ayant subi un choc dans les zones du projet\n- Séances de sensibilisation (masse, focus-group par sexe) des membres des communautés d’intervention sur les principes clés interdisant l’EAS et les mécanismes de signalement mis en place conformes à leur choix à Markounda et Boguila\n- Tenue des réunions mensuelles de suivi-évaluation redevabilité et apprentissage\n- Main streaming protection autour des thématiques liées à l’accès à l’eau l’hygiène et l’assainissement\n- Séances d’information auprès des bénéficiaires et fournisseurs sur le code de conduite d’APSUD, les procédures de signalement des cas de PSEA, les mécanismes de plainte\n- Formation du personnel de terrain sur les principes humanitaires, les actions de luttes contre les abus et exploitation sexuels, la fraude et la corruption",
+   "images": [
+    {
+     "chemin": "assets/apsud/images/projets/autonomisation-ong-femmes-leadership/projet-femmes-leadership-coaching-ong-femmes-01.jpg",
+     "alt": "Une responsable de l'ONG FEVA en stage de coaching au bureau d'APSUD",
+     "legende": null
+    },
+    {
+     "chemin": "assets/apsud/images/projets/autonomisation-ong-femmes-leadership/projet-femmes-leadership-atelier-formation-responsables-02.jpg",
+     "alt": "Atelier de formation des responsables des ONG nationales de femmes sous la banderole du projet APSUD 33207",
+     "legende": null
+    },
+    {
+     "chemin": "assets/apsud/images/projets/autonomisation-ong-femmes-leadership/projet-femmes-leadership-visite-point-eau-03.jpg",
+     "alt": "Équipe d'APSUD et partenaires lors d'une visite de chantier de point d'eau",
+     "legende": null
+    },
+    {
+     "chemin": "assets/apsud/images/projets/autonomisation-ong-femmes-leadership/projet-femmes-leadership-evacuation-dechets-04.jpg",
+     "alt": "Chargement de déchets dans un camion-benne siglé APSUD par des agents d'assainissement",
+     "legende": null
+    }
+   ],
+   "url_source": "https://apsud.org/detail-projet/19/Autonomisation%20des%20organisations%20nationales%20de%20femmes%20%C3%A0%20travers%20leur%20renforcement%20et%20la%20promotion%20du%20leadership%20humanitaire%20local%20f%C3%A9minin%29",
+   "controle_qualite": {
+    "verifie_le": "2026-11-21",
+    "conforme_site_actuel": true,
+    "note": "Champs comparés ligne à ligne avec la fiche en ligne : conformes."
+   }
+  },
+  {
+   "id_source": 18,
+   "slug": "parsoc",
+   "titre": "Projet d’Appui au Renforcement de la Société Civile Centrafricaine (PARSOC)",
+   "titre_court": "PARSOC — Appui au renforcement de la société civile centrafricaine",
+   "sigle": "PARSOC",
+   "code_projet": "CAF 1068",
+   "statut": "en_cours",
+   "statut_libelle_site": "Projet en cours",
+   "statut_source": "site",
+   "statut_note": "Statut affiché sur /liste_projets (« Projet en cours » / « Projet réalisé ») ; cohérent avec les dates de fin au 21/11/2026.",
+   "date_debut": "2025-01-01",
+   "date_fin": "2027-12-31",
+   "annee_debut": 2025,
+   "annee_fin": 2027,
+   "zone_source": "Ouaka, Nana-Mamberé, Nana Gribizi, Bamingui-Bangoran, Basse-Kotto et Ouham-Pendé",
+   "lieux": [
+    {
+     "lieu": null,
+     "prefecture": "Ouaka"
+    },
+    {
+     "lieu": null,
+     "prefecture": "Nana-Mambéré"
+    },
+    {
+     "lieu": null,
+     "prefecture": "Nana-Gribizi"
+    },
+    {
+     "lieu": null,
+     "prefecture": "Bamingui-Bangoran"
+    },
+    {
+     "lieu": null,
+     "prefecture": "Basse-Kotto"
+    },
+    {
+     "lieu": null,
+     "prefecture": "Ouham-Pendé"
+    },
+    {
+     "lieu": "Antennes MdS : Bouar, Bambari, Kaga-Bandoro",
+     "prefecture": null
+    }
+   ],
+   "domaines": [
+    "Protection (droits humains, cohésion sociale, genre)",
+    "Renforcement de la société civile"
+   ],
+   "bailleurs": [
+    "Union Européenne (UE)"
+   ],
+   "bailleurs_noms_complets": [
+    "Union européenne"
+   ],
+   "partenaires_mise_en_oeuvre": [
+    "Deutsche Welthungerhilfe e.V. (WHH)"
+   ],
+   "champs_source": {
+    "bailleur": "Union Européenne (UE)",
+    "partenaire_mise_en_oeuvre": "ONG International Deutsche Welthungerhilfe e.V. (WHH)",
+    "budget": "1.700.000£/360.721,61£"
+   },
+   "budget": {
+    "montant": 360721.61,
+    "montant_total_projet": 1700000,
+    "devise_affichee": "£",
+    "devise_probable": "EUR",
+    "texte_source": "1.700.000£/360.721,61£",
+    "note": "Deux montants : 1 700 000 (budget global probable du projet) / 360 721,61 (part probable d'APSUD) — interprétation déduite ; le symbole £ est probablement une erreur pour €. À confirmer."
+   },
+   "beneficiaires": [
+    "200 organisations de la société civile centrafricaine pour des formations et renforcement de capacités",
+    "25 OSC porteuses de changement sociale",
+    "La Maison des Services (MdS)"
+   ],
+   "beneficiaires_source": "200 organisations de la société civile centrafricaine pour des formations et renforcement de capacités - 25 OSC porteuses de changement sociale - La Maison des Services (MdS)",
+   "resume": "Projet financé par l'Union européenne et mis en œuvre avec Welthungerhilfe pour renforcer 200 organisations de la société civile dans six préfectures, en tant qu'actrices du changement social (droits humains, cohésion sociale, genre), avec l'implantation d'antennes régionales de la Maison des Services.",
+   "resume_source": "rédigé (synthèse éditoriale à valider par APSUD)",
+   "objectif_general": "Contribuer au renforcement de la société civile locale centrafricaine en tant qu‘acteur de changement social dans les domaines des droits humains, de la cohésion sociale et du genre",
+   "objectifs": [
+    "Les capacités organisationnelles, techniques et d‘influence des OSC locales sont renforcées dans les six (6) préfectures ciblées"
+   ],
+   "activites": [
+    "L’installation et l’équipement des antennes régionales de la Maison des Services (MdS) à Bouar, Bambari et Kaga-Bandoro",
+    "Le ciblage des 200 OSC dans les 06 préfectures du projet",
+    "La réhabilitation et la remise officielle des bâtiments de APSUD à la MdS (à Bambari en date du 22 Décembre 2025 et à Kaga-Bandoro le 22 Janvier 2026",
+    "La remise officielle des équipements informatiques et électroniques restants au bureau exécutif de la MdS à Bangui en date du 06 Mars 2026"
+   ],
+   "resultats": [
+    "Les OSC locales ciblées sont dynamiques et opérationnelles dans un environnement fragile (habilité/capacité)",
+    "Les OSC dans les zones d’intervention renforcent leur synergie d’action et leur réseautage pour constituer des groupes d’influence (mise en réseau)",
+    "Les OSC dans les zones d’intervention disposent des structures, des ressources et des espaces nécessaires pour initier et déclencher l’action de changement social et d’engagement citoyen (mobilisation sociale)"
+   ],
+   "resultats_nature": "Résultats attendus (tels que formulés sur le site)",
+   "description_complete": "Objectif général du projet\nContribuer au renforcement de la société civile locale centrafricaine en tant qu‘acteur de changement social dans les domaines des droits humains, de la cohésion sociale et du genre\n\nObjectifs spécifiques du projet\n- Les capacités organisationnelles, techniques et d‘influence des OSC locales sont renforcées dans les six (6) préfectures ciblées\n\nRésultats attendus du projet\n- Les OSC locales ciblées sont dynamiques et opérationnelles dans un environnement fragile (habilité/capacité)\n- Les OSC dans les zones d’intervention renforcent leur synergie d’action et leur réseautage pour constituer des groupes d’influence (mise en réseau)\n- Les OSC dans les zones d’intervention disposent des structures, des ressources et des espaces nécessaires pour initier et déclencher l’action de changement social et d’engagement citoyen (mobilisation sociale)\n\nActivités réalisées\n- L’installation et l’équipement des antennes régionales de la Maison des Services (MdS) à Bouar, Bambari et Kaga-Bandoro\n- Le ciblage des 200 OSC dans les 06 préfectures du projet\n- La réhabilitation et la remise officielle des bâtiments de APSUD à la MdS (à Bambari en date du 22 Décembre 2025 et à Kaga-Bandoro le 22 Janvier 2026\n- La remise officielle des équipements informatiques et électroniques restants au bureau exécutif de la MdS à Bangui en date du 06 Mars 2026",
+   "images": [
+    {
+     "chemin": "assets/apsud/images/projets/parsoc/projet-parsoc-lancement-officiel-bangui-01.jpg",
+     "alt": "Photo officielle du lancement du projet PARSOC à Bangui, salle de conférence de la CNSS, 26 août 2025",
+     "legende": "Lancement officiel du projet PARSOC sous le patronage du ministère de l’Economie, du Plan et de la coopération à Bangui le 26 Aout 2025 dans la salle de conférence de la CNSS"
+    },
+    {
+     "chemin": "assets/apsud/images/projets/parsoc/projet-parsoc-lancement-regional-bambari-02.jpg",
+     "alt": "Participants au lancement régional du projet PARSOC à Bambari, 14 janvier 2026",
+     "legende": "Lancement régional du projet PARSOC sous la supervision des autorités locales, des structures déconcentrées de l’Etat, les organisations locales de la société civile dans la préfecture de la OUAKA(BAMBARI) le 14 Janvier 2026"
+    },
+    {
+     "chemin": "assets/apsud/images/projets/parsoc/projet-parsoc-visite-autorites-kaga-bandoro-03.jpg",
+     "alt": "Rencontre d'échange avec les autorités locales de la Nana-Gribizi à Kaga-Bandoro, 24 février 2026",
+     "legende": "Visite d’échange et de présentation des activités du projet aux autorités locale de la préfecture de la NANA-GRIBIZI le 24 Février 2026 à KAGA-BANDORO"
+    },
+    {
+     "chemin": "assets/apsud/images/projets/parsoc/projet-parsoc-remise-equipements-mds-04.jpg",
+     "alt": "Remise officielle d'équipements informatiques aux responsables de la Maison des Services à Bangui, 6 mars 2026",
+     "legende": "Cérémonie de la remise officielle des équipements informatiques et électroniques aux responsables de la MdS dans le cadre de l'implantation des des antennes de la MdS dans les préfectures de la Ouaka, Nana Gribizi et Nana Mambéré à Bangui le 6 Mars 2026"
+    }
+   ],
+   "url_source": "https://apsud.org/detail-projet/18/Projet%20d%E2%80%99Appui%20au%20Renforcement%20de%20la%20Soci%C3%A9t%C3%A9%20Civile%20Centrafricaine%20%28PARSOC%29",
+   "controle_qualite": {
+    "verifie_le": "2026-11-21",
+    "conforme_site_actuel": true,
+    "note": "Champs comparés ligne à ligne avec la fiche en ligne : conformes."
+   }
+  },
+  {
+   "id_source": 15,
+   "slug": "leadership-humanitaire-wash-rafai",
+   "titre": "Leadership Humanitaire local pour renforcer la localisation de l’aide et une réponse efficace et rapide aux besoins critiques en WASH a RAFAÏ",
+   "titre_court": "Leadership humanitaire local et WASH à Rafaï",
+   "sigle": null,
+   "code_projet": "CBPF-CAR-23-S-NGO-26265",
+   "statut": "realise",
+   "statut_libelle_site": "Projet réalisé",
+   "statut_source": "site",
+   "statut_note": "Statut affiché sur /liste_projets (« Projet en cours » / « Projet réalisé ») ; cohérent avec les dates de fin au 21/11/2026.",
+   "date_debut": "2023-11-15",
+   "date_fin": "2024-11-14",
+   "annee_debut": 2023,
+   "annee_fin": 2024,
+   "zone_source": "Rafai",
+   "lieux": [
+    {
+     "lieu": "Rafaï",
+     "prefecture": "Mbomou (déduit ; la préfecture est visible sur les gilets du projet en photo)"
+    }
+   ],
+   "domaines": [
+    "WASH",
+    "Renforcement de capacités / localisation"
+   ],
+   "bailleurs": [
+    "FH"
+   ],
+   "bailleurs_noms_complets": [
+    "Fonds Humanitaire pour la République centrafricaine (FH RCA) — déduit"
+   ],
+   "partenaires_mise_en_oeuvre": [
+    "AU SECOURS",
+    "LNPDD",
+    "OFAHRD"
+   ],
+   "champs_source": {
+    "bailleur": "FH",
+    "partenaire_mise_en_oeuvre": "APSUD, AU SECOURS, LNPDD, OFAHRD",
+    "budget": "600 0OO USD"
+   },
+   "budget": {
+    "montant": 600000,
+    "devise_affichee": "USD",
+    "devise_probable": "USD",
+    "texte_source": "600 0OO USD",
+    "note": "Le texte source contient deux lettres « O » au lieu de zéros."
+   },
+   "beneficiaires": [
+    "AU SECOURS, LNPDD, OFAHRD"
+   ],
+   "beneficiaires_source": "AU SECOURS, LNPDD, OFAHRD",
+   "resume": "Projet de localisation de l'aide : APSUD accompagne trois ONG nationales (AU SECOURS, LNPDD, OFAHRD) dans leur renforcement institutionnel tout en réalisant avec elles des activités WASH prioritaires à Rafaï.",
+   "resume_source": "rédigé (synthèse éditoriale à valider par APSUD)",
+   "objectif_general": "contribuer aux renforcements de capacités des ONGs Nationales pour qu’elles soient autonomes fiables et éligibles aux FH ;qu’elles soient aussi en mesure de concevoir et mettre en œuvre des projets humanitaires et participer aux structures de coordination à travers des formations théoriques et la réalisation des activités prioritaires du HRP en WASH dans la sous-préfectures de Rafaï présentant des besoins urgents",
+   "objectifs": [
+    "Renforcer les capacités des ONGs nationales ciblées dans tous les secteurs d’une vie associative, leur donner des moyens techniques afin qu’elles aient des compétences suffisantes et qu’elles soient capable de prendre le lead d’une réponse humanitaire tout en participant aux mécanismes de coordination et de prise de décision",
+    "Améliorer l’accès à l’eau potable et à l’assainissement des populations par la réhabilitation des systèmes d’approvisionnement en eau ainsi que d’infrastructures d’assainissement, la promotion des pratiques d’hygiène et le renforcement des systèmes de gestion des infrastructures Wash pour répondre aux besoins urgents à Rafaï"
+   ],
+   "activites": [
+    "Evaluation des capacités des ONGs nationales ciblées par la chargée de partenariat et de localisation",
+    "Elaboration d’un plan de renforcement de capacités pour chaque ONG évaluée",
+    "Appui dans l’élaboration, la validation et l’appropriation des politiques et manuels de procédures pour garantir une bonne gouvernance et un contrôle interne efficace.",
+    "Série de formations en salle des responsables des ONGs nationales en fonction du plan de renforcement de capacités",
+    "Coaching des ONGs partenaires sous forme du stage au sein des locaux d’APSUD",
+    "Suivie de la réalisation des activités des ONGs partenaires",
+    "Partages d’expérience, capitalisation et évaluation à mi-parcours de la stratégie de renforcement de capacités"
+   ],
+   "resultats": [
+    "Les acteurs nationaux et locaux ont acquis des capacités et possibilités équitable d’assumer des rôles de leadership humanitaire, de mener une bonne gouvernance associative, de mobiliser les ressources et les gérer rationnellement pour une réponse humanitaire",
+    "7500 personnes (Hommes, Femmes, Filles et garçons) ciblées ont un accès sécurisé à l’eau en qualité et quantité suffisante dans la sous-préfecture de RAFAÏ",
+    "5400 personnes (Femmes, Hommes, Filles et garçons) ont un accès amélioré à l’assainissement dans la zone de RAFAÏ couvrant aussi les besoins des IDP.",
+    "24272 personnes (Hommes, Femmes, Filles et Garçons) comprennent et mettent en pratique les connaissances acquises en pratique d’hygiène et sont sensibilisées à la construction des latrines familiales."
+   ],
+   "resultats_nature": "Résultats attendus (tels que formulés sur le site)",
+   "description_complete": "Objectif général du projet\ncontribuer aux renforcements de capacités des ONGs Nationales pour qu’elles soient autonomes fiables et éligibles aux FH ;qu’elles soient aussi en mesure de concevoir et mettre en œuvre des projets humanitaires et participer aux structures de coordination à travers des formations théoriques et la réalisation des activités prioritaires du HRP en WASH dans la sous-préfectures de Rafaï présentant des besoins urgents\n\nObjectifs spécifiques du projet\n- Renforcer les capacités des ONGs nationales ciblées dans tous les secteurs d’une vie associative, leur donner des moyens techniques afin qu’elles aient des compétences suffisantes et qu’elles soient capable de prendre le lead d’une réponse humanitaire tout en participant aux mécanismes de coordination et de prise de décision\n- Améliorer l’accès à l’eau potable et à l’assainissement des populations par la réhabilitation des systèmes d’approvisionnement en eau ainsi que d’infrastructures d’assainissement, la promotion des pratiques d’hygiène et le renforcement des systèmes de gestion des infrastructures Wash pour répondre aux besoins urgents à Rafaï\n\nRésultats attendus du projet\n- Les acteurs nationaux et locaux ont acquis des capacités et possibilités équitable d’assumer des rôles de leadership humanitaire, de mener une bonne gouvernance associative, de mobiliser les ressources et les gérer rationnellement pour une réponse humanitaire\n- 7500 personnes (Hommes, Femmes, Filles et garçons) ciblées ont un accès sécurisé à l’eau en qualité et quantité suffisante dans la sous-préfecture de RAFAÏ\n- 5400 personnes (Femmes, Hommes, Filles et garçons) ont un accès amélioré à l’assainissement dans la zone de RAFAÏ couvrant aussi les besoins des IDP.\n- 24272 personnes (Hommes, Femmes, Filles et Garçons) comprennent et mettent en pratique les connaissances acquises en pratique d’hygiène et sont sensibilisées à la construction des latrines familiales.\n\nActivités réalisées\n- Evaluation des capacités des ONGs nationales ciblées par la chargée de partenariat et de localisation\n- Elaboration d’un plan de renforcement de capacités pour chaque ONG évaluée\n- Appui dans l’élaboration, la validation et l’appropriation des politiques et manuels de procédures pour garantir une bonne gouvernance et un contrôle interne efficace.\n- Série de formations en salle des responsables des ONGs nationales en fonction du plan de renforcement de capacités\n- Coaching des ONGs partenaires sous forme du stage au sein des locaux d’APSUD\n- Suivie de la réalisation des activités des ONGs partenaires\n- Partages d’expérience, capitalisation et évaluation à mi-parcours de la stratégie de renforcement de capacités",
+   "images": [
+    {
+     "chemin": "assets/apsud/images/projets/leadership-humanitaire-wash-rafai/projet-rafai-formation-ong-partenaires-01.jpg",
+     "alt": "Formation en salle des responsables des ONG partenaires du projet à Rafaï",
+     "legende": "Formation en salle des responsables des ONGs partenaire en programme"
+    },
+    {
+     "chemin": "assets/apsud/images/projets/leadership-humanitaire-wash-rafai/projet-rafai-travaux-terrain-02.jpg",
+     "alt": "Équipes d'APSUD et d'ONG partenaires lors de travaux WASH sur le terrain à Rafaï",
+     "legende": null
+    },
+    {
+     "chemin": "assets/apsud/images/projets/leadership-humanitaire-wash-rafai/projet-rafai-coaching-bureau-03.jpg",
+     "alt": "Séance de travail sur ordinateur entre agents d'APSUD et d'ONG partenaires du projet de leadership humanitaire local",
+     "legende": null
+    }
+   ],
+   "url_source": "https://apsud.org/detail-projet/15/Leadership%20Humanitaire%20local%20pour%20renforcer%20la%20localisation%20de%20l%E2%80%99aide%20et%20une%20r%C3%A9ponse%20efficace%20et%20rapide%20aux%20besoins%20critiques%20en%20WASH%20a%20RAFA%C3%8F",
+   "beneficiaires_note": "Le champ « Bénéficiaires » liste les ONG partenaires ; les résultats attendus citent 7 500 personnes (eau), 5 400 (assainissement) et 24 272 (hygiène).",
+   "controle_qualite": {
+    "verifie_le": "2026-11-21",
+    "conforme_site_actuel": true,
+    "note": "Champs comparés ligne à ligne avec la fiche en ligne : conformes."
+   }
+  },
+  {
+   "id_source": 14,
+   "slug": "urgence-wash-boguila",
+   "titre": "Réponse d'urgence en eau, hygiène et assainissement en faveur des personnes les plus vulnérables affectées par les crises à Boguila et ses environs dans la préfecture de l'Ouham",
+   "titre_court": "Réponse d’urgence WASH à Boguila",
+   "sigle": null,
+   "code_projet": "FH 19072",
+   "statut": "realise",
+   "statut_libelle_site": "Projet réalisé",
+   "statut_source": "site",
+   "statut_note": "Statut affiché sur /liste_projets (« Projet en cours » / « Projet réalisé ») ; cohérent avec les dates de fin au 21/11/2026.",
+   "date_debut": "2021-06-01",
+   "date_fin": "2022-03-31",
+   "annee_debut": 2021,
+   "annee_fin": 2022,
+   "zone_source": "Préfecture de l’Ouham ( Nanga Boguila)",
+   "lieux": [
+    {
+     "lieu": "Boguila (Nanga Boguila)",
+     "prefecture": "Ouham"
+    }
+   ],
+   "domaines": [
+    "WASH"
+   ],
+   "bailleurs": [
+    "FH"
+   ],
+   "bailleurs_noms_complets": [
+    "Fonds Humanitaire pour la République centrafricaine (FH RCA) — déduit"
+   ],
+   "partenaires_mise_en_oeuvre": [],
+   "champs_source": {
+    "bailleur": "250,000 USD",
+    "partenaire_mise_en_oeuvre": "FH",
+    "budget": "430,000 USD"
+   },
+   "budget": {
+    "montant": 430000,
+    "montant_alternatif": 250000,
+    "devise_affichee": "USD",
+    "devise_probable": "USD",
+    "texte_source": "Bailleur : 250,000 USD / Partenaire de mise en oeuvre : FH / Budget : 430,000 USD",
+    "note": "Champs décalés sur le site : le montant 250 000 USD est saisi dans « Bailleur » et « FH » dans « Partenaire ». Budget réel à confirmer (430 000 ou 250 000 USD). [Contrôle qualité] Le tableau publié par APSUD en 2023 indique 430 000 USD, FH (CHF), 1er juil. 2021 – 31 mars 2022 : retenir 430 000 USD.",
+    "montant_retenu": 430000
+   },
+   "beneficiaires": [
+    "29005 personnes dont 18250 retournés et 10755 populations hautes"
+   ],
+   "beneficiaires_source": "29005 personnes dont 18250 retournés et 10755 populations hautes",
+   "resume": "Réponse d'urgence en eau, hygiène et assainissement pour les populations retournées, déplacées et hôtes de Boguila : réhabilitation de points d'eau, latrines familiales et publiques, gestion des déchets et prévention du COVID-19.",
+   "resume_source": "rédigé (synthèse éditoriale à valider par APSUD)",
+   "objectif_general": null,
+   "objectifs": [
+    "Promouvoir les moyens de maintenir et l'accès de manière sécurisée aux services WASH aux communautés vulnérables, retournées et déplacées/relocalisées dans les familles d’accueil et populations hautes dans la zone de Boguila"
+   ],
+   "activites": [
+    "Réhabilitation des six points d'eau à Boguila.",
+    "Mise en place et renforcement d'au moins six comités de gestion du point d'eau (CGPE) pour s’assurer de l’entretien des pompes et continuer la sensibilisation même après le projet.",
+    "Formation des artisans réparateurs et leur dotation en kits de rechange.",
+    "Identification des bénéficiaires de latrines familiales à Boguila",
+    "Appui à la construction de 500 latrines familiales par la stratégie de la participation communautaire en utilisant les matériaux locaux.",
+    "Distribution des bacs à ordures dans la localité, plus précisément dans les FOSA, les écoles et devant les magasins et autres endroits publics.",
+    "Construction des latrines publique et leurs équipements en dispositifs de lavage de mains (écoles, FOSA, marché).",
+    "Dotation en kits de collecte secondaires de déchets solides aux comités locaux d'assainissements qui sont mis en place et renforcés.",
+    "Construction d’une (01) fosse à ordures sécurisée à Boguila sur l’axe Paoua. Ce travail se fera en utilisant la main d’œuvre recrutée localement.",
+    "Promotion à l'hygiène.",
+    "Distribution de kits d'hygiène incluant des items d'hygiène intimes spécifique pour les femmes et jeunes filles accompagnée de la sensibilisation aux bonnes pratiques d’hygiène pendant les distributions dans les communautés. ampagnes d'affichage sur les gestes barrières au COVID 19 et les autres thèmes d'hygiène très négligés dans la localité.",
+    "Installation des dispositifs de lavages de mains dans les lieux publics pour lutter contre la propagation du COVID 19"
+   ],
+   "resultats": [
+    "R1. 3000 personnes (femmes, hommes, filles et garçons) ciblées ont un accès sécurisé à l’eau en qualité et quantité suffisante dans la commune Boguila",
+    "3000 personnes (femmes, hommes, filles et garçons) ont un accès amélioré à l’assainissement dans Boguila couvrant aussi les besoins des nouveaux venus",
+    "30000 personnes (femmes, hommes, filles et garçons) bénéficiaires comprennent et mettent en pratique les connaissances acquises en pratiques d’hygiène et sont sensibilisés à la construction de latrines familiales ainsi qu'aux mesures barrières au COVID 19"
+   ],
+   "resultats_nature": "Résultats attendus (tels que formulés sur le site)",
+   "description_complete": "Objectif général du projet\n(non renseigné sur le site)\n\nObjectifs spécifiques du projet\n- Promouvoir les moyens de maintenir et l'accès de manière sécurisée aux services WASH aux communautés vulnérables, retournées et déplacées/relocalisées dans les familles d’accueil et populations hautes dans la zone de Boguila\n\nRésultats attendus du projet\n- R1. 3000 personnes (femmes, hommes, filles et garçons) ciblées ont un accès sécurisé à l’eau en qualité et quantité suffisante dans la commune Boguila\n- 3000 personnes (femmes, hommes, filles et garçons) ont un accès amélioré à l’assainissement dans Boguila couvrant aussi les besoins des nouveaux venus\n- 30000 personnes (femmes, hommes, filles et garçons) bénéficiaires comprennent et mettent en pratique les connaissances acquises en pratiques d’hygiène et sont sensibilisés à la construction de latrines familiales ainsi qu'aux mesures barrières au COVID 19\n\nActivités réalisées\n- Réhabilitation des six points d'eau à Boguila.\n- Mise en place et renforcement d'au moins six comités de gestion du point d'eau (CGPE) pour s’assurer de l’entretien des pompes et continuer la sensibilisation même après le projet.\n- Formation des artisans réparateurs et leur dotation en kits de rechange.\n- Identification des bénéficiaires de latrines familiales à Boguila\n- Appui à la construction de 500 latrines familiales par la stratégie de la participation communautaire en utilisant les matériaux locaux.\n- Distribution des bacs à ordures dans la localité, plus précisément dans les FOSA, les écoles et devant les magasins et autres endroits publics.\n- Construction des latrines publique et leurs équipements en dispositifs de lavage de mains (écoles, FOSA, marché).\n- Dotation en kits de collecte secondaires de déchets solides aux comités locaux d'assainissements qui sont mis en place et renforcés.\n- Construction d’une (01) fosse à ordures sécurisée à Boguila sur l’axe Paoua. Ce travail se fera en utilisant la main d’œuvre recrutée localement.\n- Promotion à l'hygiène.\n- Distribution de kits d'hygiène incluant des items d'hygiène intimes spécifique pour les femmes et jeunes filles accompagnée de la sensibilisation aux bonnes pratiques d’hygiène pendant les distributions dans les communautés. ampagnes d'affichage sur les gestes barrières au COVID 19 et les autres thèmes d'hygiène très négligés dans la localité.\n- Installation des dispositifs de lavages de mains dans les lieux publics pour lutter contre la propagation du COVID 19",
+   "images": [
+    {
+     "chemin": "assets/apsud/images/projets/urgence-wash-boguila/projet-boguila-distribution-kits-hygiene-01.jpg",
+     "alt": "Distribution de kits d'hygiène (seaux et bidons) aux ménages de Boguila",
+     "legende": null
+    },
+    {
+     "chemin": "assets/apsud/images/projets/urgence-wash-boguila/projet-boguila-point-eau-rehabilite-02.jpg",
+     "alt": "Point d'eau réhabilité par APSUD à Boguila dans le cadre du projet FH 19072",
+     "legende": null
+    },
+    {
+     "chemin": "assets/apsud/images/projets/urgence-wash-boguila/projet-boguila-formation-artisans-reparateurs-03.jpg",
+     "alt": "Formation des artisans réparateurs et des comités de gestion des points d'eau à Boguila, avec leurs caisses à outils",
+     "legende": null
+    },
+    {
+     "chemin": "assets/apsud/images/projets/urgence-wash-boguila/projet-boguila-latrine-familiale-04.jpg",
+     "alt": "Latrine familiale construite avec l'appui du projet à Boguila",
+     "legende": null
+    }
+   ],
+   "url_source": "https://apsud.org/detail-projet/14/R%C3%A9ponse%20d%27urgence%20en%20eau,%20hygi%C3%A8ne%20et%20assainissement%20en%20faveur%20des%20personnes%20les%20plus%20vuln%C3%A9rables%20affect%C3%A9es%20par%20les%20crises%20%C3%A0%20Boguila%20et%20ses%20environs%20dans%20la%20pr%C3%A9fecture%20de%20l%27Ouham",
+   "controle_qualite": {
+    "verifie_le": "2026-11-21",
+    "conforme_site_actuel": true,
+    "complements": [
+     "Budget : le tableau 2023 confirme 430 000 USD (le « 250,000 USD » du champ Bailleur est une erreur de saisie)."
+    ]
+   }
+  },
+  {
+   "id_source": 13,
+   "slug": "moyens-subsistance-maloum",
+   "titre": "Accès urgent à des opportunités économiques et des moyens de subsistance aux personnes touchées par la crise pour la stabilisation des communautés affectées par le conflit à Maloum.",
+   "titre_court": "Moyens de subsistance et stabilisation à Maloum",
+   "sigle": null,
+   "code_projet": "FH 10582",
+   "statut": "realise",
+   "statut_libelle_site": "Projet réalisé",
+   "statut_source": "site",
+   "statut_note": "Statut affiché sur /liste_projets (« Projet en cours » / « Projet réalisé ») ; cohérent avec les dates de fin au 21/11/2026.",
+   "date_debut": "2018-12-01",
+   "date_fin": "2019-07-31",
+   "annee_debut": 2018,
+   "annee_fin": 2019,
+   "zone_source": "Préfecture de Ouaka (MALOUM)",
+   "lieux": [
+    {
+     "lieu": "Maloum",
+     "prefecture": "Ouaka"
+    }
+   ],
+   "domaines": [
+    "Sécurité alimentaire, moyens de subsistance et stabilisation communautaire"
+   ],
+   "bailleurs": [
+    "FH"
+   ],
+   "bailleurs_noms_complets": [
+    "Fonds Humanitaire pour la République centrafricaine (FH RCA) — déduit"
+   ],
+   "partenaires_mise_en_oeuvre": [],
+   "champs_source": {
+    "bailleur": "FH",
+    "partenaire_mise_en_oeuvre": "",
+    "budget": "250,000 USD"
+   },
+   "budget": {
+    "montant": 250000,
+    "devise_affichee": "USD",
+    "devise_probable": "USD",
+    "texte_source": "250,000 USD",
+    "note": null
+   },
+   "beneficiaires": [
+    "29005 personnes dont 18250 retournés et 10755 populations hautes"
+   ],
+   "beneficiaires_source": "29005 personnes dont 18250 retournés et 10755 populations hautes",
+   "resume": "Emplois temporaires (THIMO), relance d'activités génératrices de revenus et renforcement de la cohésion sociale pour stabiliser les communautés affectées par le conflit à Maloum.",
+   "resume_source": "rédigé (synthèse éditoriale à valider par APSUD)",
+   "objectif_general": null,
+   "objectifs": [
+    "Améliorer les conditions de vie des personnes vulnérables à Maloum en leur offrant un emploi temporaire, en appuyant leur relèvement socioéconomique et en renforçant la cohésion sociale"
+   ],
+   "activites": [
+    "Exécution des travaux HIMO",
+    "Distribution des kits d'AGR d'urgence",
+    "Focus group/dialogue intercommunautaire sur les thématiques de la cohésion sociale, la prévention et résolution de conflits suite aux audits et entretiens.",
+    "Renforcement de capacités des autorités locales, des leaders des femmes, des leaders des jeunes et d’autres organisations à assise communautaire sur la gestion et la mitigation des conflits, le leadership pour la paix et la consolidation de la cohésion sociale cohésion sociale, la prévention et résolution de conflits suite aux audits et entretiens.",
+    "Appui dans la légalisation des structures appuyées."
+   ],
+   "resultats": [
+    "Trois infrastructures socio-économiques et sociocommunautaires sont réhabilitées à travers les THIMO et ainsi 625 travaux temporaires créés",
+    "Au moins 30 microprojets d’AGR formulés, approuvés et appuyés par le projet sont opérationnels et rentables",
+    "Les mécanismes et structures de prévention et de gestion de conflits locaux sont renforcés et opérationnels"
+   ],
+   "resultats_nature": "Résultats attendus (tels que formulés sur le site)",
+   "description_complete": "Objectif général du projet\n(non renseigné sur le site)\n\nObjectifs spécifiques du projet\n- Améliorer les conditions de vie des personnes vulnérables à Maloum en leur offrant un emploi temporaire, en appuyant leur relèvement socioéconomique et en renforçant la cohésion sociale\n\nRésultats attendus du projet\n- Trois infrastructures socio-économiques et sociocommunautaires sont réhabilitées à travers les THIMO et ainsi 625 travaux temporaires créés\n- Au moins 30 microprojets d’AGR formulés, approuvés et appuyés par le projet sont opérationnels et rentables\n- Les mécanismes et structures de prévention et de gestion de conflits locaux sont renforcés et opérationnels\n\nActivités réalisées\n- Exécution des travaux HIMO\n- Distribution des kits d'AGR d'urgence\n- Focus group/dialogue intercommunautaire sur les thématiques de la cohésion sociale, la prévention et résolution de conflits suite aux audits et entretiens.\n- Renforcement de capacités des autorités locales, des leaders des femmes, des leaders des jeunes et d’autres organisations à assise communautaire sur la gestion et la mitigation des conflits, le leadership pour la paix et la consolidation de la cohésion sociale cohésion sociale, la prévention et résolution de conflits suite aux audits et entretiens.\n- Appui dans la légalisation des structures appuyées.",
+   "images": [
+    {
+     "chemin": "assets/apsud/images/projets/moyens-subsistance-maloum/projet-maloum-distribution-kits-agr-01.jpg",
+     "alt": "Distribution de kits d'activités génératrices de revenus devant la base d'APSUD à Maloum",
+     "legende": null
+    },
+    {
+     "chemin": "assets/apsud/images/projets/moyens-subsistance-maloum/projet-maloum-travaux-himo-02.jpg",
+     "alt": "Travaux à haute intensité de main-d'œuvre (THIMO) de réhabilitation d'une piste à Maloum",
+     "legende": null
+    },
+    {
+     "chemin": "assets/apsud/images/projets/moyens-subsistance-maloum/projet-maloum-travailleurs-thimo-03.jpg",
+     "alt": "Travailleurs THIMO en gilets de sécurité rassemblés à Maloum",
+     "legende": null
+    },
+    {
+     "chemin": "assets/apsud/images/projets/moyens-subsistance-maloum/projet-maloum-dotation-outils-04.jpg",
+     "alt": "Brouettes et outils remis aux travailleurs THIMO à Maloum",
+     "legende": null
+    }
+   ],
+   "url_source": "https://apsud.org/detail-projet/13/Acc%C3%A8s%20urgent%20%C3%A0%20des%20opportunit%C3%A9s%20%C3%A9conomiques%20et%20des%20moyens%20de%20subsistance%20aux%20%20personnes%20touch%C3%A9es%20par%20la%20crise%20pour%20la%20stabilisation%20des%20communaut%C3%A9s%20affect%C3%A9es%20par%20le%20conflit%20%C3%A0%20Maloum.",
+   "beneficiaires_note": "Texte identique à celui du projet Boguila (id 14) — probable copier-coller erroné : chiffre à faire confirmer par APSUD.",
+   "controle_qualite": {
+    "verifie_le": "2026-11-21",
+    "conforme_site_actuel": true,
+    "ecarts": [
+     "Dates : site actuel 2018-12-01 → 2019-07-31 ; tableau 2023 : 1er nov. 2018 → 30 avril 2019.",
+     "Bénéficiaires toujours copiés du projet 14 sur le site : aucune archive ne donne le bon chiffre."
+    ]
+   }
+  },
+  {
+   "id_source": 11,
+   "slug": "hygiene-assainissement-covid19-bangui-bambari",
+   "titre": "Projet d’urgence en hygiène et assainissement à Bangui et Bambari en faveur des personnes les plus vulnérables pour répondre aux besoins humanitaires les plus critiques et freiner la propagation du COVID 19.",
+   "titre_court": "Hygiène, assainissement et COVID-19 à Bangui et Bambari",
+   "sigle": null,
+   "code_projet": "COVID JAPON",
+   "statut": "realise",
+   "statut_libelle_site": "Projet réalisé",
+   "statut_source": "site",
+   "statut_note": "Statut affiché sur /liste_projets (« Projet en cours » / « Projet réalisé ») ; cohérent avec les dates de fin au 21/11/2026.",
+   "date_debut": "2020-08-01",
+   "date_fin": "2021-01-31",
+   "annee_debut": 2020,
+   "annee_fin": 2021,
+   "zone_source": "Bambari et Bangui",
+   "lieux": [
+    {
+     "lieu": "Bambari (sites de déplacés)",
+     "prefecture": "Ouaka"
+    },
+    {
+     "lieu": "Bangui (site de déplacés) et Bimbo",
+     "prefecture": "Bangui / Ombella-M’Poko"
+    }
+   ],
+   "domaines": [
+    "WASH"
+   ],
+   "bailleurs": [
+    "FH"
+   ],
+   "bailleurs_noms_complets": [
+    "Fonds Humanitaire pour la République centrafricaine (FH RCA) — déduit"
+   ],
+   "partenaires_mise_en_oeuvre": [],
+   "champs_source": {
+    "bailleur": "FH",
+    "partenaire_mise_en_oeuvre": "",
+    "budget": "100 000 USD"
+   },
+   "budget": {
+    "montant": 100000,
+    "devise_affichee": "USD",
+    "devise_probable": "USD",
+    "texte_source": "100 000 USD",
+    "note": "Le code projet « COVID JAPON » suggère un financement japonais (via le FH ?) : à confirmer."
+   },
+   "beneficiaires": [
+    "50 000 personnes déplacés internes dont 7800 hommes, 20850 femmes, 9150 garçons et 12200 filles"
+   ],
+   "beneficiaires_source": "50 000 personnes déplacés internes dont 7800 hommes, 20850 femmes, 9150 garçons et 12200 filles",
+   "resume": "Projet d'urgence en hygiène et assainissement sur les sites de déplacés de Bambari, Bangui et Bimbo pour répondre aux besoins critiques et freiner la propagation du COVID-19.",
+   "resume_source": "rédigé (synthèse éditoriale à valider par APSUD)",
+   "objectif_general": null,
+   "objectifs": [
+    "Promouvoir les moyens d’accès et de maintenir de manière sécurisée les services d’assainissement et d’hygiène aux communautés vulnérables, déplacés internes sur les sites IDP de Bambari, les sites IDP de Bangui et ses environs"
+   ],
+   "activites": [
+    "Vidange des latrines sur les sites IDP: au moins 150 latrines remplies dont 100 à Bambari et 50 à Bangui et Bimbo",
+    "Rehabilitation de 30 cabines de latrines d'urgences par bloc différenciés hommes / femmes et enfants existantes dont 15 à Bambari et 15 à",
+    "Bangui et Bimbo et leur équipements en dispositifs de lavage de mains.",
+    "Collecte secondaire des déchets solides au niveau des sites IDP de Bambari, Bangui et Bimbo.",
+    "Distribution de kits de collecte primaire des déchets et construction de 100 bacs à ordures dont 60 sur les sites IDP de Bambari, 40 sur les sites IDP de Bangui et Bimbo.",
+    "Collecte de données sur les infrastructures WASH et leur état sur les sites IDP. Cette collecte sef fera par l'équipe du projet, assisté par l'équipe de suivi-évaluation.",
+    "Réalisation de campagnes de sensibilisation à travers la mise en place/redynamisation et la formation de clubs d'hygiène au sein des différentes sites.",
+    "Sensibilisation des communautés à travers les campagnes d’affichage et la distribution des dépliants sur le COVID 19."
+   ],
+   "resultats": [
+    "50000 personnes (femmes, hommes, filles et garçons) ont un accès amélioré aux infrastructures d’assainissement appropriées de façon digne et sécurisée dans le respect des normes du projet SPHERE sur les sites des déplacés de Bambari, le site IDP de Bangui et ses environs",
+    "50 000 personnes (femmes, hommes, filles et garçons) bénéficiaires comprennent et mettent en pratique les connaissances acquises en terme d’hygiène et sont sensibilisés à l’entretien et la bonne utilisation des ouvrages WASH installés ainsi qu'au COVID 19 à Bambari (sites IDP), Bangui (site IDP) et Bimbo (IDP)"
+   ],
+   "resultats_nature": "Résultats attendus (tels que formulés sur le site)",
+   "description_complete": "Objectif général du projet\n(non renseigné sur le site)\n\nObjectifs spécifiques du projet\n- Promouvoir les moyens d’accès et de maintenir de manière sécurisée les services d’assainissement et d’hygiène aux communautés vulnérables, déplacés internes sur les sites IDP de Bambari, les sites IDP de Bangui et ses environs\n\nRésultats attendus du projet\n- 50000 personnes (femmes, hommes, filles et garçons) ont un accès amélioré aux infrastructures d’assainissement appropriées de façon digne et sécurisée dans le respect des normes du projet SPHERE sur les sites des déplacés de Bambari, le site IDP de Bangui et ses environs\n- 50 000 personnes (femmes, hommes, filles et garçons) bénéficiaires comprennent et mettent en pratique les connaissances acquises en terme d’hygiène et sont sensibilisés à l’entretien et la bonne utilisation des ouvrages WASH installés ainsi qu'au COVID 19 à Bambari (sites IDP), Bangui (site IDP) et Bimbo (IDP)\n\nActivités réalisées\n- Vidange des latrines sur les sites IDP: au moins 150 latrines remplies dont 100 à Bambari et 50 à Bangui et Bimbo\n- Rehabilitation de 30 cabines de latrines d'urgences par bloc différenciés hommes / femmes et enfants existantes dont 15 à Bambari et 15 à\n- Bangui et Bimbo et leur équipements en dispositifs de lavage de mains.\n- Collecte secondaire des déchets solides au niveau des sites IDP de Bambari, Bangui et Bimbo.\n- Distribution de kits de collecte primaire des déchets et construction de 100 bacs à ordures dont 60 sur les sites IDP de Bambari, 40 sur les sites IDP de Bangui et Bimbo.\n- Collecte de données sur les infrastructures WASH et leur état sur les sites IDP. Cette collecte sef fera par l'équipe du projet, assisté par l'équipe de suivi-évaluation.\n- Réalisation de campagnes de sensibilisation à travers la mise en place/redynamisation et la formation de clubs d'hygiène au sein des différentes sites.\n- Sensibilisation des communautés à travers les campagnes d’affichage et la distribution des dépliants sur le COVID 19.",
+   "images": [
+    {
+     "chemin": "assets/apsud/images/projets/hygiene-assainissement-covid19-bangui-bambari/projet-covid19-bangui-bambari-bac-ordures-site-pdi-01.jpg",
+     "alt": "Bac à ordures siglé APSUD sur un site de personnes déplacées internes",
+     "legende": null
+    },
+    {
+     "chemin": "assets/apsud/images/projets/hygiene-assainissement-covid19-bangui-bambari/projet-covid19-bangui-bambari-vidange-latrines-02.jpg",
+     "alt": "Camion vidangeur utilisé pour la vidange des latrines sur les sites de déplacés",
+     "legende": null
+    },
+    {
+     "chemin": "assets/apsud/images/projets/hygiene-assainissement-covid19-bangui-bambari/projet-covid19-bangui-bambari-latrines-urgence-03.jpg",
+     "alt": "Cabines de latrines d'urgence installées par APSUD sur un site de déplacés",
+     "legende": null
+    },
+    {
+     "chemin": "assets/apsud/images/projets/hygiene-assainissement-covid19-bangui-bambari/projet-covid19-bangui-bambari-affichage-sensibilisation-04.jpg",
+     "alt": "Affichage de messages de sensibilisation sur l'hygiène et le COVID-19",
+     "legende": null
+    }
+   ],
+   "url_source": "https://apsud.org/detail-projet/11/Projet%20d%E2%80%99urgence%20en%20hygi%C3%A8ne%20et%20assainissement%20%C3%A0%20Bangui%20et%20Bambari%20en%20faveur%20des%20personnes%20les%20plus%20vuln%C3%A9rables%20pour%20r%C3%A9pondre%20aux%20besoins%20humanitaires%20les%20plus%20critiques%20et%20freiner%20la%20propagation%20du%20COVID%2019.",
+   "controle_qualite": {
+    "verifie_le": "2026-11-21",
+    "conforme_site_actuel": true,
+    "ecarts": [
+     "Bailleur confirmé FH (CHF) par le tableau 2023 : le code « COVID JAPON » n’implique pas un financement japonais. Correction reportée dans organisation.json (bailleurs_cites_dans_projets)."
+    ]
+   }
+  },
+  {
+   "id_source": 10,
+   "slug": "wash-covid19-bambari-batangafo-bimbo",
+   "titre": "Réponse urgente en Eau, Hygiène et Assainissement pour sauver des vies et lutter contre la propagation du COVID 19 dans les sites des personnes déplacés internes de Bambari; de Batangafo et dans la ville de Bimbo",
+   "titre_court": "Réponse WASH et COVID-19 à Bambari, Batangafo et Bimbo",
+   "sigle": null,
+   "code_projet": "CAR-20/HCF10/RA2/WaSH/NGO/15898",
+   "statut": "realise",
+   "statut_libelle_site": "Projet réalisé",
+   "statut_source": "site",
+   "statut_note": "Statut affiché sur /liste_projets (« Projet en cours » / « Projet réalisé ») ; cohérent avec les dates de fin au 21/11/2026.",
+   "date_debut": "2020-06-01",
+   "date_fin": "2020-10-31",
+   "annee_debut": 2020,
+   "annee_fin": 2020,
+   "zone_source": "Bambari, Batangafo et la ville de Bimbo",
+   "lieux": [
+    {
+     "lieu": "Bambari (6 sites de déplacés)",
+     "prefecture": "Ouaka"
+    },
+    {
+     "lieu": "Batangafo (site de déplacés)",
+     "prefecture": "Ouham (déduit)"
+    },
+    {
+     "lieu": "Bimbo (FOSA et marchés)",
+     "prefecture": "Ombella-M’Poko"
+    }
+   ],
+   "domaines": [
+    "WASH"
+   ],
+   "bailleurs": [
+    "FH"
+   ],
+   "bailleurs_noms_complets": [
+    "Fonds Humanitaire pour la République centrafricaine (FH RCA) — déduit"
+   ],
+   "partenaires_mise_en_oeuvre": [],
+   "partenaires_coordination": [
+    "TGH (coordination eau, citée dans les résultats)"
+   ],
+   "champs_source": {
+    "bailleur": "FH",
+    "partenaire_mise_en_oeuvre": "",
+    "budget": "300 000 USD"
+   },
+   "budget": {
+    "montant": 300000,
+    "devise_affichee": "USD",
+    "devise_probable": "USD",
+    "texte_source": "300 000 USD",
+    "note": null
+   },
+   "beneficiaires": [
+    "65165 personnes dont 11000 hommes, 31000 femmes, 9150 garçons et 14015 filles. On trouve 574 personnes vivant avec handicap parmi les bénéficiaires"
+   ],
+   "beneficiaires_source": "65165 personnes dont 11000 hommes, 31000 femmes, 9150 garçons et 14015 filles. On trouve 574 personnes vivant avec handicap parmi les bénéficiaires",
+   "resume": "Réponse urgente en eau, hygiène et assainissement pour sauver des vies et lutter contre le COVID-19 sur les sites de déplacés de Bambari et Batangafo et dans les centres de santé et marchés de Bimbo.",
+   "resume_source": "rédigé (synthèse éditoriale à valider par APSUD)",
+   "objectif_general": null,
+   "objectifs": [
+    "Promouvoir les moyens d’accès et de maintenir de manière sécurisée les services WASH aux communautés vulnérables, déplacés internes sur les sites IDP de Bambari, les sites IDP de Batangafo et aux population de Bimbo plus précisement dans les FOSA et les marchés public"
+   ],
+   "activites": [
+    "Vidange de 226 latrines d’urgence sur les sites des personnes déplacées internes dont 100 à Batangafo, 97 à Bambari et 29 à Bangui/Bimbo",
+    "Rehabilitation de 80 cabines de latrines d'urgences par bloc différenciés hommes / femmes et enfants existantes dont 60 à Bambari et 20 à Batangafo et leur équipements en dispositifs de lavage de mains.",
+    "Collecte secondaire des déchets solides au niveau des sites IDP de Bambari, Batangafo et Bimbo ainsi que dans les FOSA",
+    "Démolition & Remblai de fosse de latrines pleines en non vidangeables.",
+    "Distribution de kits de collecte primaire des déchets et construction de 200 bacs à ordures dont 100 sur ls sites IDP de Bambari, 50 sur le sit IDP de Bangafo et 50 autres dans les FOSA et marchés de Bimbo et le suivi de leur utilisation",
+    "Distribution de kits d'hygiène aux 1000 ménages incluant des items d'hygiène intimes spécifique pour les femmes et filles et sensibilisations aux bonnes pratiques d’hygiène pendant les distributions.",
+    "Réalisation de campagnes de sensibilisation à travers la mise en place et la formation de clubs d'hygiène au sein des différentes sites et Emission radio ainsi que le spot publicitaire sur le nouveau coron virus",
+    "Mainstreaming protection autour des thématiques liées à l’accès à l’eau l’hygiène et l’assainissement.",
+    "Réalisation de 2 enquêtes spot auprès des bénéficiaires par site permettant de faire une baseline et une endline, ainsi qu’un PDM après la distribution des kits d’hygiène.",
+    "Sensibilisation des communautés à travers les campagnes d’affichage et la distribution des dépliants sur le COVID 19 et Mise en place du comité par quartier et appui dans l’élaboration des plans d’action communautaire pour lutter contre la propagation de COVID 19",
+    "Réhabilitation d'1 forage autour du site IDP d'Alternatif à Bambari.",
+    "Gestion de points de distribution d'eau.",
+    "Rédynamisation des comités de gestion de point d'eau."
+   ],
+   "resultats": [
+    "60000 personnes (femmes, hommes, filles et garçons) ont un accès amélioré aux infrastructures d’assainissement appropriées de façondigne et sécurisée dans le respect des normes du projet SPHERE sur les 6 sites des déplacés de Bambari, le site IDP de Batangafo ainsi10 FOSA de Bimbo et 4 marchés publics",
+    "60 000 personnes (femmes, hommes, filles et garçons) bénéficiaires comprennent et mettent en pratique les connaissances acquises en terme d’hygiène et sont sensibilisés à l’entretien et la bonne utilisation des ouvrages WASH installés ainsi qu'au COVID 19 à Bambari (sites IDP), Batangafo (site IDP) et Bimbo (FOSA, Marchés)",
+    "4000 personnes (femmes, hommes, filles et garçons) ciblées ont un accès sécurisé à l’eau en qualité et quantité suffisante dans les sitesIDP Bambari en coordination avec l'ONG TGH"
+   ],
+   "resultats_nature": "Résultats attendus (tels que formulés sur le site)",
+   "description_complete": "Objectif général du projet\n(non renseigné sur le site)\n\nObjectifs spécifiques du projet\n- Promouvoir les moyens d’accès et de maintenir de manière sécurisée les services WASH aux communautés vulnérables, déplacés internes sur les sites IDP de Bambari, les sites IDP de Batangafo et aux population de Bimbo plus précisement dans les FOSA et les marchés public\n\nRésultats attendus du projet\n- 60000 personnes (femmes, hommes, filles et garçons) ont un accès amélioré aux infrastructures d’assainissement appropriées de façondigne et sécurisée dans le respect des normes du projet SPHERE sur les 6 sites des déplacés de Bambari, le site IDP de Batangafo ainsi10 FOSA de Bimbo et 4 marchés publics\n- 60 000 personnes (femmes, hommes, filles et garçons) bénéficiaires comprennent et mettent en pratique les connaissances acquises en terme d’hygiène et sont sensibilisés à l’entretien et la bonne utilisation des ouvrages WASH installés ainsi qu'au COVID 19 à Bambari (sites IDP), Batangafo (site IDP) et Bimbo (FOSA, Marchés)\n- 4000 personnes (femmes, hommes, filles et garçons) ciblées ont un accès sécurisé à l’eau en qualité et quantité suffisante dans les sitesIDP Bambari en coordination avec l'ONG TGH\n\nActivités réalisées\n- Vidange de 226 latrines d’urgence sur les sites des personnes déplacées internes dont 100 à Batangafo, 97 à Bambari et 29 à Bangui/Bimbo\n- Rehabilitation de 80 cabines de latrines d'urgences par bloc différenciés hommes / femmes et enfants existantes dont 60 à Bambari et 20 à Batangafo et leur équipements en dispositifs de lavage de mains.\n- Collecte secondaire des déchets solides au niveau des sites IDP de Bambari, Batangafo et Bimbo ainsi que dans les FOSA\n- Démolition & Remblai de fosse de latrines pleines en non vidangeables.\n- Distribution de kits de collecte primaire des déchets et construction de 200 bacs à ordures dont 100 sur ls sites IDP de Bambari, 50 sur le sit IDP de Bangafo et 50 autres dans les FOSA et marchés de Bimbo et le suivi de leur utilisation\n- Distribution de kits d'hygiène aux 1000 ménages incluant des items d'hygiène intimes spécifique pour les femmes et filles et sensibilisations aux bonnes pratiques d’hygiène pendant les distributions.\n- Réalisation de campagnes de sensibilisation à travers la mise en place et la formation de clubs d'hygiène au sein des différentes sites et Emission radio ainsi que le spot publicitaire sur le nouveau coron virus\n- Mainstreaming protection autour des thématiques liées à l’accès à l’eau l’hygiène et l’assainissement.\n- Réalisation de 2 enquêtes spot auprès des bénéficiaires par site permettant de faire une baseline et une endline, ainsi qu’un PDM après la distribution des kits d’hygiène.\n- Sensibilisation des communautés à travers les campagnes d’affichage et la distribution des dépliants sur le COVID 19 et Mise en place du comité par quartier et appui dans l’élaboration des plans d’action communautaire pour lutter contre la propagation de COVID 19\n- Réhabilitation d'1 forage autour du site IDP d'Alternatif à Bambari.\n- Gestion de points de distribution d'eau.\n- Rédynamisation des comités de gestion de point d'eau.",
+   "images": [
+    {
+     "chemin": "assets/apsud/images/projets/wash-covid19-bambari-batangafo-bimbo/projet-covid19-bambari-batangafo-latrines-urgence-visite-01.jpg",
+     "alt": "Visite de latrines d'urgence installées par APSUD sur un site de déplacés au bord du fleuve",
+     "legende": null
+    },
+    {
+     "chemin": "assets/apsud/images/projets/wash-covid19-bambari-batangafo-bimbo/projet-covid19-bambari-batangafo-distribution-kits-hygiene-02.jpg",
+     "alt": "Kits d'hygiène COVID-19 (dispositifs de lavage des mains, brouettes, seaux) prêts à être distribués, projet APSUD 15898",
+     "legende": null
+    },
+    {
+     "chemin": "assets/apsud/images/projets/wash-covid19-bambari-batangafo-bimbo/projet-covid19-bambari-batangafo-dechargement-futs-eau-03.jpg",
+     "alt": "Déchargement de fûts et de matériel WASH d'un camion par les agents d'APSUD",
+     "legende": null
+    },
+    {
+     "chemin": "assets/apsud/images/projets/wash-covid19-bambari-batangafo-bimbo/projet-covid19-bambari-batangafo-lavage-mains-marche-04.jpg",
+     "alt": "Démonstration du lavage des mains à un dispositif installé sur un marché",
+     "legende": null
+    }
+   ],
+   "url_source": "https://apsud.org/detail-projet/10/R%C3%A9ponse%20urgente%20en%20Eau,%20Hygi%C3%A8ne%20et%20Assainissement%20pour%20sauver%20des%20vies%20et%20lutter%20contre%20la%20propagation%20du%20COVID%2019%20dans%20les%20sites%20des%20personnes%20d%C3%A9plac%C3%A9s%20internes%20de%20Bambari;%20de%20Batangafo%20et%20dans%20la%20ville%20de%20Bimbo",
+   "controle_qualite": {
+    "verifie_le": "2026-11-21",
+    "conforme_site_actuel": true,
+    "note": "Champs comparés ligne à ligne avec la fiche en ligne : conformes."
+   }
+  },
+  {
+   "id_source": 9,
+   "slug": "assainissement-sites-pdi-bambari-batangafo",
+   "titre": "Projet d'urgence d'assainissement des sites des personnes déplacées internes de Bambari et Batangafo",
+   "titre_court": "Assainissement des sites de déplacés de Bambari et Batangafo",
+   "sigle": null,
+   "code_projet": "FH 14342",
+   "statut": "realise",
+   "statut_libelle_site": "Projet réalisé",
+   "statut_source": "site",
+   "statut_note": "Statut affiché sur /liste_projets (« Projet en cours » / « Projet réalisé ») ; cohérent avec les dates de fin au 21/11/2026.",
+   "date_debut": "2019-12-01",
+   "date_fin": "2020-05-31",
+   "annee_debut": 2019,
+   "annee_fin": 2020,
+   "zone_source": "Bambari et Batangafo",
+   "lieux": [
+    {
+     "lieu": "Bambari",
+     "prefecture": "Ouaka"
+    },
+    {
+     "lieu": "Batangafo",
+     "prefecture": "Ouham (déduit)"
+    }
+   ],
+   "domaines": [
+    "WASH"
+   ],
+   "bailleurs": [
+    "FH"
+   ],
+   "bailleurs_noms_complets": [
+    "Fonds Humanitaire pour la République centrafricaine (FH RCA) — déduit"
+   ],
+   "partenaires_mise_en_oeuvre": [],
+   "champs_source": {
+    "bailleur": "FH",
+    "partenaire_mise_en_oeuvre": "",
+    "budget": "200 000 USD"
+   },
+   "budget": {
+    "montant": 200000,
+    "devise_affichee": "USD",
+    "devise_probable": "USD",
+    "texte_source": "200 000 USD",
+    "note": null
+   },
+   "beneficiaires": [
+    "67 000 personnes dont 15 000 hommes, 23000 femmes, 11000 garçons et 18000 filles"
+   ],
+   "beneficiaires_source": "67 000 personnes dont 15 000 hommes, 23000 femmes, 11000 garçons et 18000 filles",
+   "resume": "Projet d'urgence d'assainissement sur six sites de personnes déplacées à Bambari et Batangafo : latrines, gestion des déchets, vidange et clubs d'hygiène pour prévenir les maladies diarrhéiques et les épidémies.",
+   "resume_source": "rédigé (synthèse éditoriale à valider par APSUD)",
+   "objectif_general": "Contribuer à l'assainissement et lutter contre les maladies diarrhéïques et les risques d'épidémie des PDIs sur six sites IDP de Bambari et de Batangafo",
+   "objectifs": [
+    "Contribuer de manière urgente à améliorer l ’accès à l ’assainissement et à l ’hygiène dans les sites des personnes déplacées internes de Bambari et de Batangafo en faveur des filles, garçons, femmes et hommes vulnérables parmi les IDP."
+   ],
+   "approche_source": "Dans le site des PDIs, les activités suivantes seront menées: Evacuation des dechets primaires: Les interventions seront basées (a) Assurer un environnement propre et sécurisé à travers la mise en place des bacs à ordures et du systeme de collectes des ordures vers la decharges de transit situé en dehors du site (b) la gestion des excretas: Les intervention seront basées sur la construction des latrines semi-durables vidangeable afin de diminuer la defecation à l'air libre. Evacuation secondaire des dechets liques et solides: les interventions seront centrées sur le (a) le vidange des latrines et (b) le transport des ordures des sites de transits vers la decharge finale.",
+   "activites": [
+    "Construction de 40 portes des latrines semi-durable dont 25 à Bambari et 15 à Batangafo",
+    "Vidange des latrines d’urgence",
+    "Mise en place de 150 bacs à ordures dans les sites dont 100 à Bambari et 50 à Batangafo et évacuation secondaires des déchets solides",
+    "Aménagement des décharges de transits et finale",
+    "Formations des relais communautaires, des hygiénistes et vidangeurs",
+    "Distribution de kits de stockage d’eau aux personnes vivant avec handicap et sensibilisations aux bonnes pratiques d’hygiène pendant les distributions",
+    "Mainstreaming protection autour des thématiques liées à l ’accès à l ’eau l’hygiène et l ’assainissement",
+    "Réalisation de campagnes de sensibilisation à travers la mise en place et la formation de 18 clubs d'hygiène au sein des différents sites des personnes déplacées internes des deux localités bénéficiaires."
+   ],
+   "resultats": [
+    "L'accès à un environnement sanitaire sécurisé et aux bonnes pratiques d'hygiène est amélioré pour les PDIs des sites de Bambari et Batangafo",
+    "Les bonnes pratiques d'hygiène sont améliorées pour les PDIs des sites de Bambari et Batangafo ainsi que leurs conditions sanitaires"
+   ],
+   "resultats_nature": "Résultats attendus (tels que formulés sur le site)",
+   "description_complete": "Objectif général du projet\nContribuer à l'assainissement et lutter contre les maladies diarrhéïques et les risques d'épidémie des PDIs sur six sites IDP de Bambari et de Batangafo\n\nObjectifs spécifiques du projet\n- Contribuer de manière urgente à améliorer l ’accès à l ’assainissement et à l ’hygiène dans les sites des personnes déplacées internes de Bambari et de Batangafo en faveur des filles, garçons, femmes et hommes vulnérables parmi les IDP.\n\nDans le site des PDIs, les activités suivantes seront menées: Evacuation des dechets primaires: Les interventions seront basées (a) Assurer un environnement propre et sécurisé à travers la mise en place des bacs à ordures et du systeme de collectes des ordures vers la decharges de transit situé en dehors du site (b) la gestion des excretas: Les intervention seront basées sur la construction des latrines semi-durables vidangeable afin de diminuer la defecation à l'air libre. Evacuation secondaire des dechets liques et solides: les interventions seront centrées sur le (a) le vidange des latrines et (b) le transport des ordures des sites de transits vers la decharge finale.\n\nRésultats attendus du projet\n- L'accès à un environnement sanitaire sécurisé et aux bonnes pratiques d'hygiène est amélioré pour les PDIs des sites de Bambari et Batangafo\n- Les bonnes pratiques d'hygiène sont améliorées pour les PDIs des sites de Bambari et Batangafo ainsi que leurs conditions sanitaires\n\nActivités réalisées\n- Construction de 40 portes des latrines semi-durable dont 25 à Bambari et 15 à Batangafo\n- Vidange des latrines d’urgence\n- Mise en place de 150 bacs à ordures dans les sites dont 100 à Bambari et 50 à Batangafo et évacuation secondaires des déchets solides\n- Aménagement des décharges de transits et finale\n- Formations des relais communautaires, des hygiénistes et vidangeurs\n- Distribution de kits de stockage d’eau aux personnes vivant avec handicap et sensibilisations aux bonnes pratiques d’hygiène pendant les distributions\n- Mainstreaming protection autour des thématiques liées à l ’accès à l ’eau l’hygiène et l ’assainissement\n- Réalisation de campagnes de sensibilisation à travers la mise en place et la formation de 18 clubs d'hygiène au sein des différents sites des personnes déplacées internes des deux localités bénéficiaires.",
+   "images": [
+    {
+     "chemin": "assets/apsud/images/projets/assainissement-sites-pdi-bambari-batangafo/projet-assainissement-pdi-sensibilisation-communautaire-01.jpg",
+     "alt": "Séance de sensibilisation à l'hygiène animée par des agents d'APSUD devant une foule sur un site de déplacés",
+     "legende": null
+    },
+    {
+     "chemin": "assets/apsud/images/projets/assainissement-sites-pdi-bambari-batangafo/projet-assainissement-pdi-equipe-vidangeurs-02.jpg",
+     "alt": "Vidangeurs équipés de combinaisons, bottes et masques à côté d'une fosse de latrines",
+     "legende": null
+    },
+    {
+     "chemin": "assets/apsud/images/projets/assainissement-sites-pdi-bambari-batangafo/projet-assainissement-pdi-panneau-sensibilisation-latrines-03.jpg",
+     "alt": "Panneau de sensibilisation à l'utilisation des latrines sur un site de déplacés",
+     "legende": null
+    },
+    {
+     "chemin": "assets/apsud/images/projets/assainissement-sites-pdi-bambari-batangafo/projet-assainissement-pdi-site-transit-dechets-04.jpg",
+     "alt": "Site de transit des déchets aménagé par APSUD (projet FH 14342)",
+     "legende": null
+    }
+   ],
+   "url_source": "https://apsud.org/detail-projet/9/Projet%20d%27urgence%20d%27assainissement%20des%20sites%20des%20personnes%20d%C3%A9plac%C3%A9es%20internes%20de%20Bambari%20et%20Batangafo",
+   "controle_qualite": {
+    "verifie_le": "2026-11-21",
+    "conforme_site_actuel": true,
+    "note": "Champs comparés ligne à ligne avec la fiche en ligne : conformes."
+   }
+  },
+  {
+   "id_source": 8,
+   "slug": "moyens-subsistance-cohesion-bambari-ippy",
+   "titre": "Réponse aux besoins urgents des personnes touchées par les conflits à Bambari et Ippy en moyens de subsistance à travers la création d'emploi temporaire et renforcement de la cohésion sociale",
+   "titre_court": "Emplois temporaires et cohésion sociale à Bambari et Ippy",
+   "sigle": null,
+   "code_projet": "FH 12743",
+   "statut": "realise",
+   "statut_libelle_site": "Projet réalisé",
+   "statut_source": "site",
+   "statut_note": "Statut affiché sur /liste_projets (« Projet en cours » / « Projet réalisé ») ; cohérent avec les dates de fin au 21/11/2026.",
+   "date_debut": "2019-07-01",
+   "date_fin": "2019-11-30",
+   "annee_debut": 2019,
+   "annee_fin": 2019,
+   "zone_source": "Ippy",
+   "lieux": [
+    {
+     "lieu": "Ippy",
+     "prefecture": "Ouaka"
+    },
+    {
+     "lieu": "Bambari (cité dans le titre)",
+     "prefecture": "Ouaka"
+    }
+   ],
+   "domaines": [
+    "Sécurité alimentaire, moyens de subsistance et stabilisation communautaire"
+   ],
+   "bailleurs": [
+    "FH"
+   ],
+   "bailleurs_noms_complets": [
+    "Fonds Humanitaire pour la République centrafricaine (FH RCA) — déduit"
+   ],
+   "partenaires_mise_en_oeuvre": [],
+   "champs_source": {
+    "bailleur": "FH",
+    "partenaire_mise_en_oeuvre": "",
+    "budget": "250 000 USD"
+   },
+   "budget": {
+    "montant": 250000,
+    "devise_affichee": "USD",
+    "devise_probable": "USD",
+    "texte_source": "250 000 USD",
+    "note": null
+   },
+   "beneficiaires": [],
+   "beneficiaires_source": "",
+   "resume": "Création d'emplois temporaires (THIMO) pour 700 jeunes à risque, appui aux activités génératrices de revenus et aux associations villageoises d'épargne et de crédit, et renforcement de la cohésion sociale à Bambari et Ippy.",
+   "resume_source": "rédigé (synthèse éditoriale à valider par APSUD)",
+   "objectif_general": "Contribuer à répondre aux urgences et déclencher une réponse rapide en terme de moyens de subsistance et stabilisation des communautés afin de soulager la souffrance des populations les plus vulnérables et sauver des vies tout en améliorant le tissu social, le relèvement socioéconomique et la lutte contre l’extrémisme violent",
+   "objectifs": [
+    "Améliorer les conditions de vie des personnes vulnérables à Bambari et Ippy en leur offrant un emploi temporaire, en appuyant leur relèvement socioéconomique et en renforçant la cohésion sociale"
+   ],
+   "activites": [
+    "Création d’emplois temporaires pour 700 jeunes à risques (THIMO)",
+    "DISTRIBUTION DES KITS D'AGR D'URGENCE",
+    "FORMATION ET ACCOMPAGNEMENT TECHNIQUE",
+    "MISE EN RESEAU DES GROUPEMENTS APPUYES",
+    "APPUI A LA CREATION ET L'ACCOMPAGNEMENT DES ASSOCIATIONS VILLAGEOISES D'EPARGNE ET DE CREDIT (AVEC).",
+    "Renforcement de capacités des autorités locales, des leaders des femmes, des leaders des jeunes et d’autres organisations à assise communautaire sur la gestion et la mitigation des conflits, le leadership pour la paix et la consolidation de la cohésion sociale.",
+    "Mise en place d’un cadre d’échange entre les leaders/leaders religieux/autorités locales et les membres de leur communauté pour engagement des communautés à dialoguer et à se prendre en charge, autour de la notion de \"cohésion sociale\" et/ou de renforcement de la résilience.",
+    "Focus group/dialogue intercommunautaire sur les thématiques de la cohésion sociale, la prévention et résolution de conflits suite aux audits et entretiens.",
+    "Appui dans la légalisation des structures appuyées."
+   ],
+   "resultats": [
+    "Trois infrastructures socio-économiques et sociocommunautaires sont réhabilitées à travers les THIMO et ainsi 600 travaux temporaires créés",
+    "Au moins 30 microprojets d’AGR formulés, approuvés et appuyés par le projet sont opérationnels et rentables",
+    "Les mécanismes et structures de prévention et de gestion de conflits locaux sont renforcés et opérationnels"
+   ],
+   "resultats_nature": "Résultats attendus (tels que formulés sur le site)",
+   "description_complete": "Objectif général du projet\n(non renseigné sur le site)\n\nObjectifs spécifiques du projet\n- Améliorer les conditions de vie des personnes vulnérables à Bambari et Ippy en leur offrant un emploi temporaire, en appuyant leur relèvement socioéconomique et en renforçant la cohésion sociale\n\nRésultats attendus du projet\n- Trois infrastructures socio-économiques et sociocommunautaires sont réhabilitées à travers les THIMO et ainsi 600 travaux temporaires créés\n- Au moins 30 microprojets d’AGR formulés, approuvés et appuyés par le projet sont opérationnels et rentables\n- Les mécanismes et structures de prévention et de gestion de conflits locaux sont renforcés et opérationnels\n\nActivités réalisées\n- Création d’emplois temporaires pour 700 jeunes à risques (THIMO)\n- DISTRIBUTION DES KITS D'AGR D'URGENCE\n- FORMATION ET ACCOMPAGNEMENT TECHNIQUE\n- MISE EN RESEAU DES GROUPEMENTS APPUYES\n- APPUI A LA CREATION ET L'ACCOMPAGNEMENT DES ASSOCIATIONS VILLAGEOISES D'EPARGNE ET DE CREDIT (AVEC).\n- Renforcement de capacités des autorités locales, des leaders des femmes, des leaders des jeunes et d’autres organisations à assise communautaire sur la gestion et la mitigation des conflits, le leadership pour la paix et la consolidation de la cohésion sociale.\n- Mise en place d’un cadre d’échange entre les leaders/leaders religieux/autorités locales et les membres de leur communauté pour engagement des communautés à dialoguer et à se prendre en charge, autour de la notion de \"cohésion sociale\" et/ou de renforcement de la résilience.\n- Focus group/dialogue intercommunautaire sur les thématiques de la cohésion sociale, la prévention et résolution de conflits suite aux audits et entretiens.\n- Appui dans la légalisation des structures appuyées.",
+   "images": [
+    {
+     "chemin": "assets/apsud/images/projets/moyens-subsistance-cohesion-bambari-ippy/projet-thimo-bambari-ippy-mairie-ippy-rehabilitee-01.jpg",
+     "alt": "Hôtel de ville d'Ippy réhabilité par APSUD",
+     "legende": "Mairie de Ippy réhabilité"
+    },
+    {
+     "chemin": "assets/apsud/images/projets/moyens-subsistance-cohesion-bambari-ippy/projet-thimo-bambari-ippy-formation-salle-02.jpg",
+     "alt": "Formation en salle de bénéficiaires du projet à Ippy",
+     "legende": null
+    },
+    {
+     "chemin": "assets/apsud/images/projets/moyens-subsistance-cohesion-bambari-ippy/projet-thimo-bambari-ippy-lancement-thimo-03.jpg",
+     "alt": "Lancement officiel des travaux THIMO avec les bénéficiaires, août 2019",
+     "legende": null
+    },
+    {
+     "chemin": "assets/apsud/images/projets/moyens-subsistance-cohesion-bambari-ippy/projet-thimo-bambari-ippy-mise-en-reseau-groupements-04.jpg",
+     "alt": "Membres des groupements appuyés lors de leur mise en réseau, projet FH 12743",
+     "legende": null
+    }
+   ],
+   "url_source": "https://apsud.org/detail-projet/8/R%C3%A9ponse%20aux%20besoins%20urgents%20des%20personnes%20touch%C3%A9es%20par%20les%20conflits%20%C3%A0%20Bambari%20et%20Ippy%20en%20moyens%20de%20subsistance%20%C3%A0%20travers%20la%20cr%C3%A9ation%20d%27emploi%20temporaire%20et%20renforcement%20de%20la%20coh%C3%A9sion%20sociale",
+   "beneficiaires_note": "Champ vide sur le site ; les activités mentionnent 700 jeunes à risque (THIMO).",
+   "controle_qualite": {
+    "verifie_le": "2026-11-21",
+    "conforme_site_actuel": true,
+    "complements": [
+     "objectif_general rempli depuis l’archive 2023"
+    ],
+    "ecarts": [
+     "Dates : site actuel 2019-07-01 → 2019-11-30 ; archives 2023 (tableau + fiche) : 1er juin → 30 nov. 2019. Demander la bonne date de début."
+    ]
+   },
+   "objectif_general_source": "Archive du site WordPress 2023 (https://web.archive.org/web/20230606123122/https://apsud.org/reponse-aux-besoins-urgents/) — champ vide sur le site actuel"
+  },
+  {
+   "id_source": 7,
+   "slug": "wash-quartiers-retour-ippy",
+   "titre": "Réponse d'urgence en eau, hygiène et assainissement en faveur des personnes les plus vulnérables affectées par les crises et forcées à quitter les sites des déplacés internes et à vivre dans les quartiers de retour d'Ippy",
+   "titre_court": "Réponse d’urgence WASH dans les quartiers de retour d’Ippy",
+   "sigle": null,
+   "code_projet": "FH 12678",
+   "statut": "realise",
+   "statut_libelle_site": "Projet réalisé",
+   "statut_source": "site",
+   "statut_note": "Statut affiché sur /liste_projets (« Projet en cours » / « Projet réalisé ») ; cohérent avec les dates de fin au 21/11/2026.",
+   "date_debut": "2019-05-15",
+   "date_fin": "2019-11-14",
+   "annee_debut": 2019,
+   "annee_fin": 2019,
+   "zone_source": "Ippy (Ouaka)",
+   "lieux": [
+    {
+     "lieu": "Ippy (quartiers de retour et axes)",
+     "prefecture": "Ouaka"
+    }
+   ],
+   "domaines": [
+    "WASH"
+   ],
+   "bailleurs": [
+    "FH"
+   ],
+   "bailleurs_noms_complets": [
+    "Fonds Humanitaire pour la République centrafricaine (FH RCA) — déduit"
+   ],
+   "partenaires_mise_en_oeuvre": [],
+   "champs_source": {
+    "bailleur": "FH",
+    "partenaire_mise_en_oeuvre": "",
+    "budget": "121 000 USD"
+   },
+   "budget": {
+    "montant": 121000,
+    "devise_affichee": "USD",
+    "devise_probable": "USD",
+    "texte_source": "121 000 USD",
+    "note": null
+   },
+   "beneficiaires": [
+    "17000 personnes 2100 hommes, femmes 7700, 2300 garçons et 4900 filles."
+   ],
+   "beneficiaires_source": "17000 personnes 2100 hommes, femmes 7700, 2300 garçons et 4900 filles.",
+   "resume": "Réponse d'urgence WASH pour les familles retournées et hôtes d'Ippy : latrines familiales, puits équipés de pompes, comités de gestion de l'eau, kits d'hygiène et sensibilisation.",
+   "resume_source": "rédigé (synthèse éditoriale à valider par APSUD)",
+   "objectif_general": "Contribuer de manière urgente à améliorer l ’accès à l ’assainissement, à l ’hygiène et à l ’eau dans les quartiers de retour d’Ippy ainsi que sur les axes en faveur des filles, garçons, femmes et hommes vulnérables parmi les retournés et les familles hôtes.",
+   "objectifs": [
+    "Améliorer l’accès aux services Eau, Hygiène et Assainissement aux communautés vulnérables dans les quartiers de retour d ’Ippy et sur les axes"
+   ],
+   "activites": [
+    "Appui à la construction de 200 latrines familiales en utilisant les matériaux locaux",
+    "Construction d’une (01) fosse à ordures sécurisée",
+    "Appui à la Mairie dans les activités de collecte de déchets solides (poussepousses, brouettes, pelles, râteaux, kits de protection).",
+    "Réalisation de campagnes de sensibilisation à travers la mise en place et la formation des clubs d'hygiène au sein des différents quartiers/villages bénéficiaires",
+    "Mainstreaming protection autour des thématiques liées à l’accès à l’eau l’hygiène et l’assainissement.",
+    "Distribution de kits d'hygiène intimes spécifiques aux femmes et sensibilisation sur la bonne utilisation de ces kits d'hygiène. 100 femmes âgées de 18 à 49 ans",
+    "Aménagement de 7 puits d’eau équipés de Pompe à Motricité Humaine (PMH), selon les normes et directives en matière de WASH de la DGH.",
+    "Mise en place et renforcement de 8 comités de gestion du point d'eau (CGPE) par point d’eau réhabilité pour s’assurer de la bonne gestion des ouvrages et continuer la sensibilisation même après le projet.",
+    "Réhabilitation de 1 forage au village Zoubingui à pk 25 d'Ippy sur l'axe Bambari. (1 des 2 forages qui est en panne).",
+    "Formation des artisans réparateurs de Pompes à motricité humaines (PMH)."
+   ],
+   "resultats": [
+    "R1. 12000 personnes (femmes, hommes, filles et garçons) ont un accès amélioré aux infrastructures d’assainissement appropriées de façon digne et sécurisée dans le respect des normes SPHERE et nationales dans les quartiers de retour d ’Ippy et sur les axes",
+    "R2. 17 000 personnes (femmes, hommes, filles et garçons) bénéficiaires comprennent et mettent en pratique les connaissances acquises en pratiques d’hygiène et sont sensibilisés à l’entretien et la bonne utilisation des ouvrages d'assainissement et d'eau installés",
+    "R3. 4000 personnes (femmes, hommes, filles et garçons) ciblées ont un accès sécurisé à l’eau en qualité suffisante dans la ville d ’Ippy et sur les axes"
+   ],
+   "resultats_nature": "Résultats attendus (tels que formulés sur le site)",
+   "description_complete": "Objectif général du projet\nContribuer de manière urgente à améliorer l ’accès à l ’assainissement, à l ’hygiène et à l ’eau dans les quartiers de retour d’Ippy ainsi que sur les axes en faveur des filles, garçons, femmes et hommes vulnérables parmi les retournés et les familles hôtes.\n\nObjectifs spécifiques du projet\n- Améliorer l’accès aux services Eau, Hygiène et Assainissement aux communautés vulnérables dans les quartiers de retour d ’Ippy et sur les axes\n\nRésultats attendus du projet\n- R1. 12000 personnes (femmes, hommes, filles et garçons) ont un accès amélioré aux infrastructures d’assainissement appropriées de façon digne et sécurisée dans le respect des normes SPHERE et nationales dans les quartiers de retour d ’Ippy et sur les axes\n- R2. 17 000 personnes (femmes, hommes, filles et garçons) bénéficiaires comprennent et mettent en pratique les connaissances acquises en pratiques d’hygiène et sont sensibilisés à l’entretien et la bonne utilisation des ouvrages d'assainissement et d'eau installés\n- R3. 4000 personnes (femmes, hommes, filles et garçons) ciblées ont un accès sécurisé à l’eau en qualité suffisante dans la ville d ’Ippy et sur les axes\n\nActivités réalisées\n- Appui à la construction de 200 latrines familiales en utilisant les matériaux locaux\n- Construction d’une (01) fosse à ordures sécurisée\n- Appui à la Mairie dans les activités de collecte de déchets solides (poussepousses, brouettes, pelles, râteaux, kits de protection).\n- Réalisation de campagnes de sensibilisation à travers la mise en place et la formation des clubs d'hygiène au sein des différents quartiers/villages bénéficiaires\n- Mainstreaming protection autour des thématiques liées à l’accès à l’eau l’hygiène et l’assainissement.\n- Distribution de kits d'hygiène intimes spécifiques aux femmes et sensibilisation sur la bonne utilisation de ces kits d'hygiène. 100 femmes âgées de 18 à 49 ans\n- Aménagement de 7 puits d’eau équipés de Pompe à Motricité Humaine (PMH), selon les normes et directives en matière de WASH de la DGH.\n- Mise en place et renforcement de 8 comités de gestion du point d'eau (CGPE) par point d’eau réhabilité pour s’assurer de la bonne gestion des ouvrages et continuer la sensibilisation même après le projet.\n- Réhabilitation de 1 forage au village Zoubingui à pk 25 d'Ippy sur l'axe Bambari. (1 des 2 forages qui est en panne).\n- Formation des artisans réparateurs de Pompes à motricité humaines (PMH).",
+   "images": [
+    {
+     "chemin": "assets/apsud/images/projets/wash-quartiers-retour-ippy/projet-ippy-retour-point-eau-pmh-01.jpg",
+     "alt": "Point d'eau équipé d'une pompe à motricité humaine réalisé par APSUD à Ippy",
+     "legende": null
+    },
+    {
+     "chemin": "assets/apsud/images/projets/wash-quartiers-retour-ippy/projet-ippy-retour-lavage-mains-02.jpg",
+     "alt": "Démonstration de l'utilisation d'un dispositif de lavage des mains par un agent d'APSUD à Ippy",
+     "legende": null
+    },
+    {
+     "chemin": "assets/apsud/images/projets/wash-quartiers-retour-ippy/projet-ippy-retour-sensibilisation-enfants-03.jpg",
+     "alt": "Séance de sensibilisation à l'hygiène avec des enfants dans un quartier de retour d'Ippy",
+     "legende": null
+    },
+    {
+     "chemin": "assets/apsud/images/projets/wash-quartiers-retour-ippy/projet-ippy-retour-distribution-kits-04.jpg",
+     "alt": "Kits d'hygiène (seaux, bassines, bidons) alignés pour une distribution à Ippy",
+     "legende": null
+    }
+   ],
+   "url_source": "https://apsud.org/detail-projet/7/R%C3%A9ponse%20d%27urgence%20en%20eau,%20hygi%C3%A8ne%20et%20assainissement%20en%20faveur%20des%20personnes%20les%20plus%20vuln%C3%A9rables%20affect%C3%A9es%20par%20les%20crises%20et%20forc%C3%A9es%20%C3%A0%20quitter%20les%20sites%20des%20d%C3%A9plac%C3%A9s%20internes%20et%20%C3%A0%20vivre%20dans%20les%20quartiers%20de%20retour%20d%27Ippy",
+   "controle_qualite": {
+    "verifie_le": "2026-11-21",
+    "conforme_site_actuel": true,
+    "note": "L’ancienne fiche /detail-projet/4 (2024) était une première saisie de ce projet. Données identiques (budget 121 000 USD, 15/05 → 14/11/2019)."
+   }
+  },
+  {
+   "id_source": 6,
+   "slug": "wash-sites-pdi-ippy",
+   "titre": "Accès urgent, rapide et efficace aux services de base en termes d’eau, assainissement et promotion à l’hygiène pour les hommes, femmes, filles et garçons affectés par la crise dans la ville d'Ippy",
+   "titre_court": "Accès d’urgence à l’eau et à l’assainissement à Ippy",
+   "sigle": null,
+   "code_projet": "FH 10577",
+   "statut": "realise",
+   "statut_libelle_site": "Projet réalisé",
+   "statut_source": "site",
+   "statut_note": "Statut affiché sur /liste_projets (« Projet en cours » / « Projet réalisé ») ; cohérent avec les dates de fin au 21/11/2026.",
+   "date_debut": "2018-11-01",
+   "date_fin": "2019-03-30",
+   "annee_debut": 2018,
+   "annee_fin": 2019,
+   "zone_source": "Ippy (Ouaka)",
+   "lieux": [
+    {
+     "lieu": "Ippy (4 sites de déplacés)",
+     "prefecture": "Ouaka"
+    }
+   ],
+   "domaines": [
+    "WASH"
+   ],
+   "bailleurs": [
+    "FH"
+   ],
+   "bailleurs_noms_complets": [
+    "Fonds Humanitaire pour la République centrafricaine (FH RCA) — déduit"
+   ],
+   "partenaires_mise_en_oeuvre": [],
+   "champs_source": {
+    "bailleur": "FH",
+    "partenaire_mise_en_oeuvre": "",
+    "budget": "200 000 USD"
+   },
+   "budget": {
+    "montant": 200000,
+    "devise_affichee": "USD",
+    "devise_probable": "USD",
+    "texte_source": "200 000 USD",
+    "note": null
+   },
+   "beneficiaires": [
+    "11906 personnes dont 2001 hommes, 6005 femmes, 1400 garçons et 2500 filles"
+   ],
+   "beneficiaires_source": "11906 personnes dont 2001 hommes, 6005 femmes, 1400 garçons et 2500 filles",
+   "resume": "Accès urgent à l'eau, à l'assainissement et à l'hygiène sur les quatre sites de déplacés d'Ippy : 72 cabines de latrines, 72 douches, gestion des déchets, forage réhabilité et clubs d'hygiène.",
+   "resume_source": "rédigé (synthèse éditoriale à valider par APSUD)",
+   "objectif_general": "Contribuer de manière urgente à améliorer l’accès à l’assainissement, à l’hygiène et à l’eau sur les 4 sites des personnes déplacés internes à Ippy en faveur des filles, garçons, femmes et hommes déplacés et vulnérables sur les sites ainsi que les familles hôtes.",
+   "objectifs": [
+    "Promouvoir les moyens d’accès et de maintenir de manière sécurisée les services WASH aux communautés vulnérables, déplacés internes sur les sites IDP d’Ippy"
+   ],
+   "activites": [
+    "Construction de 72 cabines de latrines d'urgences par bloc différenciés hommes / femmes et enfants équipées de dispositif de lavage de main sur les sites IDP d’Ippy.",
+    "Construction de 72 nouvelles cabines de douches.",
+    "Distribution de kits de collecte primaire des déchets et installation de 32 bacs à ordures",
+    "Construction d’une (01) fosse à ordures sécurisée et appuyer la mairie dans la gestion des déchets solides",
+    "Aménagement et désinfection d’une source d’Ippy centre.",
+    "Réhabilitation d’un forage et rédynamisation de 2 comités de gestion de point d'eau.",
+    "Distribution de kits d'hygiène incluant des items d'hygiène intimes spécifique pour les femmes et filles et sensibilisations aux bonnes pratiques d’hygiène pendant les distributions.",
+    "Réalisation de campagnes de sensibilisation à travers la mise en place et la formation de 4 clubs d'hygiène au sein des différents sites.",
+    "Mainstreaming protection autour des thématiques liées à l’accès à l’eau l’hygiène et l’assainissement."
+   ],
+   "resultats": [
+    "R1. 11000 personnes (femmes, hommes, filles et garçons) ont un accès amélioré aux infrastructures d’assainissement appropriées de façon digne et sécurisée dans le respect des normes du projet SPHERE sur les 4 sites des déplacés d’Ippy",
+    "R2. 1000 personnes (femmes, hommes, filles et garçons) ciblées ont un accès sécurisé à l’eau en qualité et quantité suffisante dans la ville d’Ippy.",
+    "R3. 11 000 personnes (femmes, hommes, filles et garçons) bénéficiaires comprennent et mettent en pratique les connaissances acquises en pratiques d’hygiène et sont sensibilisés à l’entretien et la bonne utilisation des latrines et douches"
+   ],
+   "resultats_nature": "Résultats attendus (tels que formulés sur le site)",
+   "description_complete": "Objectif général du projet\nContribuer de manière urgente à améliorer l’accès à l’assainissement, à l’hygiène et à l’eau sur les 4 sites des personnes déplacés internes à Ippy en faveur des filles, garçons, femmes et hommes déplacés et vulnérables sur les sites ainsi que les familles hôtes.\n\nObjectifs spécifiques du projet\n- Promouvoir les moyens d’accès et de maintenir de manière sécurisée les services WASH aux communautés vulnérables, déplacés internes sur les sites IDP d’Ippy\n\nRésultats attendus du projet\n- R1. 11000 personnes (femmes, hommes, filles et garçons) ont un accès amélioré aux infrastructures d’assainissement appropriées de façon digne et sécurisée dans le respect des normes du projet SPHERE sur les 4 sites des déplacés d’Ippy\n- R2. 1000 personnes (femmes, hommes, filles et garçons) ciblées ont un accès sécurisé à l’eau en qualité et quantité suffisante dans la ville d’Ippy.\n- R3. 11 000 personnes (femmes, hommes, filles et garçons) bénéficiaires comprennent et mettent en pratique les connaissances acquises en pratiques d’hygiène et sont sensibilisés à l’entretien et la bonne utilisation des latrines et douches\n\nActivités réalisées\n- Construction de 72 cabines de latrines d'urgences par bloc différenciés hommes / femmes et enfants équipées de dispositif de lavage de main sur les sites IDP d’Ippy.\n- Construction de 72 nouvelles cabines de douches.\n- Distribution de kits de collecte primaire des déchets et installation de 32 bacs à ordures\n- Construction d’une (01) fosse à ordures sécurisée et appuyer la mairie dans la gestion des déchets solides\n- Aménagement et désinfection d’une source d’Ippy centre.\n- Réhabilitation d’un forage et rédynamisation de 2 comités de gestion de point d'eau.\n- Distribution de kits d'hygiène incluant des items d'hygiène intimes spécifique pour les femmes et filles et sensibilisations aux bonnes pratiques d’hygiène pendant les distributions.\n- Réalisation de campagnes de sensibilisation à travers la mise en place et la formation de 4 clubs d'hygiène au sein des différents sites.\n- Mainstreaming protection autour des thématiques liées à l’accès à l’eau l’hygiène et l’assainissement.",
+   "images": [
+    {
+     "chemin": "assets/apsud/images/projets/wash-sites-pdi-ippy/projet-ippy-sites-pdi-distribution-kits-wash-01.jpg",
+     "alt": "Distribution de bidons et seaux aux personnes déplacées sur un site d'Ippy",
+     "legende": null
+    },
+    {
+     "chemin": "assets/apsud/images/projets/wash-sites-pdi-ippy/projet-ippy-sites-pdi-point-eau-rehabilite-02.jpg",
+     "alt": "Point d'eau réhabilité par APSUD à Ippy (projet FH 10577)",
+     "legende": null
+    },
+    {
+     "chemin": "assets/apsud/images/projets/wash-sites-pdi-ippy/projet-ippy-sites-pdi-latrine-03.jpg",
+     "alt": "Latrine construite par APSUD sur un site de déplacés d'Ippy",
+     "legende": null
+    },
+    {
+     "chemin": "assets/apsud/images/projets/wash-sites-pdi-ippy/projet-ippy-sites-pdi-chariots-collecte-dechets-04.jpg",
+     "alt": "Chariots de collecte des déchets remis pour l'assainissement d'Ippy",
+     "legende": null
+    }
+   ],
+   "url_source": "https://apsud.org/detail-projet/6/Acc%C3%A8s%20urgent,%20rapide%20et%20efficace%20aux%20services%20de%20base%20en%20termes%20d%E2%80%99eau,%20assainissement%20et%20promotion%20%C3%A0%20l%E2%80%99hygi%C3%A8ne%20pour%20les%20hommes,%20femmes,%20filles%20et%20gar%C3%A7ons%20affect%C3%A9s%20par%20la%20crise%20dans%20la%20ville%20d%27Ippy",
+   "controle_qualite": {
+    "verifie_le": "2026-11-21",
+    "conforme_site_actuel": true,
+    "ecarts": [
+     "Dates : site actuel 2018-11-01 → 2019-03-30 ; tableau 2023 : 1er nov. 2018 → 30 juil. 2019 ; fiche WordPress 2023 : 01/11/2018 → 30/04/2019 (3 dates de fin différentes)."
+    ]
+   }
+  },
+  {
+   "id_source": 5,
+   "slug": "resilience-covid19-bangui-3e",
+   "titre": "Appui à la résilience et au redressement socio-économique des communautés affectées par la pandémie de la COVID-19",
+   "titre_court": "Résilience socio-économique face au COVID-19 (Bangui 3e)",
+   "sigle": null,
+   "code_projet": null,
+   "statut": "realise",
+   "statut_libelle_site": "Projet réalisé",
+   "statut_source": "site",
+   "statut_note": "Statut affiché sur /liste_projets (« Projet en cours » / « Projet réalisé ») ; cohérent avec les dates de fin au 21/11/2026.",
+   "date_debut": "2021-07-01",
+   "date_fin": "2022-03-31",
+   "annee_debut": 2021,
+   "annee_fin": 2022,
+   "zone_source": "3ème arrondissement de Bangui",
+   "lieux": [
+    {
+     "lieu": "3e arrondissement de Bangui",
+     "prefecture": "Bangui"
+    }
+   ],
+   "domaines": [
+    "Sécurité alimentaire, moyens de subsistance et stabilisation communautaire",
+    "Protection/Genre"
+   ],
+   "bailleurs": [
+    "Japon"
+   ],
+   "bailleurs_noms_complets": [
+    "Gouvernement du Japon"
+   ],
+   "partenaires_mise_en_oeuvre": [
+    "PNUD"
+   ],
+   "champs_source": {
+    "bailleur": "Japon",
+    "partenaire_mise_en_oeuvre": "PNUD",
+    "budget": "665 718 USD"
+   },
+   "budget": {
+    "montant": 665718,
+    "devise_affichee": "USD",
+    "devise_probable": "USD",
+    "texte_source": "665 718 USD",
+    "note": null
+   },
+   "beneficiaires": [
+    "1000 jeunes dont 50% des femmes bénéficié des THIMO",
+    "600 personnes dont 70% des femmes bénéficiaire de l’Alphabétisation fonctionnelle",
+    "700 personnes parmi les 1000 jeunes ont bénéficié des AGR à travers les groupements constitués et formés"
+   ],
+   "beneficiaires_source": "1000 jeunes dont 50% des femmes bénéficié des THIMO 600 personnes dont 70% des femmes bénéficiaire de l’Alphabétisation fonctionnelle 700 personnes parmi les 1000 jeunes ont bénéficié des AGR à travers les groupements constitués et formés",
+   "resume": "Appui à la résilience des jeunes et des femmes du 3e arrondissement de Bangui touchés par la pandémie : travaux HIMO, alphabétisation fonctionnelle, formations et activités génératrices de revenus, cohésion sociale.",
+   "resume_source": "rédigé (synthèse éditoriale à valider par APSUD)",
+   "objectif_general": "Contribuer au renforcement des moyens de subsistance des personnes vulnérables (en particulier les jeunes et les femmes) à la pandémie par la formation professionnelle, et la création d'emplois puis contribuer à la réduction des risques de violence, de discrimination, et de xénophobie exacerbée par COVID-19 envers les réfugiés, les migrants et les PDI pour la cohésion sociale et la stabilisation",
+   "objectifs": [],
+   "activites": [
+    "A1. Effectuer des analyses de profil des bénéficiaires potentiels",
+    "A2. Réalisation des travaux HIMO pour la réhabilitation des infrastructures communautaires",
+    "A3. Mettre en œuvre un programme de formation hebdomadaire sur les termes suivants : Cohésion sociale et cohabitation pacifique ; Genre et prévention de la violence sexuelle et basée sur le genre ; Prévention de radicalisme et extrémisme violent ; Épargne et système de sécurité/protection sociale",
+    "A4. Réalisation de la formation en alphabétisation fonctionnelle Sous-activités",
+    "A5. Appuyer le processus de formulation et de validation des microprojets d’AGR et le compte d’exploitation choisis par les bénéficiaires",
+    "A6. Préparation d’un module définitif en tenant compte de l’approche 5S-Kaizen et l’attitude Positive, un pré-test et un post-test pour évaluer la capacité des bénéficiaires et les résultats des formations",
+    "A7. Appuyer les activités génératrices de revenus",
+    "A8. Fournir aux bénéficiaires cibles des kits d'hygiène et les former à l'utilisation des kits en se protégeant eux-mêmes et leurs familles du COVID-19",
+    "A9. Fournir aux bénéficiaires cibles des sources d'énergie renouvelables et les former à entretenir les sources afin qu'ils puissent les utiliser de manière durable",
+    "A10. Appuyer le Comité local de Paix et de Réconciliation à organiser des activités de sensibilisation dans leurs communautés et à diffuser des messages pour empêcher la propagation du COVID-19"
+   ],
+   "resultats": [
+    "Personnes vulnérables ont accès à un revenu immédiat pour démarrer leur AGR",
+    "Les bénéficiaires ont renforcé leur capacité d’alphabétisation fonctionnelle pour mener les activités génératrices de revenus.",
+    "Les moyens de subsistance des personnes les plus vulnérables (en particulier les jeunes et les femmes) à la pandémie sont renforcés par la formation professionnelle, et la création d'emplois est soutenue",
+    "Les risques de violence, de discrimination, et de xénophobie exacerbée par COVID-19 envers les réfugiés, les migrants et les PDI sont réduits pour la cohésion sociale et la stabilisation sont atténués",
+    "Les parties prenantes du projet sont toutes informées et participent régulièrement aux activités du projet pour collaborer avec le projet"
+   ],
+   "resultats_nature": "Résultats attendus (tels que formulés sur le site)",
+   "description_complete": "Objectif général du projet\nContribuer au renforcement des moyens de subsistance des personnes vulnérables (en particulier les jeunes et les femmes) à la pandémie par la formation professionnelle, et la création d'emplois puis contribuer à la réduction des risques de violence, de discrimination, et de xénophobie exacerbée par COVID-19 envers les réfugiés, les migrants et les PDI pour la cohésion sociale et la stabilisation\n\nObjectifs spécifiques du projet\n(non renseigné sur le site)\n\nRésultats attendus du projet\n- Personnes vulnérables ont accès à un revenu immédiat pour démarrer leur AGR\n- Les bénéficiaires ont renforcé leur capacité d’alphabétisation fonctionnelle pour mener les activités génératrices de revenus.\n- Les moyens de subsistance des personnes les plus vulnérables (en particulier les jeunes et les femmes) à la pandémie sont renforcés par la formation professionnelle, et la création d'emplois est soutenue\n- Les risques de violence, de discrimination, et de xénophobie exacerbée par COVID-19 envers les réfugiés, les migrants et les PDI sont réduits pour la cohésion sociale et la stabilisation sont atténués\n- Les parties prenantes du projet sont toutes informées et participent régulièrement aux activités du projet pour collaborer avec le projet\n\nActivités réalisées\n- A1. Effectuer des analyses de profil des bénéficiaires potentiels\n- A2. Réalisation des travaux HIMO pour la réhabilitation des infrastructures communautaires\n- A3. Mettre en œuvre un programme de formation hebdomadaire sur les termes suivants : Cohésion sociale et cohabitation pacifique ; Genre et prévention de la violence sexuelle et basée sur le genre ; Prévention de radicalisme et extrémisme violent ; Épargne et système de sécurité/protection sociale\n- A4. Réalisation de la formation en alphabétisation fonctionnelle Sous-activités\n- A5. Appuyer le processus de formulation et de validation des microprojets d’AGR et le compte d’exploitation choisis par les bénéficiaires\n- A6. Préparation d’un module définitif en tenant compte de l’approche 5S-Kaizen et l’attitude Positive, un pré-test et un post-test pour évaluer la capacité des bénéficiaires et les résultats des formations\n- A7. Appuyer les activités génératrices de revenus\n- A8. Fournir aux bénéficiaires cibles des kits d'hygiène et les former à l'utilisation des kits en se protégeant eux-mêmes et leurs familles du COVID-19\n- A9. Fournir aux bénéficiaires cibles des sources d'énergie renouvelables et les former à entretenir les sources afin qu'ils puissent les utiliser de manière durable\n- A10. Appuyer le Comité local de Paix et de Réconciliation à organiser des activités de sensibilisation dans leurs communautés et à diffuser des messages pour empêcher la propagation du COVID-19",
+   "images": [
+    {
+     "chemin": "assets/apsud/images/projets/resilience-covid19-bangui-3e/projet-resilience-bangui-mairie-3e-rehabilitee-01.jpg",
+     "alt": "Mairie du 3e arrondissement de Bangui réhabilitée par APSUD",
+     "legende": "Mairie du 3ème arrondissement réhabilitée par l'ONG APSUD"
+    },
+    {
+     "chemin": "assets/apsud/images/projets/resilience-covid19-bangui-3e/projet-resilience-bangui-agr-association-polyvalent-02.jpg",
+     "alt": "Membres de l'association « Polyvalent » du quartier Yambassa Fondo avec leur activité génératrice de revenus",
+     "legende": "Appuyer le processus de formulation et de validation des microprojets d’AGR et le compte d’exploitation choisis par les bénéficiaires"
+    },
+    {
+     "chemin": "assets/apsud/images/projets/resilience-covid19-bangui-3e/projet-resilience-bangui-alphabetisation-03.jpg",
+     "alt": "Séance de formation en alphabétisation fonctionnelle dans une salle de classe à Bangui",
+     "legende": "Formation en alphabétisation"
+    },
+    {
+     "chemin": "assets/apsud/images/projets/resilience-covid19-bangui-3e/projet-resilience-bangui-remise-certificats-04.jpg",
+     "alt": "Cérémonie de remise des certificats de fin de formation en alphabétisation",
+     "legende": "Cérémonie de remise officielle des certificats de fin de formation en alphabetisation"
+    }
+   ],
+   "url_source": "https://apsud.org/detail-projet/5/Appui%20%C3%A0%20la%20r%C3%A9silience%20et%20au%20redressement%20socio-%C3%A9conomique%20des%20communaut%C3%A9s%20affect%C3%A9es%20par%20la%20pand%C3%A9mie%20de%20la%20COVID-19",
+   "controle_qualite": {
+    "verifie_le": "2026-11-21",
+    "conforme_site_actuel": true,
+    "ecarts": [
+     "Dates : site actuel 2021-07-01 ; ancienne fiche id 3 (2024) : 2021-06-01 ; tableau 2023 : juin 2021 ; fiche 2023 : 1er juillet 2021."
+    ],
+    "note": "L’ancienne fiche /detail-projet/3 (2024) était une première saisie de ce projet (même contenu, sans images sauf une)."
+   }
+  },
+  {
+   "id_source": 2,
+   "slug": "wash-urgence-deplaces-alindao",
+   "titre": "Assistance d’urgence en eau, assainissement et hygiène pour les populations déplacées d’Alindao.",
+   "titre_court": "Urgence WASH pour les déplacés d’Alindao",
+   "sigle": null,
+   "code_projet": null,
+   "statut": "realise",
+   "statut_libelle_site": "Projet réalisé (liste des projets, août 2024)",
+   "statut_source": "archive",
+   "statut_note": "Fiche publiée en 2024 puis retirée du site (l’URL renvoie aujourd’hui une erreur 500). Retrait volontaire ou accidentel : à demander à APSUD.",
+   "publie_sur_site_actuel": false,
+   "source_donnees": "archive Wayback Machine du 06/08/2024 + tableau des projets 2023",
+   "date_debut": "2023-02-01",
+   "date_fin": "2023-07-31",
+   "annee_debut": 2023,
+   "annee_fin": 2023,
+   "zone_source": "Alindao",
+   "lieux": [
+    {
+     "lieu": "Alindao (4 sites de déplacés internes)",
+     "prefecture": "Basse-Kotto"
+    }
+   ],
+   "domaines": [
+    "WASH"
+   ],
+   "bailleurs": [
+    "FH"
+   ],
+   "bailleurs_noms_complets": [
+    "Fonds Humanitaire pour la République centrafricaine (FH RCA)"
+   ],
+   "partenaires_mise_en_oeuvre": [
+    "ACF (Action contre la Faim)"
+   ],
+   "champs_source": {
+    "bailleur": "FH",
+    "partenaire_mise_en_oeuvre": "ACF",
+    "budget": "55,769.81 USD"
+   },
+   "budget": {
+    "montant": 55769.81,
+    "devise_affichee": "USD",
+    "devise_probable": "USD",
+    "texte_source": "55,769.81 USD",
+    "note": "Montant identique dans le tableau 2023 (« ACF/FH »)."
+   },
+   "beneficiaires": [
+    "13 172 femmes, hommes, garçons et filles des 4 sites de déplacés d’Alindao"
+   ],
+   "beneficiaires_source": "13 172 femmes, hommes, garçons et filles des 4 sites de déplacés d’Alindao",
+   "resume": "Réponse d’urgence en eau, hygiène et assainissement sur les quatre sites de déplacés internes d’Alindao (Basse-Kotto), en partenariat avec Action contre la Faim, pour limiter la propagation des maladies hydriques.",
+   "resume_source": "rédigé (synthèse éditoriale à valider par APSUD)",
+   "objectif_general": null,
+   "objectifs": [
+    "Améliorer la couverture des services EHA vitaux sur les 4 sites de déplacés internes d’Alindao afin de limiter les risques de propagation des maladies hydriques"
+   ],
+   "activites": [],
+   "resultats": [
+    "13 172 femmes, hommes, garçons et filles des 4 sites de déplacés d’Alindao sont accompagnés dans l’adoption de bonnes pratiques d’hygiène.",
+    "7 050 femmes, hommes, garçons et filles des 4 sites de déplacés d’Alindao ont accès à des installations sanitaires de qualité, respectant les normes d’hygiène de base ainsi que les impératifs de genre"
+   ],
+   "resultats_nature": "Résultats attendus (tels que formulés sur la fiche archivée)",
+   "description_complete": "Objectif spécifique du projet\n- Améliorer la couverture des services EHA vitaux sur les 4 sites de déplacés internes d’Alindao afin de limiter les risques de propagation des maladies hydriques\n\nRésultats attendus du projet\n- 13 172 femmes, hommes, garçons et filles des 4 sites de déplacés d’Alindao sont accompagnés dans l’adoption de bonnes pratiques d’hygiène.\n- 7 050 femmes, hommes, garçons et filles des 4 sites de déplacés d’Alindao ont accès à des installations sanitaires de qualité, respectant les normes d’hygiène de base ainsi que les impératifs de genre\n\nActivités réalisées\n(non renseignées sur la fiche archivée)",
+   "images": [],
+   "images_note": "Aucune image sur la fiche archivée (champs vides) : photos à demander à APSUD.",
+   "url_source": "https://web.archive.org/web/20240806065022/https://apsud.org/detail-projet/2/Assistance%20d%E2%80%99urgence%20en%20eau,%20assainissement%20et%20hygi%C3%A8ne%20pour%20les%20populations%20d%C3%A9plac%C3%A9es%20d%E2%80%99Alindao.",
+   "controle_qualite": {
+    "verifie_le": "2026-11-21",
+    "conforme_site_actuel": null,
+    "note": "Projet ajouté par le contrôle qualité : absent du site actuel, retrouvé dans les archives. À valider par APSUD avant publication."
+   }
+  }
+ ],
+ "nb_projets_site_actuel": 13,
+ "controle_qualite": {
+  "verifie_le": "2026-11-21",
+  "note": "13 fiches du site actuel comparées champ par champ : conformes. Ajout du projet 2 (Alindao, 2023), retiré du site mais archivé. Historique complet (60 projets 2015-2023) : data/apsud/projets_historiques.json.",
+  "projets_historiques": "data/apsud/projets_historiques.json"
+ }
+}

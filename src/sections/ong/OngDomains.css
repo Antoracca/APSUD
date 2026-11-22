@@ -1,0 +1,171 @@
+/* Qui sommes-nous — 4 domaines d'intervention (cartes cliquables) */
+@layer components {
+  .c-ong-domains {
+    margin-block: var(--space-section);
+  }
+  .c-ong-domains__head {
+    display: grid;
+    gap: var(--space-4);
+    max-inline-size: var(--measure-text);
+    margin-block-end: var(--space-12);
+  }
+  .c-ong-domains__title {
+    margin: 0;
+    font-size: var(--fs-h2);
+    line-height: var(--lh-heading);
+  }
+  .c-ong-domains__intro {
+    margin: 0;
+    color: var(--color-text-muted);
+    font-size: var(--fs-lead);
+    line-height: var(--lh-lead);
+  }
+
+  .c-ong-domains__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 15.5rem), 1fr));
+    gap: var(--space-8) var(--space-6);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  /* ---------- Carte ---------- */
+  .c-ong-domain {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background: var(--color-surface-soft);
+  }
+  .c-ong-domain__media {
+    position: relative;
+    aspect-ratio: var(--card-media-ratio);
+  }
+  .c-ong-domain__media picture {
+    display: block;
+    block-size: 100%;
+    overflow: hidden;
+  }
+  .c-ong-domain__img {
+    inline-size: 100%;
+    block-size: 100%;
+    object-fit: cover;
+  }
+  .c-ong-domain__badge {
+    position: absolute;
+    inset-inline-start: var(--space-6);
+    inset-block-end: calc(var(--leaf-drop-sm) / -2);
+    display: grid;
+    place-items: center;
+    inline-size: var(--leaf-drop-sm);
+    block-size: var(--leaf-drop-sm);
+    color: var(--color-text);
+    isolation: isolate;
+  }
+  .c-ong-domain__badge::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--color-surface-signature);
+    border-radius: var(--radius-goutte);
+    z-index: var(--z-below);
+  }
+
+  .c-ong-domain__body {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: var(--space-3);
+    padding: calc(var(--leaf-drop-sm) / 2 + var(--space-5)) var(--space-6) var(--space-6);
+  }
+  .c-ong-domain__title {
+    margin: 0;
+    font-size: var(--fs-tile-title);
+    line-height: var(--lh-heading);
+  }
+  .c-ong-domain__link {
+    color: inherit;
+    text-decoration: none;
+  }
+  .c-ong-domain__link::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: var(--z-raised);
+  }
+  .c-ong-domain__link:focus-visible { outline: none; }
+  .c-ong-domain:has(.c-ong-domain__link:focus-visible) {
+    outline: var(--focus-width) solid var(--color-focus);
+    outline-offset: var(--focus-offset);
+  }
+  .c-ong-domain__text {
+    display: -webkit-box;
+    margin: 0;
+    overflow: hidden;
+    color: var(--color-text-muted);
+    font-size: var(--fs-small);
+    line-height: var(--lh-body);
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    line-clamp: 4;
+  }
+  .c-ong-domain__meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+    margin: auto 0 0;
+    padding-block-start: var(--space-4);
+    border-block-start: var(--border-width) solid var(--color-border-subtle);
+    color: var(--color-text-brand);
+    font-size: var(--fs-small);
+    font-weight: var(--fw-semibold);
+  }
+  .c-ong-domain__more {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    color: var(--color-text);
+    font-weight: var(--fw-heavy);
+  }
+
+  /* ---------- Pied : domaine transversal + lien ---------- */
+  .c-ong-domains__foot {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-6);
+    margin-block-start: var(--space-12);
+  }
+  .c-ong-domains__transversal {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    margin: 0;
+    color: var(--color-text-muted);
+  }
+  .c-ong-domains__transversal-icon { color: var(--color-brand); }
+
+  /* ---------- Survol (innovation APSUD) ---------- */
+  @media (prefers-reduced-motion: no-preference) {
+    /* On garde la révélation de base.css (opacité + transform, avec délai) et on y ajoute translate */
+    .c-ong-domain {
+      transition:
+        opacity var(--dur-long) var(--ease-out) var(--reveal-delay, 0ms),
+        transform var(--dur-signature) var(--ease-out) var(--reveal-delay, 0ms),
+        translate var(--dur-standard) var(--ease-in-out);
+    }
+    .c-ong-domain__img {
+      transition: scale var(--dur-long) var(--ease-out);
+    }
+    .c-ong-domain__badge::before,
+    .c-ong-domain__more .c-icon {
+      transition: rotate var(--dur-standard) var(--ease-in-out), translate var(--dur-standard) var(--ease-out);
+    }
+    .c-ong-domain:hover { translate: 0 calc(var(--tile-lift) / -2); }
+    .c-ong-domain:hover .c-ong-domain__img { scale: var(--reveal-zoom); }
+    .c-ong-domain:hover .c-ong-domain__badge::before { rotate: 90deg; }
+    .c-ong-domain:hover .c-ong-domain__more .c-icon { translate: var(--space-1) 0; }
+  }
+}

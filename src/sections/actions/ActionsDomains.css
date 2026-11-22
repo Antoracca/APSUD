@@ -1,0 +1,71 @@
+/* Hub « Nos actions » — domaines en zigzag (Prosper « How we work, start to finish ») */
+@layer components {
+  .c-actions-domains {
+    margin-block: var(--space-section);
+  }
+  .c-actions-domains__title {
+    margin: 0 0 var(--space-12);
+    font-size: var(--fs-h2);
+    font-weight: var(--fw-bold);
+    line-height: var(--lh-heading);
+  }
+
+  /* Sur-titre « Domaine d'intervention » : remonté au-dessus du titre (la boîte est en flex colonne) */
+  .c-actions-domains__kind {
+    order: -1;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-3);
+    margin: 0 0 var(--space-4);
+    color: var(--color-text-brand);
+    font-size: var(--fs-overline);
+    font-weight: var(--fw-heavy);
+    letter-spacing: var(--ls-overline);
+    text-transform: uppercase;
+  }
+  /* Pictogramme posé dans une petite goutte-feuille Pousse (forme signature) */
+  .c-actions-domains__icon {
+    display: inline-grid;
+    place-items: center;
+    inline-size: var(--tap-min);
+    block-size: var(--tap-min);
+    border-radius: var(--radius-goutte);
+    background: var(--color-surface-signature);
+    color: var(--color-text);
+    transition: border-radius var(--dur-standard) var(--ease-in-out);
+  }
+  /* Innovation : au survol de la rangée, la goutte se retourne en feuille (coin vif qui pivote) */
+  .c-actions-domains__row:hover .c-actions-domains__icon,
+  .c-actions-domains__row:focus-within .c-actions-domains__icon {
+    border-radius: 0 50% 50% 50%;
+  }
+
+  /* Bilan calculé : projets · période · préfectures, séparés par un point vert */
+  .c-actions-domains__facts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-1) var(--space-3);
+    margin: calc(-1 * var(--space-4)) 0 var(--space-8);
+    padding: 0;
+    list-style: none;
+    color: var(--color-text-muted);
+    font-size: var(--fs-small);
+    font-weight: var(--fw-semibold);
+  }
+  .c-actions-domains__facts li {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-3);
+  }
+  .c-actions-domains__facts li + li::before {
+    content: "";
+    inline-size: var(--status-dot);
+    block-size: var(--status-dot);
+    border-radius: var(--radius-round);
+    background: var(--color-brand);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .c-actions-domains__icon { transition: none; }
+  }
+}

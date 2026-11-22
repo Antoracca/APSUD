@@ -1,0 +1,107 @@
+---
+/**
+ * /cookies — politique cookies, gabarit C (DESIGN.md §5.10).
+ * Décrit les trois catégories du bandeau existant (sections/legal/cookieCategories.ts, copie
+ * conforme de CookieBanner) + état des choix en direct et bouton « Modifier mes choix » [data-cookie-open].
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import LegalDoc, { type TocItem } from '../sections/legal/LegalDoc.astro';
+import CookieChoices from '../sections/legal/CookieChoices.astro';
+import { cookieCategories } from '../sections/legal/cookieCategories';
+
+const toc: TocItem[] = [
+  { id: 'definition', label: 'Qu’est-ce qu’un cookie ?' },
+  { id: 'choix', label: 'Vos choix' },
+  { id: 'categories', label: 'Les catégories utilisées' },
+  { id: 'navigateur', label: 'Réglages du navigateur' },
+];
+---
+
+<BaseLayout
+  title="Politique cookies"
+  description="Les cookies utilisés sur le site d’APSUD, leurs finalités et leur durée, et comment modifier vos choix à tout moment."
+>
+  <LegalDoc
+    title="Politique cookies"
+    intro="Rien n’est déposé sur votre appareil sans votre accord, hormis ce qui est indispensable au fonctionnement du site."
+    updated="2026-11-22"
+    toc={toc}
+  >
+    <section id="definition">
+      <h2>Qu’est-ce qu’un cookie ?</h2>
+      <p>
+        Un cookie est un petit fichier enregistré par votre navigateur lorsque vous consultez un site. D’autres
+        traceurs fonctionnent de la même manière, comme le stockage local du navigateur. Cette page les désigne
+        tous par le mot « cookies ».
+      </p>
+    </section>
+
+    <section id="choix">
+      <h2>Vos choix</h2>
+      <p>
+        À votre première visite, un bandeau vous propose de tout accepter, de tout refuser ou de choisir catégorie
+        par catégorie. Refuser est aussi simple qu’accepter, et tout le site reste consultable dans les deux
+        cas. Votre choix est conservé 6 mois, puis le bandeau vous est de nouveau proposé.
+      </p>
+      <CookieChoices />
+      <p>
+        Vous pouvez aussi modifier vos choix à tout moment depuis le lien « Gérer les cookies » en bas de chaque page.
+      </p>
+    </section>
+
+    <section id="categories">
+      <h2>Les catégories utilisées</h2>
+      {cookieCategories.map((c) => (
+        <>
+          <h3>
+            {c.titre}
+            {c.toujoursActif ? ' (toujours actifs)' : ' (soumis à votre accord)'}
+          </h3>
+          <p>{c.texte}</p>
+          {c.traceurs.length > 0 ? (
+            <div class="c-legal__table">
+              <table>
+                <caption class="u-visually-hidden">Traceurs de la catégorie {c.titre}</caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Finalité</th>
+                    <th scope="col">Durée</th>
+                    <th scope="col">Éditeur</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {c.traceurs.map((t) => (
+                    <tr>
+                      <td><code>{t.nom}</code></td>
+                      <td>{t.type}</td>
+                      <td>{t.finalite}</td>
+                      <td>{t.duree}</td>
+                      <td>{t.editeur}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          ) : (
+            c.aucun && <p>{c.aucun}</p>
+          )}
+        </>
+      ))}
+    </section>
+
+    <section id="navigateur">
+      <h2>Réglages du navigateur</h2>
+      <p>
+        Vous pouvez également bloquer ou supprimer les cookies depuis les réglages de votre navigateur (rubrique
+        « Confidentialité » ou « Données de navigation »). Supprimer les données du site efface aussi vos choix :
+        le bandeau vous sera alors proposé de nouveau.
+      </p>
+      <p>
+        Pour en savoir plus sur l’usage de vos données, consultez notre
+        {' '}<a href="/confidentialite">politique de confidentialité</a>.
+      </p>
+    </section>
+  </LegalDoc>
+</BaseLayout>

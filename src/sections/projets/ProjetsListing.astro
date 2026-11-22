@@ -1,0 +1,57 @@
+---
+/**
+ * /projets — liste filtrable de tous les projets (filtres + grille de cartes + état vide).
+ * Ordre : projets en cours en tête, puis du plus récent au plus ancien (src/data/projects.ts).
+ * Chaque carte porte ses valeurs de filtre en attributs data-* ; le script
+ * src/scripts/projects-filter.ts masque ou affiche les cartes (attribut `hidden`).
+ * Quand une carte réapparaît, elle remonte en fondu (animation CSS rejouée au retour
+ * de display:none, coupée si « animations réduites »).
+ */
+import Button from '../../components/ui/Button.astro';
+import EmptyState from '../../components/ui/EmptyState.astro';
+import { getProjects } from '../../data/projects';
+import { slugify } from '../../data/zones';
+import ProjetsFiltres from './ProjetsFiltres.astro';
+import ProjetsCard from './ProjetsCard.astro';
+import { cardStatus } from './projets';
+import './ProjetsListing.css';
+
+const projets = getProjects();
+---
+
+<section class="c-projets-listing l-section--sm" aria-labelledby="projets-liste-titre" data-projects-filter>
+  <div class="l-constrain">
+    <ProjetsFiltres />
+
+    <h2 id="projets-liste-titre" class="u-visually-hidden">Liste des projets</h2>
+    <ul class="c-projets-listing__grid" role="list" data-filter-list>
+      {projets.map((p, i) => (
+        <li
+          class="c-projets-listing__item"
+          data-statut={cardStatus(p)}
+          data-domaine={p.domaines.join(' ')}
+          data-prefecture={p.prefectures.map((x) => x.slug).join(' ')}
+          data-bailleur={p.bailleurs.map(slugify).join(' ')}
+        >
+          <ProjetsCard projet={p} reveal revealDelay={(i % 3) * 120} />
+        </li>
+      ))}
+    </ul>
+
+    <div class="c-projets-listing__empty" data-filter-empty hidden>
+      <EmptyState
+        title="Aucun projet ne correspond à ces critères"
+        text="Essayez d’élargir votre recherche : retirez un filtre ou réinitialisez-les tous."
+        icon="search"
+        headingLevel="h3"
+        link={false}
+      >
+        <Button variant="primary" data-filter-reset-alt>Réinitialiser les filtres</Button>
+      </EmptyState>
+    </div>
+  </div>
+</section>
+
+<script>
+  import '../../scripts/projects-filter';
+</script>

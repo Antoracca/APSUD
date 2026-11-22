@@ -1,0 +1,111 @@
+---
+/**
+ * Bloc image + texte en zigzag décalé — DESIGN.md §4.18 ; Prosper `.l-side-by-side`
+ * (PROSPER_TOKENS §5.3, PROSPER_VISUEL §4).
+ *
+ * ≥ 48em : grille 2 colonnes `1fr 1fr`, rangées `1fr 3fr auto`. L'image carrée occupe
+ * les rangées 1–2 ; la boîte Coton occupe les rangées 2–3 et se cale en bas : elle s'aligne
+ * sur le bas de l'image, plus courte qu'elle (le haut de la colonne texte reste vide), et ne
+ * la dépasse que si son contenu est plus haut que les 3/4 de l'image.
+ * `reverse` place l'image à droite (2ᵉ rangée de Prosper).
+ * Mobile : image 4:3, boîte collée dessous.
+ *
+ * Variantes :
+ *  - `quote`  : le h3 est une citation entre guillemets français (« Voices of Prosperity »).
+ *  - `framed` : la photo est posée sur un aplat Pousse pâle (visuel « objet sur fond teinté »).
+ * Révélation au défilement : [data-reveal] (src/scripts/reveal.ts), contenu visible sans JS.
+ * Innovation APSUD (≥ 48em, hors « animations réduites ») : la photo s'ouvre par volet depuis
+ * son bord extérieur, puis la boîte Coton glisse de sous la photo vers son côté.
+ */
+import { Picture } from 'astro:assets';
+import { getImage } from '../../lib/images';
+import ArrowLink from './ArrowLink.astro';
+import './SideBySide.css';
+
+interface Props {
+  /** Chemin `assets/...` résolu par src/lib/images.ts */
+  image: string;
+  imageAlt: string;
+  title: string;
+  text?: string;
+  link?: { label: string; href: string };
+  reverse?: boolean;
+  quote?: boolean;
+  framed?: boolean;
+  headingLevel?: 'h2' | 'h3' | 'h4';
+  /** Point focal CSS (object-position), ex. '50% 30%' */
+  focus?: string;
+  sizes?: string;
+  loading?: 'lazy' | 'eager';
+  reveal?: boolean;
+  class?: string;
+}
+
+const {
+  image,
+  imageAlt,
+  title,
+  text,
+  link,
+  reverse = false,
+  quote = false,
+  framed = false,
+  headingLevel = 'h3',
+  focus = 'center',
+  sizes = '(min-width: 75em) 37.5rem, (min-width: 48em) 50vw, 100vw',
+  loading = 'lazy',
+  reveal = true,
+  class: className,
+} = Astro.props;
+
+const Heading = headingLevel;
+const src = getImage(image);
+const widths = [480, 768, 1024].filter((w) => w < src.width).concat(src.width);
+/* Guillemets français avec espaces insécables (typographie française) */
+const open = '« ';
+const close = ' »';
+---
+
+<article
+  class:list={[
+    'c-side-by-side',
+    {
+      'c-side-by-side--reverse': reverse,
+      'c-side-by-side--quote': quote,
+      'c-side-by-side--framed': framed,
+    },
+    className,
+  ]}
+  style={`--_focus: ${focus}`}
+  {...(reveal ? { 'data-reveal': '' } : {})}
+>
+  <div class="c-side-by-side__media">
+    <Picture
+      src={src}
+      alt={imageAlt}
+      widths={widths}
+      sizes={sizes}
+      formats={['avif', 'webp']}
+      loading={loading}
+      decoding="async"
+      class="c-side-by-side__img"
+    />
+  </div>
+
+  <div class="c-side-by-side__content">
+    <div class="c-side-by-side__box">
+      <Heading class="c-side-by-side__title">
+        {quote ? (
+          <Fragment>
+            <span class="c-side-by-side__mark" aria-hidden="true">{open}</span>{title}<span class="c-side-by-side__mark" aria-hidden="true">{close}</span>
+          </Fragment>
+        ) : title}
+      </Heading>
+      {text && <p class="c-side-by-side__text">{text}</p>}
+      <slot />
+      {link && (
+        <ArrowLink href={link.href} class="c-side-by-side__link">{link.label}</ArrowLink>
+      )}
+    </div>
+  </div>
+</article>

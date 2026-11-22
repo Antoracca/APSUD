@@ -1,0 +1,28 @@
+---
+/**
+ * Accueil §5 — Notre vision. Équivalent de « Voices of Prosperity » (initiative-étendard)
+ * de Prosper (PROSPER_STRUCTURE §5.1 n° 5 ; DESIGN.md §4.17–4.18).
+ * h2 aligné à gauche, puis un bloc côte à côte : la photo posée sur un aplat Pousse pâle
+ * à gauche, la boîte Coton à droite dont le h3 est la vision d'APSUD entre guillemets
+ * français, en grande condensée, suivie d'un texte et d'un lien.
+ */
+import SideBySide from '../../components/ui/SideBySide.astro';
+import { vision } from '../../data/home';
+import './HomeVision.css';
+---
+
+<section class="c-vision" aria-labelledby="vision-titre">
+  <div class="l-constrain">
+    <h2 id="vision-titre" class="c-vision__title">{vision.title}</h2>
+    <SideBySide
+      image={vision.image}
+      imageAlt={vision.imageAlt}
+      title={vision.quote}
+      text={vision.text}
+      link={vision.link}
+      quote
+      framed
+      focus="62% 50%"
+    />
+  </div>
+</section>

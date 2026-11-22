@@ -1,0 +1,182 @@
+/* Hero d'accueil — Prosper `.c-hero` (hero.css), PROSPER_TOKENS §14, DESIGN.md §4.6 */
+@layer components {
+  .c-hero {
+    position: relative;
+    max-inline-size: var(--container-wide);
+    margin-inline: auto;
+  }
+
+  /* ---------- Média (photo LCP + vidéo facultative) ---------- */
+  .c-hero__media {
+    position: relative;
+    overflow: hidden;
+    background: var(--color-surface-strong);   /* pas d'éclair blanc avant la photo */
+  }
+  .c-hero__picture { display: block; }
+  .c-hero__img,
+  .c-hero__video {
+    display: block;
+    inline-size: 100%;
+    max-inline-size: none;
+    block-size: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    object-position: var(--hero-focus);   /* point d'intérêt de la photo (mains unies) */
+    border-radius: var(--radius-none);
+  }
+  /* Téléphone (< 48em) : le média occupe l'écran en portrait 4:5, recadré sur les mains, et se fond
+     dans le bloc sombre qui le suit (dégradé Forêt), pour un hero immersif « d'application ». */
+  /* Tablette (48–64em) : le bloc sombre est aussi haut qu'une photo 16:9 ; en 4:3 la photo garde de l'air au-dessus */
+  @media (48em <= width < 64em) {
+    .c-hero__img { aspect-ratio: var(--hero-ratio-tablet); }
+  }
+  @media (width < 48em) {
+    .c-hero__img { aspect-ratio: var(--hero-ratio-mobile); }
+    .c-hero__media::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0;
+      block-size: var(--hero-fade-h);
+      background: linear-gradient(to bottom, transparent, var(--color-surface-strong));
+      pointer-events: none;
+    }
+  }
+  .c-hero__video {
+    position: absolute;
+    inset: 0;
+    block-size: 100%;
+    opacity: 0;
+  }
+  .c-hero__video.is-playing { opacity: 1; }
+
+  /* Bouton pause / lecture : rond 44 px, blanc 65 %, en bas à droite (Prosper .c-inline-video__toggle) */
+  .c-hero__toggle {
+    position: absolute;
+    inset-block-end: var(--space-4);
+    inset-inline-end: var(--space-4);
+    z-index: var(--z-raised);
+    display: grid;
+    place-items: center;
+    inline-size: var(--tap-min);
+    block-size: var(--tap-min);
+    border-radius: var(--radius-round);
+    background: var(--hero-toggle-bg);
+    color: var(--color-text);
+    touch-action: manipulation;
+  }
+  .c-hero__toggle[hidden] { display: none; }
+  .c-hero__toggle:focus-visible {
+    outline: var(--focus-width) solid var(--color-focus);
+    outline-offset: var(--focus-offset);
+  }
+  .c-hero__toggle[data-state="playing"] .c-hero__toggle-icon--play,
+  .c-hero__toggle[data-state="paused"] .c-hero__toggle-icon--pause { display: none; }
+
+  /* ---------- Bloc de contenu sombre ---------- */
+  .c-hero__content {
+    padding: var(--space-6);
+  }
+  .c-hero__title {
+    margin-block-end: var(--space-6);
+    font-size: var(--fs-hero-title);
+    font-weight: var(--fw-bold);
+    line-height: var(--lh-heading);
+    letter-spacing: var(--ls-condensed);
+  }
+  .c-hero__text {
+    margin-block-end: var(--space-6);
+    line-height: var(--lh-lead);
+  }
+  .c-hero__actions { display: flex; flex-wrap: wrap; gap: var(--space-4); }
+
+  /* ---------- ≥ 48em : le bloc se pose en bas à gauche sur le média ---------- */
+  @media (width >= 48em) {
+    .c-hero {
+      display: grid;
+      grid-template-areas: "content";
+    }
+    .c-hero__media { grid-area: content; }
+    .c-hero__toggle {
+      inset-block-end: var(--space-6);
+      inset-inline-end: var(--space-6);
+    }
+
+    .c-hero__content {
+      position: relative;
+      grid-area: content;
+      align-self: end;
+      margin-inline-start: var(--hero-bar-w);
+      max-inline-size: min(var(--hero-content-max), 50vw - var(--hero-bar-w));
+      min-inline-size: var(--hero-content-min);
+    }
+    /* La marche : rectangle Pousse pâle qui dépasse derrière, à gauche du bloc */
+    .c-hero__content::before {
+      content: "";
+      position: absolute;
+      inset-block: var(--space-16) 0;
+      inset-inline-start: calc(-1 * var(--hero-bar-w));
+      inline-size: var(--hero-bar-w);
+      background: var(--color-surface-tint);
+    }
+
+    .c-hero__title {
+      font-size: var(--fs-hero-title-md);
+      line-height: var(--lh-hero-title-md);
+    }
+    .c-hero__text { font-size: var(--fs-lead); }
+  }
+
+  /* Lignes du H1 : chaque phrase est un bloc masqué (le masque laisse dépasser les jambages) */
+  .c-hero__line {
+    display: block;
+    overflow: clip;
+    overflow-clip-margin: 0.12em;
+  }
+  .c-hero__line-inner { display: block; }
+
+  @media (prefers-reduced-motion: no-preference) {
+    /* Apparition douce de la vidéo quand elle joue (sinon : bascule nette) */
+    .c-hero__video { transition: opacity var(--dur-standard) var(--ease-out); }
+
+    /* ---------- Innovation 1 : « Ken Burns » très lent tant qu'aucune vidéo ne joue ---------- */
+    .c-hero__img {
+      transform-origin: var(--hero-focus);   /* le zoom lent converge vers les mains */
+      animation: c-hero-kenburns var(--hero-kenburns-dur) var(--ease-in-out) var(--dur-long) infinite alternate both;
+    }
+    .c-hero__media:has(.c-hero__video.is-playing) .c-hero__img { animation: none; }
+
+    /* ---------- Innovation 2 : le H1 monte ligne par ligne derrière son masque ---------- */
+    .c-hero__line-inner {
+      animation: c-hero-line-in var(--dur-hero-line) var(--ease-out)
+        calc(var(--delay-hero-intro) + var(--line, 0) * var(--stagger-hero-line)) both;
+    }
+    /* puis le texte et le bouton se posent, la marche se déploie depuis le bas */
+    .c-hero__text,
+    .c-hero__actions {
+      animation: c-hero-rise var(--dur-hero-line) var(--ease-out)
+        calc(var(--delay-hero-intro) + 2 * var(--stagger-hero-line) + var(--dur-standard)) both;
+    }
+    .c-hero__actions { animation-delay: calc(var(--delay-hero-intro) + 3 * var(--stagger-hero-line) + var(--dur-standard)); }
+    .c-hero__content::before {
+      transform-origin: 50% 100%;
+      animation: c-hero-step var(--dur-signature) var(--ease-out) var(--delay-hero-intro) both;
+    }
+  }
+
+  @keyframes c-hero-kenburns {
+    from { scale: 1; translate: 0 0; }
+    to   { scale: var(--hero-kenburns-scale); translate: var(--hero-kenburns-shift); }
+  }
+  @keyframes c-hero-line-in {
+    from { translate: 0 110%; }
+    to   { translate: 0 0; }
+  }
+  @keyframes c-hero-rise {
+    from { opacity: 0; translate: 0 var(--space-4); }
+    to   { opacity: 1; translate: 0 0; }
+  }
+  @keyframes c-hero-step {
+    from { scale: 1 0; }
+    to   { scale: 1 1; }
+  }
+}

@@ -1,0 +1,34 @@
+/* Lien d'évitement — DESIGN.md §4.0 (fond Forêt, texte Coton, ombre décalée Pousse) */
+@layer components {
+  .c-skiplink {
+    position: fixed;
+    inset-block-start: var(--space-2);
+    inset-inline-start: var(--space-2);
+    z-index: var(--z-skiplink);
+    display: inline-flex;
+    align-items: center;
+    min-block-size: var(--tap-min);
+    padding: var(--space-3) var(--space-5);
+    border-radius: var(--radius-control);
+    background: var(--color-surface-strong);
+    color: var(--color-text-inverse);
+    box-shadow: var(--shadow-step);
+    font-family: var(--font-condensed);
+    font-stretch: var(--font-stretch-condensed);
+    font-size: var(--fs-button);
+    font-weight: var(--fw-heavy);
+    line-height: var(--lh-snug);
+    text-decoration: none;
+    transform: translateY(calc(-100% - var(--space-8)));
+  }
+  .c-skiplink:focus,
+  .c-skiplink:focus-visible {
+    transform: none;
+    outline: var(--focus-width) solid var(--color-focus-inverse);
+    outline-offset: var(--focus-offset);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .c-skiplink { transition: transform var(--dur-intro) var(--ease-out); }
+  }
+}

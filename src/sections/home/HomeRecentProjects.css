@@ -1,0 +1,31 @@
+/* Accueil — Projets réalisés (Prosper .c-homepage-latest-news + .l-three-tile) */
+@layer components {
+  .c-home-recent__title {
+    margin-block-end: var(--space-6);
+  }
+
+  .c-home-recent__grid {
+    display: grid;
+    gap: var(--space-12);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .c-home-recent__cta {
+    margin-block-start: var(--space-12);
+  }
+
+  @media (width >= 48em) {
+    .c-home-recent__title { margin-block-end: var(--space-12); }
+
+    /* 3 colonnes égales, gouttière 24 px (Prosper .l-three-tile__tiles gap 24px) */
+    .c-home-recent__grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--space-6);
+      align-items: start;
+    }
+
+    .c-home-recent__cta { margin-block-start: var(--space-16); }
+  }
+}

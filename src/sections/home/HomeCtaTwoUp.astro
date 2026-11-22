@@ -1,0 +1,42 @@
+---
+/**
+ * Accueil §8 — Double appel à l'action (équivalent « Build lasting change »,
+ * Prosper `.c-cta-two-up--secondary`). PROSPER_STRUCTURE §5.1 (7) ; DESIGN.md §4.19.
+ *
+ * Fond Coton (se fond avec les marches du footer), titre de groupe centré,
+ * 2 panneaux de 30,375 rem côte à côte, centrés (largeur totale = mesure « média » 62,25 rem) :
+ *  - gauche : Forêt, titre crème, bouton Pousse (on-dark) — rôle du panneau primaire foncé ;
+ *  - droite : Pousse (signature), titre Forêt, bouton contour (Prosper : bouton contour sur le panneau clair).
+ * Innovation APSUD : une « marche » d'angle (écho des marches du pied de page) se lève au survol et au focus.
+ * Le titre de groupe est un h2 au gabarit h3 (Prosper : h3) pour garder une hiérarchie correcte.
+ */
+import Button from '../../components/ui/Button.astro';
+import { ctaTwoUp } from '../../data/home';
+import './HomeCtaTwoUp.css';
+
+const panels = [
+  { ...ctaTwoUp.primary, theme: 't-foret', variant: 'on-dark' as const, mod: 'primary' },
+  { ...ctaTwoUp.secondary, theme: 't-pousse', variant: 'outline' as const, mod: 'secondary' },
+];
+---
+
+<section class="c-cta-two-up t-coton" aria-labelledby="home-cta-title">
+  <div class="l-constrain l-constrain--media">
+    <h2 id="home-cta-title" class="c-cta-two-up__title" data-reveal>{ctaTwoUp.title}</h2>
+    <div class="c-cta-two-up__wrapper">
+      {panels.map((p, i) => (
+        <div
+          class:list={['c-cta-two-up__panel', `c-cta-two-up__panel--${p.mod}`, p.theme]}
+          data-reveal
+          data-reveal-delay={String(i * 150)}
+        >
+          <h3 class="c-cta-two-up__panel-title">{p.title}</h3>
+          <p class="c-cta-two-up__text">{p.text}</p>
+          <div class="c-cta-two-up__button">
+            <Button href={p.cta.href} variant={p.variant}>{p.cta.label}</Button>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

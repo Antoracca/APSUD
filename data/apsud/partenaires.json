@@ -1,0 +1,2219 @@
+[
+ {
+  "slug": "ukaid",
+  "nom_affiche": "UK aid (logo « UKaid – from the British people »)",
+  "nom_officiel": "UK aid – aide publique au développement du Royaume-Uni (Foreign, Commonwealth & Development Office, FCDO ; ex-DFID)",
+  "sigle": "UK aid / FCDO",
+  "type": "gouvernement",
+  "categorie": "bailleur",
+  "site_officiel": "https://www.gov.uk/government/organisations/foreign-commonwealth-development-office",
+  "affiche_sur_apsud_org": true,
+  "ordre_affichage_apsud": 1,
+  "relation_documentee_sur_site": false,
+  "projets_lies": [],
+  "logo_source_apsud": {
+   "chemin": "assets/partenaires/source-apsud/ukaid.png",
+   "url": "https://apsud.org/admin/assets/img/bailleur/img/1719489299.png",
+   "format": "PNG",
+   "dimensions": "3508x3026"
+  },
+  "logo_hd": null,
+  "couleur_principale_logo": "#012169",
+  "notes": "Bailleur bilatéral britannique. Aucun projet du site ne le cite nommément ; le Royaume-Uni est historiquement contributeur du Fonds humanitaire RCA (lien indirect probable, à confirmer avec APSUD). Depuis avril 2023 le FCDO utilise la marque « UK International Development » ; le logo UK aid reste réservé à certains usages (humanitaire notamment). Couleurs : bleu marine + rouge #C8102E. Le logo source APSUD est déjà en très haute définition (3508 px, PNG transparent) et peut servir de version HD de fait. Le SVG Wikimedia Commons (File:UKaid.svg) n'a pas pu être téléchargé (erreur 429 « Too many requests » persistante) ; le FCDO ne publie pas le fichier en libre téléchargement.",
+  "relation_documentee_archives": false,
+  "relation_documentee_archives_note": "Absent du tableau historique 2023 et des anciens sites : relation toujours non documentée (contribution probable via le FH RCA)."
+ },
+ {
+  "slug": "cerf",
+  "nom_affiche": "United Nations CERF – Central Emergency Response Fund",
+  "nom_officiel": "Fonds central d'intervention pour les urgences humanitaires des Nations Unies (Central Emergency Response Fund)",
+  "sigle": "CERF",
+  "type": "agence ONU",
+  "categorie": "bailleur",
+  "site_officiel": "https://cerf.un.org/",
+  "affiche_sur_apsud_org": true,
+  "ordre_affichage_apsud": 2,
+  "relation_documentee_sur_site": false,
+  "projets_lies": [],
+  "logo_source_apsud": {
+   "chemin": "assets/partenaires/source-apsud/cerf.png",
+   "url": "https://apsud.org/admin/assets/img/bailleur/img/1719489325.png",
+   "format": "PNG",
+   "dimensions": "320x124"
+  },
+  "logo_hd": {
+   "chemin": "assets/partenaires/hd/cerf.svg",
+   "url_source": "https://cerf.un.org/themes/custom/bootstrap_subtheme_sass/logo.svg",
+   "provenance": "site officiel cerf.un.org",
+   "format": "SVG",
+   "dimensions": "vectoriel (viewBox 555.2x130.1)",
+   "conforme_criteres_hd": true,
+   "variantes": []
+  },
+  "couleur_principale_logo": "#498BCA",
+  "notes": "Fonds humanitaire mondial de l'ONU géré par OCHA. Aucun projet du site ne le cite ; relation à confirmer (financement possiblement reçu via une agence ONU récipiendaire).",
+  "projets_historiques": [
+   {
+    "rang_tableau_2023": 22,
+    "titre": "Accès en Eau potable, Assainissement et promotion de bonnes pratiques d’hygiène dans les FOSAs de la sous-préfecture d’Ippy et ses environs y compris les axes",
+    "montage": "UNICEF/CERF",
+    "budget_texte": "240 531 USD",
+    "duree": "6 mois",
+    "zone": "Ouaka (Yppi)",
+    "projet_actuel_id": null
+   }
+  ],
+  "relation_documentee_archives": true,
+  "relation_documentee_archives_note": "1 projet(s) dans le tableau « plus de 60 projets » publié par APSUD en 2023 (voir data/apsud/projets_historiques.json)."
+ },
+ {
+  "slug": "au-secours",
+  "nom_affiche": "AU SECOURS – Développement et Humanitaire",
+  "nom_officiel": "Au Secours (ONG nationale centrafricaine « Développement et Humanitaire » – nom légal complet à confirmer)",
+  "sigle": "Au Secours (AS)",
+  "type": "partenaire de mise en oeuvre",
+  "categorie": "partenaire",
+  "site_officiel": null,
+  "affiche_sur_apsud_org": true,
+  "ordre_affichage_apsud": 3,
+  "relation_documentee_sur_site": true,
+  "projets_lies": [
+   {
+    "id": 15,
+    "titre": "Leadership Humanitaire local pour renforcer la localisation de l’aide et une réponse efficace et rapide aux besoins critiques en WASH a RAFAÏ",
+    "role_du_partenaire": "ONG nationale co-exécutante / bénéficiaire du coaching APSUD",
+    "code": "CBPF-CAR-23-S-NGO-26265",
+    "periode": "2023-11-15 → 2024-11-14",
+    "budget_affiche": "600 0OO USD",
+    "zone": "Rafai",
+    "statut": "réalisé",
+    "url": "https://apsud.org/detail-projet/15/Leadership%20Humanitaire%20local%20pour%20renforcer%20la%20localisation%20de%20l%E2%80%99aide%20et%20une%20r%C3%A9ponse%20efficace%20et%20rapide%20aux%20besoins%20critiques%20en%20WASH%20a%20RAFA%C3%8F"
+   }
+  ],
+  "logo_source_apsud": {
+   "chemin": "assets/partenaires/source-apsud/au-secours.png",
+   "url": "https://apsud.org/admin/assets/img/bailleur/img/1719489365.png",
+   "format": "PNG",
+   "dimensions": "328x319"
+  },
+  "logo_hd": null,
+  "couleur_principale_logo": "#006400",
+  "notes": "ONG nationale centrafricaine partenaire de mise en œuvre du projet Rafaï (FH RCA, 2023-2024) avec LNPDD et OFAHRD, appuyée par APSUD (leadership humanitaire local). Aucun site officiel ni logo vectoriel trouvé : demander le fichier source directement à l'ONG. Couleurs : vert + rouge #C00000."
+ },
+ {
+  "slug": "fonds-bekou",
+  "nom_affiche": "Bêkou – EU Trust Fund for the Central African Republic",
+  "nom_officiel": "Fonds fiduciaire de l'Union européenne pour la République centrafricaine « Bêkou »",
+  "sigle": "Fonds Bêkou",
+  "type": "bailleur de fonds",
+  "categorie": "bailleur",
+  "site_officiel": "https://international-partnerships.ec.europa.eu/policies/programming/programmes/bekou-trust-fund_en",
+  "affiche_sur_apsud_org": true,
+  "ordre_affichage_apsud": 4,
+  "relation_documentee_sur_site": false,
+  "projets_lies": [],
+  "logo_source_apsud": {
+   "chemin": "assets/partenaires/source-apsud/fonds-bekou.jpg",
+   "url": "https://apsud.org/admin/assets/img/bailleur/img/1719489970.jpg",
+   "format": "JPEG",
+   "dimensions": "235x90"
+  },
+  "logo_hd": null,
+  "couleur_principale_logo": "#003399",
+  "notes": "Premier fonds fiduciaire multi-bailleurs de l'UE (créé en 2014 avec la France, l'Allemagne et les Pays-Bas ; « bêkou » = espoir en sango). Aucun projet du site ne le cite. Le fonds a vocation temporaire : vérifier qu'il est toujours actif avant de l'afficher comme bailleur actuel. Logo officiel HD non trouvé en téléchargement public (à demander à la Délégation UE en RCA).",
+  "projets_historiques": [
+   {
+    "rang_tableau_2023": 43,
+    "titre": "Projet de relance économique et autonomisation des acteurs économiques centrafricains",
+    "montage": "Fonds Bekou /ACTED",
+    "budget_texte": "10.344.000 F CFA",
+    "duree": "12 mois (Oct- 2017 à Aout 2018",
+    "zone": "Bangui, Ombella-M’poko",
+    "projet_actuel_id": null
+   },
+   {
+    "rang_tableau_2023": 46,
+    "titre": "« I LA TENE TI TO NA MBONGO – Tous ensemble pour le sud-est» – Programme de relèvement socioéconomique dans la zone sud-est de la RCA (RELSUDE)",
+    "montage": "OXFAM/Fonds BEKOU",
+    "budget_texte": "60 000 EUR",
+    "duree": "19 mois (Decembre 2019-Juin 2022)",
+    "zone": "Ouaka",
+    "projet_actuel_id": null
+   }
+  ],
+  "relation_documentee_archives": true,
+  "relation_documentee_archives_note": "2 projet(s) dans le tableau « plus de 60 projets » publié par APSUD en 2023 (voir data/apsud/projets_historiques.json)."
+ },
+ {
+  "slug": "fh-rca",
+  "nom_affiche": "FH RCA – Fonds Humanitaire République centrafricaine",
+  "nom_officiel": "Fonds humanitaire pour la République centrafricaine (Central African Republic Humanitarian Fund, fonds commun pays CBPF géré par OCHA)",
+  "sigle": "FH RCA",
+  "type": "bailleur de fonds",
+  "categorie": "bailleur",
+  "site_officiel": "https://www.unocha.org/central-african-republic",
+  "affiche_sur_apsud_org": true,
+  "ordre_affichage_apsud": 5,
+  "relation_documentee_sur_site": true,
+  "projets_lies": [
+   {
+    "id": 6,
+    "titre": "Accès urgent, rapide et efficace aux services de base en termes d’eau, assainissement et promotion à l’hygiène pour les hommes, femmes, filles et garçons affectés par la crise dans la ville d'Ippy",
+    "role_du_partenaire": "bailleur",
+    "code": "FH 10577",
+    "periode": "2018-11-01 → 2019-03-30",
+    "budget_affiche": "200 000 USD",
+    "zone": "Ippy (Ouaka)",
+    "statut": "réalisé",
+    "url": "https://apsud.org/detail-projet/6/Acc%C3%A8s%20urgent,%20rapide%20et%20efficace%20aux%20services%20de%20base%20en%20termes%20d%E2%80%99eau,%20assainissement%20et%20promotion%20%C3%A0%20l%E2%80%99hygi%C3%A8ne%20pour%20les%20hommes,%20femmes,%20filles%20et%20gar%C3%A7ons%20affect%C3%A9s%20par%20la%20crise%20dans%20la%20ville%20d%27Ippy"
+   },
+   {
+    "id": 7,
+    "titre": "Réponse d'urgence en eau, hygiène et assainissement en faveur des personnes les plus vulnérables affectées par les crises et forcées à quitter les sites des déplacés internes et à vivre dans les quartiers de retour d'Ippy",
+    "role_du_partenaire": "bailleur",
+    "code": "FH 12678",
+    "periode": "2019-05-15 → 2019-11-14",
+    "budget_affiche": "121 000 USD",
+    "zone": "Ippy (Ouaka)",
+    "statut": "réalisé",
+    "url": "https://apsud.org/detail-projet/7/R%C3%A9ponse%20d%27urgence%20en%20eau,%20hygi%C3%A8ne%20et%20assainissement%20en%20faveur%20des%20personnes%20les%20plus%20vuln%C3%A9rables%20affect%C3%A9es%20par%20les%20crises%20et%20forc%C3%A9es%20%C3%A0%20quitter%20les%20sites%20des%20d%C3%A9plac%C3%A9s%20internes%20et%20%C3%A0%20vivre%20dans%20les%20quartiers%20de%20retour%20d%27Ippy"
+   },
+   {
+    "id": 8,
+    "titre": "Réponse aux besoins urgents des personnes touchées par les conflits à Bambari et Ippy en moyens de subsistance à travers la création d'emploi temporaire et renforcement de la cohésion sociale",
+    "role_du_partenaire": "bailleur",
+    "code": "FH 12743",
+    "periode": "2019-07-01 → 2019-11-30",
+    "budget_affiche": "250 000 USD",
+    "zone": "Ippy",
+    "statut": "réalisé",
+    "url": "https://apsud.org/detail-projet/8/R%C3%A9ponse%20aux%20besoins%20urgents%20des%20personnes%20touch%C3%A9es%20par%20les%20conflits%20%C3%A0%20Bambari%20et%20Ippy%20en%20moyens%20de%20subsistance%20%C3%A0%20travers%20la%20cr%C3%A9ation%20d%27emploi%20temporaire%20et%20renforcement%20de%20la%20coh%C3%A9sion%20sociale"
+   },
+   {
+    "id": 9,
+    "titre": "Projet d'urgence d'assainissement des sites des personnes déplacées internes de Bambari et Batangafo",
+    "role_du_partenaire": "bailleur",
+    "code": "FH 14342",
+    "periode": "2019-12-01 → 2020-05-31",
+    "budget_affiche": "200 000 USD",
+    "zone": "Bambari et Batangafo",
+    "statut": "réalisé",
+    "url": "https://apsud.org/detail-projet/9/Projet%20d%27urgence%20d%27assainissement%20des%20sites%20des%20personnes%20d%C3%A9plac%C3%A9es%20internes%20de%20Bambari%20et%20Batangafo"
+   },
+   {
+    "id": 10,
+    "titre": "Réponse urgente en Eau, Hygiène et Assainissement pour sauver des vies et lutter contre la propagation du COVID 19 dans les sites des personnes déplacés internes de Bambari; de Batangafo et dans la ville de Bimbo",
+    "role_du_partenaire": "bailleur",
+    "code": "CAR-20/HCF10/RA2/WaSH/NGO/15898",
+    "periode": "2020-06-01 → 2020-10-31",
+    "budget_affiche": "300 000 USD",
+    "zone": "Bambari, Batangafo et la ville de Bimbo",
+    "statut": "réalisé",
+    "url": "https://apsud.org/detail-projet/10/R%C3%A9ponse%20urgente%20en%20Eau,%20Hygi%C3%A8ne%20et%20Assainissement%20pour%20sauver%20des%20vies%20et%20lutter%20contre%20la%20propagation%20du%20COVID%2019%20dans%20les%20sites%20des%20personnes%20d%C3%A9plac%C3%A9s%20internes%20de%20Bambari;%20de%20Batangafo%20et%20dans%20la%20ville%20de%20Bimbo"
+   },
+   {
+    "id": 11,
+    "titre": "Projet d’urgence en hygiène et assainissement à Bangui et Bambari en faveur des personnes les plus vulnérables pour répondre aux besoins humanitaires les plus critiques et freiner la propagation du COVID 19.",
+    "role_du_partenaire": "bailleur",
+    "code": "COVID JAPON",
+    "periode": "2020-08-01 → 2021-01-31",
+    "budget_affiche": "100 000 USD",
+    "zone": "Bambari et Bangui",
+    "statut": "réalisé",
+    "url": "https://apsud.org/detail-projet/11/Projet%20d%E2%80%99urgence%20en%20hygi%C3%A8ne%20et%20assainissement%20%C3%A0%20Bangui%20et%20Bambari%20en%20faveur%20des%20personnes%20les%20plus%20vuln%C3%A9rables%20pour%20r%C3%A9pondre%20aux%20besoins%20humanitaires%20les%20plus%20critiques%20et%20freiner%20la%20propagation%20du%20COVID%2019."
+   },
+   {
+    "id": 13,
+    "titre": "Accès urgent à des opportunités économiques et des moyens de subsistance aux personnes touchées par la crise pour la stabilisation des communautés affectées par le conflit à Maloum.",
+    "role_du_partenaire": "bailleur",
+    "code": "FH 10582",
+    "periode": "2018-12-01 → 2019-07-31",
+    "budget_affiche": "250,000 USD",
+    "zone": "Préfecture de Ouaka (MALOUM)",
+    "statut": "réalisé",
+    "url": "https://apsud.org/detail-projet/13/Acc%C3%A8s%20urgent%20%C3%A0%20des%20opportunit%C3%A9s%20%C3%A9conomiques%20et%20des%20moyens%20de%20subsistance%20aux%20%20personnes%20touch%C3%A9es%20par%20la%20crise%20pour%20la%20stabilisation%20des%20communaut%C3%A9s%20affect%C3%A9es%20par%20le%20conflit%20%C3%A0%20Maloum."
+   },
+   {
+    "id": 14,
+    "titre": "Réponse d'urgence en eau, hygiène et assainissement en faveur des personnes les plus vulnérables affectées par les crises à Boguila et ses environs dans la préfecture de l'Ouham",
+    "role_du_partenaire": "bailleur",
+    "code": "FH 19072",
+    "periode": "2021-06-01 → 2022-03-31",
+    "budget_affiche": "430,000 USD",
+    "zone": "Préfecture de l’Ouham ( Nanga Boguila)",
+    "statut": "réalisé",
+    "url": "https://apsud.org/detail-projet/14/R%C3%A9ponse%20d%27urgence%20en%20eau,%20hygi%C3%A8ne%20et%20assainissement%20en%20faveur%20des%20personnes%20les%20plus%20vuln%C3%A9rables%20affect%C3%A9es%20par%20les%20crises%20%C3%A0%20Boguila%20et%20ses%20environs%20dans%20la%20pr%C3%A9fecture%20de%20l%27Ouham"
+   },
+   {
+    "id": 15,
+    "titre": "Leadership Humanitaire local pour renforcer la localisation de l’aide et une réponse efficace et rapide aux besoins critiques en WASH a RAFAÏ",
+    "role_du_partenaire": "bailleur",
+    "code": "CBPF-CAR-23-S-NGO-26265",
+    "periode": "2023-11-15 → 2024-11-14",
+    "budget_affiche": "600 0OO USD",
+    "zone": "Rafai",
+    "statut": "réalisé",
+    "url": "https://apsud.org/detail-projet/15/Leadership%20Humanitaire%20local%20pour%20renforcer%20la%20localisation%20de%20l%E2%80%99aide%20et%20une%20r%C3%A9ponse%20efficace%20et%20rapide%20aux%20besoins%20critiques%20en%20WASH%20a%20RAFA%C3%8F"
+   },
+   {
+    "id": 19,
+    "titre": "Autonomisation des organisations nationales de femmes à travers leur renforcement et la promotion du leadership humanitaire local féminin)",
+    "role_du_partenaire": "bailleur",
+    "code": "FH33207",
+    "periode": "2025-02-01 → 2026-03-31",
+    "budget_affiche": "1.000.000 USD",
+    "zone": "Boguila, Markounda",
+    "statut": "réalisé",
+    "url": "https://apsud.org/detail-projet/19/Autonomisation%20des%20organisations%20nationales%20de%20femmes%20%C3%A0%20travers%20leur%20renforcement%20et%20la%20promotion%20du%20leadership%20humanitaire%20local%20f%C3%A9minin%29"
+   }
+  ],
+  "logo_source_apsud": {
+   "chemin": "assets/partenaires/source-apsud/fh-rca.png",
+   "url": "https://apsud.org/admin/assets/img/bailleur/img/1719490026.png",
+   "format": "PNG",
+   "dimensions": "559x106"
+  },
+  "logo_hd": null,
+  "couleur_principale_logo": "#4A8BC9",
+  "notes": "PRINCIPAL BAILLEUR d'APSUD : 10 des 13 projets publiés (2018-2026). Fonds commun géré par OCHA sous l'autorité du Coordonnateur humanitaire ; alimenté par plusieurs États (dont Royaume-Uni, Suède, Allemagne, etc.). Projet 14 : sur le site, les champs « Bailleur » et « Partenaire » sont inversés (FH figure en partenaire) — corrigé ici. Projet 11 : code « COVID JAPON » (contribution japonaise transitant probablement par le FH, à confirmer). Pas de logo HD officiel public trouvé ; le logo source (559x106) est utilisable en bandeau. Couleur estimée visuellement.",
+  "projets_historiques": [
+   {
+    "rang_tableau_2023": 12,
+    "titre": "Réponse d’urgence en eau, hygiène et assainissement en faveur des personnes les plus vulnérables affectées par les crises à Boguila et ses environs dans la préfecture de l’Ouham",
+    "montage": "FH (CHF)",
+    "budget_texte": "430 000 USD",
+    "duree": "9 mois (1 er juil 2021 – 31 mars 2022)",
+    "zone": "Ouham (Nanga Boguila)",
+    "projet_actuel_id": 14
+   },
+   {
+    "rang_tableau_2023": 13,
+    "titre": "Projet d’urgence en hygiène et assainissement à Bangui et Bambari en faveur des personnes les plus vulnérables pour répondre aux besoins humanitaires les plus critiques et freiner la propagation du COVID 19.",
+    "montage": "FH (CHF)",
+    "budget_texte": "100.000 USD",
+    "duree": "6 mois (Août 2020 – Janvier 2021)",
+    "zone": "Ouaka, Ombella-M’Poko, Ouham",
+    "projet_actuel_id": 11
+   },
+   {
+    "rang_tableau_2023": 14,
+    "titre": "Réponse urgente en Eau, Hygiène et Assainissement pour sauver des vies et lutter contre la propagation du COVID 19 dans les sites des personnes déplacés internes de Bambari; de Batangafo et dans la ville de Bimbo",
+    "montage": "FH (CHF)",
+    "budget_texte": "300.000 USD",
+    "duree": "6 mois (Mai – Octobre 2020)",
+    "zone": "Ouaka, Ombella-M’Poko, Ouham",
+    "projet_actuel_id": 10
+   },
+   {
+    "rang_tableau_2023": 15,
+    "titre": "Projet d’urgence d’assainissement des sites des personnes déplacées internes de Bambari et Batangafo",
+    "montage": "FH (CHF)",
+    "budget_texte": "200.000 USD",
+    "duree": "6 mois (déc 2019 – mai 2020)",
+    "zone": "Ouaka et Ouham",
+    "projet_actuel_id": 9
+   },
+   {
+    "rang_tableau_2023": 16,
+    "titre": "Réponse aux besoins urgents des personnes touchées par les conflits à Bambari et Ippy en moyens de subsistance à travers la création d’emploi temporaire et renforcement de la cohésion sociale (APSUD 12743)",
+    "montage": "FH (CHF)",
+    "budget_texte": "250.000 USD",
+    "duree": "01 juin – 30 novembre 2019",
+    "zone": "Ouaka (Bambari – Ippy)",
+    "projet_actuel_id": 8
+   },
+   {
+    "rang_tableau_2023": 17,
+    "titre": "Réponse d’urgence en eau, hygiène et assainissement en faveur des personnes les plus vulnérables affectées par les crises et forcées à quitter les sites des déplacés internes et à vivre dans les quartiers de retour d’Ippy (APSUD 12678)",
+    "montage": "FH (CHF)",
+    "budget_texte": "121.000 USD",
+    "duree": "15 mai – 14 novembre 2019",
+    "zone": "Ouaka (Ippy)",
+    "projet_actuel_id": 7
+   },
+   {
+    "rang_tableau_2023": 18,
+    "titre": "Accès urgent à des opportunités économiques et des moyens de subsistance aux personnes touchées par la crise pour la stabilisation des communautés affectées par le conflit à Maloum.",
+    "montage": "FH (CHF)",
+    "budget_texte": "250.000 USD",
+    "duree": "01 nov 2018 – 30 Avril 2019",
+    "zone": "Ouaka (Maloum)",
+    "projet_actuel_id": 13
+   },
+   {
+    "rang_tableau_2023": 19,
+    "titre": "Accès urgent, rapide et efficace aux services de base en termes d’eau, assainissement et promotion à l’hygiène pour les hommes, femmes, filles et garçons affectés par la crise dans la ville d’Ippy",
+    "montage": "FH (CHF)",
+    "budget_texte": "200.000 USD",
+    "duree": "01 nov 2018 – 30 juil 2019",
+    "zone": "Ouaka (Ippy)",
+    "projet_actuel_id": 6
+   },
+   {
+    "rang_tableau_2023": 20,
+    "titre": "Amélioration des conditions d’accès à l’eau, l’assainissement et l’hygiène des personnes déplacés internes des 4 sites des déplacés de Maloum ainsi que des familles hotes et des résidents, touchés par les dernières crises de mars 2018.",
+    "montage": "FH (CHF)",
+    "budget_texte": "147.800.000 XAF",
+    "duree": "20 juin 2018 au 19 février 2019 (8 mois)",
+    "zone": "Ouaka",
+    "projet_actuel_id": null
+   },
+   {
+    "rang_tableau_2023": 21,
+    "titre": "Accès urgent aux services de base en termes d’eau, assainissement et promotion à l’hygiène pour les hommes, femmes, filles et garçons affectés par la crise dans le village Maloum, commune d’Ouro djafoun dans la Ouaka",
+    "montage": "FH (CHF)",
+    "budget_texte": "50.000 USD",
+    "duree": "6 mois (Oct 2017 – Mars 2018)",
+    "zone": "Ouaka",
+    "projet_actuel_id": null
+   },
+   {
+    "rang_tableau_2023": 39,
+    "titre": "Appui d’urgence multisectoriel et intégré en Education, Eau-Hygiène-Assainissement et Protection générale au profit des populations affectées par la crise (et les déplacements) dans les sous-préfectures de Kembe et Mobaye dans dans la préfecture de la Basse-Kotto en RCA",
+    "montage": "NRC/FH",
+    "budget_texte": "35 000 USD",
+    "duree": "6 mois (du 10 février 2023 au 09 juillet 2023)",
+    "zone": "(Basse-kotto) Mobaye",
+    "projet_actuel_id": null
+   },
+   {
+    "rang_tableau_2023": 40,
+    "titre": "Réponse d’urgence en Eau, Hygiène et Assainissement pour les déplacés de la ville d’Alindao (Basse Kotto)",
+    "montage": "NRC/FH",
+    "budget_texte": "14 000 USD",
+    "duree": "3mois (Sept – nov 2022)",
+    "zone": "(Basse kotto) Alindao",
+    "projet_actuel_id": null
+   },
+   {
+    "rang_tableau_2023": 41,
+    "titre": "Assistance d’urgence en eau, assainissement et hygiène pour les populations déplacées d’Alindao.",
+    "montage": "ACF/FH",
+    "budget_texte": "55,769.81 USD",
+    "duree": "6 mois (Fév 2023 – juillet 2023)",
+    "zone": "(Basse kotto) Alindao",
+    "projet_actuel_id": null
+   },
+   {
+    "rang_tableau_2023": 51,
+    "titre": "Appui à l’accès immédiat aux services de base en termes d’eau et d’hygiène pour les hommes, femmes, filles et garçons retournées/relocalisées et hôtes vulnérables dans les quartiers de retour des 3ème et 5ème arrondissements de Bangui.",
+    "montage": "OXFAM / FH",
+    "budget_texte": "22.330.000 F CFA",
+    "duree": "8 mois (Juin 2017– Fév 2018)",
+    "zone": "Bangui, Ombella-M’poko",
+    "projet_actuel_id": null
+   },
+   {
+    "rang_tableau_2023": 60,
+    "titre": "Appuyer les femmes, les hommes, les filles et les garcons en l’accès a l’eau potable et des services d’assainissement",
+    "montage": "OXFAM/ CHF-ECHO",
+    "budget_texte": "12 089 000 XAF",
+    "duree": "2 mois (Aout – Sept 2015)",
+    "zone": "Bangui, Ombella-M’poko",
+    "projet_actuel_id": null
+   }
+  ],
+  "relation_documentee_archives": true,
+  "relation_documentee_archives_note": "15 projet(s) dans le tableau « plus de 60 projets » publié par APSUD en 2023 (voir data/apsud/projets_historiques.json).",
+  "logo_archive_apsud": {
+   "chemin": "assets/partenaires/archives-apsud/fh-rca-bilingue.jpg",
+   "url_archive": "https://web.archive.org/web/2022im_/http://apsud.org/images/fo.jpg",
+   "provenance": "ancien site apsud.org (page Bailleurs 2021), récupéré via la Wayback Machine",
+   "format": "JPEG",
+   "dimensions": "428x118",
+   "note": "Bandeau bilingue « CAR Humanitarian Fund / Fonds Humanitaire RCA » avec emblème ONU, fond bleu (ancien site 2021). Moins défini que le logo actuel (559 × 106) : référence seulement."
+  }
+ },
+ {
+  "slug": "gavi",
+  "nom_affiche": "Gavi – L'Alliance du Vaccin",
+  "nom_officiel": "Gavi, l'Alliance du Vaccin (Gavi, the Vaccine Alliance)",
+  "sigle": "Gavi",
+  "type": "bailleur de fonds",
+  "categorie": "bailleur",
+  "site_officiel": "https://www.gavi.org/fr",
+  "affiche_sur_apsud_org": true,
+  "ordre_affichage_apsud": 6,
+  "relation_documentee_sur_site": false,
+  "projets_lies": [],
+  "logo_source_apsud": {
+   "chemin": "assets/partenaires/source-apsud/gavi.png",
+   "url": "https://apsud.org/admin/assets/img/bailleur/img/1719490060.png",
+   "format": "PNG",
+   "dimensions": "394x158"
+  },
+  "logo_hd": {
+   "chemin": "assets/partenaires/hd/gavi.png",
+   "url_source": "https://www.gavi.org/sites/default/files/Gavi-logo_1b.png",
+   "provenance": "site officiel gavi.org",
+   "format": "PNG",
+   "dimensions": "360x136",
+   "conforme_criteres_hd": false,
+   "variantes": []
+  },
+  "couleur_principale_logo": "#0050B0",
+  "notes": "Partenariat public-privé international pour la vaccination. Aucun projet du site ne le cite ; relation à documenter (appui OSC ?). Selon les guides de Gavi, l'usage de son logo par un partenaire OSC nécessite un accord préalable. Seul fichier officiel public : PNG 360 px anglais (sous le seuil de 400 px) ; version française HD à demander à media@gavi.org. Couleurs relevées sur le logo officiel : bleu ≈ #0050B0, vert ≈ #90D000, cyan ≈ #00A0D0.",
+  "relation_documentee_archives": false,
+  "relation_documentee_archives_note": "Absent du tableau historique 2023 et des anciens sites : relation non documentée, à confirmer avec APSUD (logo peut-être affiché par erreur)."
+ },
+ {
+  "slug": "minusca",
+  "nom_affiche": "MINUSCA",
+  "nom_officiel": "Mission multidimensionnelle intégrée des Nations Unies pour la stabilisation en République centrafricaine",
+  "sigle": "MINUSCA",
+  "type": "agence ONU",
+  "categorie": "partenaire",
+  "site_officiel": "https://minusca.unmissions.org/",
+  "affiche_sur_apsud_org": true,
+  "ordre_affichage_apsud": 7,
+  "relation_documentee_sur_site": false,
+  "projets_lies": [],
+  "logo_source_apsud": {
+   "chemin": "assets/partenaires/source-apsud/minusca.jpg",
+   "url": "https://apsud.org/admin/assets/img/bailleur/img/1719490080.jpg",
+   "format": "JPEG",
+   "dimensions": "117x90"
+  },
+  "logo_hd": {
+   "chemin": "assets/partenaires/hd/minusca-embleme-onu.svg",
+   "url_source": "https://upload.wikimedia.org/wikipedia/commons/e/ee/UN_emblem_blue.svg",
+   "provenance": "Wikimedia Commons (File:UN emblem blue.svg) – emblème seul",
+   "format": "SVG",
+   "dimensions": "vectoriel (viewBox 470x400)",
+   "conforme_criteres_hd": false,
+   "variantes": []
+  },
+  "couleur_principale_logo": "#009EDB",
+  "notes": "Mission de maintien de la paix de l'ONU. Aucun projet du site ne la cite (projets à impact rapide / réduction de la violence communautaire possibles — à confirmer). Pas de lockup « emblème + MINUSCA » vectoriel public trouvé : fichier HD fourni = emblème ONU seul (Commons) — NE PAS l'utiliser seul pour représenter la MINUSCA ; l'emblème ONU est protégé et son usage par des tiers exige une autorisation.",
+  "projets_historiques": [
+   {
+    "rang_tableau_2023": 25,
+    "titre": "Reduction de violence communautaire 9ème vague",
+    "montage": "UNOPS/ MINUSCA",
+    "budget_texte": "8.253.000 XAF",
+    "duree": "Avril 2022 – Juillet 2022",
+    "zone": "Bangui et Ombella mpoko",
+    "projet_actuel_id": null
+   },
+   {
+    "rang_tableau_2023": 26,
+    "titre": "Reduction de violence communautaire 9ème vague",
+    "montage": "UNOPS/ MINUSCA",
+    "budget_texte": "24 .750.000 XAF",
+    "duree": "Avril 2021 – Juillet 2022",
+    "zone": "Bangui et Ombella mpoko",
+    "projet_actuel_id": null
+   },
+   {
+    "rang_tableau_2023": 27,
+    "titre": "Reduction de violence communautaire 9ème vague",
+    "montage": "UNOPS/ MINUSCA",
+    "budget_texte": "7.506.450 XAF",
+    "duree": "Mars 2021 – Juin 2021",
+    "zone": "Bangui et Ombella mpoko",
+    "projet_actuel_id": null
+   },
+   {
+    "rang_tableau_2023": 28,
+    "titre": "Réduction de violence communautaire 6ème vague",
+    "montage": "MINUSCA (UNOPS)",
+    "budget_texte": "24.192.000 XAF",
+    "duree": "Décembre 2019 – Mars 2020",
+    "zone": "Bangui et Ombella mpoko",
+    "projet_actuel_id": null
+   },
+   {
+    "rang_tableau_2023": 30,
+    "titre": "Projet de Réduction des Violences Communautaires (CVR) à travers la formation, l’encadrement et l’accompagnement des ex-combattants et autres jeunes risque dans le domaine de commerce pour leur réinsertion socioéconomique",
+    "montage": "UNOPS/ MINUSCA",
+    "budget_texte": "14.096.250 XAF",
+    "duree": "4 Mois (Mai – Sep 2017)",
+    "zone": "Ouaka (Bambari-Maloum)",
+    "projet_actuel_id": null
+   },
+   {
+    "rang_tableau_2023": 31,
+    "titre": "Projet de Réduction des Violences Communautaires (CVR) à travers la formation, l’encadrement et l’accompagnement des ex-combattants et autres jeunes risque dans le domaine de commerce pour leur réinsertion socioéconomique.",
+    "montage": "UNOPS/ MINUSCA",
+    "budget_texte": "14.472.150 XAF",
+    "duree": "4 mois (Janvier – Avril 2018)",
+    "zone": "Berberati",
+    "projet_actuel_id": null
+   },
+   {
+    "rang_tableau_2023": 32,
+    "titre": "Projet de Réduction des Violences Communautaires (CVR) à travers la formation, l’encadrement et l’accompagnement des ex-combattants et autres jeunes risque dans le domaine de commerce pour leur réinsertion socioéconomique.",
+    "montage": "UNOPS/ MINUSCA",
+    "budget_texte": "15.801.450 XAF",
+    "duree": "4 mois (Nov 2018 – Février 2019)",
+    "zone": "Ouham",
+    "projet_actuel_id": null
+   },
+   {
+    "rang_tableau_2023": 33,
+    "titre": "Projet de Réduction des Violences Communautaires (CVR) à travers la formation, l’encadrement et l’accompagnement des ex-combattants et autres jeunes risque dans le domaine de commerce pour leur réinsertion socioéconomique.",
+    "montage": "UNOPS/ MINUSCA",
+    "budget_texte": "9.450.000 XAF",
+    "duree": "3 Mois (Mai – Aout 2019)",
+    "zone": "Mambéré-Kadéi",
+    "projet_actuel_id": null
+   }
+  ],
+  "relation_documentee_archives": true,
+  "relation_documentee_archives_note": "8 projet(s) dans le tableau « plus de 60 projets » publié par APSUD en 2023 (voir data/apsud/projets_historiques.json).",
+  "logo_archive_apsud": {
+   "chemin": "assets/partenaires/archives-apsud/minusca.jpg",
+   "url_archive": "https://web.archive.org/web/2022im_/http://apsud.org/images/minusca.jpg",
+   "provenance": "ancien site apsud.org (page Bailleurs 2021), récupéré via la Wayback Machine",
+   "format": "JPEG",
+   "dimensions": "351x127",
+   "note": null
+  }
+ },
+ {
+  "slug": "onu-femmes",
+  "nom_affiche": "ONU Femmes",
+  "nom_officiel": "Entité des Nations Unies pour l'égalité des sexes et l'autonomisation des femmes (ONU Femmes / UN Women)",
+  "sigle": "ONU Femmes",
+  "type": "agence ONU",
+  "categorie": "partenaire",
+  "site_officiel": "https://www.unwomen.org/fr",
+  "affiche_sur_apsud_org": true,
+  "ordre_affichage_apsud": 8,
+  "relation_documentee_sur_site": false,
+  "projets_lies": [],
+  "logo_source_apsud": {
+   "chemin": "assets/partenaires/source-apsud/onu-femmes.png",
+   "url": "https://apsud.org/admin/assets/img/bailleur/img/1719490097.png",
+   "format": "PNG",
+   "dimensions": "50x23"
+  },
+  "logo_hd": {
+   "chemin": "assets/partenaires/hd/onu-femmes-fr.png",
+   "url_source": "https://www.unwomen.org/sites/default/files/2025-07/for_all_women_and_girls-lockup-full_color-fr.png",
+   "provenance": "site officiel unwomen.org – lockup FR 2025 (293 px, sous le seuil)",
+   "format": "PNG",
+   "dimensions": "293x47",
+   "conforme_criteres_hd": false,
+   "variantes": []
+  },
+  "couleur_principale_logo": "#009EDB",
+  "notes": "Aucun projet du site ne la cite ; lien thématique avec le projet 19 (organisations de femmes, financé par le FH RCA). Le logo source APSUD est minuscule (50x23) : à remplacer impérativement. Le nom et l'emblème sont propriété exclusive d'ONU Femmes (autorisation requise). Seul fichier officiel FR obtenu : lockup 2025 « Pour toutes les femmes et les filles » en 293 px (insuffisant). Le SVG Commons (File:UN WOMEN Logo.svg, anglais) n'a pas pu être téléchargé (429) ; à récupérer manuellement ou à demander à ONU Femmes.",
+  "projets_historiques": [
+   {
+    "rang_tableau_2023": 29,
+    "titre": "Projet d’appui à l’inclusion du Genre dans le processus DDR et dans l’action humanitaire en",
+    "montage": "UNOPS/ ONUFEMMES",
+    "budget_texte": "30.000.000 XAF",
+    "duree": "5 mois (Mars – Juillet 2017)",
+    "zone": "Bangui, Ombella-M’poko",
+    "projet_actuel_id": null
+   },
+   {
+    "rang_tableau_2023": 38,
+    "titre": "Women affected by crisis, survivors of GBV in CAR strengthen their production capacity and access to markets to improve their economy and food security",
+    "montage": "FAO/ONUFEMMES",
+    "budget_texte": "23.652.351 FCFA",
+    "duree": "8 mois (Fév 2016 – sept 2016)",
+    "zone": "Bangui, Ombella-M’poko",
+    "projet_actuel_id": null
+   }
+  ],
+  "relation_documentee_archives": true,
+  "relation_documentee_archives_note": "2 projet(s) dans le tableau « plus de 60 projets » publié par APSUD en 2023 (voir data/apsud/projets_historiques.json).",
+  "logo_archive_apsud": {
+   "chemin": "assets/partenaires/archives-apsud/onu-femmes-centre-formation.jpg",
+   "url_archive": "https://web.archive.org/web/2022im_/http://apsud.org/images/ONU.jpg",
+   "provenance": "ancien site apsud.org (page Bailleurs 2021), récupéré via la Wayback Machine",
+   "format": "JPEG",
+   "dimensions": "351x127",
+   "note": "ATTENTION : variante « ONU Femmes – Centre de formation », pas le logo institutionnel : ne pas réutiliser."
+  }
+ },
+ {
+  "slug": "oxfam",
+  "nom_affiche": "Oxfam",
+  "nom_officiel": "Oxfam International (confédération ; présente en RCA via Oxfam Intermón / affiliés)",
+  "sigle": "Oxfam",
+  "type": "ONG internationale",
+  "categorie": "partenaire",
+  "site_officiel": "https://www.oxfam.org/fr",
+  "affiche_sur_apsud_org": true,
+  "ordre_affichage_apsud": 9,
+  "relation_documentee_sur_site": false,
+  "projets_lies": [],
+  "logo_source_apsud": {
+   "chemin": "assets/partenaires/source-apsud/oxfam.png",
+   "url": "https://apsud.org/admin/assets/img/bailleur/img/1719490111.png",
+   "format": "PNG",
+   "dimensions": "50x53"
+  },
+  "logo_hd": {
+   "chemin": "assets/partenaires/hd/oxfam.svg",
+   "url_source": "https://www.oxfam.org/fr (SVG inline de l'en-tête du site)",
+   "provenance": "site officiel oxfam.org",
+   "format": "SVG",
+   "dimensions": "vectoriel (viewBox 180x66)",
+   "conforme_criteres_hd": true,
+   "variantes": []
+  },
+  "couleur_principale_logo": "#44841A",
+  "notes": "Aucun projet du site ne la cite (partenariat de mise en œuvre / sous-subvention probable, à confirmer). Fichier HD = SVG officiel extrait de l'en-tête oxfam.org (avec la mention « International »). Logo source APSUD minuscule (50x53).",
+  "projets_historiques": [
+   {
+    "rang_tableau_2023": 44,
+    "titre": "Réponse aux hommes, femmes et enfants affectés par les inondations survenue, 22 juillet 2022 à Bangui",
+    "montage": "OXFAM / Fonds CANADIENS",
+    "budget_texte": "19 815 439 XAF",
+    "duree": "4 mois (Sept 2022- Janvier 2023)",
+    "zone": "Bangui et Bégoua",
+    "projet_actuel_id": null
+   },
+   {
+    "rang_tableau_2023": 45,
+    "titre": "Assisting Traditional Healers in Bangui to mitigate the Risk of Transmission of COVID-19",
+    "montage": "OXFAM/OFDA",
+    "budget_texte": "269 446,977 USD",
+    "duree": "7 mois (Sept 2020-Mars 2021)",
+    "zone": "Bangui, Ombella-M’poko",
+    "projet_actuel_id": null
+   },
+   {
+    "rang_tableau_2023": 46,
+    "titre": "« I LA TENE TI TO NA MBONGO – Tous ensemble pour le sud-est» – Programme de relèvement socioéconomique dans la zone sud-est de la RCA (RELSUDE)",
+    "montage": "OXFAM/Fonds BEKOU",
+    "budget_texte": "60 000 EUR",
+    "duree": "19 mois (Decembre 2019-Juin 2022)",
+    "zone": "Ouaka",
+    "projet_actuel_id": null
+   },
+   {
+    "rang_tableau_2023": 47,
+    "titre": "Appui à la mise en œuvre d’une réponse de santé publique et sociale locale, en prévention de l’épidémie COVID-19 en RCA",
+    "montage": "Union Européenne / OXFAM",
+    "budget_texte": "208 764 EUROS",
+    "duree": "6 mois (Avril-Septembre 2020)",
+    "zone": "Bégoua, Bimbo, Bangui",
+    "projet_actuel_id": null
+   },
+   {
+    "rang_tableau_2023": 48,
+    "titre": "Improving líving conditions, means of production and access to WASH services and strengthening mechanisms to protect displaced, returnee and host communities in the target areas",
+    "montage": "OXFAM / Swedish International Development Agency (ASDI)",
+    "budget_texte": "119 842 813 XAF",
+    "duree": "12 mois (Avril 2021 – 31 mars 2022",
+    "zone": "Ouam-Pende",
+    "projet_actuel_id": null
+   },
+   {
+    "rang_tableau_2023": 49,
+    "titre": "Soutien intégré WASH/EFSVL/PROTECTION ET EGALITE DE SEXES aux femmes, hommes, filles et garçons, touchés par le conflit dans la préfecture de l’Ouham-Péndé par le billet d’activité de secours et de reconstrction/LRRD. « Critère et C)",
+    "montage": "OXFAM / SIDA",
+    "budget_texte": "180.000.000 XAF",
+    "duree": "3 ans (mars 2018 – mars 2021)",
+    "zone": "Ouam-Pende (Paoua et axes)",
+    "projet_actuel_id": null
+   },
+   {
+    "rang_tableau_2023": 50,
+    "titre": "Apporter une aide humanitaire d’urgence aux victimes des inondations d’octobre 2019 à Bangui, République Centrafricaine",
+    "montage": "OXFAM/ USA",
+    "budget_texte": "20.182.656 XAF",
+    "duree": "Décembre 2019 – Avril 2020",
+    "zone": "Bangui",
+    "projet_actuel_id": null
+   },
+   {
+    "rang_tableau_2023": 51,
+    "titre": "Appui à l’accès immédiat aux services de base en termes d’eau et d’hygiène pour les hommes, femmes, filles et garçons retournées/relocalisées et hôtes vulnérables dans les quartiers de retour des 3ème et 5ème arrondissements de Bangui.",
+    "montage": "OXFAM / FH",
+    "budget_texte": "22.330.000 F CFA",
+    "duree": "8 mois (Juin 2017– Fév 2018)",
+    "zone": "Bangui, Ombella-M’poko",
+    "projet_actuel_id": null
+   },
+   {
+    "rang_tableau_2023": 52,
+    "titre": "Réponse intégrée aux besoins immédiats en WASH, Protection et Genre des femmes, hommes, filles et garçons de la commune de Bégoua (périphérie de Bangui), affectés par la crise en République Centrafricaine.",
+    "montage": "OXFAM / INDITEX",
+    "budget_texte": "15.600.000 FCFA",
+    "duree": "6 Mois (Oct 2017 – Mars 2018)",
+    "zone": "Bangui, Ombella-M’poko",
+    "projet_actuel_id": null
+   },
+   {
+    "rang_tableau_2023": 53,
+    "titre": "Réponse d’urgence aux besoins d’accès à la nourriture des personnes vulnérables en insécurité alimentaire dans la ville de Bangui",
+    "montage": "OXFAM / PAM",
+    "budget_texte": "12.060.000 F CFA + coupons",
+    "duree": "6 mois (Juil 2017 – Déc 2017)",
+    "zone": "Bangui, Ombella-M’poko",
+    "projet_actuel_id": null
+   },
+   {
+    "rang_tableau_2023": 54,
+    "titre": "Réponse d’urgence aux besoins d’accès à la nourriture des personnes vulnérables en insécurité alimentaire dans la ville de Bangui",
+    "montage": "OXFAM / PAM",
+    "budget_texte": "15.623.354 F CFA + coupons",
+    "duree": "7 mois (Oct-Déc 2016 et Fév-Mai 2017)",
+    "zone": "Bangui, Ombella-M’poko",
+    "projet_actuel_id": null
+   },
+   {
+    "rang_tableau_2023": 55,
+    "titre": "Rétablir la dignité des femmes, des hommes, des filles et des garçons affectés par la flambée d’épidémie de choléra en République Centrafricaine",
+    "montage": "OXFAM / ECHO",
+    "budget_texte": "46.243.000 FCFA",
+    "duree": "6mois (Aout 2016 – Fév 2017)",
+    "zone": "Bangui",
+    "projet_actuel_id": null
+   },
+   {
+    "rang_tableau_2023": 56,
+    "titre": "Réponse au choléra sur les sites des déplacés internes de Bangui",
+    "montage": "OXFAM / ECHO",
+    "budget_texte": "14.000.000 F CFA",
+    "duree": "2 mois (Janv-FéV 2017)",
+    "zone": "Bangui, Ombella-M’poko",
+    "projet_actuel_id": null
+   },
+   {
+    "rang_tableau_2023": 57,
+    "titre": "Soutien à l’autonomisation des femmes, hommes, filles et garçons touchés par le conflit dans les sites IDP et accompagnement au retour",
+    "montage": "OXFAM / ECHO",
+    "budget_texte": "36.002.120 F CFA",
+    "duree": "6 mois (Juillet-déc 2016)",
+    "zone": "Bangui, Ombella-M’poko",
+    "projet_actuel_id": null
+   },
+   {
+    "rang_tableau_2023": 58,
+    "titre": "Oxfam Bangui Livelihood and Protection Programme",
+    "montage": "OXFAM / IRISH AID",
+    "budget_texte": "10 261 700 F CFA",
+    "duree": "5 mois (Juillet-Déc 2016)",
+    "zone": "Bangui",
+    "projet_actuel_id": null
+   },
+   {
+    "rang_tableau_2023": 59,
+    "titre": "Projet d’assistance intégrée aux populations affectées par la crise en RCA dans les quartiers de Bangui,",
+    "montage": "OXFAM / DFATD",
+    "budget_texte": "15.805.600 F CFA",
+    "duree": "4 mois (Nov 2015 – Avril 2016)",
+    "zone": "Bangui, Ombella-M’poko",
+    "projet_actuel_id": null
+   },
+   {
+    "rang_tableau_2023": 60,
+    "titre": "Appuyer les femmes, les hommes, les filles et les garcons en l’accès a l’eau potable et des services d’assainissement",
+    "montage": "OXFAM/ CHF-ECHO",
+    "budget_texte": "12 089 000 XAF",
+    "duree": "2 mois (Aout – Sept 2015)",
+    "zone": "Bangui, Ombella-M’poko",
+    "projet_actuel_id": null
+   }
+  ],
+  "relation_documentee_archives": true,
+  "relation_documentee_archives_note": "17 projet(s) dans le tableau « plus de 60 projets » publié par APSUD en 2023 (voir data/apsud/projets_historiques.json).",
+  "logo_archive_apsud": {
+   "chemin": "assets/partenaires/archives-apsud/oxfam.jpg",
+   "url_archive": "https://web.archive.org/web/2022im_/http://apsud.org/images/ox.jpg",
+   "provenance": "ancien site apsud.org (page Bailleurs 2021), récupéré via la Wayback Machine",
+   "format": "JPEG",
+   "dimensions": "351x127",
+   "note": null
+  }
+ },
+ {
+  "slug": "pnud",
+  "nom_affiche": "PNUD",
+  "nom_officiel": "Programme des Nations Unies pour le développement",
+  "sigle": "PNUD (UNDP)",
+  "type": "agence ONU",
+  "categorie": "partenaire",
+  "site_officiel": "https://www.undp.org/fr/central-african-republic",
+  "affiche_sur_apsud_org": true,
+  "ordre_affichage_apsud": 10,
+  "relation_documentee_sur_site": true,
+  "projets_lies": [
+   {
+    "id": 5,
+    "titre": "Appui à la résilience et au redressement socio-économique des communautés affectées par la pandémie de la COVID-19",
+    "role_du_partenaire": "partenaire de mise en oeuvre (canal du financement japonais)",
+    "code": null,
+    "periode": "2021-07-01 → 2022-03-31",
+    "budget_affiche": "665 718 USD",
+    "zone": "3ème arrondissement de Bangui",
+    "statut": "réalisé",
+    "url": "https://apsud.org/detail-projet/5/Appui%20%C3%A0%20la%20r%C3%A9silience%20et%20au%20redressement%20socio-%C3%A9conomique%20des%20communaut%C3%A9s%20affect%C3%A9es%20par%20la%20pand%C3%A9mie%20de%20la%20COVID-19"
+   }
+  ],
+  "logo_source_apsud": {
+   "chemin": "assets/partenaires/source-apsud/pnud.png",
+   "url": "https://apsud.org/admin/assets/img/bailleur/img/1719490163.png",
+   "format": "PNG",
+   "dimensions": "50x52"
+  },
+  "logo_hd": {
+   "chemin": "assets/partenaires/hd/pnud-undp-en.svg",
+   "url_source": "https://upload.wikimedia.org/wikipedia/commons/9/9f/UNDP_logo.svg",
+   "provenance": "Wikimedia Commons (File:UNDP logo.svg) – version anglaise",
+   "format": "SVG",
+   "dimensions": "vectoriel (viewBox 237.594x482.191)",
+   "conforme_criteres_hd": true,
+   "variantes": []
+  },
+  "couleur_principale_logo": "#0468B1",
+  "notes": "Projet 5 (2021-2022, 665 718 USD) : financé par le Japon, mis en œuvre via le PNUD (APSUD partenaire d'exécution). Logo source APSUD minuscule (50x52). undp.org bloque les téléchargements automatisés (403). Le SVG français (Commons File:PNUD logo.svg) n'a pas pu être téléchargé (429) : le fichier HD retenu est la version anglaise UNDP ; récupérer manuellement la version FR : https://commons.wikimedia.org/wiki/File:PNUD_logo.svg",
+  "projets_historiques": [
+   {
+    "rang_tableau_2023": 1,
+    "titre": "Projet conjoint PNUD/UNICEF d’appui aux solutions durables pour les personnes déplacées ou retournées et leurs communautés d’accueil ainsi que pour les enfants libérés des groupes armés dans les sous-préfectures de Paoua et de Alindao",
+    "montage": "PNUD /Solutions Durables",
+    "budget_texte": "600 000 USD",
+    "duree": "10 mois (oct 2021 – 31 oct 2022)",
+    "zone": "Lim Pendé (Paoua)",
+    "projet_actuel_id": null
+   },
+   {
+    "rang_tableau_2023": 2,
+    "titre": "Appui à la résilience et au redressement socio-économique des communautés affectées par la pandémie de la COVID-19",
+    "montage": "PNUD / Gouvernement du Japon",
+    "budget_texte": "665 718 USD",
+    "duree": "Juin 2021- 31 Mars 2022",
+    "zone": "3èm arrondissement (Bangui)",
+    "projet_actuel_id": 5
+   },
+   {
+    "rang_tableau_2023": 3,
+    "titre": "Appui au renforcement de capacités des groupements d’AGR des jeunes de Bangui",
+    "montage": "PNUD / Projet Conjoint Jeunes",
+    "budget_texte": "200 000 USD",
+    "duree": "Octo– Déc2020",
+    "zone": "Bangui",
+    "projet_actuel_id": null
+   },
+   {
+    "rang_tableau_2023": 4,
+    "titre": "Projet de renforcement de la résilience et d’appui à la Réduction des Vulnérabilités des personnes affectées par les conflits dans la Ouaka et environs (Bambari et Maloum)",
+    "montage": "PNUD / Sécurité Humaine",
+    "budget_texte": "100 000 USD",
+    "duree": "mai – sept 2019",
+    "zone": "Ouaka",
+    "projet_actuel_id": null
+   },
+   {
+    "rang_tableau_2023": 5,
+    "titre": "Projet d’Assistance rapide pour la consolidation de la paix et la stabilisation sociale dans les communautés affectées par le conflit dans la préfecture de Mambéré-Kadéi vague 2»",
+    "montage": "PNUD / Gouvernement du Japon",
+    "budget_texte": "105.649.850 XAF dont 51.900.000 XAF frais de gestion",
+    "duree": "5Mai 2019- 31 Septembre 2019",
+    "zone": "Ouaka",
+    "projet_actuel_id": null
+   },
+   {
+    "rang_tableau_2023": 6,
+    "titre": "Projet d’Assistance rapide pour la consolidation de la paix et la stabilisation sociale dans les communautés affectées par le conflit dans la préfecture de l’Ouham »",
+    "montage": "PNUD / Gouvernement du Japon",
+    "budget_texte": "149.841.600 XAF dont 81.855.000 dédié aux THIMO",
+    "duree": "03 aout 2018 – 28 février 2019 (7 mois)",
+    "zone": "Mambéré-kadéi",
+    "projet_actuel_id": null
+   },
+   {
+    "rang_tableau_2023": 7,
+    "titre": "Projet d’Assistance rapide pour la consolidation de la paix et la stabilisation sociale dans les communautés affectées par le conflit dans la Préfecture de la Mambéré-",
+    "montage": "PNUD / Gouvernement du Japon",
+    "budget_texte": "189.693.855 XAF soit 114.597.000 XAF pour THIMO",
+    "duree": "01 juillet 2018 au 28 février 2019 (8 mois)",
+    "zone": "Mambéré-kadéi",
+    "projet_actuel_id": null
+   },
+   {
+    "rang_tableau_2023": 8,
+    "titre": "Projet Renforcement des activités génératrices de revenus (AGR) des associations locales à Bambari (sécurité humaine)",
+    "montage": "PNUD / Sécurité Humaine",
+    "budget_texte": "29.143.660 XAF",
+    "duree": "15 aout 2018 au 14 février 2019 (6 mois)",
+    "zone": "Bangui, Ombella-M’poko",
+    "projet_actuel_id": null
+   },
+   {
+    "rang_tableau_2023": 9,
+    "titre": "Appui à la stabilisation, à la reprise socio-économique et à la prévention de la radicalisation des populations vulnérables grâce à un meilleur accès à l’emploi et aux services sociaux dans les zones affectées par les conflits en Centrafrique",
+    "montage": "PNUD / Gouv du Japon",
+    "budget_texte": "115.337.600 F CFA",
+    "duree": "9 mois (sept 2017 – mai 2018)",
+    "zone": "Bangui, Ombella-M’poko",
+    "projet_actuel_id": null
+   },
+   {
+    "rang_tableau_2023": 10,
+    "titre": "Renforcement de la cohésion sociale et réintégration socio-économique des personnes a risque",
+    "montage": "PNUD",
+    "budget_texte": "50 000 USD",
+    "duree": "3 Mois (Oct-Déc 2017)",
+    "zone": "Bangui, Ombella-M’poko",
+    "projet_actuel_id": null
+   },
+   {
+    "rang_tableau_2023": 11,
+    "titre": "Projet d’appui à la réduction des vulnérabilités des femmes victimes de violences lies aux conflits en RCA (PARVF)",
+    "montage": "PNUD",
+    "budget_texte": "29 922 300F XAF",
+    "duree": "6 mois (Nov 2015 à Mai 2016)",
+    "zone": "Bangui, Ombella-M’poko",
+    "projet_actuel_id": null
+   }
+  ],
+  "relation_documentee_archives": true,
+  "relation_documentee_archives_note": "11 projet(s) dans le tableau « plus de 60 projets » publié par APSUD en 2023 (voir data/apsud/projets_historiques.json)."
+ },
+ {
+  "slug": "sida",
+  "nom_affiche": "Sida",
+  "nom_officiel": "Agence suédoise de coopération internationale au développement (Styrelsen för internationellt utvecklingssamarbete)",
+  "sigle": "Sida (Asdi en français)",
+  "type": "gouvernement",
+  "categorie": "bailleur",
+  "site_officiel": "https://www.sida.se/en",
+  "affiche_sur_apsud_org": true,
+  "ordre_affichage_apsud": 11,
+  "relation_documentee_sur_site": false,
+  "projets_lies": [],
+  "logo_source_apsud": {
+   "chemin": "assets/partenaires/source-apsud/sida.png",
+   "url": "https://apsud.org/admin/assets/img/bailleur/img/1719490219.png",
+   "format": "PNG",
+   "dimensions": "106x41"
+  },
+  "logo_hd": {
+   "chemin": "assets/partenaires/hd/sida.png",
+   "url_source": "https://cdn.sida.se/app/uploads/2020/12/17144010/Sida_logo_color_neutral.png",
+   "provenance": "site officiel sida.se (PNG carré 1296 px, marges importantes)",
+   "format": "PNG",
+   "dimensions": "1296x1296",
+   "conforme_criteres_hd": true,
+   "variantes": []
+  },
+  "couleur_principale_logo": "#003C78",
+  "notes": "Bailleur bilatéral suédois. Aucun projet du site ne le cite ; la Suède est contributrice du FH RCA (lien indirect probable). Sida publie ses logos (dont la variante « Asdi » pour le français) sur sida.se/en/about-sida/press/sidas-logotype ; leur usage par un partenaire est encadré par Sida. Couleurs : bleu foncé + jaune #F0B000 (estimées). Fichier HD retenu : PNG officiel sida.se (carré avec grandes marges : à recadrer pour un bandeau) ; le SVG Commons n'a pas pu être téléchargé (429).",
+  "projets_historiques": [
+   {
+    "rang_tableau_2023": 48,
+    "titre": "Improving líving conditions, means of production and access to WASH services and strengthening mechanisms to protect displaced, returnee and host communities in the target areas",
+    "montage": "OXFAM / Swedish International Development Agency (ASDI)",
+    "budget_texte": "119 842 813 XAF",
+    "duree": "12 mois (Avril 2021 – 31 mars 2022",
+    "zone": "Ouam-Pende",
+    "projet_actuel_id": null
+   },
+   {
+    "rang_tableau_2023": 49,
+    "titre": "Soutien intégré WASH/EFSVL/PROTECTION ET EGALITE DE SEXES aux femmes, hommes, filles et garçons, touchés par le conflit dans la préfecture de l’Ouham-Péndé par le billet d’activité de secours et de reconstrction/LRRD. « Critère et C)",
+    "montage": "OXFAM / SIDA",
+    "budget_texte": "180.000.000 XAF",
+    "duree": "3 ans (mars 2018 – mars 2021)",
+    "zone": "Ouam-Pende (Paoua et axes)",
+    "projet_actuel_id": null
+   }
+  ],
+  "relation_documentee_archives": true,
+  "relation_documentee_archives_note": "2 projet(s) dans le tableau « plus de 60 projets » publié par APSUD en 2023 (voir data/apsud/projets_historiques.json).",
+  "logo_archive_apsud": {
+   "chemin": "assets/partenaires/archives-apsud/sida.jpg",
+   "url_archive": "https://web.archive.org/web/2022im_/http://apsud.org/images/sida.jpg",
+   "provenance": "ancien site apsud.org (page Bailleurs 2021), récupéré via la Wayback Machine",
+   "format": "JPEG",
+   "dimensions": "351x127",
+   "note": null
+  }
+ },
+ {
+  "slug": "unicef",
+  "nom_affiche": "unicef – pour chaque enfant",
+  "nom_officiel": "Fonds des Nations Unies pour l'enfance",
+  "sigle": "UNICEF",
+  "type": "agence ONU",
+  "categorie": "partenaire",
+  "site_officiel": "https://www.unicef.org/car/fr",
+  "affiche_sur_apsud_org": true,
+  "ordre_affichage_apsud": 12,
+  "relation_documentee_sur_site": false,
+  "projets_lies": [],
+  "logo_source_apsud": {
+   "chemin": "assets/partenaires/source-apsud/unicef.png",
+   "url": "https://apsud.org/admin/assets/img/bailleur/img/1719490245.png",
+   "format": "PNG",
+   "dimensions": "354x218"
+  },
+  "logo_hd": {
+   "chemin": "assets/partenaires/hd/unicef.svg",
+   "url_source": "https://upload.wikimedia.org/wikipedia/commons/e/ed/Logo_of_UNICEF.svg",
+   "provenance": "Wikimedia Commons (File:Logo of UNICEF.svg)",
+   "format": "SVG",
+   "dimensions": "vectoriel (viewBox 130.9x31.5)",
+   "conforme_criteres_hd": true,
+   "variantes": [
+    {
+     "chemin": "assets/partenaires/hd/unicef-fr-blanc.png",
+     "url_source": "https://www.unicef.org/sites/default/files/French_0.png",
+     "provenance": "site officiel unicef.org – version FR blanche",
+     "format": "PNG",
+     "dimensions": "1676x176",
+     "conforme_criteres_hd": true
+    }
+   ]
+  },
+  "couleur_principale_logo": "#1CABE2",
+  "notes": "Aucun projet du site ne le cite ; relation probable dans le secteur WASH (chef de file du cluster WASH) — à confirmer (pourrait relever de la catégorie bailleur). Fichier HD principal : logotype anglais (Commons) ; variante officielle FR « pour chaque enfant » en blanc (1676 px) pour fonds sombres.",
+  "projets_historiques": [
+   {
+    "rang_tableau_2023": 22,
+    "titre": "Accès en Eau potable, Assainissement et promotion de bonnes pratiques d’hygiène dans les FOSAs de la sous-préfecture d’Ippy et ses environs y compris les axes",
+    "montage": "UNICEF/CERF",
+    "budget_texte": "240 531 USD",
+    "duree": "6 mois",
+    "zone": "Ouaka (Yppi)",
+    "projet_actuel_id": null
+   }
+  ],
+  "relation_documentee_archives": true,
+  "relation_documentee_archives_note": "1 projet(s) dans le tableau « plus de 60 projets » publié par APSUD en 2023 (voir data/apsud/projets_historiques.json)."
+ },
+ {
+  "slug": "unops",
+  "nom_affiche": "UNOPS",
+  "nom_officiel": "Bureau des Nations Unies pour les services d'appui aux projets",
+  "sigle": "UNOPS",
+  "type": "agence ONU",
+  "categorie": "partenaire",
+  "site_officiel": "https://www.unops.org/fr",
+  "affiche_sur_apsud_org": true,
+  "ordre_affichage_apsud": 13,
+  "relation_documentee_sur_site": false,
+  "projets_lies": [],
+  "logo_source_apsud": {
+   "chemin": "assets/partenaires/source-apsud/unops.jpg",
+   "url": "https://apsud.org/admin/assets/img/bailleur/img/1719490292.jpg",
+   "format": "JPEG",
+   "dimensions": "243x243"
+  },
+  "logo_hd": {
+   "chemin": "assets/partenaires/hd/unops.svg",
+   "url_source": "https://www.unops.org/fr (SVG inline de l'en-tête, recoloré #0092D1)",
+   "provenance": "site officiel unops.org",
+   "format": "SVG",
+   "dimensions": "vectoriel (viewBox 503x74)",
+   "conforme_criteres_hd": true,
+   "variantes": []
+  },
+  "couleur_principale_logo": "#0092D1",
+  "notes": "Aucun projet du site ne le cite ; relation à confirmer. Fichier HD = SVG officiel extrait de l'en-tête unops.org (version blanche) recoloré en bleu UNOPS #0092D1 (couleur relevée sur le même site).",
+  "projets_historiques": [
+   {
+    "rang_tableau_2023": 25,
+    "titre": "Reduction de violence communautaire 9ème vague",
+    "montage": "UNOPS/ MINUSCA",
+    "budget_texte": "8.253.000 XAF",
+    "duree": "Avril 2022 – Juillet 2022",
+    "zone": "Bangui et Ombella mpoko",
+    "projet_actuel_id": null
+   },
+   {
+    "rang_tableau_2023": 26,
+    "titre": "Reduction de violence communautaire 9ème vague",
+    "montage": "UNOPS/ MINUSCA",
+    "budget_texte": "24 .750.000 XAF",
+    "duree": "Avril 2021 – Juillet 2022",
+    "zone": "Bangui et Ombella mpoko",
+    "projet_actuel_id": null
+   },
+   {
+    "rang_tableau_2023": 27,
+    "titre": "Reduction de violence communautaire 9ème vague",
+    "montage": "UNOPS/ MINUSCA",
+    "budget_texte": "7.506.450 XAF",
+    "duree": "Mars 2021 – Juin 2021",
+    "zone": "Bangui et Ombella mpoko",
+    "projet_actuel_id": null
+   },
+   {
+    "rang_tableau_2023": 28,
+    "titre": "Réduction de violence communautaire 6ème vague",
+    "montage": "MINUSCA (UNOPS)",
+    "budget_texte": "24.192.000 XAF",
+    "duree": "Décembre 2019 – Mars 2020",
+    "zone": "Bangui et Ombella mpoko",
+    "projet_actuel_id": null
+   },
+   {
+    "rang_tableau_2023": 29,
+    "titre": "Projet d’appui à l’inclusion du Genre dans le processus DDR et dans l’action humanitaire en",
+    "montage": "UNOPS/ ONUFEMMES",
+    "budget_texte": "30.000.000 XAF",
+    "duree": "5 mois (Mars – Juillet 2017)",
+    "zone": "Bangui, Ombella-M’poko",
+    "projet_actuel_id": null
+   },
+   {
+    "rang_tableau_2023": 30,
+    "titre": "Projet de Réduction des Violences Communautaires (CVR) à travers la formation, l’encadrement et l’accompagnement des ex-combattants et autres jeunes risque dans le domaine de commerce pour leur réinsertion socioéconomique",
+    "montage": "UNOPS/ MINUSCA",
+    "budget_texte": "14.096.250 XAF",
+    "duree": "4 Mois (Mai – Sep 2017)",
+    "zone": "Ouaka (Bambari-Maloum)",
+    "projet_actuel_id": null
+   },
+   {
+    "rang_tableau_2023": 31,
+    "titre": "Projet de Réduction des Violences Communautaires (CVR) à travers la formation, l’encadrement et l’accompagnement des ex-combattants et autres jeunes risque dans le domaine de commerce pour leur réinsertion socioéconomique.",
+    "montage": "UNOPS/ MINUSCA",
+    "budget_texte": "14.472.150 XAF",
+    "duree": "4 mois (Janvier – Avril 2018)",
+    "zone": "Berberati",
+    "projet_actuel_id": null
+   },
+   {
+    "rang_tableau_2023": 32,
+    "titre": "Projet de Réduction des Violences Communautaires (CVR) à travers la formation, l’encadrement et l’accompagnement des ex-combattants et autres jeunes risque dans le domaine de commerce pour leur réinsertion socioéconomique.",
+    "montage": "UNOPS/ MINUSCA",
+    "budget_texte": "15.801.450 XAF",
+    "duree": "4 mois (Nov 2018 – Février 2019)",
+    "zone": "Ouham",
+    "projet_actuel_id": null
+   },
+   {
+    "rang_tableau_2023": 33,
+    "titre": "Projet de Réduction des Violences Communautaires (CVR) à travers la formation, l’encadrement et l’accompagnement des ex-combattants et autres jeunes risque dans le domaine de commerce pour leur réinsertion socioéconomique.",
+    "montage": "UNOPS/ MINUSCA",
+    "budget_texte": "9.450.000 XAF",
+    "duree": "3 Mois (Mai – Aout 2019)",
+    "zone": "Mambéré-Kadéi",
+    "projet_actuel_id": null
+   }
+  ],
+  "relation_documentee_archives": true,
+  "relation_documentee_archives_note": "9 projet(s) dans le tableau « plus de 60 projets » publié par APSUD en 2023 (voir data/apsud/projets_historiques.json).",
+  "logo_archive_apsud": {
+   "chemin": "assets/partenaires/archives-apsud/unops.jpg",
+   "url_archive": "https://web.archive.org/web/2022im_/http://apsud.org/images/uno.jpg",
+   "provenance": "ancien site apsud.org (page Bailleurs 2021), récupéré via la Wayback Machine",
+   "format": "JPEG",
+   "dimensions": "351x127",
+   "note": null
+  }
+ },
+ {
+  "slug": "usaid",
+  "nom_affiche": "USAID – From the American People",
+  "nom_officiel": "United States Agency for International Development (Agence des États-Unis pour le développement international)",
+  "sigle": "USAID",
+  "type": "gouvernement",
+  "categorie": "bailleur",
+  "site_officiel": "https://www.usaid.gov",
+  "affiche_sur_apsud_org": true,
+  "ordre_affichage_apsud": 14,
+  "relation_documentee_sur_site": false,
+  "projets_lies": [],
+  "logo_source_apsud": {
+   "chemin": "assets/partenaires/source-apsud/usaid.jpg",
+   "url": "https://apsud.org/admin/assets/img/bailleur/img/1719490319.jpg",
+   "format": "JPEG",
+   "dimensions": "518x200"
+  },
+  "logo_hd": {
+   "chemin": "assets/partenaires/hd/usaid.svg",
+   "url_source": "https://upload.wikimedia.org/wikipedia/commons/1/17/USAID-Identity.svg",
+   "provenance": "Wikimedia Commons (File:USAID-Identity.svg)",
+   "format": "SVG",
+   "dimensions": "vectoriel (viewBox 239.54x71.637)",
+   "conforme_criteres_hd": true,
+   "variantes": []
+  },
+  "couleur_principale_logo": "#002F6C",
+  "notes": "ATTENTION : USAID a été démantelée en 2025 (programmes transférés au Département d'État) ; à présenter comme partenaire HISTORIQUE, ou retirer selon la décision d'APSUD. Aucun projet du site ne la cite (les États-Unis ont été contributeurs du FH RCA). Couleurs : bleu #002F6C + rouge #BA0C2F.",
+  "projets_historiques": [
+   {
+    "rang_tableau_2023": 45,
+    "titre": "Assisting Traditional Healers in Bangui to mitigate the Risk of Transmission of COVID-19",
+    "montage": "OXFAM/OFDA",
+    "budget_texte": "269 446,977 USD",
+    "duree": "7 mois (Sept 2020-Mars 2021)",
+    "zone": "Bangui, Ombella-M’poko",
+    "projet_actuel_id": null
+   },
+   {
+    "rang_tableau_2023": 50,
+    "titre": "Apporter une aide humanitaire d’urgence aux victimes des inondations d’octobre 2019 à Bangui, République Centrafricaine",
+    "montage": "OXFAM/ USA",
+    "budget_texte": "20.182.656 XAF",
+    "duree": "Décembre 2019 – Avril 2020",
+    "zone": "Bangui",
+    "projet_actuel_id": null
+   }
+  ],
+  "relation_documentee_archives": true,
+  "relation_documentee_archives_note": "2 projet(s) dans le tableau « plus de 60 projets » publié par APSUD en 2023 (voir data/apsud/projets_historiques.json).",
+  "logo_archive_apsud": {
+   "chemin": "assets/partenaires/archives-apsud/usaid.jpg",
+   "url_archive": "https://web.archive.org/web/2022im_/http://apsud.org/images/OFDA.jpg",
+   "provenance": "ancien site apsud.org (page Bailleurs 2021), récupéré via la Wayback Machine",
+   "format": "JPEG",
+   "dimensions": "321x157",
+   "note": "Fichier nommé OFDA.jpg sur l’ancien site (USAID/OFDA, bureau d’assistance en cas de catastrophe)."
+  }
+ },
+ {
+  "slug": "union-europeenne",
+  "nom_affiche": "Union Européenne (UE)",
+  "nom_officiel": "Union européenne – Commission européenne (DG Partenariats internationaux / Délégation de l'UE en RCA)",
+  "sigle": "UE",
+  "type": "bailleur de fonds",
+  "categorie": "bailleur",
+  "site_officiel": "https://international-partnerships.ec.europa.eu/",
+  "affiche_sur_apsud_org": false,
+  "ordre_affichage_apsud": null,
+  "relation_documentee_sur_site": true,
+  "projets_lies": [
+   {
+    "id": 18,
+    "titre": "Projet d’Appui au Renforcement de la Société Civile Centrafricaine (PARSOC)",
+    "role_du_partenaire": "bailleur",
+    "code": "CAF 1068",
+    "periode": "2025-01-01 → 2027-12-31",
+    "budget_affiche": "1.700.000£/360.721,61£",
+    "zone": "Ouaka, Nana-Mamberé, Nana Gribizi, Bamingui-Bangoran, Basse-Kotto et Ouham-Pendé",
+    "statut": "en cours",
+    "url": "https://apsud.org/detail-projet/18/Projet%20d%E2%80%99Appui%20au%20Renforcement%20de%20la%20Soci%C3%A9t%C3%A9%20Civile%20Centrafricaine%20%28PARSOC%29"
+   }
+  ],
+  "logo_source_apsud": null,
+  "logo_hd": {
+   "chemin": "assets/partenaires/hd/union-europeenne.png",
+   "url_source": "https://ec.europa.eu/regional_policy/sources/information-sources/logo-download-center/funded_fr.zip (FR_FundedbytheEU_RGB_POS.png)",
+   "provenance": "site officiel ec.europa.eu – « Financé par l'Union européenne »",
+   "format": "PNG",
+   "dimensions": "4079x919",
+   "conforme_criteres_hd": true,
+   "variantes": [
+    {
+     "chemin": "assets/partenaires/hd/union-europeenne-monochrome.png",
+     "url_source": "https://ec.europa.eu/regional_policy/sources/information-sources/logo-download-center/funded_fr.zip (FR_FundedbytheEU_RGB_Monochrome.png)",
+     "provenance": "site officiel ec.europa.eu – monochrome",
+     "format": "PNG",
+     "dimensions": "4079x920",
+     "conforme_criteres_hd": true
+    }
+   ]
+  },
+  "couleur_principale_logo": "#003399",
+  "notes": "Bailleur du projet PARSOC (2025-2027), mis en œuvre par Welthungerhilfe avec APSUD. Pas de logo sur apsud.org. Règle UE : emblème + mention « Financé par l'Union européenne » en toutes lettres, sans autre logo pour souligner le soutien UE. Fichiers officiels FR (Commission, centre de téléchargement, période 2021-2027) : version couleur et version « monochrome » (tout en bleu UE, pas en gris). Le kit complet (EPS, version négative/blanche, verticale) est dans funded_fr.zip. Jaune #FFCC00.",
+  "projets_historiques": [
+   {
+    "rang_tableau_2023": 34,
+    "titre": "Réduction de la violence et stabilisation des communautés à haut risque sécuritaire",
+    "montage": "OIM (UE)",
+    "budget_texte": "22 483 000 XAF",
+    "duree": "3 (Déc 2020 – Fév 2021)",
+    "zone": "Ouam-Pende (Bozoum)",
+    "projet_actuel_id": null
+   },
+   {
+    "rang_tableau_2023": 47,
+    "titre": "Appui à la mise en œuvre d’une réponse de santé publique et sociale locale, en prévention de l’épidémie COVID-19 en RCA",
+    "montage": "Union Européenne / OXFAM",
+    "budget_texte": "208 764 EUROS",
+    "duree": "6 mois (Avril-Septembre 2020)",
+    "zone": "Bégoua, Bimbo, Bangui",
+    "projet_actuel_id": null
+   }
+  ],
+  "relation_documentee_archives": true,
+  "relation_documentee_archives_note": "2 projet(s) dans le tableau « plus de 60 projets » publié par APSUD en 2023 (voir data/apsud/projets_historiques.json).",
+  "logo_archive_apsud": {
+   "chemin": "assets/partenaires/archives-apsud/union-europeenne-drapeau.jpg",
+   "url_archive": "https://web.archive.org/web/2022im_/http://apsud.org/images/UE.jpg",
+   "provenance": "ancien site apsud.org (page Bailleurs 2021), récupéré via la Wayback Machine",
+   "format": "JPEG",
+   "dimensions": "351x127",
+   "note": "Drapeau européen seul (sans mention) : non conforme aux règles de visibilité UE, ne pas réutiliser tel quel."
+  }
+ },
+ {
+  "slug": "bmz",
+  "nom_affiche": "BMZ",
+  "nom_officiel": "Ministère fédéral allemand de la Coopération économique et du Développement (Bundesministerium für wirtschaftliche Zusammenarbeit und Entwicklung)",
+  "sigle": "BMZ",
+  "type": "gouvernement",
+  "categorie": "bailleur",
+  "site_officiel": "https://www.bmz.de/en",
+  "affiche_sur_apsud_org": false,
+  "ordre_affichage_apsud": null,
+  "relation_documentee_sur_site": true,
+  "projets_lies": [
+   {
+    "id": 20,
+    "titre": "Innovation numérique contre la faim en RCA Upscale AgriApps",
+    "role_du_partenaire": "bailleur",
+    "code": "CAF 1041",
+    "periode": "2025-03-14 → 2026-12-31",
+    "budget_affiche": "159214£",
+    "zone": "Bangui et ses environs, préfecture de la Lobaye, préfecture de la Kemo",
+    "statut": "en cours",
+    "url": "https://apsud.org/detail-projet/20/Innovation%20num%C3%A9rique%20contre%20la%20faim%20en%20RCA%20%20Upscale%20AgriApps"
+   }
+  ],
+  "logo_source_apsud": null,
+  "logo_hd": {
+   "chemin": "assets/partenaires/hd/bmz.svg",
+   "url_source": "https://www.bmz.de/en (SVG inline de l'en-tête)",
+   "provenance": "site officiel bmz.de",
+   "format": "SVG",
+   "dimensions": "vectoriel (viewBox 200.8x81)",
+   "conforme_criteres_hd": true,
+   "variantes": []
+  },
+  "couleur_principale_logo": "#000000",
+  "notes": "Bailleur du projet Upscale AgriApps (2025-2026), mis en œuvre par Welthungerhilfe avec APSUD. Pas de logo sur apsud.org. Fichier HD = SVG officiel (version anglaise) extrait de l'en-tête bmz.de ; couleurs noir/rouge/or du drapeau allemand. L'usage du logo par des tiers est soumis aux règles de visibilité du BMZ (souvent via l'agence d'exécution)."
+ },
+ {
+  "slug": "welthungerhilfe",
+  "nom_affiche": "ONG International Deutsche Welthungerhilfe e.V. (WHH)",
+  "nom_officiel": "Deutsche Welthungerhilfe e.V.",
+  "sigle": "WHH",
+  "type": "ONG internationale",
+  "categorie": "partenaire",
+  "site_officiel": "https://www.welthungerhilfe.org/",
+  "affiche_sur_apsud_org": false,
+  "ordre_affichage_apsud": null,
+  "relation_documentee_sur_site": true,
+  "projets_lies": [
+   {
+    "id": 18,
+    "titre": "Projet d’Appui au Renforcement de la Société Civile Centrafricaine (PARSOC)",
+    "role_du_partenaire": "partenaire de mise en oeuvre (chef de file)",
+    "code": "CAF 1068",
+    "periode": "2025-01-01 → 2027-12-31",
+    "budget_affiche": "1.700.000£/360.721,61£",
+    "zone": "Ouaka, Nana-Mamberé, Nana Gribizi, Bamingui-Bangoran, Basse-Kotto et Ouham-Pendé",
+    "statut": "en cours",
+    "url": "https://apsud.org/detail-projet/18/Projet%20d%E2%80%99Appui%20au%20Renforcement%20de%20la%20Soci%C3%A9t%C3%A9%20Civile%20Centrafricaine%20%28PARSOC%29"
+   },
+   {
+    "id": 20,
+    "titre": "Innovation numérique contre la faim en RCA Upscale AgriApps",
+    "role_du_partenaire": "partenaire de mise en oeuvre (chef de file)",
+    "code": "CAF 1041",
+    "periode": "2025-03-14 → 2026-12-31",
+    "budget_affiche": "159214£",
+    "zone": "Bangui et ses environs, préfecture de la Lobaye, préfecture de la Kemo",
+    "statut": "en cours",
+    "url": "https://apsud.org/detail-projet/20/Innovation%20num%C3%A9rique%20contre%20la%20faim%20en%20RCA%20%20Upscale%20AgriApps"
+   }
+  ],
+  "logo_source_apsud": null,
+  "logo_hd": {
+   "chemin": "assets/partenaires/hd/welthungerhilfe.png",
+   "url_source": "https://www.welthungerhilfe.org/_assets/ed2041af020e608b722ad1400d905e46/Icons/whh_international_2_1.png",
+   "provenance": "site officiel welthungerhilfe.org – logo international",
+   "format": "PNG",
+   "dimensions": "1808x858",
+   "conforme_criteres_hd": true,
+   "variantes": []
+  },
+  "couleur_principale_logo": "#20A010",
+  "notes": "ONG allemande, partenaire de mise en œuvre (chef de file) des deux projets en cours financés par l'UE et le BMZ. Pas de logo sur apsud.org — à AJOUTER au bandeau (partenaire actuel majeur). Fichier HD = PNG officiel welthungerhilfe.org (logo international, 1808 px) ; le SVG Commons n'a pas pu être téléchargé (429)."
+ },
+ {
+  "slug": "japon",
+  "nom_affiche": "Japon",
+  "nom_officiel": "Gouvernement du Japon (aide publique au développement – ministère des Affaires étrangères)",
+  "sigle": "Japon / ODA",
+  "type": "gouvernement",
+  "categorie": "bailleur",
+  "site_officiel": "https://www.mofa.go.jp/policy/oda/",
+  "affiche_sur_apsud_org": false,
+  "ordre_affichage_apsud": null,
+  "relation_documentee_sur_site": true,
+  "projets_lies": [
+   {
+    "id": 5,
+    "titre": "Appui à la résilience et au redressement socio-économique des communautés affectées par la pandémie de la COVID-19",
+    "role_du_partenaire": "bailleur (via le PNUD)",
+    "code": null,
+    "periode": "2021-07-01 → 2022-03-31",
+    "budget_affiche": "665 718 USD",
+    "zone": "3ème arrondissement de Bangui",
+    "statut": "réalisé",
+    "url": "https://apsud.org/detail-projet/5/Appui%20%C3%A0%20la%20r%C3%A9silience%20et%20au%20redressement%20socio-%C3%A9conomique%20des%20communaut%C3%A9s%20affect%C3%A9es%20par%20la%20pand%C3%A9mie%20de%20la%20COVID-19"
+   }
+  ],
+  "logo_source_apsud": null,
+  "logo_hd": null,
+  "couleur_principale_logo": "#BC002D",
+  "notes": "Bailleur du projet 5 (relèvement COVID-19, 3e arrondissement de Bangui) via le PNUD ; le code « COVID JAPON » du projet 11 suggère aussi un financement japonais transitant par le FH RCA (à confirmer). Pas de logo sur apsud.org. Le logo ODA japonais (« From the People of Japan ») n'est pas proposé en téléchargement public : à demander à l'ambassade du Japon compétente pour la RCA ou au PNUD. [Contrôle qualité] Le tableau historique 2023 confirme 5 projets PNUD/Gouvernement du Japon (2017-2022) ; en revanche le projet actuel 11 (code « COVID JAPON ») est financé par le FH (CHF), pas par le Japon.",
+  "projets_historiques": [
+   {
+    "rang_tableau_2023": 2,
+    "titre": "Appui à la résilience et au redressement socio-économique des communautés affectées par la pandémie de la COVID-19",
+    "montage": "PNUD / Gouvernement du Japon",
+    "budget_texte": "665 718 USD",
+    "duree": "Juin 2021- 31 Mars 2022",
+    "zone": "3èm arrondissement (Bangui)",
+    "projet_actuel_id": 5
+   },
+   {
+    "rang_tableau_2023": 5,
+    "titre": "Projet d’Assistance rapide pour la consolidation de la paix et la stabilisation sociale dans les communautés affectées par le conflit dans la préfecture de Mambéré-Kadéi vague 2»",
+    "montage": "PNUD / Gouvernement du Japon",
+    "budget_texte": "105.649.850 XAF dont 51.900.000 XAF frais de gestion",
+    "duree": "5Mai 2019- 31 Septembre 2019",
+    "zone": "Ouaka",
+    "projet_actuel_id": null
+   },
+   {
+    "rang_tableau_2023": 6,
+    "titre": "Projet d’Assistance rapide pour la consolidation de la paix et la stabilisation sociale dans les communautés affectées par le conflit dans la préfecture de l’Ouham »",
+    "montage": "PNUD / Gouvernement du Japon",
+    "budget_texte": "149.841.600 XAF dont 81.855.000 dédié aux THIMO",
+    "duree": "03 aout 2018 – 28 février 2019 (7 mois)",
+    "zone": "Mambéré-kadéi",
+    "projet_actuel_id": null
+   },
+   {
+    "rang_tableau_2023": 7,
+    "titre": "Projet d’Assistance rapide pour la consolidation de la paix et la stabilisation sociale dans les communautés affectées par le conflit dans la Préfecture de la Mambéré-",
+    "montage": "PNUD / Gouvernement du Japon",
+    "budget_texte": "189.693.855 XAF soit 114.597.000 XAF pour THIMO",
+    "duree": "01 juillet 2018 au 28 février 2019 (8 mois)",
+    "zone": "Mambéré-kadéi",
+    "projet_actuel_id": null
+   },
+   {
+    "rang_tableau_2023": 9,
+    "titre": "Appui à la stabilisation, à la reprise socio-économique et à la prévention de la radicalisation des populations vulnérables grâce à un meilleur accès à l’emploi et aux services sociaux dans les zones affectées par les conflits en Centrafrique",
+    "montage": "PNUD / Gouv du Japon",
+    "budget_texte": "115.337.600 F CFA",
+    "duree": "9 mois (sept 2017 – mai 2018)",
+    "zone": "Bangui, Ombella-M’poko",
+    "projet_actuel_id": null
+   }
+  ],
+  "relation_documentee_archives": true,
+  "relation_documentee_archives_note": "5 projet(s) dans le tableau « plus de 60 projets » publié par APSUD en 2023 (voir data/apsud/projets_historiques.json).",
+  "logo_archive_apsud": {
+   "chemin": "assets/partenaires/archives-apsud/japon-drapeau.jpg",
+   "url_archive": "https://web.archive.org/web/2022im_/http://apsud.org/images/don.jpg",
+   "provenance": "ancien site apsud.org (page Bailleurs 2021), récupéré via la Wayback Machine",
+   "format": "JPEG",
+   "dimensions": "351x127",
+   "note": "Drapeau japonais (fichier nommé don.jpg sur l’ancien site), utilisé comme « logo » du Japon. Qualité médiocre (JPEG flou)."
+  }
+ },
+ {
+  "slug": "lnpdd",
+  "nom_affiche": "LNPDD",
+  "nom_officiel": "LNPDD (ONG nationale centrafricaine – nom complet non publié sur apsud.org)",
+  "sigle": "LNPDD",
+  "type": "partenaire de mise en oeuvre",
+  "categorie": "partenaire",
+  "site_officiel": null,
+  "affiche_sur_apsud_org": false,
+  "ordre_affichage_apsud": null,
+  "relation_documentee_sur_site": true,
+  "projets_lies": [
+   {
+    "id": 15,
+    "titre": "Leadership Humanitaire local pour renforcer la localisation de l’aide et une réponse efficace et rapide aux besoins critiques en WASH a RAFAÏ",
+    "role_du_partenaire": "ONG nationale co-exécutante / bénéficiaire du coaching APSUD",
+    "code": "CBPF-CAR-23-S-NGO-26265",
+    "periode": "2023-11-15 → 2024-11-14",
+    "budget_affiche": "600 0OO USD",
+    "zone": "Rafai",
+    "statut": "réalisé",
+    "url": "https://apsud.org/detail-projet/15/Leadership%20Humanitaire%20local%20pour%20renforcer%20la%20localisation%20de%20l%E2%80%99aide%20et%20une%20r%C3%A9ponse%20efficace%20et%20rapide%20aux%20besoins%20critiques%20en%20WASH%20a%20RAFA%C3%8F"
+   }
+  ],
+  "logo_source_apsud": null,
+  "logo_hd": null,
+  "couleur_principale_logo": null,
+  "notes": "Citée uniquement dans le projet 15 (Rafaï). Nom développé, site et logo inconnus : à demander à APSUD."
+ },
+ {
+  "slug": "ofahrd",
+  "nom_affiche": "OFAHRD",
+  "nom_officiel": "OFAHRD (ONG nationale centrafricaine – nom complet non publié sur apsud.org)",
+  "sigle": "OFAHRD",
+  "type": "partenaire de mise en oeuvre",
+  "categorie": "partenaire",
+  "site_officiel": null,
+  "affiche_sur_apsud_org": false,
+  "ordre_affichage_apsud": null,
+  "relation_documentee_sur_site": true,
+  "projets_lies": [
+   {
+    "id": 15,
+    "titre": "Leadership Humanitaire local pour renforcer la localisation de l’aide et une réponse efficace et rapide aux besoins critiques en WASH a RAFAÏ",
+    "role_du_partenaire": "ONG nationale co-exécutante / bénéficiaire du coaching APSUD",
+    "code": "CBPF-CAR-23-S-NGO-26265",
+    "periode": "2023-11-15 → 2024-11-14",
+    "budget_affiche": "600 0OO USD",
+    "zone": "Rafai",
+    "statut": "réalisé",
+    "url": "https://apsud.org/detail-projet/15/Leadership%20Humanitaire%20local%20pour%20renforcer%20la%20localisation%20de%20l%E2%80%99aide%20et%20une%20r%C3%A9ponse%20efficace%20et%20rapide%20aux%20besoins%20critiques%20en%20WASH%20a%20RAFA%C3%8F"
+   }
+  ],
+  "logo_source_apsud": null,
+  "logo_hd": null,
+  "couleur_principale_logo": null,
+  "notes": "Citée uniquement dans le projet 15 (Rafaï). Nom développé, site et logo inconnus : à demander à APSUD."
+ },
+ {
+  "nom_affiche": "ACTED",
+  "site_officiel": "https://www.acted.org/fr/",
+  "affiche_sur_apsud_org": false,
+  "ordre_affichage_apsud": null,
+  "relation_documentee_sur_site": false,
+  "projets_lies": [],
+  "logo_source_apsud": null,
+  "logo_hd": null,
+  "couleur_principale_logo": "#1B3C8C",
+  "source_identification": "Archives de apsud.org (Wayback Machine) — absent du site actuel",
+  "ajoute_par": "contrôle qualité 2026-11-21",
+  "slug": "acted",
+  "sigle": "ACTED",
+  "nom_officiel": "ACTED (Agence d’aide à la coopération technique et au développement)",
+  "type": "ONG internationale",
+  "categorie": "partenaire",
+  "logo_archive_apsud": {
+   "chemin": "assets/partenaires/archives-apsud/acted.jpg",
+   "url_archive": "https://web.archive.org/web/2022im_/http://apsud.org/images/ACT.jpg",
+   "provenance": "ancien site apsud.org (page Bailleurs 2021), récupéré via la Wayback Machine",
+   "format": "JPEG",
+   "dimensions": "351x127",
+   "note": null
+  },
+  "notes": "1 contrat (Fonds Bêkou / ACTED, 2017-2018). Logo affiché sur l’ancien site (2021, ACT.jpg) et sur la page partenaires WordPress (2023). Logo HD à télécharger depuis acted.org (non récupéré).",
+  "projets_historiques": [
+   {
+    "rang_tableau_2023": 43,
+    "titre": "Projet de relance économique et autonomisation des acteurs économiques centrafricains",
+    "montage": "Fonds Bekou /ACTED",
+    "budget_texte": "10.344.000 F CFA",
+    "duree": "12 mois (Oct- 2017 à Aout 2018",
+    "zone": "Bangui, Ombella-M’poko",
+    "projet_actuel_id": null
+   }
+  ],
+  "relation_documentee_archives": true
+ },
+ {
+  "nom_affiche": "ACF",
+  "site_officiel": "https://www.actioncontrelafaim.org/",
+  "affiche_sur_apsud_org": false,
+  "ordre_affichage_apsud": null,
+  "relation_documentee_sur_site": false,
+  "projets_lies": [],
+  "logo_source_apsud": null,
+  "logo_hd": {
+   "chemin": "assets/partenaires/hd/action-contre-la-faim.svg",
+   "url_source": "https://commons.wikimedia.org/wiki/File:Logo_Action_Contre_la_Faim.svg",
+   "provenance": "Wikimedia Commons",
+   "format": "SVG",
+   "dimensions": "vectoriel",
+   "conforme_criteres_hd": true,
+   "variantes": [],
+   "note": null
+  },
+  "couleur_principale_logo": null,
+  "source_identification": "Archives de apsud.org (Wayback Machine) — absent du site actuel",
+  "ajoute_par": "contrôle qualité 2026-11-21",
+  "slug": "acf",
+  "sigle": "ACF",
+  "nom_officiel": "Action contre la Faim",
+  "type": "ONG internationale",
+  "categorie": "partenaire",
+  "notes": "Partenaire de mise en œuvre du projet Alindao 2023 (FH, 55 769,81 USD) — ancienne fiche /detail-projet/2, retirée du site. Vérifier que le SVG Commons correspond à la charte actuelle d’ACF.",
+  "projets_historiques": [
+   {
+    "rang_tableau_2023": 41,
+    "titre": "Assistance d’urgence en eau, assainissement et hygiène pour les populations déplacées d’Alindao.",
+    "montage": "ACF/FH",
+    "budget_texte": "55,769.81 USD",
+    "duree": "6 mois (Fév 2023 – juillet 2023)",
+    "zone": "(Basse kotto) Alindao",
+    "projet_actuel_id": null
+   }
+  ],
+  "relation_documentee_archives": true
+ },
+ {
+  "nom_affiche": "NRC",
+  "site_officiel": "https://www.nrc.no/",
+  "affiche_sur_apsud_org": false,
+  "ordre_affichage_apsud": null,
+  "relation_documentee_sur_site": false,
+  "projets_lies": [],
+  "logo_source_apsud": null,
+  "logo_hd": null,
+  "couleur_principale_logo": null,
+  "source_identification": "Archives de apsud.org (Wayback Machine) — absent du site actuel",
+  "ajoute_par": "contrôle qualité 2026-11-21",
+  "slug": "nrc",
+  "sigle": "NRC",
+  "nom_officiel": "Conseil norvégien pour les réfugiés (Norwegian Refugee Council)",
+  "type": "ONG internationale",
+  "categorie": "partenaire",
+  "notes": "2 contrats (projets FH 2022-2023 à Alindao et Mobaye/Kembe, Basse-Kotto). Logo non récupéré (Wikimedia 429) : File:Norwegian_Refugee_council_english_logo.svg à télécharger.",
+  "projets_historiques": [
+   {
+    "rang_tableau_2023": 39,
+    "titre": "Appui d’urgence multisectoriel et intégré en Education, Eau-Hygiène-Assainissement et Protection générale au profit des populations affectées par la crise (et les déplacements) dans les sous-préfectures de Kembe et Mobaye dans dans la préfecture de la Basse-Kotto en RCA",
+    "montage": "NRC/FH",
+    "budget_texte": "35 000 USD",
+    "duree": "6 mois (du 10 février 2023 au 09 juillet 2023)",
+    "zone": "(Basse-kotto) Mobaye",
+    "projet_actuel_id": null
+   },
+   {
+    "rang_tableau_2023": 40,
+    "titre": "Réponse d’urgence en Eau, Hygiène et Assainissement pour les déplacés de la ville d’Alindao (Basse Kotto)",
+    "montage": "NRC/FH",
+    "budget_texte": "14 000 USD",
+    "duree": "3mois (Sept – nov 2022)",
+    "zone": "(Basse kotto) Alindao",
+    "projet_actuel_id": null
+   }
+  ],
+  "relation_documentee_archives": true
+ },
+ {
+  "nom_affiche": "DRC",
+  "site_officiel": "https://pro.drc.ngo/",
+  "affiche_sur_apsud_org": false,
+  "ordre_affichage_apsud": null,
+  "relation_documentee_sur_site": false,
+  "projets_lies": [],
+  "logo_source_apsud": null,
+  "logo_hd": null,
+  "couleur_principale_logo": null,
+  "source_identification": "Archives de apsud.org (Wayback Machine) — absent du site actuel",
+  "ajoute_par": "contrôle qualité 2026-11-21",
+  "slug": "drc",
+  "sigle": "DRC",
+  "nom_officiel": "Conseil danois pour les réfugiés (Danish Refugee Council)",
+  "type": "ONG internationale",
+  "categorie": "partenaire",
+  "notes": "1 contrat (ECHO/DRC, protection, 2016-2017). Logo affiché sur le site 2018 (drc_logo.png, non archivé). Logo non récupéré (Wikimedia 429).",
+  "projets_historiques": [
+   {
+    "rang_tableau_2023": 42,
+    "titre": "Améliorer la protection des populations civiles et apporter une assistance protection dans les zones affectées par les conflits en RCA",
+    "montage": "ECHO/DRC",
+    "budget_texte": "7.000.000 FCFA",
+    "duree": "8 mois (Sep 2016 – Av 2017)",
+    "zone": "Bangui, Ombella-M’poko",
+    "projet_actuel_id": null
+   }
+  ],
+  "relation_documentee_archives": true
+ },
+ {
+  "nom_affiche": "OIM",
+  "site_officiel": "https://www.iom.int/fr",
+  "affiche_sur_apsud_org": false,
+  "ordre_affichage_apsud": null,
+  "relation_documentee_sur_site": false,
+  "projets_lies": [],
+  "logo_source_apsud": null,
+  "logo_hd": null,
+  "couleur_principale_logo": null,
+  "source_identification": "Archives de apsud.org (Wayback Machine) — absent du site actuel",
+  "ajoute_par": "contrôle qualité 2026-11-21",
+  "slug": "oim",
+  "sigle": "OIM",
+  "nom_officiel": "Organisation internationale pour les migrations (OIM / IOM)",
+  "type": "agence ONU",
+  "categorie": "partenaire",
+  "notes": "2 contrats (réduction de la violence, Bozoum 2020-2021 sur fonds UE ; transhumance RCA/Tchad 2019-2020). Logo non récupéré.",
+  "projets_historiques": [
+   {
+    "rang_tableau_2023": 34,
+    "titre": "Réduction de la violence et stabilisation des communautés à haut risque sécuritaire",
+    "montage": "OIM (UE)",
+    "budget_texte": "22 483 000 XAF",
+    "duree": "3 (Déc 2020 – Fév 2021)",
+    "zone": "Ouam-Pende (Bozoum)",
+    "projet_actuel_id": null
+   },
+   {
+    "rang_tableau_2023": 35,
+    "titre": "Projet de restauration de la paix, et du dialogue entre les communautés affectées par la transhumance transfrontalière (RCA/TCHAD)",
+    "montage": "OIM",
+    "budget_texte": "17.400.000 XAF",
+    "duree": "Nov 2019 – Avril 2020",
+    "zone": "Mambéré-kadéi",
+    "projet_actuel_id": null
+   }
+  ],
+  "relation_documentee_archives": true
+ },
+ {
+  "nom_affiche": "FAO",
+  "site_officiel": "https://www.fao.org/home/fr",
+  "affiche_sur_apsud_org": false,
+  "ordre_affichage_apsud": null,
+  "relation_documentee_sur_site": false,
+  "projets_lies": [],
+  "logo_source_apsud": null,
+  "logo_hd": {
+   "chemin": "assets/partenaires/hd/fao.svg",
+   "url_source": "https://commons.wikimedia.org/wiki/File:FAO_logo.svg",
+   "provenance": "Wikimedia Commons",
+   "format": "SVG",
+   "dimensions": "vectoriel",
+   "conforme_criteres_hd": true,
+   "variantes": [],
+   "note": "Emblème FAO (épi + « FIAT PANIS ») ; emblème protégé : usage soumis à autorisation."
+  },
+  "couleur_principale_logo": "#116AAB",
+  "source_identification": "Archives de apsud.org (Wayback Machine) — absent du site actuel",
+  "ajoute_par": "contrôle qualité 2026-11-21",
+  "slug": "fao",
+  "sigle": "FAO",
+  "nom_officiel": "Organisation des Nations unies pour l’alimentation et l’agriculture",
+  "type": "agence ONU",
+  "categorie": "partenaire",
+  "notes": "3 contrats (2016, 2018, 2019). Logo affiché sur le site 2018.",
+  "projets_historiques": [
+   {
+    "rang_tableau_2023": 36,
+    "titre": "OSRO/CAF/605/UK « Support to agricultural recovery of the most vulnerable households and revival of the local economy for an enhanced resilience of rural communities in Central African Republic ».",
+    "montage": "FAO",
+    "budget_texte": "4 413 000 F CFA",
+    "duree": "3 mois (juin – aout 2018)",
+    "zone": "Ombella mpoko",
+    "projet_actuel_id": null
+   },
+   {
+    "rang_tableau_2023": 37,
+    "titre": "OSRO/CAF/ « Assistance agricole d’urgence en appui à la résilience des communautés vulnérables affectées par les crises en République Centrafricaine »",
+    "montage": "FAO",
+    "budget_texte": "8.657.320 CFA",
+    "duree": "3 mois (fév – avril 2019)",
+    "zone": "Ouaka (Grimari)",
+    "projet_actuel_id": null
+   },
+   {
+    "rang_tableau_2023": 38,
+    "titre": "Women affected by crisis, survivors of GBV in CAR strengthen their production capacity and access to markets to improve their economy and food security",
+    "montage": "FAO/ONUFEMMES",
+    "budget_texte": "23.652.351 FCFA",
+    "duree": "8 mois (Fév 2016 – sept 2016)",
+    "zone": "Bangui, Ombella-M’poko",
+    "projet_actuel_id": null
+   }
+  ],
+  "relation_documentee_archives": true
+ },
+ {
+  "nom_affiche": "UNFPA",
+  "site_officiel": "https://www.unfpa.org/fr",
+  "affiche_sur_apsud_org": false,
+  "ordre_affichage_apsud": null,
+  "relation_documentee_sur_site": false,
+  "projets_lies": [],
+  "logo_source_apsud": null,
+  "logo_hd": {
+   "chemin": "assets/partenaires/hd/unfpa.svg",
+   "url_source": "https://commons.wikimedia.org/wiki/File:UNFPA_logo.svg",
+   "provenance": "Wikimedia Commons",
+   "format": "SVG",
+   "dimensions": "vectoriel",
+   "conforme_criteres_hd": true,
+   "variantes": [],
+   "note": "Version anglaise."
+  },
+  "couleur_principale_logo": "#F7941D",
+  "source_identification": "Archives de apsud.org (Wayback Machine) — absent du site actuel",
+  "ajoute_par": "contrôle qualité 2026-11-21",
+  "slug": "unfpa",
+  "sigle": "UNFPA",
+  "nom_officiel": "Fonds des Nations unies pour la population",
+  "type": "agence ONU",
+  "categorie": "partenaire",
+  "notes": "2 contrats UNFPA/PBF (cohésion sociale 2020-2021). Logo affiché sur l’ancien site 2021 (unfpa.jpg, non archivé).",
+  "projets_historiques": [
+   {
+    "rang_tableau_2023": 23,
+    "titre": "Communication et sensibilisation pour la cohésion sociale",
+    "montage": "UNFPA/PBF",
+    "budget_texte": "49 213 591",
+    "duree": "4 mois (Mars-Juin 2021)",
+    "zone": "Bangassou, Bangui, Paoua, Bambari, Mbaiki",
+    "projet_actuel_id": null
+   },
+   {
+    "rang_tableau_2023": 24,
+    "titre": "Communication et sensibilisation pour la cohésion sociale",
+    "montage": "UNFPA/PBF",
+    "budget_texte": "78 614,51 USD",
+    "duree": "6 mois (Juillet-Décembre) 2020",
+    "zone": "Bangassou, Bangui, Paoua, Bambari",
+    "projet_actuel_id": null
+   }
+  ],
+  "relation_documentee_archives": true
+ },
+ {
+  "nom_affiche": "PBF",
+  "site_officiel": "https://www.un.org/peacebuilding/fr/fund",
+  "affiche_sur_apsud_org": false,
+  "ordre_affichage_apsud": null,
+  "relation_documentee_sur_site": false,
+  "projets_lies": [],
+  "logo_source_apsud": null,
+  "logo_hd": null,
+  "couleur_principale_logo": null,
+  "source_identification": "Archives de apsud.org (Wayback Machine) — absent du site actuel",
+  "ajoute_par": "contrôle qualité 2026-11-21",
+  "slug": "pbf",
+  "sigle": "PBF",
+  "nom_officiel": "Fonds des Nations unies pour la consolidation de la paix (Peacebuilding Fund)",
+  "type": "bailleur de fonds",
+  "categorie": "bailleur",
+  "notes": "Bailleur des 2 projets UNFPA/PBF (2020-2021). Logo non récupéré.",
+  "projets_historiques": [
+   {
+    "rang_tableau_2023": 23,
+    "titre": "Communication et sensibilisation pour la cohésion sociale",
+    "montage": "UNFPA/PBF",
+    "budget_texte": "49 213 591",
+    "duree": "4 mois (Mars-Juin 2021)",
+    "zone": "Bangassou, Bangui, Paoua, Bambari, Mbaiki",
+    "projet_actuel_id": null
+   },
+   {
+    "rang_tableau_2023": 24,
+    "titre": "Communication et sensibilisation pour la cohésion sociale",
+    "montage": "UNFPA/PBF",
+    "budget_texte": "78 614,51 USD",
+    "duree": "6 mois (Juillet-Décembre) 2020",
+    "zone": "Bangassou, Bangui, Paoua, Bambari",
+    "projet_actuel_id": null
+   }
+  ],
+  "relation_documentee_archives": true
+ },
+ {
+  "nom_affiche": "ECHO",
+  "site_officiel": "https://civil-protection-humanitarian-aid.ec.europa.eu/",
+  "affiche_sur_apsud_org": false,
+  "ordre_affichage_apsud": null,
+  "relation_documentee_sur_site": false,
+  "projets_lies": [],
+  "logo_source_apsud": null,
+  "logo_hd": null,
+  "couleur_principale_logo": null,
+  "source_identification": "Archives de apsud.org (Wayback Machine) — absent du site actuel",
+  "ajoute_par": "contrôle qualité 2026-11-21",
+  "slug": "echo",
+  "sigle": "ECHO",
+  "nom_officiel": "Protection civile et opérations d’aide humanitaire européennes (DG ECHO, Commission européenne)",
+  "type": "bailleur de fonds",
+  "categorie": "bailleur",
+  "notes": "5 projets 2015-2017 (via Oxfam et DRC). Logo officiel (« Funded by the European Union – Humanitarian Aid ») à télécharger depuis le kit de visibilité ECHO.",
+  "projets_historiques": [
+   {
+    "rang_tableau_2023": 42,
+    "titre": "Améliorer la protection des populations civiles et apporter une assistance protection dans les zones affectées par les conflits en RCA",
+    "montage": "ECHO/DRC",
+    "budget_texte": "7.000.000 FCFA",
+    "duree": "8 mois (Sep 2016 – Av 2017)",
+    "zone": "Bangui, Ombella-M’poko",
+    "projet_actuel_id": null
+   },
+   {
+    "rang_tableau_2023": 55,
+    "titre": "Rétablir la dignité des femmes, des hommes, des filles et des garçons affectés par la flambée d’épidémie de choléra en République Centrafricaine",
+    "montage": "OXFAM / ECHO",
+    "budget_texte": "46.243.000 FCFA",
+    "duree": "6mois (Aout 2016 – Fév 2017)",
+    "zone": "Bangui",
+    "projet_actuel_id": null
+   },
+   {
+    "rang_tableau_2023": 56,
+    "titre": "Réponse au choléra sur les sites des déplacés internes de Bangui",
+    "montage": "OXFAM / ECHO",
+    "budget_texte": "14.000.000 F CFA",
+    "duree": "2 mois (Janv-FéV 2017)",
+    "zone": "Bangui, Ombella-M’poko",
+    "projet_actuel_id": null
+   },
+   {
+    "rang_tableau_2023": 57,
+    "titre": "Soutien à l’autonomisation des femmes, hommes, filles et garçons touchés par le conflit dans les sites IDP et accompagnement au retour",
+    "montage": "OXFAM / ECHO",
+    "budget_texte": "36.002.120 F CFA",
+    "duree": "6 mois (Juillet-déc 2016)",
+    "zone": "Bangui, Ombella-M’poko",
+    "projet_actuel_id": null
+   },
+   {
+    "rang_tableau_2023": 60,
+    "titre": "Appuyer les femmes, les hommes, les filles et les garcons en l’accès a l’eau potable et des services d’assainissement",
+    "montage": "OXFAM/ CHF-ECHO",
+    "budget_texte": "12 089 000 XAF",
+    "duree": "2 mois (Aout – Sept 2015)",
+    "zone": "Bangui, Ombella-M’poko",
+    "projet_actuel_id": null
+   }
+  ],
+  "relation_documentee_archives": true
+ },
+ {
+  "nom_affiche": "PAM",
+  "site_officiel": "https://fr.wfp.org/",
+  "affiche_sur_apsud_org": false,
+  "ordre_affichage_apsud": null,
+  "relation_documentee_sur_site": false,
+  "projets_lies": [],
+  "logo_source_apsud": null,
+  "logo_hd": {
+   "chemin": "assets/partenaires/hd/pam-wfp.svg",
+   "url_source": "https://commons.wikimedia.org/wiki/File:World_Food_Programme_Logo_Simple.svg",
+   "provenance": "Wikimedia Commons",
+   "format": "SVG",
+   "dimensions": "vectoriel",
+   "conforme_criteres_hd": true,
+   "variantes": [],
+   "note": "Emblème simple, version anglaise."
+  },
+  "couleur_principale_logo": "#007DBC",
+  "source_identification": "Archives de apsud.org (Wayback Machine) — absent du site actuel",
+  "ajoute_par": "contrôle qualité 2026-11-21",
+  "slug": "pam",
+  "sigle": "PAM",
+  "nom_officiel": "Programme alimentaire mondial (WFP)",
+  "type": "agence ONU",
+  "categorie": "bailleur",
+  "notes": "2 projets de coupons alimentaires via Oxfam (2016-2017).",
+  "projets_historiques": [
+   {
+    "rang_tableau_2023": 53,
+    "titre": "Réponse d’urgence aux besoins d’accès à la nourriture des personnes vulnérables en insécurité alimentaire dans la ville de Bangui",
+    "montage": "OXFAM / PAM",
+    "budget_texte": "12.060.000 F CFA + coupons",
+    "duree": "6 mois (Juil 2017 – Déc 2017)",
+    "zone": "Bangui, Ombella-M’poko",
+    "projet_actuel_id": null
+   },
+   {
+    "rang_tableau_2023": 54,
+    "titre": "Réponse d’urgence aux besoins d’accès à la nourriture des personnes vulnérables en insécurité alimentaire dans la ville de Bangui",
+    "montage": "OXFAM / PAM",
+    "budget_texte": "15.623.354 F CFA + coupons",
+    "duree": "7 mois (Oct-Déc 2016 et Fév-Mai 2017)",
+    "zone": "Bangui, Ombella-M’poko",
+    "projet_actuel_id": null
+   }
+  ],
+  "relation_documentee_archives": true
+ },
+ {
+  "nom_affiche": "AFD",
+  "site_officiel": "https://www.afd.fr/fr",
+  "affiche_sur_apsud_org": false,
+  "ordre_affichage_apsud": null,
+  "relation_documentee_sur_site": false,
+  "projets_lies": [],
+  "logo_source_apsud": null,
+  "logo_hd": {
+   "chemin": "assets/partenaires/hd/afd.svg",
+   "url_source": "https://commons.wikimedia.org/wiki/File:AFD_logo.svg",
+   "provenance": "Wikimedia Commons",
+   "format": "SVG",
+   "dimensions": "vectoriel",
+   "conforme_criteres_hd": true,
+   "variantes": [],
+   "note": "Vérifier la version courante de la charte AFD."
+  },
+  "couleur_principale_logo": null,
+  "source_identification": "Archives de apsud.org (Wayback Machine) — absent du site actuel",
+  "ajoute_par": "contrôle qualité 2026-11-21",
+  "slug": "afd",
+  "sigle": "AFD",
+  "nom_officiel": "Agence française de développement",
+  "type": "bailleur de fonds",
+  "categorie": "bailleur",
+  "notes": "Cité en 2023 parmi les bailleurs des projets menés avec Oxfam ; aucun projet précis dans le tableau.",
+  "projets_historiques": [],
+  "relation_documentee_archives": true
+ },
+ {
+  "nom_affiche": "Irish Aid",
+  "site_officiel": "https://www.irishaid.ie/",
+  "affiche_sur_apsud_org": false,
+  "ordre_affichage_apsud": null,
+  "relation_documentee_sur_site": false,
+  "projets_lies": [],
+  "logo_source_apsud": null,
+  "logo_hd": null,
+  "couleur_principale_logo": null,
+  "source_identification": "Archives de apsud.org (Wayback Machine) — absent du site actuel",
+  "ajoute_par": "contrôle qualité 2026-11-21",
+  "slug": "irish-aid",
+  "sigle": "Irish Aid",
+  "nom_officiel": "Irish Aid (coopération irlandaise)",
+  "type": "gouvernement",
+  "categorie": "bailleur",
+  "notes": "1 projet via Oxfam (2016). Logo non récupéré.",
+  "projets_historiques": [
+   {
+    "rang_tableau_2023": 58,
+    "titre": "Oxfam Bangui Livelihood and Protection Programme",
+    "montage": "OXFAM / IRISH AID",
+    "budget_texte": "10 261 700 F CFA",
+    "duree": "5 mois (Juillet-Déc 2016)",
+    "zone": "Bangui",
+    "projet_actuel_id": null
+   }
+  ],
+  "relation_documentee_archives": true
+ },
+ {
+  "nom_affiche": "DFATD / Affaires mondiales Canada",
+  "site_officiel": "https://www.international.gc.ca/",
+  "affiche_sur_apsud_org": false,
+  "ordre_affichage_apsud": null,
+  "relation_documentee_sur_site": false,
+  "projets_lies": [],
+  "logo_source_apsud": null,
+  "logo_hd": null,
+  "couleur_principale_logo": null,
+  "source_identification": "Archives de apsud.org (Wayback Machine) — absent du site actuel",
+  "ajoute_par": "contrôle qualité 2026-11-21",
+  "slug": "affaires-mondiales-canada",
+  "sigle": "DFATD / Affaires mondiales Canada",
+  "nom_officiel": "Affaires mondiales Canada (ex-MAECD / DFATD)",
+  "type": "gouvernement",
+  "categorie": "bailleur",
+  "notes": "1 projet DFATD via Oxfam (2015-2016) + « Fonds canadiens » via Oxfam (inondations Bangui 2022). Logo non récupéré.",
+  "projets_historiques": [
+   {
+    "rang_tableau_2023": 59,
+    "titre": "Projet d’assistance intégrée aux populations affectées par la crise en RCA dans les quartiers de Bangui,",
+    "montage": "OXFAM / DFATD",
+    "budget_texte": "15.805.600 F CFA",
+    "duree": "4 mois (Nov 2015 – Avril 2016)",
+    "zone": "Bangui, Ombella-M’poko",
+    "projet_actuel_id": null
+   }
+  ],
+  "relation_documentee_archives": true
+ },
+ {
+  "nom_affiche": "Inditex",
+  "site_officiel": "https://www.inditex.com/",
+  "affiche_sur_apsud_org": false,
+  "ordre_affichage_apsud": null,
+  "relation_documentee_sur_site": false,
+  "projets_lies": [],
+  "logo_source_apsud": null,
+  "logo_hd": null,
+  "couleur_principale_logo": null,
+  "source_identification": "Archives de apsud.org (Wayback Machine) — absent du site actuel",
+  "ajoute_par": "contrôle qualité 2026-11-21",
+  "slug": "inditex",
+  "sigle": "Inditex",
+  "nom_officiel": "Inditex (fondation / mécénat d’entreprise)",
+  "type": "entreprise",
+  "categorie": "bailleur",
+  "notes": "1 projet via Oxfam (Bégoua 2017-2018). Mécène privé : afficher son logo seulement avec l’accord d’APSUD.",
+  "projets_historiques": [
+   {
+    "rang_tableau_2023": 52,
+    "titre": "Réponse intégrée aux besoins immédiats en WASH, Protection et Genre des femmes, hommes, filles et garçons de la commune de Bégoua (périphérie de Bangui), affectés par la crise en République Centrafricaine.",
+    "montage": "OXFAM / INDITEX",
+    "budget_texte": "15.600.000 FCFA",
+    "duree": "6 Mois (Oct 2017 – Mars 2018)",
+    "zone": "Bangui, Ombella-M’poko",
+    "projet_actuel_id": null
+   }
+  ],
+  "relation_documentee_archives": true
+ },
+ {
+  "nom_affiche": "AECID",
+  "site_officiel": "https://www.aecid.es/",
+  "affiche_sur_apsud_org": false,
+  "ordre_affichage_apsud": null,
+  "relation_documentee_sur_site": false,
+  "projets_lies": [],
+  "logo_source_apsud": null,
+  "logo_hd": null,
+  "couleur_principale_logo": null,
+  "source_identification": "Archives de apsud.org (Wayback Machine) — absent du site actuel",
+  "ajoute_par": "contrôle qualité 2026-11-21",
+  "slug": "aecid",
+  "sigle": "AECID",
+  "nom_officiel": "Agence espagnole de coopération internationale pour le développement",
+  "type": "gouvernement",
+  "categorie": "bailleur",
+  "notes": "Cité avec ECHO sur le projet choléra 2016-2017 (site 2018). Logo non récupéré.",
+  "projets_historiques": [
+   {
+    "rang_tableau_2023": 55,
+    "titre": "Rétablir la dignité des femmes, des hommes, des filles et des garçons affectés par la flambée d’épidémie de choléra en République Centrafricaine",
+    "montage": "Union européenne (ECHO) - AECID / Oxfam (site 2018)",
+    "duree": "Août 2016 – février 2017",
+    "zone": "Bangui, Bimbo",
+    "projet_actuel_id": null
+   }
+  ],
+  "relation_documentee_archives": true
+ },
+ {
+  "nom_affiche": "UNTFHS",
+  "site_officiel": "https://www.un.org/humansecurity/",
+  "affiche_sur_apsud_org": false,
+  "ordre_affichage_apsud": null,
+  "relation_documentee_sur_site": false,
+  "projets_lies": [],
+  "logo_source_apsud": null,
+  "logo_hd": null,
+  "couleur_principale_logo": null,
+  "source_identification": "Archives de apsud.org (Wayback Machine) — absent du site actuel",
+  "ajoute_par": "contrôle qualité 2026-11-21",
+  "slug": "undp-securite-humaine",
+  "sigle": "UNTFHS",
+  "nom_officiel": "Fonds des Nations unies pour la sécurité humaine (déduit de « PNUD / Sécurité Humaine »)",
+  "type": "bailleur de fonds",
+  "categorie": "bailleur",
+  "notes": "Libellé « PNUD / Sécurité Humaine » dans le tableau 2023 (2 projets 2018-2019) : identification déduite, à confirmer.",
+  "projets_historiques": [
+   {
+    "rang_tableau_2023": 4,
+    "titre": "Projet de renforcement de la résilience et d’appui à la Réduction des Vulnérabilités des personnes affectées par les conflits dans la Ouaka et environs (Bambari et Maloum)",
+    "montage": "PNUD / Sécurité Humaine",
+    "budget_texte": "100 000 USD",
+    "duree": "mai – sept 2019",
+    "zone": "Ouaka",
+    "projet_actuel_id": null
+   },
+   {
+    "rang_tableau_2023": 8,
+    "titre": "Projet Renforcement des activités génératrices de revenus (AGR) des associations locales à Bambari (sécurité humaine)",
+    "montage": "PNUD / Sécurité Humaine",
+    "budget_texte": "29.143.660 XAF",
+    "duree": "15 aout 2018 au 14 février 2019 (6 mois)",
+    "zone": "Bangui, Ombella-M’poko",
+    "projet_actuel_id": null
+   }
+  ],
+  "relation_documentee_archives": true
+ }
+]

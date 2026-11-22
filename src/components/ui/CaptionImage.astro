@@ -1,0 +1,85 @@
+---
+/**
+ * Image + légende-cartouche (signature Prosper : `.c-caption-image--hero`).
+ * DESIGN.md §4.8 ; PROSPER_VISUEL §5.7 ; PROSPER_TOKENS §13.
+ *
+ *  - Mobile (figure < 40 rem) : la légende passe sous la photo, pleine largeur, sur aplat Pousse.
+ *  - Large : le cartouche Pousse (24 rem) est posé sur le bas de la photo, calé contre le
+ *    milieu de l'image, avec un carré teinté de 5 rem décalé derrière lui, côté extérieur.
+ *    `position` choisit la moitié (left = moitié gauche, comme Prosper ; right = miroir).
+ *    `overlap="straddle"` fait déborder le cartouche sous la photo (« à cheval »).
+ *
+ * Structure : <div> (conteneur de requête) > <figure> (grille) > <picture> + <figcaption>.
+ * L'`alt` décrit l'image ; la légende raconte (Prénom, rôle, action, lieu) : l'un ne remplace pas l'autre.
+ */
+import { Picture } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import { getImage } from '../../lib/images';
+import './CaptionImage.css';
+
+type Ratio = '16/9' | '4/3' | '1/1';
+
+interface Props {
+  /** Chemin `assets/...` (résolu par src/lib/images.ts) ou image importée. */
+  src: string | ImageMetadata;
+  alt: string;
+  caption: string;
+  /** Crédit facultatif, affiché après la légende (« © APSUD »). */
+  credit?: string;
+  ratio?: Ratio;
+  position?: 'left' | 'right';
+  overlap?: 'inside' | 'straddle';
+  sizes?: string;
+  loading?: 'lazy' | 'eager';
+  class?: string;
+}
+
+const {
+  src,
+  alt,
+  caption,
+  credit,
+  ratio = '16/9',
+  position = 'left',
+  overlap = 'inside',
+  sizes = '(min-width: 100em) 100rem, 100vw',
+  loading = 'lazy',
+  class: className,
+} = Astro.props;
+
+const image = typeof src === 'string' ? getImage(src) : src;
+const candidates = [480, 768, 1024, 1440, 1920];
+const widths = candidates.filter((w) => w <= image.width);
+if (widths.length === 0 || widths[widths.length - 1] < image.width) widths.push(Math.min(image.width, 2400));
+const ratioClass = `c-caption-image--r${ratio.replace('/', '-')}`;
+---
+
+<div
+  class:list={[
+    'c-caption-image',
+    `c-caption-image--${position}`,
+    ratioClass,
+    { 'c-caption-image--straddle': overlap === 'straddle' },
+    className,
+  ]}
+>
+  <figure class="c-caption-image__frame">
+    <Picture
+      src={image}
+      alt={alt}
+      formats={['avif', 'webp']}
+      widths={widths}
+      sizes={sizes}
+      loading={loading}
+      decoding="async"
+      class="c-caption-image__img"
+      pictureAttributes={{ class: 'c-caption-image__media' }}
+    />
+    <figcaption class="c-caption-image__caption">
+      <span class="c-caption-image__text">
+        {caption}
+        {credit && <span class="c-caption-image__credit">{credit}</span>}
+      </span>
+    </figcaption>
+  </figure>
+</div>

@@ -1,0 +1,88 @@
+/* Logo — DESIGN.md §1.8 ; PROSPER_TOKENS §11 (logo horizontal + mention secondaire) */
+@layer components {
+  .c-logo {
+    /* Recadrage du JPEG source (85 × 102) : on ne garde que le symbole (80 × 75 en haut à gauche). */
+    --_src-w: 85;
+    --_crop-w: 80;
+    --_crop-h: 75;
+    --_mark-h: var(--logo-mark-h);
+    --_word-fs: var(--fs-logo-word);
+    --_word-color: var(--color-brand);
+
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    min-block-size: var(--tap-min);
+    color: var(--color-text);
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .c-logo__mark {
+    flex: none;
+    block-size: var(--_mark-h);
+    aspect-ratio: var(--_crop-w) / var(--_crop-h);
+    overflow: hidden;
+  }
+  .c-logo__img {
+    inline-size: calc(100% * var(--_src-w) / var(--_crop-w));
+    max-inline-size: none;
+    block-size: auto;
+    mix-blend-mode: multiply;   /* le fond blanc du JPEG disparaît sur fond clair */
+  }
+
+  .c-logo__word {
+    color: var(--_word-color);
+    font-family: var(--font-condensed);
+    font-stretch: var(--font-stretch-condensed);
+    font-size: var(--_word-fs);
+    font-weight: var(--fw-heavy);
+    line-height: var(--lh-tight);
+    letter-spacing: var(--ls-condensed);
+    /* compense l'approche du « A » pour que le mot paraisse collé au symbole comme chez Prosper */
+    margin-inline-start: calc(-1 * var(--space-1));
+  }
+
+  .c-logo__mention {
+    display: grid;
+    margin-inline-start: var(--space-2);
+    max-inline-size: var(--logo-mention-w);
+    color: var(--color-text-muted);
+    font-family: var(--font-text);
+    font-stretch: var(--font-stretch-text);
+    font-size: var(--fs-logo-mention);
+    font-weight: var(--fw-medium);
+    line-height: var(--lh-snug);
+  }
+  .c-logo__mention-line { white-space: nowrap; }
+
+  .c-logo:focus-visible {
+    outline: var(--focus-width) solid var(--color-focus);
+    outline-offset: var(--focus-offset);
+  }
+
+  /* Pied de page : plus grand, mot en encre (le vert sur Pousse manque de contraste) */
+  .c-logo--footer {
+    --_mark-h: var(--logo-mark-h-lg);
+    --_word-fs: var(--fs-logo-word-lg);
+    --_word-color: var(--color-heading);
+    gap: var(--space-3);
+  }
+  .c-logo--footer {
+    flex-wrap: wrap;           /* sur écran étroit, le nom complet passe sous le symbole */
+    row-gap: var(--space-2);
+  }
+  .c-logo--footer .c-logo__mention {
+    color: var(--color-text);
+    font-size: var(--fs-caption);
+    max-inline-size: none;
+  }
+
+  /* Header : le nom complet disparaît sous 400 px (DESIGN.md §1.8) */
+  @media (width < 25em) {
+    .c-logo--header .c-logo__mention { display: none; }
+  }
+
+  /* Mobile : symbole + sigle seulement */
+  .c-logo--compact { gap: var(--space-2); }
+}

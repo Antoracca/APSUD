@@ -1,0 +1,9 @@
+/* Qui sommes-nous — chiffres clés : style du manifeste de l'accueil (HomeManifesto.css),
+   seul l'espacement change (la phrase est plus courte que la mission de l'accueil). */
+@layer components {
+  @media (width >= 48em) {
+    .c-ong-figures .c-stats__statement {
+      max-inline-size: calc(var(--container) + 2 * var(--space-30));
+    }
+  }
+}

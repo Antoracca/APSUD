@@ -1,0 +1,1433 @@
+{
+ "genere_le": "2026-11-21",
+ "genere_par": "contrôle qualité (agent apsud-controle)",
+ "statut": "DONNÉES HISTORIQUES — publiées sur d’anciennes versions de apsud.org (2018-2024, archivées par la Wayback Machine), absentes du site actuel. À faire valider par APSUD avant toute publication.",
+ "sources": {
+  "tableau_60_projets": "https://web.archive.org/web/20230606120825/https://apsud.org/projet-en-cours/",
+  "activites_2016_2017": "https://web.archive.org/web/20180903073858/http://apsud.org/ACTIVITES/",
+  "liste_projets_2023": "https://web.archive.org/web/20230606130634/https://apsud.org/projet-realises/"
+ },
+ "synthese_publiee_2023": {
+  "texte": "De 2016 à février 2023, APSUD a réalisé plus de 60 projets avec plusieurs bailleurs et partenaires.",
+  "contrats_par_partenaire": [
+   {
+    "partenaire": "Oxfam",
+    "contrats": 17
+   },
+   {
+    "partenaire": "PNUD",
+    "contrats": 11
+   },
+   {
+    "partenaire": "Fonds humanitaire (FH RCA)",
+    "contrats": 10
+   },
+   {
+    "partenaire": "UNOPS",
+    "contrats": 9
+   },
+   {
+    "partenaire": "FAO",
+    "contrats": 3
+   },
+   {
+    "partenaire": "UNFPA",
+    "contrats": 2
+   },
+   {
+    "partenaire": "OIM",
+    "contrats": 2
+   },
+   {
+    "partenaire": "NRC",
+    "contrats": 2,
+    "note": "projets Fonds humanitaire 2022"
+   },
+   {
+    "partenaire": "UNICEF",
+    "contrats": 1
+   },
+   {
+    "partenaire": "ACF",
+    "contrats": 1
+   },
+   {
+    "partenaire": "ACTED",
+    "contrats": 1
+   },
+   {
+    "partenaire": "DRC",
+    "contrats": 1
+   }
+  ],
+  "bailleurs_via_oxfam": [
+   "Union européenne (ECHO / Fonds Bêkou)",
+   "OFDA (USAID)",
+   "Sida (ASDI)",
+   "AFD",
+   "PAM",
+   "DFATD (Canada)",
+   "Irish Aid",
+   "Inditex",
+   "ONU Femmes",
+   "MINUSCA"
+  ],
+  "note": "Seul chiffre d’activité publié par APSUD elle-même (2023). Réutilisable comme chiffre clé après mise à jour par APSUD (ex. « plus de 70 projets depuis 2015 »)."
+ },
+ "nb_projets": 60,
+ "stats_deduites": {
+  "periode": "2015-2023",
+  "nb_par_devise": {
+   "USD": 20,
+   "EUR": 2,
+   "XAF": 38
+  },
+  "total_usd_lignes_en_usd": 4210080,
+  "note": "Totaux indicatifs : formats de montants hétérogènes (points, virgules, espaces) — recalcul à valider."
+ },
+ "projets": [
+  {
+   "rang_tableau_2023": 1,
+   "titre": "Projet conjoint PNUD/UNICEF d’appui aux solutions durables pour les personnes déplacées ou retournées et leurs communautés d’accueil ainsi que pour les enfants libérés des groupes armés dans les sous-préfectures de Paoua et de Alindao",
+   "budget_texte": "600 000 USD",
+   "devise": "USD",
+   "bailleur_partenaire_texte": "PNUD /Solutions Durables",
+   "bailleurs_partenaires": [
+    "PNUD"
+   ],
+   "duree_texte": "10 mois (oct 2021 – 31 oct 2022)",
+   "annee_debut": 2021,
+   "annee_fin": 2022,
+   "zone_texte": "Lim Pendé (Paoua)",
+   "domaines_deduits": [],
+   "correspond_projet_actuel_id": null
+  },
+  {
+   "rang_tableau_2023": 2,
+   "titre": "Appui à la résilience et au redressement socio-économique des communautés affectées par la pandémie de la COVID-19",
+   "budget_texte": "665 718 USD",
+   "devise": "USD",
+   "bailleur_partenaire_texte": "PNUD / Gouvernement du Japon",
+   "bailleurs_partenaires": [
+    "PNUD",
+    "Japon"
+   ],
+   "duree_texte": "Juin 2021- 31 Mars 2022",
+   "annee_debut": 2021,
+   "annee_fin": 2022,
+   "zone_texte": "3èm arrondissement (Bangui)",
+   "domaines_deduits": [
+    "Sécurité alimentaire et moyens de subsistance",
+    "Santé publique"
+   ],
+   "correspond_projet_actuel_id": 5,
+   "ecarts_avec_site_actuel": "Site actuel : 2021-07-01 → 2022-03-31 ; tableau 2023 : juin 2021 → 31 mars 2022 ; page WordPress 2023 : « 9 mois du 1er juillet 2021 » ; ancienne fiche /detail-projet/3 (2024) : 2021-06-01."
+  },
+  {
+   "rang_tableau_2023": 3,
+   "titre": "Appui au renforcement de capacités des groupements d’AGR des jeunes de Bangui",
+   "budget_texte": "200 000 USD",
+   "devise": "USD",
+   "bailleur_partenaire_texte": "PNUD / Projet Conjoint Jeunes",
+   "bailleurs_partenaires": [
+    "PNUD"
+   ],
+   "duree_texte": "Octo– Déc2020",
+   "annee_debut": 2020,
+   "annee_fin": 2020,
+   "zone_texte": "Bangui",
+   "domaines_deduits": [
+    "Sécurité alimentaire et moyens de subsistance"
+   ],
+   "correspond_projet_actuel_id": null
+  },
+  {
+   "rang_tableau_2023": 4,
+   "titre": "Projet de renforcement de la résilience et d’appui à la Réduction des Vulnérabilités des personnes affectées par les conflits dans la Ouaka et environs (Bambari et Maloum)",
+   "budget_texte": "100 000 USD",
+   "devise": "USD",
+   "bailleur_partenaire_texte": "PNUD / Sécurité Humaine",
+   "bailleurs_partenaires": [
+    "PNUD",
+    "Fonds des Nations unies pour la sécurité humaine (probable)"
+   ],
+   "duree_texte": "mai – sept 2019",
+   "annee_debut": 2019,
+   "annee_fin": 2019,
+   "zone_texte": "Ouaka",
+   "domaines_deduits": [
+    "Sécurité alimentaire et moyens de subsistance"
+   ],
+   "correspond_projet_actuel_id": null
+  },
+  {
+   "rang_tableau_2023": 5,
+   "titre": "Projet d’Assistance rapide pour la consolidation de la paix et la stabilisation sociale dans les communautés affectées par le conflit dans la préfecture de Mambéré-Kadéi vague 2»",
+   "budget_texte": "105.649.850 XAF dont 51.900.000 XAF frais de gestion",
+   "devise": "XAF",
+   "bailleur_partenaire_texte": "PNUD / Gouvernement du Japon",
+   "bailleurs_partenaires": [
+    "PNUD",
+    "Japon"
+   ],
+   "duree_texte": "5Mai 2019- 31 Septembre 2019",
+   "annee_debut": 2019,
+   "annee_fin": 2019,
+   "zone_texte": "Ouaka",
+   "domaines_deduits": [
+    "Protection / cohésion sociale"
+   ],
+   "correspond_projet_actuel_id": null
+  },
+  {
+   "rang_tableau_2023": 6,
+   "titre": "Projet d’Assistance rapide pour la consolidation de la paix et la stabilisation sociale dans les communautés affectées par le conflit dans la préfecture de l’Ouham »",
+   "budget_texte": "149.841.600 XAF dont 81.855.000 dédié aux THIMO",
+   "devise": "XAF",
+   "bailleur_partenaire_texte": "PNUD / Gouvernement du Japon",
+   "bailleurs_partenaires": [
+    "PNUD",
+    "Japon"
+   ],
+   "duree_texte": "03 aout 2018 – 28 février 2019 (7 mois)",
+   "annee_debut": 2018,
+   "annee_fin": 2019,
+   "zone_texte": "Mambéré-kadéi",
+   "domaines_deduits": [
+    "Protection / cohésion sociale"
+   ],
+   "correspond_projet_actuel_id": null
+  },
+  {
+   "rang_tableau_2023": 7,
+   "titre": "Projet d’Assistance rapide pour la consolidation de la paix et la stabilisation sociale dans les communautés affectées par le conflit dans la Préfecture de la Mambéré-",
+   "budget_texte": "189.693.855 XAF soit 114.597.000 XAF pour THIMO",
+   "devise": "XAF",
+   "bailleur_partenaire_texte": "PNUD / Gouvernement du Japon",
+   "bailleurs_partenaires": [
+    "PNUD",
+    "Japon"
+   ],
+   "duree_texte": "01 juillet 2018 au 28 février 2019 (8 mois)",
+   "annee_debut": 2018,
+   "annee_fin": 2019,
+   "zone_texte": "Mambéré-kadéi",
+   "domaines_deduits": [
+    "Protection / cohésion sociale"
+   ],
+   "correspond_projet_actuel_id": null
+  },
+  {
+   "rang_tableau_2023": 8,
+   "titre": "Projet Renforcement des activités génératrices de revenus (AGR) des associations locales à Bambari (sécurité humaine)",
+   "budget_texte": "29.143.660 XAF",
+   "devise": "XAF",
+   "bailleur_partenaire_texte": "PNUD / Sécurité Humaine",
+   "bailleurs_partenaires": [
+    "PNUD",
+    "Fonds des Nations unies pour la sécurité humaine (probable)"
+   ],
+   "duree_texte": "15 aout 2018 au 14 février 2019 (6 mois)",
+   "annee_debut": 2018,
+   "annee_fin": 2019,
+   "zone_texte": "Bangui, Ombella-M’poko",
+   "domaines_deduits": [
+    "Sécurité alimentaire et moyens de subsistance"
+   ],
+   "correspond_projet_actuel_id": null
+  },
+  {
+   "rang_tableau_2023": 9,
+   "titre": "Appui à la stabilisation, à la reprise socio-économique et à la prévention de la radicalisation des populations vulnérables grâce à un meilleur accès à l’emploi et aux services sociaux dans les zones affectées par les conflits en Centrafrique",
+   "budget_texte": "115.337.600 F CFA",
+   "devise": "XAF",
+   "bailleur_partenaire_texte": "PNUD / Gouv du Japon",
+   "bailleurs_partenaires": [
+    "PNUD",
+    "Japon"
+   ],
+   "duree_texte": "9 mois (sept 2017 – mai 2018)",
+   "annee_debut": 2017,
+   "annee_fin": 2018,
+   "zone_texte": "Bangui, Ombella-M’poko",
+   "domaines_deduits": [
+    "Sécurité alimentaire et moyens de subsistance",
+    "Protection / cohésion sociale"
+   ],
+   "correspond_projet_actuel_id": null
+  },
+  {
+   "rang_tableau_2023": 10,
+   "titre": "Renforcement de la cohésion sociale et réintégration socio-économique des personnes a risque",
+   "budget_texte": "50 000 USD",
+   "devise": "USD",
+   "bailleur_partenaire_texte": "PNUD",
+   "bailleurs_partenaires": [
+    "PNUD"
+   ],
+   "duree_texte": "3 Mois (Oct-Déc 2017)",
+   "annee_debut": 2017,
+   "annee_fin": 2017,
+   "zone_texte": "Bangui, Ombella-M’poko",
+   "domaines_deduits": [
+    "Sécurité alimentaire et moyens de subsistance",
+    "Protection / cohésion sociale"
+   ],
+   "correspond_projet_actuel_id": null
+  },
+  {
+   "rang_tableau_2023": 11,
+   "titre": "Projet d’appui à la réduction des vulnérabilités des femmes victimes de violences lies aux conflits en RCA (PARVF)",
+   "budget_texte": "29 922 300F XAF",
+   "devise": "XAF",
+   "bailleur_partenaire_texte": "PNUD",
+   "bailleurs_partenaires": [
+    "PNUD"
+   ],
+   "duree_texte": "6 mois (Nov 2015 à Mai 2016)",
+   "annee_debut": 2015,
+   "annee_fin": 2016,
+   "zone_texte": "Bangui, Ombella-M’poko",
+   "domaines_deduits": [
+    "Protection / cohésion sociale"
+   ],
+   "correspond_projet_actuel_id": null,
+   "detail_site_2018": {
+    "titre": "D’APPUI A LA REDUCTION DES VULNERABILITES DES FEMMES VICTIMES DE VIOLENCES LIES AUX CONFLITS EN RCA (PARVF)",
+    "activites": [
+     "Cash for work pour 300 femmes victimes de violences",
+     "Prise en charge médicale pour 300 femmes",
+     "Prise en charge juridique pour 120 femmes",
+     "Activités génératrices de revenu pour 300 femmes et 15 groupements",
+     "Prise en charge psychosociale de 2000 femmes affectées par la crise",
+     "Don des ordinateurs, groupes électrogène, fournitures de bureau et des meubles à trois centres sociaux de Bimbo, Bégoua et du 5 ème arrondissement de Bangui."
+    ],
+    "zone": "Bangui, Bégoua et Bimbo",
+    "bailleur": "PNUD Centrafrique",
+    "partenaire": null,
+    "periode": "Novembre 2015 – Mai 2016",
+    "source": "https://web.archive.org/web/20180903073858/http://apsud.org/ACTIVITES/"
+   }
+  },
+  {
+   "rang_tableau_2023": 12,
+   "titre": "Réponse d’urgence en eau, hygiène et assainissement en faveur des personnes les plus vulnérables affectées par les crises à Boguila et ses environs dans la préfecture de l’Ouham",
+   "budget_texte": "430 000 USD",
+   "devise": "USD",
+   "bailleur_partenaire_texte": "FH (CHF)",
+   "bailleurs_partenaires": [
+    "FH RCA"
+   ],
+   "duree_texte": "9 mois (1 er juil 2021 – 31 mars 2022)",
+   "annee_debut": 2021,
+   "annee_fin": 2022,
+   "zone_texte": "Ouham (Nanga Boguila)",
+   "domaines_deduits": [
+    "WASH"
+   ],
+   "correspond_projet_actuel_id": 14,
+   "ecarts_avec_site_actuel": "Budget confirmé à 430 000 USD (le « 250,000 USD » saisi dans le champ Bailleur du site actuel est une erreur de saisie)."
+  },
+  {
+   "rang_tableau_2023": 13,
+   "titre": "Projet d’urgence en hygiène et assainissement à Bangui et Bambari en faveur des personnes les plus vulnérables pour répondre aux besoins humanitaires les plus critiques et freiner la propagation du COVID 19.",
+   "budget_texte": "100.000 USD",
+   "devise": "USD",
+   "bailleur_partenaire_texte": "FH (CHF)",
+   "bailleurs_partenaires": [
+    "FH RCA"
+   ],
+   "duree_texte": "6 mois (Août 2020 – Janvier 2021)",
+   "annee_debut": 2020,
+   "annee_fin": 2021,
+   "zone_texte": "Ouaka, Ombella-M’Poko, Ouham",
+   "domaines_deduits": [
+    "WASH"
+   ],
+   "correspond_projet_actuel_id": 11,
+   "ecarts_avec_site_actuel": "Bailleur confirmé : FH (CHF). Le code « COVID JAPON » du site actuel ne correspond à aucun financement japonais dans le tableau 2023."
+  },
+  {
+   "rang_tableau_2023": 14,
+   "titre": "Réponse urgente en Eau, Hygiène et Assainissement pour sauver des vies et lutter contre la propagation du COVID 19 dans les sites des personnes déplacés internes de Bambari; de Batangafo et dans la ville de Bimbo",
+   "budget_texte": "300.000 USD",
+   "devise": "USD",
+   "bailleur_partenaire_texte": "FH (CHF)",
+   "bailleurs_partenaires": [
+    "FH RCA"
+   ],
+   "duree_texte": "6 mois (Mai – Octobre 2020)",
+   "annee_debut": 2020,
+   "annee_fin": 2020,
+   "zone_texte": "Ouaka, Ombella-M’Poko, Ouham",
+   "domaines_deduits": [
+    "WASH"
+   ],
+   "correspond_projet_actuel_id": 10,
+   "detail_site_2021": {
+    "bailleur": "Fonds humanitaire RCA",
+    "code": "APSUD 15898",
+    "duree": "6 mois à compter du 1er mai 2020",
+    "zone": "Bangui, Bimbo, Bambari et Batangafo",
+    "note": "Correspond au projet actuel id 10 (code CAR-20/HCF10/RA2/WaSH/NGO/15898).",
+    "source": "https://web.archive.org/web/20221005224512/http://apsud.org/fh.html"
+   }
+  },
+  {
+   "rang_tableau_2023": 15,
+   "titre": "Projet d’urgence d’assainissement des sites des personnes déplacées internes de Bambari et Batangafo",
+   "budget_texte": "200.000 USD",
+   "devise": "USD",
+   "bailleur_partenaire_texte": "FH (CHF)",
+   "bailleurs_partenaires": [
+    "FH RCA"
+   ],
+   "duree_texte": "6 mois (déc 2019 – mai 2020)",
+   "annee_debut": 2019,
+   "annee_fin": 2020,
+   "zone_texte": "Ouaka et Ouham",
+   "domaines_deduits": [
+    "WASH"
+   ],
+   "correspond_projet_actuel_id": 9
+  },
+  {
+   "rang_tableau_2023": 16,
+   "titre": "Réponse aux besoins urgents des personnes touchées par les conflits à Bambari et Ippy en moyens de subsistance à travers la création d’emploi temporaire et renforcement de la cohésion sociale (APSUD 12743)",
+   "budget_texte": "250.000 USD",
+   "devise": "USD",
+   "bailleur_partenaire_texte": "FH (CHF)",
+   "bailleurs_partenaires": [
+    "FH RCA"
+   ],
+   "duree_texte": "01 juin – 30 novembre 2019",
+   "annee_debut": 2019,
+   "annee_fin": 2019,
+   "zone_texte": "Ouaka (Bambari – Ippy)",
+   "domaines_deduits": [
+    "Sécurité alimentaire et moyens de subsistance",
+    "Protection / cohésion sociale"
+   ],
+   "correspond_projet_actuel_id": 8,
+   "ecarts_avec_site_actuel": "Dates : site actuel 2019-07-01 → 2019-11-30 ; tableau 2023 et page WordPress 2023 : 1er juin → 30 nov. 2019."
+  },
+  {
+   "rang_tableau_2023": 17,
+   "titre": "Réponse d’urgence en eau, hygiène et assainissement en faveur des personnes les plus vulnérables affectées par les crises et forcées à quitter les sites des déplacés internes et à vivre dans les quartiers de retour d’Ippy (APSUD 12678)",
+   "budget_texte": "121.000 USD",
+   "devise": "USD",
+   "bailleur_partenaire_texte": "FH (CHF)",
+   "bailleurs_partenaires": [
+    "FH RCA"
+   ],
+   "duree_texte": "15 mai – 14 novembre 2019",
+   "annee_debut": 2019,
+   "annee_fin": 2019,
+   "zone_texte": "Ouaka (Ippy)",
+   "domaines_deduits": [
+    "WASH"
+   ],
+   "correspond_projet_actuel_id": 7
+  },
+  {
+   "rang_tableau_2023": 18,
+   "titre": "Accès urgent à des opportunités économiques et des moyens de subsistance aux personnes touchées par la crise pour la stabilisation des communautés affectées par le conflit à Maloum.",
+   "budget_texte": "250.000 USD",
+   "devise": "USD",
+   "bailleur_partenaire_texte": "FH (CHF)",
+   "bailleurs_partenaires": [
+    "FH RCA"
+   ],
+   "duree_texte": "01 nov 2018 – 30 Avril 2019",
+   "annee_debut": 2018,
+   "annee_fin": 2019,
+   "zone_texte": "Ouaka (Maloum)",
+   "domaines_deduits": [
+    "Sécurité alimentaire et moyens de subsistance",
+    "Protection / cohésion sociale"
+   ],
+   "correspond_projet_actuel_id": 13,
+   "ecarts_avec_site_actuel": "Dates : site actuel 2018-12-01 → 2019-07-31 ; tableau 2023 : 1er nov. 2018 → 30 avril 2019."
+  },
+  {
+   "rang_tableau_2023": 19,
+   "titre": "Accès urgent, rapide et efficace aux services de base en termes d’eau, assainissement et promotion à l’hygiène pour les hommes, femmes, filles et garçons affectés par la crise dans la ville d’Ippy",
+   "budget_texte": "200.000 USD",
+   "devise": "USD",
+   "bailleur_partenaire_texte": "FH (CHF)",
+   "bailleurs_partenaires": [
+    "FH RCA"
+   ],
+   "duree_texte": "01 nov 2018 – 30 juil 2019",
+   "annee_debut": 2018,
+   "annee_fin": 2019,
+   "zone_texte": "Ouaka (Ippy)",
+   "domaines_deduits": [
+    "WASH"
+   ],
+   "correspond_projet_actuel_id": 6,
+   "ecarts_avec_site_actuel": "Dates : site actuel 2018-11-01 → 2019-03-30 ; tableau 2023 : 1er nov. 2018 → 30 juil. 2019 ; page WordPress 2023 : 01/11/2018 → 30/04/2019."
+  },
+  {
+   "rang_tableau_2023": 20,
+   "titre": "Amélioration des conditions d’accès à l’eau, l’assainissement et l’hygiène des personnes déplacés internes des 4 sites des déplacés de Maloum ainsi que des familles hotes et des résidents, touchés par les dernières crises de mars 2018.",
+   "budget_texte": "147.800.000 XAF",
+   "devise": "XAF",
+   "bailleur_partenaire_texte": "FH (CHF)",
+   "bailleurs_partenaires": [
+    "FH RCA"
+   ],
+   "duree_texte": "20 juin 2018 au 19 février 2019 (8 mois)",
+   "annee_debut": 2018,
+   "annee_fin": 2019,
+   "zone_texte": "Ouaka",
+   "domaines_deduits": [
+    "WASH"
+   ],
+   "correspond_projet_actuel_id": null
+  },
+  {
+   "rang_tableau_2023": 21,
+   "titre": "Accès urgent aux services de base en termes d’eau, assainissement et promotion à l’hygiène pour les hommes, femmes, filles et garçons affectés par la crise dans le village Maloum, commune d’Ouro djafoun dans la Ouaka",
+   "budget_texte": "50.000 USD",
+   "devise": "USD",
+   "bailleur_partenaire_texte": "FH (CHF)",
+   "bailleurs_partenaires": [
+    "FH RCA"
+   ],
+   "duree_texte": "6 mois (Oct 2017 – Mars 2018)",
+   "annee_debut": 2017,
+   "annee_fin": 2018,
+   "zone_texte": "Ouaka",
+   "domaines_deduits": [
+    "WASH"
+   ],
+   "correspond_projet_actuel_id": null
+  },
+  {
+   "rang_tableau_2023": 22,
+   "titre": "Accès en Eau potable, Assainissement et promotion de bonnes pratiques d’hygiène dans les FOSAs de la sous-préfecture d’Ippy et ses environs y compris les axes",
+   "budget_texte": "240 531 USD",
+   "devise": "USD",
+   "bailleur_partenaire_texte": "UNICEF/CERF",
+   "bailleurs_partenaires": [
+    "UNICEF",
+    "CERF"
+   ],
+   "duree_texte": "6 mois",
+   "annee_debut": null,
+   "annee_fin": null,
+   "zone_texte": "Ouaka (Yppi)",
+   "domaines_deduits": [
+    "WASH"
+   ],
+   "correspond_projet_actuel_id": null
+  },
+  {
+   "rang_tableau_2023": 23,
+   "titre": "Communication et sensibilisation pour la cohésion sociale",
+   "budget_texte": "49 213 591",
+   "devise": "XAF (probable)",
+   "bailleur_partenaire_texte": "UNFPA/PBF",
+   "bailleurs_partenaires": [
+    "UNFPA",
+    "PBF"
+   ],
+   "duree_texte": "4 mois (Mars-Juin 2021)",
+   "annee_debut": 2021,
+   "annee_fin": 2021,
+   "zone_texte": "Bangassou, Bangui, Paoua, Bambari, Mbaiki",
+   "domaines_deduits": [
+    "Protection / cohésion sociale"
+   ],
+   "correspond_projet_actuel_id": null,
+   "note": "Budget sans devise dans la source (49 213 591, probablement XAF)."
+  },
+  {
+   "rang_tableau_2023": 24,
+   "titre": "Communication et sensibilisation pour la cohésion sociale",
+   "budget_texte": "78 614,51 USD",
+   "devise": "USD",
+   "bailleur_partenaire_texte": "UNFPA/PBF",
+   "bailleurs_partenaires": [
+    "UNFPA",
+    "PBF"
+   ],
+   "duree_texte": "6 mois (Juillet-Décembre) 2020",
+   "annee_debut": 2020,
+   "annee_fin": 2020,
+   "zone_texte": "Bangassou, Bangui, Paoua, Bambari",
+   "domaines_deduits": [
+    "Protection / cohésion sociale"
+   ],
+   "correspond_projet_actuel_id": null,
+   "detail_site_2021": {
+    "bailleur": "Fonds du Secrétaire général pour la consolidation de la paix (PBF), via UNFPA",
+    "duree": "3 mois à compter du 1er octobre (2020, déduit)",
+    "zone": "Bangui, Bégoua, Bimbo (Ombella-M’Poko), Bambari (Ouaka), Bangassou (Mbomou), Paoua (Ouham-Pendé)",
+    "activites": [
+     "3 sessions de formation de 4 jours pour 180 leaders d’organisations de femmes et de jeunes de Bambari, Bangassou et Paoua sur le suivi citoyen de l’action publique, dont le suivi de l’accord de paix",
+     "Appui à la vulgarisation de l’accord de paix par les leaders formés et les membres des Comités de mise en œuvre préfectoraux (CMOP)",
+     "Causeries éducatives"
+    ],
+    "note": "Rattachement à la ligne 24 (ou 23) probable, à confirmer.",
+    "source": "https://web.archive.org/web/20221005204332/http://apsud.org/unf.html"
+   }
+  },
+  {
+   "rang_tableau_2023": 25,
+   "titre": "Reduction de violence communautaire 9ème vague",
+   "budget_texte": "8.253.000 XAF",
+   "devise": "XAF",
+   "bailleur_partenaire_texte": "UNOPS/ MINUSCA",
+   "bailleurs_partenaires": [
+    "UNOPS",
+    "MINUSCA"
+   ],
+   "duree_texte": "Avril 2022 – Juillet 2022",
+   "annee_debut": 2022,
+   "annee_fin": 2022,
+   "zone_texte": "Bangui et Ombella mpoko",
+   "domaines_deduits": [
+    "Protection / cohésion sociale"
+   ],
+   "correspond_projet_actuel_id": null
+  },
+  {
+   "rang_tableau_2023": 26,
+   "titre": "Reduction de violence communautaire 9ème vague",
+   "budget_texte": "24 .750.000 XAF",
+   "devise": "XAF",
+   "bailleur_partenaire_texte": "UNOPS/ MINUSCA",
+   "bailleurs_partenaires": [
+    "UNOPS",
+    "MINUSCA"
+   ],
+   "duree_texte": "Avril 2021 – Juillet 2022",
+   "annee_debut": 2021,
+   "annee_fin": 2022,
+   "zone_texte": "Bangui et Ombella mpoko",
+   "domaines_deduits": [
+    "Protection / cohésion sociale"
+   ],
+   "correspond_projet_actuel_id": null
+  },
+  {
+   "rang_tableau_2023": 27,
+   "titre": "Reduction de violence communautaire 9ème vague",
+   "budget_texte": "7.506.450 XAF",
+   "devise": "XAF",
+   "bailleur_partenaire_texte": "UNOPS/ MINUSCA",
+   "bailleurs_partenaires": [
+    "UNOPS",
+    "MINUSCA"
+   ],
+   "duree_texte": "Mars 2021 – Juin 2021",
+   "annee_debut": 2021,
+   "annee_fin": 2021,
+   "zone_texte": "Bangui et Ombella mpoko",
+   "domaines_deduits": [
+    "Protection / cohésion sociale"
+   ],
+   "correspond_projet_actuel_id": null
+  },
+  {
+   "rang_tableau_2023": 28,
+   "titre": "Réduction de violence communautaire 6ème vague",
+   "budget_texte": "24.192.000 XAF",
+   "devise": "XAF",
+   "bailleur_partenaire_texte": "MINUSCA (UNOPS)",
+   "bailleurs_partenaires": [
+    "MINUSCA",
+    "UNOPS"
+   ],
+   "duree_texte": "Décembre 2019 – Mars 2020",
+   "annee_debut": 2019,
+   "annee_fin": 2020,
+   "zone_texte": "Bangui et Ombella mpoko",
+   "domaines_deduits": [
+    "Protection / cohésion sociale"
+   ],
+   "correspond_projet_actuel_id": null
+  },
+  {
+   "rang_tableau_2023": 29,
+   "titre": "Projet d’appui à l’inclusion du Genre dans le processus DDR et dans l’action humanitaire en",
+   "budget_texte": "30.000.000 XAF",
+   "devise": "XAF",
+   "bailleur_partenaire_texte": "UNOPS/ ONUFEMMES",
+   "bailleurs_partenaires": [
+    "UNOPS",
+    "ONU Femmes"
+   ],
+   "duree_texte": "5 mois (Mars – Juillet 2017)",
+   "annee_debut": 2017,
+   "annee_fin": 2017,
+   "zone_texte": "Bangui, Ombella-M’poko",
+   "domaines_deduits": [
+    "Protection / cohésion sociale"
+   ],
+   "correspond_projet_actuel_id": null,
+   "detail_site_2018": {
+    "titre": "PROJET D’APPUI A L’INCLUSION DU GENRE DANS LE PROCESSUS DDR ET DANS LES ACTIONS HUMANITAIRES EN RCA",
+    "activites": [
+     "Prise en charge psychosociale",
+     "Prise en charge médicale",
+     "Prise en charge juridique",
+     "Mise en place d’un centre de média sur le genre",
+     "Soutien à l’opérationnalisation de la ligne verte",
+     "Réinsertion sociale des femmes ex-combattantes et femmes associées aux forces et groupes armés",
+     "Sensibilisation sur la protection, contre les VBG et renforcement de la cohésion sociale."
+    ],
+    "zone": "Bangui",
+    "bailleur": "ONUFEMMES Centrafrique",
+    "partenaire": "UNOPS",
+    "periode": "Mars 2017 – Juin 2017",
+    "source": "https://web.archive.org/web/20180903073858/http://apsud.org/ACTIVITES/"
+   }
+  },
+  {
+   "rang_tableau_2023": 30,
+   "titre": "Projet de Réduction des Violences Communautaires (CVR) à travers la formation, l’encadrement et l’accompagnement des ex-combattants et autres jeunes risque dans le domaine de commerce pour leur réinsertion socioéconomique",
+   "budget_texte": "14.096.250 XAF",
+   "devise": "XAF",
+   "bailleur_partenaire_texte": "UNOPS/ MINUSCA",
+   "bailleurs_partenaires": [
+    "UNOPS",
+    "MINUSCA"
+   ],
+   "duree_texte": "4 Mois (Mai – Sep 2017)",
+   "annee_debut": 2017,
+   "annee_fin": 2017,
+   "zone_texte": "Ouaka (Bambari-Maloum)",
+   "domaines_deduits": [
+    "Sécurité alimentaire et moyens de subsistance",
+    "Protection / cohésion sociale"
+   ],
+   "correspond_projet_actuel_id": null
+  },
+  {
+   "rang_tableau_2023": 31,
+   "titre": "Projet de Réduction des Violences Communautaires (CVR) à travers la formation, l’encadrement et l’accompagnement des ex-combattants et autres jeunes risque dans le domaine de commerce pour leur réinsertion socioéconomique.",
+   "budget_texte": "14.472.150 XAF",
+   "devise": "XAF",
+   "bailleur_partenaire_texte": "UNOPS/ MINUSCA",
+   "bailleurs_partenaires": [
+    "UNOPS",
+    "MINUSCA"
+   ],
+   "duree_texte": "4 mois (Janvier – Avril 2018)",
+   "annee_debut": 2018,
+   "annee_fin": 2018,
+   "zone_texte": "Berberati",
+   "domaines_deduits": [
+    "Sécurité alimentaire et moyens de subsistance",
+    "Protection / cohésion sociale"
+   ],
+   "correspond_projet_actuel_id": null
+  },
+  {
+   "rang_tableau_2023": 32,
+   "titre": "Projet de Réduction des Violences Communautaires (CVR) à travers la formation, l’encadrement et l’accompagnement des ex-combattants et autres jeunes risque dans le domaine de commerce pour leur réinsertion socioéconomique.",
+   "budget_texte": "15.801.450 XAF",
+   "devise": "XAF",
+   "bailleur_partenaire_texte": "UNOPS/ MINUSCA",
+   "bailleurs_partenaires": [
+    "UNOPS",
+    "MINUSCA"
+   ],
+   "duree_texte": "4 mois (Nov 2018 – Février 2019)",
+   "annee_debut": 2018,
+   "annee_fin": 2019,
+   "zone_texte": "Ouham",
+   "domaines_deduits": [
+    "Sécurité alimentaire et moyens de subsistance",
+    "Protection / cohésion sociale"
+   ],
+   "correspond_projet_actuel_id": null
+  },
+  {
+   "rang_tableau_2023": 33,
+   "titre": "Projet de Réduction des Violences Communautaires (CVR) à travers la formation, l’encadrement et l’accompagnement des ex-combattants et autres jeunes risque dans le domaine de commerce pour leur réinsertion socioéconomique.",
+   "budget_texte": "9.450.000 XAF",
+   "devise": "XAF",
+   "bailleur_partenaire_texte": "UNOPS/ MINUSCA",
+   "bailleurs_partenaires": [
+    "UNOPS",
+    "MINUSCA"
+   ],
+   "duree_texte": "3 Mois (Mai – Aout 2019)",
+   "annee_debut": 2019,
+   "annee_fin": 2019,
+   "zone_texte": "Mambéré-Kadéi",
+   "domaines_deduits": [
+    "Sécurité alimentaire et moyens de subsistance",
+    "Protection / cohésion sociale"
+   ],
+   "correspond_projet_actuel_id": null
+  },
+  {
+   "rang_tableau_2023": 34,
+   "titre": "Réduction de la violence et stabilisation des communautés à haut risque sécuritaire",
+   "budget_texte": "22 483 000 XAF",
+   "devise": "XAF",
+   "bailleur_partenaire_texte": "OIM (UE)",
+   "bailleurs_partenaires": [
+    "OIM",
+    "UE"
+   ],
+   "duree_texte": "3 (Déc 2020 – Fév 2021)",
+   "annee_debut": 2020,
+   "annee_fin": 2021,
+   "zone_texte": "Ouam-Pende (Bozoum)",
+   "domaines_deduits": [
+    "Protection / cohésion sociale"
+   ],
+   "correspond_projet_actuel_id": null
+  },
+  {
+   "rang_tableau_2023": 35,
+   "titre": "Projet de restauration de la paix, et du dialogue entre les communautés affectées par la transhumance transfrontalière (RCA/TCHAD)",
+   "budget_texte": "17.400.000 XAF",
+   "devise": "XAF",
+   "bailleur_partenaire_texte": "OIM",
+   "bailleurs_partenaires": [
+    "OIM"
+   ],
+   "duree_texte": "Nov 2019 – Avril 2020",
+   "annee_debut": 2019,
+   "annee_fin": 2020,
+   "zone_texte": "Mambéré-kadéi",
+   "domaines_deduits": [
+    "Protection / cohésion sociale"
+   ],
+   "correspond_projet_actuel_id": null
+  },
+  {
+   "rang_tableau_2023": 36,
+   "titre": "OSRO/CAF/605/UK « Support to agricultural recovery of the most vulnerable households and revival of the local economy for an enhanced resilience of rural communities in Central African Republic ».",
+   "budget_texte": "4 413 000 F CFA",
+   "devise": "XAF",
+   "bailleur_partenaire_texte": "FAO",
+   "bailleurs_partenaires": [
+    "FAO"
+   ],
+   "duree_texte": "3 mois (juin – aout 2018)",
+   "annee_debut": 2018,
+   "annee_fin": 2018,
+   "zone_texte": "Ombella mpoko",
+   "domaines_deduits": [
+    "Sécurité alimentaire et moyens de subsistance"
+   ],
+   "correspond_projet_actuel_id": null
+  },
+  {
+   "rang_tableau_2023": 37,
+   "titre": "OSRO/CAF/ « Assistance agricole d’urgence en appui à la résilience des communautés vulnérables affectées par les crises en République Centrafricaine »",
+   "budget_texte": "8.657.320 CFA",
+   "devise": "XAF",
+   "bailleur_partenaire_texte": "FAO",
+   "bailleurs_partenaires": [
+    "FAO"
+   ],
+   "duree_texte": "3 mois (fév – avril 2019)",
+   "annee_debut": 2019,
+   "annee_fin": 2019,
+   "zone_texte": "Ouaka (Grimari)",
+   "domaines_deduits": [
+    "Sécurité alimentaire et moyens de subsistance"
+   ],
+   "correspond_projet_actuel_id": null
+  },
+  {
+   "rang_tableau_2023": 38,
+   "titre": "Women affected by crisis, survivors of GBV in CAR strengthen their production capacity and access to markets to improve their economy and food security",
+   "budget_texte": "23.652.351 FCFA",
+   "devise": "XAF",
+   "bailleur_partenaire_texte": "FAO/ONUFEMMES",
+   "bailleurs_partenaires": [
+    "FAO",
+    "ONU Femmes"
+   ],
+   "duree_texte": "8 mois (Fév 2016 – sept 2016)",
+   "annee_debut": 2016,
+   "annee_fin": 2016,
+   "zone_texte": "Bangui, Ombella-M’poko",
+   "domaines_deduits": [
+    "Sécurité alimentaire et moyens de subsistance",
+    "Protection / cohésion sociale"
+   ],
+   "correspond_projet_actuel_id": null,
+   "detail_site_2018": {
+    "titre": "WOMEN AFFECTED BY CRISIS, SURVIVORS OF GBV IN CAR STRENGTHEN THEIR PRODUCTION CAPACITY AND ACCESS TO MARKETS TO IMPROVE THEIR ECONOMY AND FOOD SECURITY",
+    "activites": [
+     "Prise en charge psychosociale pour 418 femmes et filles",
+     "Prise en charge juridique/judiciaire/médicale pour 400 femmes",
+     "Appui en constitution et en AGR aux 19 groupements féminins de production (formation, distribution de kits, suivi et ouverture de comptes bancaires)",
+     "Associations villageoises d’épargne et de crédit pour 19 groupements féminins",
+     "Champ Ecole Paysan aux 19 groupements/associations féminines."
+    ],
+    "zone": "Bangui, Bégoua et Bimbo",
+    "bailleur": "ONUFEMMES Centrafrique",
+    "partenaire": "FAO",
+    "periode": "Février 2016 – Septembre 2016",
+    "source": "https://web.archive.org/web/20180903073858/http://apsud.org/ACTIVITES/"
+   }
+  },
+  {
+   "rang_tableau_2023": 39,
+   "titre": "Appui d’urgence multisectoriel et intégré en Education, Eau-Hygiène-Assainissement et Protection générale au profit des populations affectées par la crise (et les déplacements) dans les sous-préfectures de Kembe et Mobaye dans dans la préfecture de la Basse-Kotto en RCA",
+   "budget_texte": "35 000 USD",
+   "devise": "USD",
+   "bailleur_partenaire_texte": "NRC/FH",
+   "bailleurs_partenaires": [
+    "NRC",
+    "FH RCA"
+   ],
+   "duree_texte": "6 mois (du 10 février 2023 au 09 juillet 2023)",
+   "annee_debut": 2023,
+   "annee_fin": 2023,
+   "zone_texte": "(Basse-kotto) Mobaye",
+   "domaines_deduits": [
+    "WASH",
+    "Protection / cohésion sociale"
+   ],
+   "correspond_projet_actuel_id": null
+  },
+  {
+   "rang_tableau_2023": 40,
+   "titre": "Réponse d’urgence en Eau, Hygiène et Assainissement pour les déplacés de la ville d’Alindao (Basse Kotto)",
+   "budget_texte": "14 000 USD",
+   "devise": "USD",
+   "bailleur_partenaire_texte": "NRC/FH",
+   "bailleurs_partenaires": [
+    "NRC",
+    "FH RCA"
+   ],
+   "duree_texte": "3mois (Sept – nov 2022)",
+   "annee_debut": 2022,
+   "annee_fin": 2022,
+   "zone_texte": "(Basse kotto) Alindao",
+   "domaines_deduits": [
+    "WASH"
+   ],
+   "correspond_projet_actuel_id": null
+  },
+  {
+   "rang_tableau_2023": 41,
+   "titre": "Assistance d’urgence en eau, assainissement et hygiène pour les populations déplacées d’Alindao.",
+   "budget_texte": "55,769.81 USD",
+   "devise": "USD",
+   "bailleur_partenaire_texte": "ACF/FH",
+   "bailleurs_partenaires": [
+    "ACF",
+    "FH RCA"
+   ],
+   "duree_texte": "6 mois (Fév 2023 – juillet 2023)",
+   "annee_debut": 2023,
+   "annee_fin": 2023,
+   "zone_texte": "(Basse kotto) Alindao",
+   "domaines_deduits": [
+    "WASH"
+   ],
+   "correspond_projet_actuel_id": null,
+   "correspond_ancien_id_site": 2,
+   "detail_fiche_2024": {
+    "code": null,
+    "bailleur": "FH",
+    "partenaire_mise_en_oeuvre": "ACF",
+    "budget": "55,769.81 USD",
+    "date_debut": "2023-02-01",
+    "date_fin": "2023-07-31",
+    "zone": "Alindao (Basse-Kotto)",
+    "beneficiaires": "13 172 femmes, hommes, garçons et filles des 4 sites de déplacés d’Alindao",
+    "objectif_specifique": "Améliorer la couverture des services EHA vitaux sur les 4 sites de déplacés internes d’Alindao afin de limiter les risques de propagation des maladies hydriques",
+    "resultats_attendus": [
+     "13 172 femmes, hommes, garçons et filles des 4 sites de déplacés d’Alindao sont accompagnés dans l’adoption de bonnes pratiques d’hygiène.",
+     "7 050 femmes, hommes, garçons et filles des 4 sites de déplacés d’Alindao ont accès à des installations sanitaires de qualité, respectant les normes d’hygiène de base ainsi que les impératifs de genre"
+    ],
+    "images": "aucune (champs image vides sur la fiche)",
+    "source": "https://web.archive.org/web/20240806065022/https://apsud.org/detail-projet/2/Assistance%20d%E2%80%99urgence%20en%20eau,%20assainissement%20et%20hygi%C3%A8ne%20pour%20les%20populations%20d%C3%A9plac%C3%A9es%20d%E2%80%99Alindao."
+   }
+  },
+  {
+   "rang_tableau_2023": 42,
+   "titre": "Améliorer la protection des populations civiles et apporter une assistance protection dans les zones affectées par les conflits en RCA",
+   "budget_texte": "7.000.000 FCFA",
+   "devise": "XAF",
+   "bailleur_partenaire_texte": "ECHO/DRC",
+   "bailleurs_partenaires": [
+    "ECHO",
+    "DRC"
+   ],
+   "duree_texte": "8 mois (Sep 2016 – Av 2017)",
+   "annee_debut": 2016,
+   "annee_fin": 2017,
+   "zone_texte": "Bangui, Ombella-M’poko",
+   "domaines_deduits": [
+    "Protection / cohésion sociale"
+   ],
+   "correspond_projet_actuel_id": null,
+   "detail_site_2018": {
+    "titre": "AMELIORER LA PROTECTION DES POPULATIONS CIVILES ET APPORTER UNE ASSISTANCE PROTECTION DANS LES ZONES AFFECTEES PAR LES CONFLITS EN RCA",
+    "activites": [
+     "Prise en charge psychosociale des femmes, hommes, filles et garçons, ainsi que certain membres de leurs familles",
+     "Thérapie de groupe",
+     "Activités à base communautaire (groupes de discussion, de parole, activités socio-récréatives, activités psycho-éducation)",
+     "Prise en charge médicale",
+     "Référencement pour une prise en charge juridique."
+    ],
+    "zone": "Bimbo",
+    "bailleur": "Union Européenne",
+    "partenaire": "DRC",
+    "periode": "Septembre 2016 – Avril 2017",
+    "source": "https://web.archive.org/web/20180903073858/http://apsud.org/ACTIVITES/"
+   }
+  },
+  {
+   "rang_tableau_2023": 43,
+   "titre": "Projet de relance économique et autonomisation des acteurs économiques centrafricains",
+   "budget_texte": "10.344.000 F CFA",
+   "devise": "XAF",
+   "bailleur_partenaire_texte": "Fonds Bekou /ACTED",
+   "bailleurs_partenaires": [
+    "Fonds Bêkou",
+    "ACTED"
+   ],
+   "duree_texte": "12 mois (Oct- 2017 à Aout 2018",
+   "annee_debut": 2017,
+   "annee_fin": 2018,
+   "zone_texte": "Bangui, Ombella-M’poko",
+   "domaines_deduits": [
+    "Sécurité alimentaire et moyens de subsistance"
+   ],
+   "correspond_projet_actuel_id": null
+  },
+  {
+   "rang_tableau_2023": 44,
+   "titre": "Réponse aux hommes, femmes et enfants affectés par les inondations survenue, 22 juillet 2022 à Bangui",
+   "budget_texte": "19 815 439 XAF",
+   "devise": "XAF",
+   "bailleur_partenaire_texte": "OXFAM / Fonds CANADIENS",
+   "bailleurs_partenaires": [
+    "Oxfam",
+    "Canada (fonds canadiens)"
+   ],
+   "duree_texte": "4 mois (Sept 2022- Janvier 2023)",
+   "annee_debut": 2022,
+   "annee_fin": 2023,
+   "zone_texte": "Bangui et Bégoua",
+   "domaines_deduits": [],
+   "correspond_projet_actuel_id": null
+  },
+  {
+   "rang_tableau_2023": 45,
+   "titre": "Assisting Traditional Healers in Bangui to mitigate the Risk of Transmission of COVID-19",
+   "budget_texte": "269 446,977 USD",
+   "devise": "USD",
+   "bailleur_partenaire_texte": "OXFAM/OFDA",
+   "bailleurs_partenaires": [
+    "Oxfam",
+    "USAID (OFDA)"
+   ],
+   "duree_texte": "7 mois (Sept 2020-Mars 2021)",
+   "annee_debut": 2020,
+   "annee_fin": 2021,
+   "zone_texte": "Bangui, Ombella-M’poko",
+   "domaines_deduits": [
+    "Santé publique"
+   ],
+   "correspond_projet_actuel_id": null
+  },
+  {
+   "rang_tableau_2023": 46,
+   "titre": "« I LA TENE TI TO NA MBONGO – Tous ensemble pour le sud-est» – Programme de relèvement socioéconomique dans la zone sud-est de la RCA (RELSUDE)",
+   "budget_texte": "60 000 EUR",
+   "devise": "EUR",
+   "bailleur_partenaire_texte": "OXFAM/Fonds BEKOU",
+   "bailleurs_partenaires": [
+    "Oxfam",
+    "Fonds Bêkou"
+   ],
+   "duree_texte": "19 mois (Decembre 2019-Juin 2022)",
+   "annee_debut": 2019,
+   "annee_fin": 2022,
+   "zone_texte": "Ouaka",
+   "domaines_deduits": [
+    "Sécurité alimentaire et moyens de subsistance"
+   ],
+   "correspond_projet_actuel_id": null
+  },
+  {
+   "rang_tableau_2023": 47,
+   "titre": "Appui à la mise en œuvre d’une réponse de santé publique et sociale locale, en prévention de l’épidémie COVID-19 en RCA",
+   "budget_texte": "208 764 EUROS",
+   "devise": "EUR",
+   "bailleur_partenaire_texte": "Union Européenne / OXFAM",
+   "bailleurs_partenaires": [
+    "UE",
+    "Oxfam"
+   ],
+   "duree_texte": "6 mois (Avril-Septembre 2020)",
+   "annee_debut": 2020,
+   "annee_fin": 2020,
+   "zone_texte": "Bégoua, Bimbo, Bangui",
+   "domaines_deduits": [
+    "Santé publique"
+   ],
+   "correspond_projet_actuel_id": null,
+   "detail_site_2021": {
+    "bailleur": "Union européenne",
+    "partenaire": "Oxfam (d’après le tableau 2023)",
+    "duree": "6 mois à compter du 1er avril 2020",
+    "zone": "Bangui, Bimbo",
+    "activites": [
+     "Fourniture de l’accès à l’eau potable à la population cible",
+     "Installation et distribution de kits d’hygiène dans les formations sanitaires (FOSA) et en communauté",
+     "Promotion de la santé publique et des bonnes pratiques de prévention liées au risque d’épidémie de Covid-19",
+     "Production d’outils de sensibilisation (affiches, boîtes à images, dépliants)",
+     "Mobilisation communautaire par des campagnes de sensibilisation",
+     "Community Perception Tracker (suivi des perceptions communautaires)"
+    ],
+    "source": "https://web.archive.org/web/20221005204209/http://apsud.org/ue.html"
+   }
+  },
+  {
+   "rang_tableau_2023": 48,
+   "titre": "Improving líving conditions, means of production and access to WASH services and strengthening mechanisms to protect displaced, returnee and host communities in the target areas",
+   "budget_texte": "119 842 813 XAF",
+   "devise": "XAF",
+   "bailleur_partenaire_texte": "OXFAM / Swedish International Development Agency (ASDI)",
+   "bailleurs_partenaires": [
+    "Oxfam",
+    "Sida"
+   ],
+   "duree_texte": "12 mois (Avril 2021 – 31 mars 2022",
+   "annee_debut": 2021,
+   "annee_fin": 2022,
+   "zone_texte": "Ouam-Pende",
+   "domaines_deduits": [
+    "WASH",
+    "Sécurité alimentaire et moyens de subsistance",
+    "Protection / cohésion sociale"
+   ],
+   "correspond_projet_actuel_id": null
+  },
+  {
+   "rang_tableau_2023": 49,
+   "titre": "Soutien intégré WASH/EFSVL/PROTECTION ET EGALITE DE SEXES aux femmes, hommes, filles et garçons, touchés par le conflit dans la préfecture de l’Ouham-Péndé par le billet d’activité de secours et de reconstrction/LRRD. « Critère et C)",
+   "budget_texte": "180.000.000 XAF",
+   "devise": "XAF",
+   "bailleur_partenaire_texte": "OXFAM / SIDA",
+   "bailleurs_partenaires": [
+    "Oxfam",
+    "Sida"
+   ],
+   "duree_texte": "3 ans (mars 2018 – mars 2021)",
+   "annee_debut": 2018,
+   "annee_fin": 2021,
+   "zone_texte": "Ouam-Pende (Paoua et axes)",
+   "domaines_deduits": [
+    "WASH",
+    "Protection / cohésion sociale"
+   ],
+   "correspond_projet_actuel_id": null
+  },
+  {
+   "rang_tableau_2023": 50,
+   "titre": "Apporter une aide humanitaire d’urgence aux victimes des inondations d’octobre 2019 à Bangui, République Centrafricaine",
+   "budget_texte": "20.182.656 XAF",
+   "devise": "XAF",
+   "bailleur_partenaire_texte": "OXFAM/ USA",
+   "bailleurs_partenaires": [
+    "Oxfam",
+    "USAID (OFDA) — « USA » dans le tableau, probable"
+   ],
+   "duree_texte": "Décembre 2019 – Avril 2020",
+   "annee_debut": 2019,
+   "annee_fin": 2020,
+   "zone_texte": "Bangui",
+   "domaines_deduits": [],
+   "correspond_projet_actuel_id": null
+  },
+  {
+   "rang_tableau_2023": 51,
+   "titre": "Appui à l’accès immédiat aux services de base en termes d’eau et d’hygiène pour les hommes, femmes, filles et garçons retournées/relocalisées et hôtes vulnérables dans les quartiers de retour des 3ème et 5ème arrondissements de Bangui.",
+   "budget_texte": "22.330.000 F CFA",
+   "devise": "XAF",
+   "bailleur_partenaire_texte": "OXFAM / FH",
+   "bailleurs_partenaires": [
+    "Oxfam",
+    "FH RCA"
+   ],
+   "duree_texte": "8 mois (Juin 2017– Fév 2018)",
+   "annee_debut": 2017,
+   "annee_fin": 2018,
+   "zone_texte": "Bangui, Ombella-M’poko",
+   "domaines_deduits": [
+    "WASH"
+   ],
+   "correspond_projet_actuel_id": null
+  },
+  {
+   "rang_tableau_2023": 52,
+   "titre": "Réponse intégrée aux besoins immédiats en WASH, Protection et Genre des femmes, hommes, filles et garçons de la commune de Bégoua (périphérie de Bangui), affectés par la crise en République Centrafricaine.",
+   "budget_texte": "15.600.000 FCFA",
+   "devise": "XAF",
+   "bailleur_partenaire_texte": "OXFAM / INDITEX",
+   "bailleurs_partenaires": [
+    "Oxfam",
+    "Inditex"
+   ],
+   "duree_texte": "6 Mois (Oct 2017 – Mars 2018)",
+   "annee_debut": 2017,
+   "annee_fin": 2018,
+   "zone_texte": "Bangui, Ombella-M’poko",
+   "domaines_deduits": [
+    "WASH",
+    "Protection / cohésion sociale"
+   ],
+   "correspond_projet_actuel_id": null
+  },
+  {
+   "rang_tableau_2023": 53,
+   "titre": "Réponse d’urgence aux besoins d’accès à la nourriture des personnes vulnérables en insécurité alimentaire dans la ville de Bangui",
+   "budget_texte": "12.060.000 F CFA + coupons",
+   "devise": "XAF",
+   "bailleur_partenaire_texte": "OXFAM / PAM",
+   "bailleurs_partenaires": [
+    "Oxfam",
+    "PAM"
+   ],
+   "duree_texte": "6 mois (Juil 2017 – Déc 2017)",
+   "annee_debut": 2017,
+   "annee_fin": 2017,
+   "zone_texte": "Bangui, Ombella-M’poko",
+   "domaines_deduits": [
+    "Sécurité alimentaire et moyens de subsistance"
+   ],
+   "correspond_projet_actuel_id": null
+  },
+  {
+   "rang_tableau_2023": 54,
+   "titre": "Réponse d’urgence aux besoins d’accès à la nourriture des personnes vulnérables en insécurité alimentaire dans la ville de Bangui",
+   "budget_texte": "15.623.354 F CFA + coupons",
+   "devise": "XAF",
+   "bailleur_partenaire_texte": "OXFAM / PAM",
+   "bailleurs_partenaires": [
+    "Oxfam",
+    "PAM"
+   ],
+   "duree_texte": "7 mois (Oct-Déc 2016 et Fév-Mai 2017)",
+   "annee_debut": 2016,
+   "annee_fin": 2017,
+   "zone_texte": "Bangui, Ombella-M’poko",
+   "domaines_deduits": [
+    "Sécurité alimentaire et moyens de subsistance"
+   ],
+   "correspond_projet_actuel_id": null,
+   "detail_site_2018": {
+    "titre": "REPONSE D’URGENCE AUX BESOINS D’ACCES A LA NOURRITURE DES PERSONNES VULNERABLES EN INSECURITE ALIMENTAIRE DANS LA VILLE DE BANGUI",
+    "activites": [
+     "Distribution des coupons alimentaires",
+     "Sensibilisation",
+     "Identification des fournisseurs",
+     "Organisation d’échange de coupons."
+    ],
+    "zone": "5 ème arrondissement de Bangui, Bimbo 3 et Bégoua",
+    "bailleur": "PAM",
+    "partenaire": "OXFAM",
+    "periode": "Octobre 2016 – Mai 2017",
+    "source": "https://web.archive.org/web/20180903073858/http://apsud.org/ACTIVITES/"
+   }
+  },
+  {
+   "rang_tableau_2023": 55,
+   "titre": "Rétablir la dignité des femmes, des hommes, des filles et des garçons affectés par la flambée d’épidémie de choléra en République Centrafricaine",
+   "budget_texte": "46.243.000 FCFA",
+   "devise": "XAF",
+   "bailleur_partenaire_texte": "OXFAM / ECHO",
+   "bailleurs_partenaires": [
+    "Oxfam",
+    "ECHO"
+   ],
+   "duree_texte": "6mois (Aout 2016 – Fév 2017)",
+   "annee_debut": 2016,
+   "annee_fin": 2017,
+   "zone_texte": "Bangui",
+   "domaines_deduits": [
+    "WASH"
+   ],
+   "correspond_projet_actuel_id": null,
+   "detail_site_2018": {
+    "titre": "RETABLIR LA DIGNITE DES FEMMES, DES HOMMES, DES FILLES ET DES GARÇONS AFFECTES PAR LA FLAMBEE D’EPIDEMIE DE CHOLERA EN REPUBLIQUE CENTRAFRICAINE",
+    "activites": [
+     "Protection/lutte contre la stigmatisation dans la réponse au cholera",
+     "Sensibilisation,",
+     "Distribution de kits d’hygiène et référencement,",
+     "Appui à la construction des infrastructures d’assainissement",
+     "Appui à la construction des infrastructures d’eau."
+    ],
+    "zone": "Bangui, Bimbo",
+    "bailleur": "Union Européenne (ECHO) - AECID",
+    "partenaire": "OXFAM",
+    "periode": "Aout 2016 – Février 2017",
+    "source": "https://web.archive.org/web/20180903073858/http://apsud.org/ACTIVITES/"
+   }
+  },
+  {
+   "rang_tableau_2023": 56,
+   "titre": "Réponse au choléra sur les sites des déplacés internes de Bangui",
+   "budget_texte": "14.000.000 F CFA",
+   "devise": "XAF",
+   "bailleur_partenaire_texte": "OXFAM / ECHO",
+   "bailleurs_partenaires": [
+    "Oxfam",
+    "ECHO"
+   ],
+   "duree_texte": "2 mois (Janv-FéV 2017)",
+   "annee_debut": 2017,
+   "annee_fin": 2017,
+   "zone_texte": "Bangui, Ombella-M’poko",
+   "domaines_deduits": [
+    "WASH"
+   ],
+   "correspond_projet_actuel_id": null,
+   "detail_site_2018": {
+    "titre": "REPONSE AU CHOLERA SUR LES SITES DES DEPLACES INTERNES DE BANGUI",
+    "activites": [
+     "Gestion des infrastructures WASH sur 09 sites des déplacés internes",
+     "Promotion à l’hygiène",
+     "installation et suivi des dispositifs de lavage de mains",
+     "installation des points de chloration sur les sites des déplacés",
+     "Renforcement de capacités des relais communautaires et des",
+     "Protection-Genre dans les actions wash sur les sites des déplacés internes ."
+    ],
+    "zone": "Sites des déplacés de Bangui et Bimbo",
+    "bailleur": "ECHO (Union Européenne)",
+    "partenaire": "OXFAM",
+    "periode": "Javier – Février 2017",
+    "source": "https://web.archive.org/web/20180903073858/http://apsud.org/ACTIVITES/"
+   }
+  },
+  {
+   "rang_tableau_2023": 57,
+   "titre": "Soutien à l’autonomisation des femmes, hommes, filles et garçons touchés par le conflit dans les sites IDP et accompagnement au retour",
+   "budget_texte": "36.002.120 F CFA",
+   "devise": "XAF",
+   "bailleur_partenaire_texte": "OXFAM / ECHO",
+   "bailleurs_partenaires": [
+    "Oxfam",
+    "ECHO"
+   ],
+   "duree_texte": "6 mois (Juillet-déc 2016)",
+   "annee_debut": 2016,
+   "annee_fin": 2016,
+   "zone_texte": "Bangui, Ombella-M’poko",
+   "domaines_deduits": [],
+   "correspond_projet_actuel_id": null,
+   "detail_site_2018": {
+    "titre": "SOUTIEN A L’AUTONOMISATION DES FEMMES, HOMMES, FILLES ET GARÇONS TOUCHES PAR LE CONFLIT DANS LES SITES IDP ET ACCOMPAGNEMENT AU RETOUR",
+    "activites": [
+     "Gestion des infrastructures WASH sur 12 sites des déplacés internes",
+     "Promotion à l’hygiène",
+     "Distribution des kits d’hygiène",
+     "Distribution d’eau (Water Truking)",
+     "Réhabilitation des latrines / douches d’urgence sur les sites",
+     "Protection-Genre dans les actions wash sur les sites des déplacés internes"
+    ],
+    "zone": "Sites des déplacés internes de Bangui, Bimbo",
+    "bailleur": "Union Européenne",
+    "partenaire": "OXFAM",
+    "periode": "Juillet 2016 – Décembre 2016",
+    "source": "https://web.archive.org/web/20180903073858/http://apsud.org/ACTIVITES/"
+   }
+  },
+  {
+   "rang_tableau_2023": 58,
+   "titre": "Oxfam Bangui Livelihood and Protection Programme",
+   "budget_texte": "10 261 700 F CFA",
+   "devise": "XAF",
+   "bailleur_partenaire_texte": "OXFAM / IRISH AID",
+   "bailleurs_partenaires": [
+    "Oxfam",
+    "Irish Aid"
+   ],
+   "duree_texte": "5 mois (Juillet-Déc 2016)",
+   "annee_debut": 2016,
+   "annee_fin": 2016,
+   "zone_texte": "Bangui",
+   "domaines_deduits": [
+    "Sécurité alimentaire et moyens de subsistance",
+    "Protection / cohésion sociale"
+   ],
+   "correspond_projet_actuel_id": null,
+   "detail_site_2018": {
+    "titre": "OXFAM BANGUI LIVELIHOOD AND PROTECTION PROGRAMME",
+    "activites": [
+     "Formation en AGR",
+     "Formation des groupements",
+     "Facilitation de Cash transfert aux groupements et ménages vulnérable",
+     "Suivi des AGR"
+    ],
+    "zone": "Bangui, Bimbo",
+    "bailleur": "IRISH AID",
+    "partenaire": "OXFAM",
+    "periode": "Juillet 2016 – Décembre 2016",
+    "source": "https://web.archive.org/web/20180903073858/http://apsud.org/ACTIVITES/"
+   }
+  },
+  {
+   "rang_tableau_2023": 59,
+   "titre": "Projet d’assistance intégrée aux populations affectées par la crise en RCA dans les quartiers de Bangui,",
+   "budget_texte": "15.805.600 F CFA",
+   "devise": "XAF",
+   "bailleur_partenaire_texte": "OXFAM / DFATD",
+   "bailleurs_partenaires": [
+    "Oxfam",
+    "Affaires mondiales Canada (DFATD)"
+   ],
+   "duree_texte": "4 mois (Nov 2015 – Avril 2016)",
+   "annee_debut": 2015,
+   "annee_fin": 2016,
+   "zone_texte": "Bangui, Ombella-M’poko",
+   "domaines_deduits": [],
+   "correspond_projet_actuel_id": null,
+   "detail_site_2018": {
+    "titre": "D’ASSISTANCE INTEGREE AUX POPULATIONS AFFECTEES PAR LA CRISE EN RCA DANS LES QUARTIERS DE BIMBO 3 et 4,",
+    "activites": [
+     "Distribution de kits d’hygiène",
+     "Sensibilisation dans les quartiers de Bimbo 3 et 4",
+     "Distribution des filtres d’eau bio-sable",
+     "Appui à la construction des puits d’eau protégés dans les quartiers de retour",
+     "Mise en place des comités locaux de gestion de points d’eau."
+    ],
+    "zone": "Bimbo 3 et 4",
+    "bailleur": "DFATD",
+    "partenaire": "OXFAM",
+    "periode": "Novembre 2015 – Mars 2016",
+    "source": "https://web.archive.org/web/20180903073858/http://apsud.org/ACTIVITES/"
+   }
+  },
+  {
+   "rang_tableau_2023": 60,
+   "titre": "Appuyer les femmes, les hommes, les filles et les garcons en l’accès a l’eau potable et des services d’assainissement",
+   "budget_texte": "12 089 000 XAF",
+   "devise": "XAF",
+   "bailleur_partenaire_texte": "OXFAM/ CHF-ECHO",
+   "bailleurs_partenaires": [
+    "Oxfam",
+    "FH RCA (CHF)",
+    "ECHO"
+   ],
+   "duree_texte": "2 mois (Aout – Sept 2015)",
+   "annee_debut": 2015,
+   "annee_fin": 2015,
+   "zone_texte": "Bangui, Ombella-M’poko",
+   "domaines_deduits": [
+    "WASH"
+   ],
+   "correspond_projet_actuel_id": null
+  }
+ ]
+}

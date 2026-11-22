@@ -1,0 +1,119 @@
+---
+/**
+ * /mentions-legales — gabarit C (DESIGN.md §5.10). Structure juridique standard française
+ * (éditeur, publication, hébergeur, propriété intellectuelle, responsabilité, droit applicable).
+ * Tout ce qu'APSUD n'a pas encore fourni est marqué <LegalPending> : rien n'est inventé.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import LegalDoc, { type TocItem } from '../sections/legal/LegalDoc.astro';
+import LegalPending from '../sections/legal/LegalPending.astro';
+import { site, telHref } from '../data/site';
+import organisation from '../../data/apsud/organisation.json';
+
+const toc: TocItem[] = [
+  { id: 'editeur', label: 'Éditeur du site' },
+  { id: 'publication', label: 'Direction de la publication' },
+  { id: 'hebergement', label: 'Hébergement' },
+  { id: 'propriete', label: 'Propriété intellectuelle' },
+  { id: 'responsabilite', label: 'Responsabilité et liens' },
+  { id: 'donnees', label: 'Données personnelles et cookies' },
+  { id: 'droit', label: 'Droit applicable' },
+];
+---
+
+<BaseLayout
+  title="Mentions légales"
+  description="Mentions légales du site d’APSUD : éditeur, direction de la publication, hébergement, propriété intellectuelle et responsabilité."
+>
+  <LegalDoc title="Mentions légales" updated="2026-11-22" toc={toc}>
+    <section id="editeur">
+      <h2>Éditeur du site</h2>
+      <p>
+        Le site apsud.org est édité par <strong>{site.nom} ({site.sigle})</strong>, organisation non gouvernementale nationale de
+        développement et d’action humanitaire, à but non lucratif. {organisation.identite.independance}
+      </p>
+      <dl>
+        <dt>Siège</dt>
+        <dd>{site.contact.adresse}, {site.contact.pays}</dd>
+        <dt>Adresse postale</dt>
+        <dd>{site.contact.boitePostale}</dd>
+        <dt>Téléphone</dt>
+        <dd>
+          {site.contact.telephones.map((t, i) => (
+            <>{i > 0 && ' · '}<a href={telHref(t)}>{t}</a></>
+          ))}
+        </dd>
+        <dt>Courriel</dt>
+        <dd><a href={`mailto:${site.contact.email}`}>{site.contact.email}</a></dd>
+        <dt>Statut juridique</dt>
+        <dd>Organisation non gouvernementale nationale, à but non lucratif</dd>
+        <dt>Agrément / enregistrement</dt>
+        <dd><LegalPending hint="numéro et date d’agrément ou d’enregistrement" /></dd>
+        <dt>Date de création</dt>
+        <dd><LegalPending /></dd>
+      </dl>
+    </section>
+
+    <section id="publication">
+      <h2>Direction de la publication</h2>
+      <p>
+        Directeur ou directrice de la publication : <LegalPending hint="nom et fonction" />.
+      </p>
+      <p>
+        Conception et réalisation du site : <LegalPending />.
+      </p>
+    </section>
+
+    <section id="hebergement">
+      <h2>Hébergement</h2>
+      <p>
+        Le site est hébergé par <strong>LWS (Ligne Web Services)</strong>,
+        {' '}<a href="https://www.lws.fr" rel="noopener">www.lws.fr</a>.
+      </p>
+      <p>Adresse et téléphone de l’hébergeur : <LegalPending hint="coordonnées figurant au contrat LWS" />.</p>
+    </section>
+
+    <section id="propriete">
+      <h2>Propriété intellectuelle</h2>
+      <p>
+        Les textes, photographies, illustrations, pictogrammes et le logo présentés sur ce site sont la propriété
+        d’APSUD, sauf mention contraire. Toute reproduction, représentation ou adaptation, totale ou partielle,
+        sans l’autorisation écrite préalable d’APSUD est interdite.
+      </p>
+      <p>
+        Les logos des partenaires et bailleurs restent la propriété de leurs titulaires respectifs. Ils sont
+        reproduits uniquement pour présenter les partenariats et financements des projets d’APSUD.
+      </p>
+      <p>Crédits photographiques : APSUD, sauf mention contraire sous l’image.</p>
+    </section>
+
+    <section id="responsabilite">
+      <h2>Responsabilité et liens</h2>
+      <p>
+        Les informations publiées sur ce site sont fournies à titre indicatif et peuvent être mises à jour.
+        Si vous relevez une erreur ou une omission, signalez-la à
+        {' '}<a href={`mailto:${site.contact.email}`}>{site.contact.email}</a>.
+      </p>
+      <p>
+        Les liens vers des sites extérieurs sont fournis à titre d’information. APSUD n’exerce aucun contrôle
+        sur leur contenu et décline toute responsabilité à leur sujet.
+      </p>
+    </section>
+
+    <section id="donnees">
+      <h2>Données personnelles et cookies</h2>
+      <p>
+        L’utilisation de vos données personnelles est décrite dans notre
+        {' '}<a href="/confidentialite">politique de confidentialité</a>, et celle des cookies dans notre
+        {' '}<a href="/cookies">politique cookies</a>.
+      </p>
+    </section>
+
+    <section id="droit">
+      <h2>Droit applicable</h2>
+      <p>
+        Les présentes mentions légales sont régies par <LegalPending hint="droit applicable et juridiction compétente" />.
+      </p>
+    </section>
+  </LegalDoc>
+</BaseLayout>

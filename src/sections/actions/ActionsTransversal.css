@@ -1,0 +1,90 @@
+/* Axe transversal « Protection de l'environnement » — mention (hub : bandeau ; domaines : ligne) */
+@layer components {
+  /* ---------- Bandeau du hub ---------- */
+  .c-actions-transversal--band {
+    overflow-x: clip;   /* la goutte-feuille glisse depuis la gauche */
+    margin-block: var(--space-section);
+  }
+  .c-actions-transversal__inner {
+    display: grid;
+    gap: var(--space-8);
+    align-items: center;
+  }
+  .c-actions-transversal__mark {
+    position: relative;
+    inline-size: var(--leaf-drop-lg);
+  }
+  .c-actions-transversal__icon {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    padding-block-start: 14%;   /* centre optique de la goutte (pointe en haut) */
+    color: var(--color-surface-signature);
+  }
+  .c-actions-transversal__icon .c-icon { --_s: var(--space-20); }
+  .c-actions-transversal__kicker {
+    margin: 0 0 var(--space-3);
+    color: var(--color-text-brand);
+    font-size: var(--fs-overline);
+    font-weight: var(--fw-heavy);
+    letter-spacing: var(--ls-overline);
+    text-transform: uppercase;
+  }
+  .c-actions-transversal__title {
+    margin: 0 0 var(--space-5);
+    font-size: var(--fs-h3);
+    font-weight: var(--fw-bold);
+    line-height: var(--lh-heading);
+  }
+  .c-actions-transversal__text {
+    margin: 0;
+    max-inline-size: var(--measure-text);
+    font-size: var(--fs-lead);
+    line-height: var(--lh-lead);
+  }
+  .c-actions-transversal__goal {
+    margin: var(--space-6) 0 0;
+    padding-inline-start: var(--space-4);
+    border-inline-start: var(--border-width-strong) solid var(--color-accent);
+    max-inline-size: var(--measure-text);
+    color: var(--color-text-muted);
+  }
+  .c-actions-transversal__goal-label {
+    color: var(--color-text);
+    font-weight: var(--fw-heavy);
+  }
+
+  @media (width >= 48em) {
+    .c-actions-transversal__inner {
+      grid-template-columns: var(--leaf-drop-lg) minmax(0, 1fr);
+      gap: var(--space-16);
+    }
+  }
+
+  /* ---------- Ligne des pages domaine ---------- */
+  .c-actions-transversal--inline {
+    margin-block: var(--space-section-sm);
+  }
+  .c-actions-transversal__line {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-4);
+    margin: 0;
+    padding-block: var(--space-5);
+    border-block: var(--border-width) solid var(--color-border-subtle);
+    font-size: var(--fs-small);
+    line-height: var(--lh-body);
+  }
+  .c-actions-transversal__line strong { font-weight: var(--fw-heavy); }
+  .c-actions-transversal__pill {
+    display: inline-grid;
+    flex: none;
+    place-items: center;
+    inline-size: var(--tap-min);
+    block-size: var(--tap-min);
+    border-radius: var(--radius-goutte);
+    background: var(--color-surface-tint);
+    color: var(--color-text-brand);
+  }
+}

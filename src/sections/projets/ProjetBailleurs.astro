@@ -1,0 +1,74 @@
+---
+/**
+ * Fiche projet — bailleurs et partenaires de mise en œuvre, avec leurs logos
+ * (src/data/partners.ts ; priorité n°1 du client). Chaque logo renvoie à la fiche du
+ * partenaire (/partenaires#slug). Une organisation sans logo connu garde son nom en clair.
+ * Esprit Prosper `l-logo-grid` : logos posés sur fond blanc, filets fins, rien d'animé
+ * sinon un léger soulèvement de la marche au survol (innovation APSUD, coupée si réduit).
+ */
+import { Image } from 'astro:assets';
+import { getImage } from '../../lib/images';
+import type { Projet } from '../../data/projects';
+import { partnerFor } from './projets';
+import './ProjetBailleurs.css';
+
+interface Props {
+  projet: Projet;
+}
+
+const { projet: p } = Astro.props;
+const groups = [
+  { titre: p.bailleurs.length > 1 ? 'Bailleurs' : 'Bailleur', liste: p.bailleurs },
+  { titre: 'Partenaires de mise en œuvre', liste: p.partenaires },
+]
+  .filter((g) => g.liste.length > 0)
+  .map((g) => ({
+    ...g,
+    orgs: g.liste.map((raw) => {
+      const partner = partnerFor(raw);
+      return { raw, partner, img: partner ? getImage(partner.logo) : null };
+    }),
+  }));
+---
+
+{groups.length > 0 && (
+  <section class="c-projet-bailleurs t-coton" aria-labelledby="projet-bailleurs-titre">
+    <div class="l-constrain l-constrain--media">
+      <h2 id="projet-bailleurs-titre" class="c-projet-bailleurs__title" data-reveal>Ils rendent ce projet possible</h2>
+      <div class="c-projet-bailleurs__groups">
+        {groups.map((g) => (
+          <div class="c-projet-bailleurs__group">
+            <h3 class="c-projet-bailleurs__label">{g.titre}</h3>
+            <ul class="c-projet-bailleurs__list" role="list">
+              {g.orgs.map((o, i) => (
+                <li data-reveal data-reveal-delay={String(i * 120)}>
+                  {o.partner && o.img ? (
+                    <a class="c-projet-bailleurs__org" href={`/partenaires#${o.partner.slug}`}>
+                      <span class="c-projet-bailleurs__logo">
+                        <Image
+                          src={o.img}
+                          alt=""
+                          widths={[200, 400].filter((w) => w <= o.img.width).concat(o.img.width < 200 ? [o.img.width] : [])}
+                          sizes="12.5rem"
+                          loading="lazy"
+                          decoding="async"
+                          class="c-projet-bailleurs__img"
+                        />
+                      </span>
+                      <span class="c-projet-bailleurs__name">{o.partner.name}</span>
+                    </a>
+                  ) : (
+                    <span class="c-projet-bailleurs__org c-projet-bailleurs__org--text">
+                      <span class="c-projet-bailleurs__logo c-projet-bailleurs__logo--text" aria-hidden="true">{o.raw}</span>
+                      <span class="c-projet-bailleurs__name">{o.raw}</span>
+                    </span>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+)}

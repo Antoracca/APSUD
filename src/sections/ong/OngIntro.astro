@@ -1,0 +1,17 @@
+---
+/**
+ * Qui sommes-nous §2 — Présentation (Prosper « Who we are » n° 3 : intro en 3 paragraphes,
+ * colonne de lecture de 690 px). Statut d'ONG nationale, indépendance, ancrage.
+ * Le premier paragraphe passe en chapeau (Prose `lead`).
+ */
+import Prose from '../../components/ui/Prose.astro';
+import { intro } from './ong';
+import './OngIntro.css';
+---
+
+<section class="c-ong-intro" aria-label="Présentation d’APSUD">
+  <Prose lead data-reveal>
+    <p>{intro.lead}</p>
+    {intro.paragraphs.map((p) => <p>{p}</p>)}
+  </Prose>
+</section>

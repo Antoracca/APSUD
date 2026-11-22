@@ -1,0 +1,75 @@
+---
+/**
+ * Goutte-feuille : la forme signature d'APSUD (DESIGN.md §1.6 a).
+ * Un carré dont trois coins sont arrondis à 50 % et un coin reste vif.
+ * Selon l'orientation, c'est une feuille, une goutte d'eau ou un repère de localisation.
+ * Elle tient le rôle du grand chevron « Amara » de Prosper (section chiffres, CTA image)
+ * et sert de puce, de marqueur et d'aplat derrière les pictogrammes.
+ *
+ *   shape   'feuille' (pointe en bas à gauche, défaut) · 'goutte' (pointe en haut)
+ *           · 'repere' (pointe en bas) · 'cap' (pointe à droite : la forme « avance »
+ *           comme le chevron Prosper, pour la section chiffres) ; `rotate` (degrés) pour un angle libre.
+ *   size    'xs' 10 px · 'sm' 48 px · 'md' 128 px · 'lg' 96 → 224 px · 'fill' (largeur du parent)
+ *   color   jeton sémantique : brand · signature · tint · accent · strong · soft · current
+ *   animate glisse en place depuis la gauche à l'entrée dans l'écran (comportement
+ *           du chevron Prosper : 1,2 s, délai 0,4 s, ease-out), via src/scripts/reveal.ts.
+ *           Le parent doit couper le débordement horizontal (overflow-x: clip).
+ *   label   si la forme porte un sens ; sinon elle est décorative (aria-hidden).
+ */
+import './LeafDrop.css';
+
+type Shape = 'feuille' | 'goutte' | 'repere' | 'cap';
+type Size = 'xs' | 'sm' | 'md' | 'lg' | 'fill';
+type Color = 'brand' | 'signature' | 'tint' | 'accent' | 'strong' | 'soft' | 'current';
+
+interface Props {
+  shape?: Shape;
+  size?: Size;
+  color?: Color;
+  rotate?: number;
+  animate?: boolean;
+  label?: string;
+  class?: string;
+}
+
+const {
+  shape = 'feuille',
+  size = 'md',
+  color = 'brand',
+  rotate,
+  animate = false,
+  label,
+  class: className,
+} = Astro.props;
+
+/* Tracé de référence (viewBox 100 × 100, coin vif en bas à gauche). La pointe d'une forme
+   tournée dépasse le carré de 50 × (√2 − 1) ≈ 20,71 : la viewBox s'agrandit d'autant,
+   pour que la boîte de mise en page épouse exactement la forme. */
+const PATH = 'M0 100V50a50 50 0 0 1 50-50 50 50 0 0 1 50 50 50 50 0 0 1-50 50Z';
+const geometry: Record<Shape, { viewBox: string; transform?: string }> = {
+  feuille: { viewBox: '0 0 100 100' },
+  goutte: { viewBox: '0 -20.71 100 120.71', transform: 'rotate(135 50 50)' },
+  repere: { viewBox: '0 0 100 120.71', transform: 'rotate(-45 50 50)' },
+  cap: { viewBox: '0 0 120.71 100', transform: 'rotate(-135 50 50)' },
+};
+const { viewBox, transform } = geometry[shape];
+const style = rotate !== undefined ? `--leaf-drop-rotate: ${rotate}deg` : undefined;
+const a11y = label ? { role: 'img', 'aria-label': label } : { 'aria-hidden': 'true' as const };
+---
+
+<span
+  class:list={[
+    'c-leaf-drop',
+    `c-leaf-drop--${shape}`,
+    `c-leaf-drop--${size}`,
+    `c-leaf-drop--${color}`,
+    { 'c-leaf-drop--rotated': rotate !== undefined, 'c-leaf-drop--slide': animate },
+    className,
+  ]}
+  style={style}
+  {...(animate ? { 'data-reveal': '' } : {})}
+>
+  <svg class="c-leaf-drop__svg" viewBox={viewBox} focusable="false" {...a11y}>
+    <path d={PATH} transform={transform} />
+  </svg>
+</span>

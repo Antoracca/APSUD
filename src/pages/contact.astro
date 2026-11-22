@@ -1,0 +1,27 @@
+---
+/**
+ * /contact — gabarit C de Prosper (page texte, PROSPER_STRUCTURE §5.17, DESIGN.md §5.8) :
+ * H1 sur la colonne de lecture → aiguillage par besoin → coordonnées | formulaire.
+ * Le formulaire n'envoie rien pour l'instant (TODO back-end dans src/scripts/contact-form.ts).
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/layout/PageHeader.astro';
+import ContactRoutes from '../sections/contact/ContactRoutes.astro';
+import ContactMain from '../sections/contact/ContactMain.astro';
+import '../sections/contact/ContactMain.css';
+---
+
+<BaseLayout
+  title="Nous contacter"
+  description="Contacter APSUD, ONG nationale centrafricaine : siège à Bimbo, téléphones, e-mail et formulaire pour les dons, partenariats, recrutements et appels d’offres."
+>
+  <PageHeader
+    variant="text"
+    class="c-contact-header"
+    title="Nous contacter"
+    intro="Une question, un projet de partenariat, un don ou une candidature : l’équipe d’APSUD vous répond."
+    breadcrumb={[{ label: 'Nous contacter' }]}
+  />
+  <ContactRoutes />
+  <ContactMain />
+</BaseLayout>

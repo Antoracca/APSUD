@@ -1,0 +1,130 @@
+---
+/**
+ * /projets — barre de filtres (statut, domaine, préfecture, bailleur).
+ * Formulaire natif et accessible : statut en boutons radio (groupe <fieldset>), listes
+ * déroulantes étiquetées, compteur de résultats annoncé (role="status"), bouton
+ * « Réinitialiser ». Le filtrage se fait côté client (src/scripts/projects-filter.ts),
+ * l'URL suit les choix (?statut=realise&domaine=…) pour être partagée.
+ * Sans JS : la barre est masquée (base : html.js) et tous les projets restent visibles.
+ *
+ * Petit écran (< 48em) : les champs se replient derrière un bouton « Filtrer (n) » (n = filtres
+ * actifs) pour que la grille arrive tout de suite sous le pouce ; le compteur de résultats et
+ * « Réinitialiser » restent toujours visibles. Dès 48em, le bouton disparaît et tout est déplié.
+ *
+ * Innovation APSUD : chaque option affiche le nombre de projets qu'elle donnerait en tenant
+ * compte des autres filtres ; une option qui ne donnerait rien est désactivée (pas d'impasse).
+ */
+import Icon from '../../components/ui/Icon.astro';
+import { domains } from '../../data/domains';
+import { getProjects, projectFacets } from '../../data/projects';
+import { slugify } from '../../data/zones';
+import { donorLabel } from './projets';
+import './ProjetsFiltres.css';
+
+const projets = getProjects();
+const total = projets.length;
+const enCours = projets.filter((p) => p.statut === 'en_cours').length;
+
+const statuts = [
+  { value: '', label: 'Tous', count: total },
+  { value: 'en-cours', label: 'En cours', count: enCours },
+  { value: 'realise', label: 'Réalisés', count: total - enCours },
+];
+
+const selects = [
+  {
+    name: 'domaine',
+    label: 'Domaine',
+    all: 'Tous',
+    options: domains.filter((d) => d.projets > 0).map((d) => ({ value: d.slug, label: d.titre })),
+  },
+  {
+    name: 'prefecture',
+    label: 'Préfecture',
+    all: 'Toutes',
+    options: projectFacets.prefectures.map((p) => ({ value: p.slug, label: p.nom })),
+  },
+  {
+    name: 'bailleur',
+    label: 'Bailleur',
+    all: 'Tous',
+    options: [...new Map(projectFacets.bailleurs.map((b) => [slugify(b), donorLabel(b)])).entries()]
+      .map(([value, label]) => ({ value, label }))
+      .sort((a, b) => a.label.localeCompare(b.label, 'fr')),
+  },
+];
+---
+
+<form class="c-projets-filtres" aria-labelledby="projets-filtres-titre" data-filter-form>
+  <h2 id="projets-filtres-titre" class="u-visually-hidden">Filtrer les projets</h2>
+
+  <button
+    type="button"
+    class="c-projets-filtres__toggle"
+    aria-expanded="false"
+    aria-controls="projets-filtres-panneau"
+    data-filter-toggle
+  >
+    <span class="c-projets-filtres__toggle-label">
+      Filtrer
+      <span class="c-projets-filtres__toggle-badge" data-filter-active hidden>
+        <span class="u-visually-hidden">filtres actifs :</span>
+        <span data-filter-active-n>0</span>
+      </span>
+    </span>
+    <Icon name="chevron-down" size="sm" class="c-projets-filtres__toggle-chevron" />
+  </button>
+
+  <div class="c-projets-filtres__panel" id="projets-filtres-panneau" data-filter-panel>
+    <fieldset class="c-projets-filtres__statut">
+      <legend class="c-projets-filtres__legend">Statut</legend>
+      <div class="c-projets-filtres__chips">
+        {statuts.map((s, i) => (
+          <label class="c-projets-filtres__chip">
+            <input
+              type="radio"
+              name="statut"
+              value={s.value}
+              checked={i === 0}
+              class="c-projets-filtres__radio"
+            />
+            <span class="c-projets-filtres__chip-label">
+              {s.value === 'en-cours' && <span class="c-projets-filtres__dot" aria-hidden="true"></span>}
+              {s.label}
+              <span class="c-projets-filtres__chip-count" data-count-for={`statut:${s.value}`}>{s.count}</span>
+            </span>
+          </label>
+        ))}
+      </div>
+    </fieldset>
+
+    <div class="c-projets-filtres__selects">
+      {selects.map((s) => (
+        <div class="c-projets-filtres__field">
+          <label class="c-projets-filtres__label" for={`filtre-${s.name}`}>{s.label}</label>
+          <div class="c-projets-filtres__select-wrap">
+            <select id={`filtre-${s.name}`} name={s.name} class="c-projets-filtres__select">
+              <option value="">{s.all}</option>
+              {s.options.map((o) => (
+                <option value={o.value} data-label={o.label}>{o.label}</option>
+              ))}
+            </select>
+            <Icon name="chevron-down" size="sm" class="c-projets-filtres__chevron" />
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <div class="c-projets-filtres__bilan">
+    <p class="c-projets-filtres__count" role="status" aria-live="polite" aria-atomic="true">
+      <strong data-filter-count>{total}</strong>
+      <span data-filter-noun>projets</span>
+      <span class="c-projets-filtres__count-total">sur {total}</span>
+    </p>
+    <button type="reset" class="c-projets-filtres__reset" data-filter-reset disabled>
+      <Icon name="close" size="sm" />
+      Réinitialiser les filtres
+    </button>
+  </div>
+</form>

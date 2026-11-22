@@ -1,0 +1,57 @@
+---
+/**
+ * État vide — quand une information n'est pas encore fournie par APSUD (équipe, rapports,
+ * offres d'emploi, modalités de don…) ou qu'un filtre ne renvoie rien. On ne remplit jamais
+ * le vide par du faux contenu : on le dit simplement et on propose un contact.
+ *
+ * Boîte Coton, pictogramme posé sur une goutte-feuille Pousse, titre, texte, lien d'action
+ * (par défaut : écrire à APSUD). Slot par défaut : actions supplémentaires (bouton « Effacer les filtres »).
+ */
+import Icon from './Icon.astro';
+import ArrowLink from './ArrowLink.astro';
+import { site } from '../../data/site';
+import './EmptyState.css';
+
+interface Props {
+  title?: string;
+  text?: string;
+  icon?: string;
+  link?: { label: string; href: string } | false;
+  headingLevel?: 'h2' | 'h3' | 'h4';
+  /** `box` : boîte Coton ; `plain` : sans fond (dans une section déjà colorée) */
+  tone?: 'box' | 'plain';
+  /** Alignement : centré (pleine largeur) ou à gauche (dans une colonne de texte) */
+  align?: 'center' | 'start';
+  class?: string;
+}
+
+const {
+  title = 'Informations bientôt disponibles',
+  text = 'Ce contenu est en cours de préparation avec l’équipe d’APSUD. Pour toute question, écrivez-nous.',
+  icon = 'mail',
+  link = { label: 'Contacter APSUD', href: '/contact' },
+  headingLevel: H = 'h2',
+  tone = 'box',
+  align = 'center',
+  class: className,
+} = Astro.props;
+---
+
+<div class:list={['c-empty-state', `c-empty-state--${tone}`, `c-empty-state--${align}`, className]}>
+  <span class="c-empty-state__badge" aria-hidden="true">
+    <Icon name={icon} size="lg" />
+  </span>
+  <H class="c-empty-state__title">{title}</H>
+  {text && <p class="c-empty-state__text">{text}</p>}
+  {(link || Astro.slots.has('default')) && (
+    <div class="c-empty-state__actions">
+      {link && <ArrowLink href={link.href}>{link.label}</ArrowLink>}
+      <slot />
+    </div>
+  )}
+  {link && link.href === '/contact' && (
+    <p class="c-empty-state__mail">
+      ou <a href={`mailto:${site.contact.email}`}>{site.contact.email}</a>
+    </p>
+  )}
+</div>

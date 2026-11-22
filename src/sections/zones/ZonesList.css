@@ -1,0 +1,297 @@
+/* /nos-zones — liste des zones par préfecture (Prosper /where-we-work, liste par région) */
+@layer components {
+  .c-zones-list {
+    --_index-w: var(--zones-list-col);
+    --_offset: calc(var(--header-h) + var(--space-8));
+    border-block-start: var(--border-width) solid var(--color-border-subtle);
+  }
+
+  .c-zones-list__head {
+    max-inline-size: var(--measure-text);
+    margin-block-end: var(--space-12);
+  }
+  .c-zones-list__title {
+    margin: 0 0 var(--space-5);
+    font-size: var(--fs-h2);
+    font-weight: var(--fw-bold);
+    line-height: var(--lh-heading);
+  }
+  .c-zones-list__lead {
+    margin: 0;
+    font-size: var(--fs-lead);
+    line-height: var(--lh-lead);
+    color: var(--color-text-muted);
+    text-wrap: pretty;
+  }
+
+  .c-zones-list__layout {
+    display: grid;
+    gap: var(--space-10);
+  }
+
+  /* ---------- Sommaire ---------- */
+  .c-zones-list__index-title {
+    margin: 0 0 var(--space-4);
+    font-stretch: var(--font-stretch-condensed);
+    font-size: var(--fs-overline);
+    font-weight: var(--fw-heavy);
+    letter-spacing: var(--ls-overline);
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+  }
+  .c-zones-list__index-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .c-zones-list__index-link {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    min-block-size: var(--tap-min);
+    padding-inline: var(--space-3);
+    border: var(--border-width) solid var(--color-border-subtle);
+    border-radius: var(--radius-control);
+    color: var(--color-text);
+    font-weight: var(--fw-semibold);
+    text-decoration: none;
+  }
+  .c-zones-list__index-link:hover { background: var(--color-surface-soft); }
+  .c-zones-list__index-link:focus-visible {
+    outline: var(--focus-width) solid var(--color-focus);
+    outline-offset: var(--focus-offset);
+  }
+  .c-zones-list__index-dot {
+    flex: none;
+    inline-size: var(--leaf-drop-xs);
+    block-size: var(--leaf-drop-xs);
+    border-radius: var(--radius-goutte);
+    background: var(--color-map-done);
+  }
+  .c-zones-list__index-dot--ongoing { background: var(--color-map-ongoing); }
+  .c-zones-list__index-dot--none {
+    background: var(--color-map-none);
+    box-shadow: inset 0 0 0 var(--border-width) var(--color-map-stroke);
+  }
+  .c-zones-list__index-count {
+    margin-inline-start: auto;
+    font-stretch: var(--font-stretch-condensed);
+    font-weight: var(--fw-heavy);
+    font-variant-numeric: tabular-nums;
+    color: var(--color-text-muted);
+  }
+
+  /* ---------- Fiche de zone ---------- */
+  .c-zone-entry {
+    position: relative;
+    display: grid;
+    gap: var(--space-6);
+    padding-block: var(--space-10);
+    border-block-start: var(--border-width) solid var(--color-border-subtle);
+    scroll-margin-block-start: var(--_offset);
+  }
+  .c-zone-entry:first-child { border-block-start-color: var(--color-text); }
+
+  /* Filet Soleil de la zone visée par l'ancre */
+  .c-zone-entry::before {
+    content: "";
+    position: absolute;
+    inset-block: var(--space-10);
+    inset-inline-start: calc(-1 * var(--space-6));
+    inline-size: var(--tile-bar);
+    background: var(--color-accent);
+    transform: scaleY(0);
+    transform-origin: top center;
+  }
+  .c-zone-entry:target::before { transform: none; }
+
+  .c-zone-entry__overline {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-2) var(--space-3);
+    margin: 0 0 var(--space-3);
+    color: var(--color-text-brand);
+    font-stretch: var(--font-stretch-condensed);
+    font-size: var(--fs-overline);
+    font-weight: var(--fw-heavy);
+    letter-spacing: var(--ls-overline);
+    text-transform: uppercase;
+  }
+  .c-zone-entry__flag {
+    padding: var(--space-1) var(--space-2);
+    border-radius: var(--radius-control);
+    background: var(--color-surface-tint);
+    color: var(--color-status-open-text);
+    text-transform: none;
+    letter-spacing: var(--ls-condensed);
+  }
+  .c-zone-entry__name {
+    margin: 0;
+    font-size: var(--fs-h3);
+    font-weight: var(--fw-bold);
+    line-height: var(--lh-heading);
+  }
+  .c-zone-entry__places {
+    margin: var(--space-3) 0 0;
+    color: var(--color-text-muted);
+    max-inline-size: var(--measure-text);
+  }
+  .c-zone-entry__places-label { font-weight: var(--fw-semibold); color: var(--color-text); }
+
+  .c-zone-entry__stats {
+    display: flex;
+    gap: var(--space-8);
+    margin: var(--space-5) 0 0;
+  }
+  .c-zone-entry__stat { display: flex; flex-direction: column-reverse; gap: var(--space-1); }
+  .c-zone-entry__stat dt {
+    font-size: var(--fs-small);
+    color: var(--color-text-muted);
+  }
+  .c-zone-entry__stat dd {
+    margin: 0;
+    font-stretch: var(--font-stretch-condensed);
+    font-size: var(--fs-h4);
+    font-weight: var(--fw-heavy);
+    line-height: var(--lh-tight);
+    font-variant-numeric: tabular-nums;
+  }
+  .c-zone-entry__stat--ongoing dd { color: var(--color-warning-text); }
+  .c-zone-entry__stat--done dd { color: var(--color-text-brand); }
+
+  /* Lignes de projet */
+  .c-zone-entry__projects {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border-block-start: var(--border-width) solid var(--color-border-subtle);
+  }
+  .c-zone-entry__projects > li { border-block-end: var(--border-width) solid var(--color-border-subtle); }
+  .c-zone-entry__project {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: start;
+    gap: var(--space-2) var(--space-4);
+    padding: var(--space-5) var(--space-3);
+    color: var(--color-text);
+    text-decoration: none;
+  }
+  .c-zone-entry__project:hover,
+  .c-zone-entry__project:focus-visible { background: var(--color-surface-soft); }
+  .c-zone-entry__project:focus-visible {
+    outline: var(--focus-width) solid var(--color-focus);
+    outline-offset: calc(-1 * var(--focus-width));
+  }
+  .c-zone-entry__status {
+    display: inline-flex;
+    align-items: center;
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-control);
+    font-stretch: var(--font-stretch-condensed);
+    font-size: var(--fs-overline);
+    font-weight: var(--fw-bold);
+    letter-spacing: var(--ls-condensed);
+    white-space: nowrap;
+  }
+  .c-zone-entry__status--en_cours { background: var(--color-status-ongoing-bg); color: var(--color-status-ongoing-text); }
+  .c-zone-entry__status--realise  { background: var(--color-status-done-bg);    color: var(--color-status-done-text); }
+
+  .c-zone-entry__project-body { display: flex; flex-direction: column; gap: var(--space-1); }
+  .c-zone-entry__project-title {
+    font-stretch: var(--font-stretch-condensed);
+    font-size: var(--fs-h6);
+    font-weight: var(--fw-bold);
+    line-height: var(--lh-snug);
+    text-decoration: underline;
+    text-decoration-color: transparent;
+    text-decoration-thickness: var(--border-width);
+    text-underline-offset: 0.2em;
+  }
+  .c-zone-entry__project:hover .c-zone-entry__project-title,
+  .c-zone-entry__project:focus-visible .c-zone-entry__project-title {
+    text-decoration-color: var(--color-link-decoration);
+  }
+  .c-zone-entry__project-meta {
+    font-size: var(--fs-small);
+    color: var(--color-text-muted);
+  }
+  .c-zone-entry__arrow { color: var(--color-text-brand); margin-block-start: var(--space-1); }
+  .c-zone-entry__project:hover .c-zone-entry__arrow,
+  .c-zone-entry__project:focus-visible .c-zone-entry__arrow { translate: var(--space-1) 0; }
+
+  .c-zone-entry__empty { padding: 0; }
+
+  /* ---------- Desktop : sommaire collant + fiches ---------- */
+  @media (width >= 64em) {
+    .c-zones-list__layout {
+      grid-template-columns: var(--_index-w) minmax(0, 1fr);
+      gap: var(--space-16);
+      align-items: start;
+    }
+    .c-zones-list__index {
+      position: sticky;
+      inset-block-start: var(--_offset);
+    }
+    .c-zones-list__index-list { flex-direction: column; gap: 0; }
+    .c-zones-list__index-link {
+      position: relative;
+      padding-inline: var(--space-4) 0;
+      border: 0;
+      border-radius: 0;
+      border-inline-start: var(--border-width) solid var(--color-border-subtle);
+      font-weight: var(--fw-medium);
+      color: var(--color-text-muted);
+    }
+    .c-zones-list__index-link::before {
+      content: "";
+      position: absolute;
+      inset-block: 0;
+      inset-inline-start: calc(-1 * var(--border-width));
+      inline-size: var(--tile-bar);
+      background: var(--color-text-brand);
+      transform: scaleY(0);
+    }
+    .c-zones-list__index-link:hover { background: none; color: var(--color-text); }
+    .c-zones-list__index-link[aria-current] { color: var(--color-text); font-weight: var(--fw-bold); }
+    .c-zones-list__index-link[aria-current]::before { transform: none; }
+
+    .c-zone-entry {
+      grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+      gap: var(--space-10);
+      align-items: start;
+    }
+    .c-zone-entry:has(.c-zone-entry__empty) { align-items: center; }
+    .c-zone-entry__head { position: sticky; inset-block-start: var(--_offset); }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .c-zone-entry:target::before {
+      animation: c-zone-entry-mark var(--dur-signature) var(--ease-out) both;
+    }
+    .c-zones-list__index-link,
+    .c-zones-list__index-link::before {
+      transition:
+        color var(--dur-short) var(--ease-out),
+        transform var(--dur-standard) var(--ease-out),
+        background-color var(--dur-short) var(--ease-out);
+    }
+    .c-zone-entry__project { transition: background-color var(--dur-standard) var(--ease-out); }
+    .c-zone-entry__project-title { transition: text-decoration-color var(--dur-short) var(--ease-out); }
+    .c-zone-entry__arrow { transition: translate var(--dur-standard) var(--ease-out); }
+  }
+
+  @keyframes c-zone-entry-mark {
+    from { transform: scaleY(0); }
+    to   { transform: none; }
+  }
+}
+
+/* Sur /nos-zones, la liste détaillée ci-dessus remplace la liste repliable de la carte d'accueil */
+@layer components {
+  .c-zones:has(~ .c-zones-list) .c-zones__list { display: none; }
+  .c-zones:has(~ .c-zones-list) { margin-block-start: 0; }
+}

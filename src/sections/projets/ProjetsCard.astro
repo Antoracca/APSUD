@@ -1,0 +1,73 @@
+---
+/**
+ * Carte d'un projet dans les listes de /projets (grille filtrable, projets liés d'une fiche).
+ * Réutilise ProjectCard quand le projet a une photo. Sinon (fiche archivée sans image),
+ * même anatomie mais le média est un aplat Coton portant le pictogramme du domaine et une
+ * goutte-feuille : on ne prête jamais à un projet la photo d'un autre.
+ */
+import ProjectCard from '../../components/ui/ProjectCard.astro';
+import ArrowLink from '../../components/ui/ArrowLink.astro';
+import Icon from '../../components/ui/Icon.astro';
+import { getDomain } from '../../data/domains';
+import type { Projet } from '../../data/projects';
+import { cardMeta, cardStatus } from './projets';
+import './ProjetsCard.css';
+
+interface Props {
+  projet: Projet;
+  headingLevel?: 'h2' | 'h3' | 'h4';
+  reveal?: boolean;
+  revealDelay?: number;
+  sizes?: string;
+}
+
+const { projet: p, headingLevel = 'h3', reveal = false, revealDelay, sizes } = Astro.props;
+const img = p.images[0];
+const href = `/projets/${p.slug}`;
+const meta = cardMeta(p);
+const status = cardStatus(p);
+const statusLabel = { 'en-cours': 'En cours', realise: 'Réalisé' } as const;
+const domaine = p.domaines[0] ? getDomain(p.domaines[0]) : undefined;
+const H = headingLevel;
+---
+
+{img ? (
+  <ProjectCard
+    href={href}
+    image={img.src}
+    imageAlt={img.alt}
+    title={p.titreCourt}
+    text={p.resume}
+    meta={meta}
+    status={status}
+    headingLevel={headingLevel}
+    linkLabel="Voir le projet"
+    reveal={reveal}
+    revealDelay={revealDelay}
+    sizes={sizes ?? '(min-width: 75em) 24rem, (min-width: 48em) 33vw, (min-width: 37.5em) 50vw, 100vw'}
+    class="c-projets-card"
+  />
+) : (
+  <article
+    class="c-project-card c-projets-card c-projets-card--sans-image"
+    {...(reveal ? { 'data-reveal': '' } : {})}
+    {...(reveal && revealDelay ? { 'data-reveal-delay': String(revealDelay) } : {})}
+  >
+    <div class="c-project-card__media c-projets-card__placeholder" aria-hidden="true">
+      <span class="c-projets-card__drop"></span>
+      {domaine && <Icon name={domaine.icone} size="xl" class="c-projets-card__icon" />}
+      <span class="c-projets-card__note">Photos à venir</span>
+    </div>
+    <div class="c-project-card__body">
+      <p class="c-project-card__meta">
+        <span class:list={['c-project-card__status', `c-project-card__status--${status}`]}>{statusLabel[status]}</span>
+        {meta && <span class="c-project-card__meta-text">{meta}</span>}
+      </p>
+      <H class="c-project-card__title">{p.titreCourt}</H>
+      {p.resume && <p class="c-project-card__text">{p.resume}</p>}
+      <ArrowLink href={href} stretched class="c-project-card__link">
+        Voir le projet<span class="u-visually-hidden">&nbsp;: {p.titreCourt}</span>
+      </ArrowLink>
+    </div>
+  </article>
+)}

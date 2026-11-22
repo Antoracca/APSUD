@@ -1,0 +1,112 @@
+---
+/**
+ * Page texte institutionnelle (gabarit C) — mentions légales, confidentialité, cookies.
+ * DESIGN.md §5.10 : H1 sur la colonne de lecture + « Mise à jour le … » ; ≥ 80em, sommaire
+ * d'ancres collant à gauche + texte 690 px ; en dessous, sommaire replié (<details>) en tête.
+ * Intertitres h2 numérotés automatiquement (compteur CSS) ; pas de double CTA ; « Une question ? » en fin.
+ *
+ * Innovations APSUD :
+ *  - le sommaire suit la lecture (section courante soulignée, IntersectionObserver ; sans JS il reste un simple sommaire) ;
+ *  - un encadré « version de travail » compte les champs [à compléter par APSUD] de la page,
+ *    pour qu'aucune page ne parte en ligne incomplète sans qu'on le voie.
+ */
+import PageHeader from '../../components/layout/PageHeader.astro';
+import Prose from '../../components/ui/Prose.astro';
+import ArrowLink from '../../components/ui/ArrowLink.astro';
+import Icon from '../../components/ui/Icon.astro';
+import './LegalDoc.css';
+
+export interface TocItem {
+  id: string;
+  label: string;
+}
+
+interface Props {
+  title: string;
+  intro?: string;
+  /** Date ISO de dernière mise à jour */
+  updated: string;
+  toc: TocItem[];
+}
+
+const { title, intro, updated, toc } = Astro.props;
+const html = await Astro.slots.render('default');
+const pending = (html.match(/data-legal-pending/g) ?? []).length;
+const updatedLabel = new Intl.DateTimeFormat('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' }).format(
+  new Date(updated),
+);
+---
+
+<PageHeader variant="text" title={title} intro={intro}>
+  <p slot="meta" class="c-legal__updated">Mise à jour le <time datetime={updated}>{updatedLabel}</time></p>
+</PageHeader>
+
+<div class="c-legal l-constrain" data-legal>
+  <details class="c-legal__toc-mobile">
+    <summary class="c-legal__toc-summary">
+      Sommaire
+      <Icon name="chevron-down" size="sm" class="c-legal__toc-chevron" />
+    </summary>
+    <ol class="c-legal__toc-list" role="list">
+      {toc.map((t, i) => (
+        <li><a class="c-legal__toc-link" href={`#${t.id}`}><span class="c-legal__toc-num">{i + 1}.</span> {t.label}</a></li>
+      ))}
+    </ol>
+  </details>
+
+  <nav class="c-legal__toc" aria-label={`Sommaire : ${title}`}>
+    <p class="c-legal__toc-title" aria-hidden="true">Sommaire</p>
+    <ol class="c-legal__toc-list" role="list">
+      {toc.map((t, i) => (
+        <li><a class="c-legal__toc-link" href={`#${t.id}`} data-legal-toc={t.id}><span class="c-legal__toc-num">{i + 1}.</span> {t.label}</a></li>
+      ))}
+    </ol>
+  </nav>
+
+  <div class="c-legal__main">
+    {pending > 0 && (
+      <aside class="c-legal__draft" aria-label="Version de travail">
+        <Icon name="calendar" />
+        <p>
+          <strong>Version de travail.</strong> {pending} information{pending > 1 ? 's' : ''} juridique{pending > 1 ? 's' : ''}
+          {pending > 1 ? ' restent' : ' reste'} à fournir par APSUD avant la mise en ligne
+          (<mark class="c-legal__draft-mark">surlignée{pending > 1 ? 's' : ''} en jaune</mark>).
+        </p>
+      </aside>
+    )}
+
+    <Prose html={html} contained={false} class="c-legal__body" />
+
+    <p class="c-legal__question">
+      <span>Une question sur cette page ?</span>
+      <ArrowLink href="/contact">Nous contacter</ArrowLink>
+    </p>
+  </div>
+</div>
+
+<script>
+  /* Sommaire qui suit la lecture : la section en cours est mise en évidence. */
+  const root = document.querySelector<HTMLElement>('[data-legal]');
+  const links = root ? [...root.querySelectorAll<HTMLAnchorElement>('[data-legal-toc]')] : [];
+  if (links.length && 'IntersectionObserver' in window) {
+    const byId = new Map(links.map((a) => [a.dataset.legalToc!, a]));
+    const visible = new Set<string>();
+    const setCurrent = () => {
+      const first = links.find((a) => visible.has(a.dataset.legalToc!));
+      if (!first) return;
+      links.forEach((a) => a.removeAttribute('aria-current'));
+      first.setAttribute('aria-current', 'location');
+    };
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => (e.isIntersecting ? visible.add(e.target.id) : visible.delete(e.target.id)));
+        setCurrent();
+      },
+      { rootMargin: '-20% 0px -55% 0px' },
+    );
+    byId.forEach((_, id) => {
+      const section = document.getElementById(id);
+      if (section) io.observe(section);
+    });
+  }
+</script>

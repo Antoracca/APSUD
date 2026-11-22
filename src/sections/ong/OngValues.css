@@ -1,0 +1,110 @@
+/* Qui sommes-nous — les six valeurs (grille 3 × 2, fond Coton) */
+@layer components {
+  .c-ong-values {
+    padding-block: var(--space-section);
+    background: var(--color-surface-soft);   /* Coton, sans redéfinir --color-bg (cartes blanches) */
+    scroll-margin-block-start: var(--header-h);
+  }
+  .c-ong-values__head {
+    display: grid;
+    gap: var(--space-4);
+    max-inline-size: var(--measure-text);
+    margin-block-end: var(--space-12);
+  }
+  .c-ong-values__title {
+    margin: 0;
+    font-size: var(--fs-h2);
+    line-height: var(--lh-heading);
+  }
+  .c-ong-values__intro {
+    margin: 0;
+    color: var(--color-text-muted);
+    font-size: var(--fs-lead);
+    line-height: var(--lh-lead);
+  }
+
+  .c-ong-values__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 20rem), 1fr));
+    gap: var(--space-6);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .c-ong-values__card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    padding: var(--space-8);
+    background: var(--color-bg);   /* blanc de la page : la section ne redéfinit pas --color-bg */
+  }
+  /* Filet du haut : gris au repos, se remplit de vert au survol (innovation APSUD) */
+  .c-ong-values__card::before,
+  .c-ong-values__card::after {
+    content: "";
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline: 0;
+    block-size: var(--tile-bar);
+  }
+  .c-ong-values__card::before { background: var(--color-border-subtle); }
+  .c-ong-values__card::after {
+    background: var(--color-brand);
+    transform-origin: 0 50%;
+    scale: 0 1;
+  }
+
+  .c-ong-values__badge {
+    display: inline-grid;
+    place-items: center;
+    inline-size: var(--leaf-drop-sm);
+    block-size: var(--leaf-drop-sm);
+    margin-block-end: var(--space-3);
+    color: var(--color-text);
+    isolation: isolate;
+  }
+  .c-ong-values__badge::before {
+    content: "";
+    grid-area: 1 / 1;
+    inline-size: 100%;
+    block-size: 100%;
+    background: var(--color-surface-signature);
+    border-radius: var(--radius-goutte);
+    z-index: var(--z-below);
+  }
+  .c-ong-values__badge .c-icon { grid-area: 1 / 1; }
+
+  .c-ong-values__name {
+    margin: 0;
+    font-size: var(--fs-h4);
+    line-height: var(--lh-heading);
+  }
+  .c-ong-values__keywords {
+    margin: 0;
+    color: var(--color-text-brand);
+    font-weight: var(--fw-semibold);
+    line-height: var(--lh-snug);
+  }
+  .c-ong-values__text {
+    margin: 0;
+    color: var(--color-text-muted);
+    font-size: var(--fs-small);
+    line-height: var(--lh-body);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .c-ong-values__card::after {
+      transition: scale var(--dur-standard) var(--ease-in-out);
+    }
+    .c-ong-values__badge::before {
+      transition: rotate var(--dur-standard) var(--ease-in-out), background-color var(--dur-standard) var(--ease-in-out);
+    }
+    .c-ong-values__card:hover::after { scale: 1 1; }
+    .c-ong-values__card:hover .c-ong-values__badge::before {
+      rotate: 90deg;
+      background: var(--color-surface-tint);
+    }
+  }
+}

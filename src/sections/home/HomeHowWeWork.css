@@ -1,0 +1,12 @@
+/* Accueil §4 — Notre façon de travailler (Prosper « How we work ») */
+@layer components {
+  .c-how-we-work {
+    margin-block: var(--space-section);   /* 64 → 128 : rythme Prosper ~120 px à 1440 */
+  }
+  .c-how-we-work__title {
+    margin: 0 0 var(--space-12);   /* Prosper : ~48 px du titre à la photo */
+    font-size: var(--fs-h2);
+    font-weight: var(--fw-bold);
+    line-height: var(--lh-heading);
+  }
+}

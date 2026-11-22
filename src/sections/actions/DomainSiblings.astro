@@ -1,0 +1,32 @@
+---
+/**
+ * Page domaine §6 — Les autres domaines (navigation latérale entre pages sœurs).
+ * Trois liens-cartes : pictogramme dans une goutte-feuille, titre condensé, nombre de projets.
+ * Toute la carte est cliquable (un seul lien, nom accessible = le titre).
+ */
+import Icon from '../../components/ui/Icon.astro';
+import { siblingsOf, type Domaine } from './actionsData';
+import './DomainSiblings.css';
+
+interface Props {
+  domain: Domaine;
+}
+const { domain: d } = Astro.props;
+const others = siblingsOf(d.slug);
+---
+
+<nav class="c-domain-siblings" aria-labelledby="domain-siblings-title">
+  <div class="l-constrain">
+    <h2 id="domain-siblings-title" class="c-domain-siblings__title" data-reveal>Nos autres domaines</h2>
+    <ul class="c-domain-siblings__list" role="list">
+      {others.map((o, i) => (
+        <li class="c-domain-siblings__item" data-reveal data-reveal-delay={String(i * 150)}>
+          <span class="c-domain-siblings__icon" aria-hidden="true"><Icon name={o.icone} size="lg" /></span>
+          <a class="c-domain-siblings__link" href={o.href}>{o.titre}</a>
+          <span class="c-domain-siblings__count">{o.projets} {o.projets > 1 ? 'projets' : 'projet'}</span>
+          <Icon name="arrow-right" class="c-domain-siblings__arrow" />
+        </li>
+      ))}
+    </ul>
+  </div>
+</nav>

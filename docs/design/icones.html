@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Planche d’icônes APSUD</title>
+  <!-- Planche de contrôle : ouvrir via le serveur local (http://127.0.0.1:8765/docs/design/icones.html).
+       Les SVG sont lus en direct dans src/icons/ : la planche reflète toujours le jeu réel. -->
+  <link rel="stylesheet" href="../../node_modules/@fontsource-variable/mona-sans/wdth.css" />
+  <link rel="stylesheet" href="../../src/styles/tokens.css" />
+  <style>
+    body {
+      margin: 0;
+      padding: var(--space-10) var(--gutter) var(--space-16);
+      background: var(--color-bg);
+      color: var(--color-text);
+      font-family: var(--font-text);
+      font-size: var(--fs-small);
+    }
+    h1 { font-stretch: var(--font-stretch-condensed); font-size: var(--fs-h3); margin: 0 0 var(--space-2); }
+    h2 { font-stretch: var(--font-stretch-condensed); font-size: var(--fs-h5); margin: var(--space-10) 0 var(--space-4); }
+    p { margin: 0 0 var(--space-4); color: var(--color-text-muted); max-width: var(--measure-text); }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(9.5rem, 1fr));
+      gap: var(--space-2);
+      padding: 0;
+      list-style: none;
+    }
+    .cell {
+      display: grid;
+      gap: var(--space-3);
+      justify-items: start;
+      padding: var(--space-4);
+      background: var(--color-surface-soft);
+    }
+    .row { display: flex; align-items: center; gap: var(--space-4); }
+    .i24 { inline-size: 1.5rem; block-size: 1.5rem; }
+    .i48 { inline-size: 3rem; block-size: 3rem; }
+    .i16 { inline-size: 1rem; block-size: 1rem; }
+    .row > span { display: block; }
+    .row svg { inline-size: 100%; block-size: 100%; display: block; }
+    .name { font-weight: var(--fw-semibold); font-stretch: var(--font-stretch-condensed); }
+    .dark { background: var(--apsud-foret-900); color: var(--apsud-coton); }
+    .dark .cell { background: var(--apsud-vert-800); }
+    .dark p { color: var(--apsud-vert-200); }
+    .band { padding: var(--space-6); margin-inline: calc(-1 * var(--gutter)); padding-inline: var(--gutter); }
+  </style>
+</head>
+<body>
+  <h1>Icônes APSUD</h1>
+  <p>Grille 24, trait 2, extrémités et jonctions rondes, angles à 45° et 90°, arcs de cercle uniquement. Chaque icône est montrée à 16, 24 et 48 px. Les logos de réseaux sont des glyphes monochromes pleins.</p>
+
+  <h2>Interface</h2>
+  <ul class="grid" id="ui"></ul>
+
+  <h2>Pictogrammes métier</h2>
+  <ul class="grid" id="metier"></ul>
+
+  <h2>Réseaux sociaux</h2>
+  <ul class="grid" id="social"></ul>
+
+  <div class="band dark">
+    <h2>Sur fond Forêt</h2>
+    <p>Contrôle du rendu en <code>currentColor</code> sur fond sombre.</p>
+    <ul class="grid" id="dark"></ul>
+  </div>
+
+  <script type="module">
+    const groups = {
+      ui: ['menu', 'close', 'search', 'chevron-down', 'chevron-right', 'plus', 'minus', 'pause', 'play',
+           'arrow-right', 'arrow-left', 'arrow-up-right', 'external', 'mail', 'phone', 'map-pin',
+           'calendar', 'download', 'check', 'cookie'],
+      metier: ['eau', 'agriculture', 'protection', 'societe-civile', 'environnement', 'partenariat',
+               'don', 'urgence', 'localisation-rca'],
+      social: ['facebook', 'x', 'linkedin', 'instagram', 'whatsapp'],
+    };
+    groups.dark = [...groups.ui.slice(0, 8), ...groups.metier, ...groups.social];
+
+    const cache = new Map();
+    const load = (n) => {
+      if (!cache.has(n)) cache.set(n, fetch(`../../src/icons/${n}.svg`).then((r) => (r.ok ? r.text() : `<b>manquante</b>`)));
+      return cache.get(n);
+    };
+
+    for (const [id, names] of Object.entries(groups)) {
+      const ul = document.getElementById(id);
+      for (const n of names) {
+        const svg = await load(n);
+        const li = document.createElement('li');
+        li.className = 'cell';
+        li.innerHTML = `<div class="row"><span class="i16">${svg}</span><span class="i24">${svg}</span><span class="i48">${svg}</span></div><span class="name">${n}</span>`;
+        ul.append(li);
+      }
+    }
+  </script>
+</body>
+</html>

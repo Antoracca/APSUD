@@ -1,0 +1,16 @@
+---
+/**
+ * /contact — grille principale (DESIGN.md §5.8 n° 3) : coordonnées (5 col.) | formulaire (7 col.).
+ * En mobile : coordonnées d'abord (appeler est souvent plus rapide qu'écrire en RCA).
+ */
+import ContactDetails from './ContactDetails.astro';
+import ContactForm from './ContactForm.astro';
+import './ContactMain.css';
+---
+
+<section class="c-contact-main l-section--sm" aria-label="Coordonnées et formulaire de contact">
+  <div class="l-constrain c-contact-main__grid">
+    <ContactDetails />
+    <ContactForm />
+  </div>
+</section>

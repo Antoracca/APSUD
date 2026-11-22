@@ -1,0 +1,40 @@
+---
+/**
+ * Hub « Nos actions » §2 — Intro (Prosper « What we do » : h2 + 3 paragraphes dans la colonne
+ * de lecture de 690 px). Textes repris d'organisation.json (objectif, mission, domaines,
+ * axe transversal) ; le bilan chiffré est calculé depuis les projets publiés.
+ */
+import Prose from '../../components/ui/Prose.astro';
+import { hub, hubTotals, domains } from './actionsData';
+import './ActionsIntro.css';
+
+const officiels = domains.filter((d) => d.officiel);
+const civil = domains.find((d) => !d.officiel);
+const lower = (s: string) => s.charAt(0).toLowerCase() + s.slice(1);
+---
+
+<section class="c-actions-intro" aria-labelledby="actions-intro-title">
+  <Prose lead>
+    <h2 id="actions-intro-title" data-reveal>{hub.objectif}</h2>
+    <p data-reveal>{hub.mission}</p>
+    <p data-reveal>
+      APSUD intervient dans trois domaines :{' '}
+      {officiels.map((d, i) => (
+        <>
+          <a href={d.href}>{lower(d.titre)}</a>
+          {i < officiels.length - 2 ? ', ' : i === officiels.length - 2 ? ' et ' : '.'}
+        </>
+      ))}
+      {' '}La protection de l’environnement y est considérée comme un domaine transversal.
+    </p>
+    {civil && (
+      <p data-reveal>
+        Ses projets récents renforcent aussi les organisations de la société civile centrafricaine :{' '}
+        <a href={civil.href}>{lower(civil.intitule)}</a>.
+      </p>
+    )}
+    <p class="c-actions-intro__tally" data-reveal>
+      <strong>{hubTotals.projets} projets</strong> documentés sur ce site depuis {hubTotals.depuis}.
+    </p>
+  </Prose>
+</section>

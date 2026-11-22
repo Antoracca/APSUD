@@ -1,0 +1,106 @@
+/* En-tête de page interne — Prosper l-preface / c-page-title (gabarits B et C) */
+@layer components {
+  .c-page-header {
+    padding-block-start: var(--space-12);
+  }
+  .c-page-header__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-block-end: var(--space-10);
+  }
+
+  .c-page-header__breadcrumb { margin-block-end: var(--space-6); }
+  .c-page-header__eyebrow { margin-block-end: var(--space-4); }
+
+  /* H1 : Condensée, grand, aligné à gauche (Prosper .c-page-title, 10 colonnes) */
+  .c-page-header__title {
+    max-inline-size: 100%;
+    font-size: var(--fs-h1);
+    line-height: var(--lh-tight);
+    letter-spacing: var(--ls-headline);
+    overflow: clip;              /* masque de la montée du titre */
+    padding-block-end: 0.08em;   /* jambages (g, p, q) dans le masque */
+  }
+  .c-page-header__title-line { display: block; }
+
+  .c-page-header__intro {
+    margin-block-start: var(--space-6);
+    max-inline-size: var(--measure-intro);
+    font-size: var(--fs-lead);
+    line-height: var(--lh-lead);
+    color: var(--color-text);
+  }
+  .c-page-header__meta {
+    margin-block-start: var(--space-4);
+    font-size: var(--fs-small);
+    color: var(--color-text-muted);
+  }
+  .c-page-header__extra { margin-block-start: var(--space-8); }
+
+  /* Image d'en-tête : pleine largeur jusqu'à 1600 px (Prosper : bord à bord en 1440) */
+  .c-page-header__media {
+    max-inline-size: var(--container-wide);
+    margin-inline: auto;
+  }
+  .c-page-header__img {
+    display: block;
+    inline-size: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+  }
+
+  /* Gabarit C : page texte, H1 sur la colonne de lecture (7 colonnes), filet de fin */
+  .c-page-header--text .c-page-header__inner {
+    padding-block-end: var(--space-8);
+  }
+  .c-page-header--text .c-page-header__title { font-size: var(--fs-h2); }
+  .c-page-header--text .c-page-header__inner::after {
+    content: "";
+    align-self: stretch;
+    margin-block-start: var(--space-8);
+    border-block-end: var(--border-width) solid var(--color-border-subtle);
+  }
+
+  /* Compact : sous-pages et listes */
+  .c-page-header--compact { padding-block-start: var(--space-8); }
+  .c-page-header--compact .c-page-header__inner { padding-block-end: var(--space-8); }
+  .c-page-header--compact .c-page-header__title { font-size: var(--fs-h2); }
+
+  /* Innovation APSUD : montée du titre derrière son masque, puis volet de la photo */
+  @media (prefers-reduced-motion: no-preference) {
+    .c-page-header__title-line {
+      animation: c-page-header-rise var(--dur-hero-line) var(--ease-out) var(--delay-hero-intro) both;
+    }
+    .c-page-header__intro,
+    .c-page-header__extra {
+      animation: c-page-header-fade var(--dur-signature) var(--ease-out)
+        calc(var(--delay-hero-intro) + var(--stagger-hero-line)) both;
+    }
+    .c-page-header__media {
+      animation: c-page-header-unveil var(--dur-signature) var(--ease-in-out)
+        calc(var(--delay-hero-intro) + var(--stagger-hero-line)) both;
+    }
+    .c-page-header__media img {
+      animation: c-page-header-settle var(--dur-signature) var(--ease-out)
+        calc(var(--delay-hero-intro) + var(--stagger-hero-line)) both;
+    }
+  }
+
+  @keyframes c-page-header-rise {
+    from { translate: 0 105%; }
+    to   { translate: 0 0; }
+  }
+  @keyframes c-page-header-fade {
+    from { opacity: 0; translate: 0 var(--space-4); }
+    to   { opacity: 1; translate: 0 0; }
+  }
+  @keyframes c-page-header-unveil {
+    from { clip-path: inset(100% 0 0 0); }
+    to   { clip-path: inset(0 0 0 0); }
+  }
+  @keyframes c-page-header-settle {
+    from { scale: var(--reveal-zoom); }
+    to   { scale: 1; }
+  }
+}

@@ -1,0 +1,105 @@
+---
+/**
+ * Accueil · section 1 — Hero vidéo (Prosper `.c-hero`, PROSPER_TOKENS §14, DESIGN.md §4.6 et §7).
+ *
+ *  - Média pleine largeur 16:9 (max 100 rem) : la photo d'accroche est le contenu et l'élément LCP
+ *    (<Picture> AVIF/WebP, fetchpriority high, chargement immédiat).
+ *  - Vidéo FACULTATIVE (hero.video) : <video muted loop playsinline preload="none"> sans source dans le HTML ;
+ *    src/scripts/hero-video.ts n'injecte les sources que si l'écran fait ≥ 48em, sans « économie de données »,
+ *    en 4G et sans « animations réduites ». Bouton pause/lecture rond en bas à droite, affiché si la vidéo joue.
+ *  - Bloc sombre (t-foret) : sous le média en mobile ; ≥ 48em, posé en bas à gauche SUR le média,
+ *    avec la marche Pousse pâle (6 rem) qui dépasse derrière à gauche, comme Prosper.
+ *  - Améliorations (CSS seul, coupées en « animations réduites ») : tant qu'aucune vidéo ne joue, la photo respire
+ *    par un zoom « Ken Burns » très lent (aller-retour) ; au chargement, chaque phrase du H1 monte
+ *    derrière un masque, puis le texte et le bouton apparaissent, et la marche se déploie.
+ *    Le H1 reste un seul texte pour les lecteurs d'écran (les lignes ne sont que des <span>).
+ */
+import { Picture, getImage as optimizeImage } from 'astro:assets';
+import Button from '../../components/ui/Button.astro';
+import Icon from '../../components/ui/Icon.astro';
+import { getImage } from '../../lib/images';
+import { hero } from '../../data/home';
+import './HomeHero.css';
+
+const poster = getImage(hero.poster);
+
+/* Une « ligne » animée par phrase : « Rester après l’urgence. » / « Bâtir ce qui dure. » */
+const titleLines = hero.title.split(/(?<=[.!?…])\s+/).filter(Boolean);
+/* Téléphone : photo recadrée en 4:5, rendue 2,24 fois plus large que l’écran (1,25 × 1,79 : d’où 224vw dans sizes) ;
+   tablette : 4:3, soit 1,34 fois la largeur de l’écran */
+const widths = [640, 960, 1280, 1600, 1920, 2400, 2752].filter((w) => w <= poster.width);
+
+/* Affiche de la vidéo (attribut `poster`) : posée en JS seulement si la vidéo est chargée,
+   pour ne jamais télécharger l'image deux fois. */
+const videoPoster = hero.video
+  ? (await optimizeImage({ src: poster, width: 1280, format: 'webp' })).src
+  : undefined;
+---
+
+<section class="c-hero" aria-labelledby="hero-title" data-hero>
+  <div class="c-hero__media">
+    <Picture
+      src={poster}
+      alt={hero.posterAlt}
+      formats={['avif', 'webp']}
+      widths={widths}
+      sizes="(min-width: 100em) 100rem, (min-width: 64em) 100vw, (min-width: 48em) 134vw, 224vw"
+      loading="eager"
+      fetchpriority="high"
+      decoding="async"
+      class="c-hero__img"
+      pictureAttributes={{ class: 'c-hero__picture' }}
+    />
+
+    {hero.video && (
+      <>
+        <video
+          id="hero-video"
+          class="c-hero__video"
+          muted
+          loop
+          playsinline
+          preload="none"
+          aria-hidden="true"
+          tabindex="-1"
+          data-hero-video
+          data-poster={videoPoster}
+          data-src-webm={hero.video.webm}
+          data-src-mp4={hero.video.mp4}
+        />
+        <button
+          class="c-hero__toggle"
+          type="button"
+          aria-controls="hero-video"
+          aria-label="Mettre la vidéo en pause"
+          title="Mettre la vidéo en pause"
+          data-state="playing"
+          data-hero-toggle
+          hidden
+        >
+          <Icon name="pause" size="lg" class="c-hero__toggle-icon c-hero__toggle-icon--pause" />
+          <Icon name="play" size="lg" class="c-hero__toggle-icon c-hero__toggle-icon--play" />
+        </button>
+      </>
+    )}
+  </div>
+
+  <div class="c-hero__content t-foret">
+    <h1 id="hero-title" class="c-hero__title">
+      {titleLines.map((line, i) => (
+        <span class="c-hero__line" style={`--line: ${i}`}>
+          <span class="c-hero__line-inner">{line}</span>{i < titleLines.length - 1 && ' '}
+        </span>
+      ))}
+    </h1>
+    <p class="c-hero__text">{hero.text}</p>
+    <div class="c-hero__actions">
+      <Button href={hero.cta.href} variant="donate">{hero.cta.label}</Button>
+    </div>
+  </div>
+</section>
+
+<script>
+  /* Ne fait rien tant que hero.video vaut null (aucune <video> dans la page). */
+  import '../../scripts/hero-video';
+</script>

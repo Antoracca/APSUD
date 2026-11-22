@@ -1,0 +1,27 @@
+---
+/**
+ * Bouton (lien ou <button>). Condensée 800, rayon 4 px, contour qui « s'affirme »
+ * au survol (outline 3 px, sans décaler la mise en page) — comportement Prosper.
+ * Variantes : primary (vert APSUD) · donate (Soleil) · ink (Forêt, texte Pousse)
+ *             · outline · on-dark (Pousse sur fond sombre)
+ */
+import './Button.css';
+
+interface Props {
+  href?: string;
+  variant?: 'primary' | 'donate' | 'ink' | 'outline' | 'on-dark';
+  size?: 'sm' | 'md' | 'lg';
+  type?: 'button' | 'submit';
+  class?: string;
+  [key: string]: unknown;
+}
+
+const { href, variant = 'primary', size = 'md', type = 'button', class: className, ...rest } = Astro.props;
+const classes = ['c-button', `c-button--${variant}`, `c-button--${size}`, className].filter(Boolean).join(' ');
+---
+
+{href ? (
+  <a href={href} class={classes} {...rest}><slot /></a>
+) : (
+  <button type={type} class={classes} {...rest}><slot /></button>
+)}

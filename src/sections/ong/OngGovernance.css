@@ -1,0 +1,136 @@
+/* Qui sommes-nous — gouvernance en schéma horizontal (fond Forêt) */
+@layer components {
+  .c-ong-gov {
+    padding-block: var(--space-section);
+    overflow-x: clip;
+  }
+  .c-ong-gov__head {
+    display: grid;
+    gap: var(--space-8);
+    align-items: end;
+    margin-block-end: var(--space-16);
+  }
+  .c-ong-gov__title {
+    margin: 0;
+    font-size: var(--fs-h2);
+    line-height: var(--lh-heading);
+  }
+  .c-ong-gov__quote { margin: 0; }
+  .c-ong-gov__quote blockquote { margin: 0; }
+  .c-ong-gov__quote p {
+    margin: 0;
+    font-size: var(--fs-lead);
+    line-height: var(--lh-lead);
+    text-wrap: pretty;
+  }
+  .c-ong-gov__source {
+    margin-block-start: var(--space-3);
+    color: var(--color-text-muted);
+    font-size: var(--fs-caption);
+  }
+
+  @media (width >= 64em) {
+    .c-ong-gov__head { grid-template-columns: 5fr 7fr; column-gap: var(--grid-gap); }
+  }
+
+  /* ---------- Le fil : vertical en mobile, horizontal dès 48em ---------- */
+  .c-ong-gov__flow {
+    --_marker: var(--leaf-drop-sm);
+    position: relative;
+    display: grid;
+    gap: var(--space-8);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .c-ong-gov__flow::before,
+  .c-ong-gov__flow::after {
+    content: "";
+    position: absolute;
+    inset-inline-start: calc(var(--_marker) / 2 - var(--border-width-strong) / 2);
+    inset-block: calc(var(--_marker) / 2);
+    inline-size: var(--border-width-strong);
+    background: var(--color-text-muted);
+  }
+  .c-ong-gov__flow::after {
+    background: var(--color-surface-signature);
+    transform-origin: 50% 0;
+  }
+
+  .c-ong-gov__level {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: var(--space-6);
+  }
+  .c-ong-gov__marker {
+    display: grid;
+    place-items: center;
+    flex: none;
+    inline-size: var(--_marker);
+    block-size: var(--_marker);
+    color: var(--color-bg);
+    background: var(--color-surface-signature);
+    border-radius: var(--radius-goutte);
+    rotate: -45deg;   /* coin vif en bas : un repère de localisation */
+    font-family: var(--font-condensed);
+    font-size: var(--fs-h6);
+    font-stretch: var(--font-stretch-condensed);
+    font-weight: var(--fw-bold);
+  }
+  .c-ong-gov__marker > span { rotate: 45deg; }
+  .c-ong-gov__name {
+    font-family: var(--font-condensed);
+    font-size: var(--fs-h5);
+    font-stretch: var(--font-stretch-condensed);
+    font-weight: var(--fw-headline);
+    line-height: var(--lh-snug);
+  }
+
+  @media (width >= 48em) {
+    .c-ong-gov__flow {
+      --_marker: var(--space-16);
+      grid-template-columns: repeat(var(--n, 5), minmax(0, 1fr));
+      gap: var(--space-4);
+    }
+    .c-ong-gov__flow::before,
+    .c-ong-gov__flow::after {
+      inset-block: calc(var(--_marker) / 2 - var(--border-width-strong) / 2) auto;
+      inset-inline: calc(50% / var(--n, 5));
+      inline-size: auto;
+      block-size: var(--border-width-strong);
+    }
+    .c-ong-gov__flow::after { transform-origin: 0 50%; }
+    .c-ong-gov__level {
+      flex-direction: column;
+      text-align: center;
+      gap: var(--space-5);
+    }
+    /* Pastille de fond Forêt derrière chaque repère : le fil passe « sous » les repères */
+    .c-ong-gov__marker { box-shadow: 0 0 0 var(--space-3) var(--color-bg); }
+  }
+
+  .c-ong-gov__link { margin-block-start: var(--space-16); }
+
+  /* ---------- Animation : le fil se remplit, les repères se posent à son passage ---------- */
+  @media (prefers-reduced-motion: no-preference) {
+    .js-reveal .c-ong-gov__flow::after {
+      scale: 1 0;
+      transition: scale var(--dur-signature) var(--ease-out) var(--delay-signature);
+    }
+    @media (width >= 48em) {
+      .js-reveal .c-ong-gov__flow::after { scale: 0 1; }
+    }
+    .js-reveal .c-ong-gov__flow.is-revealed::after { scale: 1 1; }
+
+    .js-reveal .c-ong-gov__marker {
+      scale: 0.4;
+      opacity: 0;
+      transition:
+        scale var(--dur-standard) var(--ease-out),
+        opacity var(--dur-intro) var(--ease-out);
+      transition-delay: calc(var(--delay-signature) + var(--i) * var(--dur-signature) / (var(--n) - 1) * 0.8);
+    }
+    .js-reveal .c-ong-gov__flow.is-revealed .c-ong-gov__marker { scale: 1; opacity: 1; }
+  }
+}

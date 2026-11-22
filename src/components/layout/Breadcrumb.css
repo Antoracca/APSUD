@@ -1,0 +1,29 @@
+/* Fil d'Ariane — Prosper .c-breadcrumb : petit, gras, liens soulignés, séparateur discret */
+@layer components {
+  .c-breadcrumb {
+    font-size: var(--fs-small);
+    line-height: var(--lh-caption);
+  }
+  .c-breadcrumb__list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-1) var(--space-2);
+  }
+  .c-breadcrumb__item {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    min-block-size: var(--tap-min);
+  }
+  .c-breadcrumb__link {
+    font-weight: var(--fw-bold);
+    text-decoration-color: var(--color-link-decoration);
+  }
+  .c-breadcrumb__current {
+    color: var(--color-text-muted);
+  }
+  .c-breadcrumb__sep {
+    color: var(--color-text-muted);
+  }
+}

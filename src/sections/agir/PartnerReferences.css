@@ -1,0 +1,23 @@
+/* /agir/partenariat — références (logos) */
+@layer components {
+  .c-partner-refs__head { max-inline-size: var(--measure-text); margin-block-end: var(--space-12); }
+  .c-partner-refs__title { font-size: var(--fs-h2); margin-block-end: var(--space-4); }
+  .c-partner-refs__group {
+    display: grid;
+    gap: var(--space-6);
+    padding-block: var(--space-8);
+    border-block-start: var(--border-width) solid var(--color-border-subtle);
+  }
+  @media (width >= 60em) {
+    .c-partner-refs__group { grid-template-columns: minmax(0, 1fr) minmax(0, 3fr); gap: var(--space-12); }
+  }
+  .c-partner-refs__group-title { font-size: var(--fs-h5); display: flex; align-items: baseline; gap: var(--space-3); }
+  .c-partner-refs__count {
+    font-size: var(--fs-small);
+    font-weight: var(--fw-heavy);
+    color: var(--color-text-brand);
+    font-variant-numeric: tabular-nums;
+  }
+  .c-partner-refs__group-text { margin-block-start: var(--space-2); font-size: var(--fs-small); color: var(--color-text-muted); }
+  .c-partner-refs__more { margin-block-start: var(--space-8); }
+}

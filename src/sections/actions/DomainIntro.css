@@ -1,0 +1,29 @@
+/* Page domaine — chapeau + objectif spécifique */
+@layer components {
+  .c-domain-intro {
+    padding-block-start: var(--space-section-sm);
+  }
+  /* Objectif : grand texte condensé, filet Soleil à gauche (écho de la citation de Prose) */
+  .c-domain-intro__goal {
+    display: grid;
+    gap: var(--space-3);
+    margin: var(--space-10) 0 0;
+    padding-inline-start: var(--space-6);
+    border-inline-start: var(--space-1) solid var(--color-accent);
+  }
+  .c-domain-intro__goal-label {
+    color: var(--color-text-brand);
+    font-size: var(--fs-overline);
+    font-weight: var(--fw-heavy);
+    letter-spacing: var(--ls-overline);
+    text-transform: uppercase;
+  }
+  .c-domain-intro__goal-text {
+    font-family: var(--font-condensed);
+    font-size: var(--fs-h5);
+    font-stretch: var(--font-stretch-condensed);
+    font-weight: var(--fw-bold);
+    line-height: var(--lh-snug);
+    text-wrap: pretty;
+  }
+}

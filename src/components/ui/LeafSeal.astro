@@ -1,0 +1,78 @@
+---
+/**
+ * Sceau goutte-feuille : la goutte-feuille « cap » (pointe à droite, DESIGN.md §1.6 a) qui accueille
+ * le symbole APSUD et le sigle. Innovation APSUD pour la section des chiffres clés (HomeManifesto).
+ *
+ * Chorégraphie (CSS seul, déclenchée par la classe `.is-inview` posée sur un ancêtre par
+ * src/scripts/counters.ts ; jetons --seal-* dans tokens.css) :
+ *   1. Tracé    : le contour vert se dessine depuis la pointe (balayage conique autour du cercle)
+ *                 pendant que la forme glisse en place.
+ *   2. Cortège  : le symbole et le sigle APSUD voyagent à gauche de la forme, du même mouvement.
+ *   3. Aplat    : le contour refermé se remplit de vert (le chevron « Amara » de Prosper).
+ *   4. Pose     : le symbole glisse dans le cercle et s'y pose ; une onde blanche part de son centre
+ *                 et remplit la forme, le vert ne garde que le liseré : le logo ressort sur blanc.
+ *   5. Inverse  : après un temps de pose (--seal-hold), le symbole et le sigle ressortent (à gauche
+ *                 de la forme dès 90em, au-dessus en dessous), la face blanche se résorbe et la
+ *                 goutte redevient verte : les deux restent séparés.
+ * Sans JS, sans `.js-reveal` ou avec « animations réduites » : état final d'emblée (goutte verte,
+ * symbole et sigle à côté), sans aucun mouvement.
+ *
+ * Décoratif (aria-hidden) : le logo et le nom d'APSUD sont déjà annoncés par l'en-tête.
+ * Le symbole vient du seul fichier existant (JPEG 85 × 102) recadré comme dans Logo.astro ;
+ * à remplacer par le SVG vectorisé dès qu'APSUD l'aura fourni (CONTROLE_QUALITE.md).
+ */
+import { Image } from 'astro:assets';
+import { getImage } from '../../lib/images';
+import { site } from '../../data/site';
+import './LeafSeal.css';
+
+interface Props {
+  class?: string;
+}
+const { class: className } = Astro.props;
+
+/* Même tracé que LeafDrop (forme « cap ») : cercle de rayon 50 centré en (50, 50), coin vif
+   tourné vers la droite en (120,71 ; 50). Le tracé commence par le coin vif : le contour part
+   de la pointe, celle qui désigne les chiffres. */
+const PATH = 'M0 100V50a50 50 0 0 1 50-50 50 50 0 0 1 50 50 50 50 0 0 1-50 50Z';
+const VIEWBOX = '0 0 120.71 100';
+const TRANSFORM = 'rotate(-135 50 50)';
+/* Marge du calque du contour (unités de la viewBox) : la boîte s'agrandit d'autant en % (LeafSeal.css) */
+const LINE_PAD = 3;
+const LINE_VIEWBOX = `${-LINE_PAD} ${-LINE_PAD} ${120.71 + 2 * LINE_PAD} ${100 + 2 * LINE_PAD}`;
+
+const mark = getImage('assets/apsud/logo/apsud-logo-original.jpg');
+---
+
+<span class:list={['c-leaf-seal', className]} aria-hidden="true">
+  {/* 1. Aplat vert (apparaît quand le contour se referme) */}
+  <svg class="c-leaf-seal__layer c-leaf-seal__fill" viewBox={VIEWBOX} focusable="false">
+    <path d={PATH} transform={TRANSFORM} />
+  </svg>
+  {/* 2. Face blanche, dévoilée en onde circulaire depuis le centre du cercle */}
+  <svg class="c-leaf-seal__layer c-leaf-seal__face" viewBox={VIEWBOX} focusable="false">
+    <path d={PATH} transform={TRANSFORM} />
+  </svg>
+  {/* 3. Contour (liseré, 3 px quelle que soit la taille), dévoilé par un balayage conique depuis la pointe.
+         Sa boîte déborde de LINE_PAD unités de chaque côté pour que le masque ne rogne pas le trait. */}
+  <svg class="c-leaf-seal__layer c-leaf-seal__line" viewBox={LINE_VIEWBOX} focusable="false">
+    <path d={PATH} transform={TRANSFORM} vector-effect="non-scaling-stroke" />
+  </svg>
+  {/* 4. Symbole + sigle */}
+  <span class="c-leaf-seal__mark">
+    <span class="c-leaf-seal__emblem">
+      <Image
+        src={mark}
+        alt=""
+        width={mark.width}
+        height={mark.height}
+        format="webp"
+        quality={90}
+        loading="lazy"
+        decoding="async"
+        class="c-leaf-seal__img"
+      />
+    </span>
+    <span class="c-leaf-seal__word">{site.sigle}</span>
+  </span>
+</span>

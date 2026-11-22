@@ -1,0 +1,13 @@
+/* Marqueur d'information à fournir par APSUD */
+@layer components {
+  .c-legal-pending {
+    padding: 0 var(--space-1);
+    border-radius: var(--radius-control);
+    background: var(--legal-pending-bg);
+    color: var(--legal-pending-ink);
+    font-weight: var(--fw-bold);
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+  }
+  .c-legal-pending__hint { font-weight: var(--fw-medium); }
+}

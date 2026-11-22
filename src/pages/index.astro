@@ -1,0 +1,30 @@
+---
+/**
+ * Accueil — ordre des sections calqué sur l'accueil de Prosper Global :
+ * hero vidéo → manifeste + chiffres → à la une → façon de travailler (zigzag)
+ * → initiative-étendard → actualités (3 tuiles) → bailleurs → double CTA.
+ * Chaque section vit dans son propre fichier (src/sections/home/).
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HomeHero from '../sections/home/HomeHero.astro';
+import HomeManifesto from '../sections/home/HomeManifesto.astro';
+import HomeFeaturedProjects from '../sections/home/HomeFeaturedProjects.astro';
+import HomeHowWeWork from '../sections/home/HomeHowWeWork.astro';
+import HomeVision from '../sections/home/HomeVision.astro';
+import HomeZones from '../sections/home/HomeZones.astro';
+import HomeRecentProjects from '../sections/home/HomeRecentProjects.astro';
+import HomePartners from '../sections/home/HomePartners.astro';
+import HomeCtaTwoUp from '../sections/home/HomeCtaTwoUp.astro';
+---
+
+<BaseLayout>
+  <HomeHero />
+  <HomeManifesto />
+  <HomeFeaturedProjects />
+  <HomeHowWeWork />
+  <HomeVision />
+  <HomeZones />
+  <HomeRecentProjects />
+  <HomePartners />
+  <HomeCtaTwoUp />
+</BaseLayout>

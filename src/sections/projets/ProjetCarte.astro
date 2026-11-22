@@ -1,0 +1,74 @@
+---
+/**
+ * Fiche projet — petite carte de situation de la RCA (innovation APSUD).
+ * Reprend le fond de carte de l'accueil (src/data/rca-prefectures.json via zones.ts) :
+ * toutes les préfectures en Coton, celles du projet en Soleil (en cours) ou Vert APSUD
+ * (réalisé), avec un point sur chacune. Bangui, minuscule à cette échelle, devient une pastille.
+ * Entrée : les préfectures du projet se colorent l'une après l'autre et le point se pose
+ * (CSS, au passage de [data-reveal] ; coupé si « animations réduites », visible sans JS).
+ * Sous la carte, chaque préfecture renvoie à la liste filtrée /projets?prefecture=….
+ */
+import { zones, mapViewBox } from '../../data/zones';
+import type { Projet } from '../../data/projects';
+import './ProjetCarte.css';
+
+interface Props {
+  projet: Projet;
+}
+
+const { projet: p } = Astro.props;
+const ids = new Set(p.prefectures.map((x) => x.slug));
+const tone = p.statut === 'en_cours' ? 'ongoing' : 'done';
+const fond = zones.filter((z) => z.slug !== 'bangui');
+const actives = zones.filter((z) => ids.has(z.slug));
+const noms = new Intl.ListFormat('fr', { type: 'conjunction' }).format(p.prefectures.map((x) => x.nom));
+---
+
+{actives.length > 0 && (
+  <figure class:list={['c-projet-carte', `c-projet-carte--${tone}`]} data-reveal>
+    <svg
+      class="c-projet-carte__map"
+      viewBox={mapViewBox}
+      role="img"
+      aria-label={`Carte de la République centrafricaine : le projet se situe en ${noms}.`}
+    >
+      <g class="c-projet-carte__prefs">
+        {fond.map((z) => (
+          <path class="c-projet-carte__pref" d={z.d} />
+        ))}
+      </g>
+      <g class="c-projet-carte__actives">
+        {actives
+          .filter((z) => z.slug !== 'bangui')
+          .map((z, i) => (
+            <path class="c-projet-carte__pref c-projet-carte__pref--on" d={z.d} style={`--i:${i}`} />
+          ))}
+      </g>
+      <g class="c-projet-carte__dots">
+        {actives.map((z, i) => (
+          <g transform={`translate(${z.cx} ${z.cy})`}>
+            <circle
+              class:list={['c-projet-carte__dot', { 'c-projet-carte__dot--capital': z.slug === 'bangui' }]}
+              r={z.slug === 'bangui' ? 14 : 9}
+              style={`--i:${i}`}
+            />
+          </g>
+        ))}
+      </g>
+    </svg>
+    <figcaption class="c-projet-carte__caption">
+      <span class="c-projet-carte__label">
+        {p.prefectures.length > 1 ? 'Préfectures du projet' : 'Préfecture du projet'}
+      </span>
+      <ul class="c-projet-carte__list" role="list">
+        {p.prefectures.map((x) => (
+          <li>
+            <a class="c-projet-carte__link" href={`/projets?prefecture=${x.slug}`}>
+              {x.nom}<span class="u-visually-hidden"> : tous les projets dans cette préfecture</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </figcaption>
+  </figure>
+)}

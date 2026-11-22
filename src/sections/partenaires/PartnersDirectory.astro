@@ -1,0 +1,229 @@
+---
+/**
+ * /partenaires — annuaire des partenaires et bailleurs (PROSPER_STRUCTURE §5.16 « grille de logos
+ * filtrable par catégorie, fiche au clic » ; Prosper .l-logo-grid + .c-logo).
+ *
+ * Chaque organisation a sa fiche, ancrée sur son slug (#fh-rca, #union-europeenne…) : les logos
+ * du bandeau d'accueil y mènent directement. Fiche : logo (ou monogramme typographique),
+ * catégorie, nom officiel, projets documentés avec liens, site officiel.
+ *
+ * Innovations APSUD (CSS natif + petit script, coupées si « animations réduites ») :
+ *  - onglets accessibles (role=tablist, flèches, Début/Fin) qui filtrent les familles, avec
+ *    transition de vue native ; une ancre vers une fiche masquée rebascule sur « Toutes » ;
+ *  - logo en niveaux de gris au repos, couleur d'origine au survol / focus de la fiche ;
+ *  - fiche visée (:target) : marche Pousse décalée (ombre pleine signature) qui se pose.
+ * Sans JS : onglets masqués, toutes les familles visibles, ancres fonctionnelles.
+ */
+import { Image } from 'astro:assets';
+import Icon from '../../components/ui/Icon.astro';
+import { getImage } from '../../lib/images';
+import { fichesParGroupe } from './partenairesData';
+import './PartnersDirectory.css';
+
+const total = fichesParGroupe.reduce((n, g) => n + g.fiches.length, 0);
+const tabs = [
+  { id: 'tous', label: 'Toutes', count: total },
+  ...fichesParGroupe.map((g) => ({ id: g.slug, label: g.onglet, count: g.fiches.length })),
+];
+const roleLabel = (r: string) => r.charAt(0).toUpperCase() + r.slice(1).replace('mise en oeuvre', 'mise en œuvre');
+/** Projets montrés d'emblée sur une fiche ; les suivants dans un volet repliable */
+const VISIBLE = 2;
+const hostOf =(url: string) => new URL(url).hostname.replace(/^www\./, '');
+---
+
+<section class="c-partners-dir l-section" aria-labelledby="partners-dir-title" data-partners-dir>
+  <div class="l-constrain">
+    <header class="c-partners-dir__head" data-reveal>
+      <h2 id="partners-dir-title" class="c-partners-dir__title">Toutes les organisations</h2>
+    </header>
+
+    <div class="c-partners-dir__bar" data-dir-bar hidden>
+      <div class="c-partners-dir__tabs" role="tablist" aria-label="Filtrer par famille d’organisations">
+        {tabs.map((t, i) => (
+          <button
+            type="button"
+            class="c-partners-dir__tab"
+            role="tab"
+            id={`dir-tab-${t.id}`}
+            aria-selected={i === 0 ? 'true' : 'false'}
+            aria-controls="dir-panel"
+            tabindex={i === 0 ? '0' : '-1'}
+            data-tab={t.id}
+            data-count={t.count}
+          >
+            {t.label}
+            <span class="c-partners-dir__tab-count" aria-hidden="true">{t.count}</span>
+          </button>
+        ))}
+      </div>
+      <p class="c-partners-dir__count" aria-live="polite" aria-atomic="true">
+        <span data-dir-count>{total}</span> organisations
+      </p>
+    </div>
+
+    <div id="dir-panel" class="c-partners-dir__panel" role="tabpanel" aria-labelledby="dir-tab-tous" data-dir-panel>
+      {fichesParGroupe.map((g) => (
+        <section class="c-partners-group" aria-labelledby={`groupe-${g.slug}`} data-group={g.slug}>
+          <header class="c-partners-group__head">
+            <h3 id={`groupe-${g.slug}`} class="c-partners-group__title">{g.titre}</h3>
+            <p class="c-partners-group__text">{g.texte}</p>
+          </header>
+
+          <ul class="c-partners-group__grid" role="list">
+            {g.fiches.map((f, i) => {
+              const img = f.logo ? getImage(f.logo) : null;
+              return (
+                <li class="c-partner-card" id={f.slug} style={`--i: ${i}`}>
+                  <article class="c-partner-card__inner" aria-labelledby={`${f.slug}-nom`}>
+                    <div class="c-partner-card__stage">
+                      {img ? (
+                        img.format === 'svg' ? (
+                          <Image class="c-partner-card__logo" src={img} alt="" loading="lazy" decoding="async" />
+                        ) : (
+                          <Image
+                            class="c-partner-card__logo"
+                            src={img}
+                            alt=""
+                            widths={[240, 480].filter((w) => w <= img.width).concat(img.width < 240 ? [img.width] : [])}
+                            sizes="15rem"
+                            format="webp"
+                            loading="lazy"
+                            decoding="async"
+                          />
+                        )
+                      ) : (
+                        <span class="c-partner-card__mono" aria-hidden="true">
+                          <span class="c-partner-card__mono-text">{f.monogramme}</span>
+                        </span>
+                      )}
+                    </div>
+
+                    <div class="c-partner-card__body">
+                      <p class="c-partner-card__overline">
+                        <span class:list={['c-partner-card__cat', `c-partner-card__cat--${f.categorie === 'Bailleur' ? 'bailleur' : 'partenaire'}`]}>
+                          {f.categorie}
+                        </span>
+                        <span class="c-partner-card__sigle">{f.sigle}</span>
+                      </p>
+                      <h4 id={`${f.slug}-nom`} class="c-partner-card__name">{f.nom}</h4>
+
+                      {f.projets.length > 0 ? (
+                        <div class="c-partner-card__projects">
+                          <p class="c-partner-card__projects-title">
+                            {f.projets.length > 1 ? `${f.projets.length} projets avec APSUD` : 'Projet avec APSUD'}
+                          </p>
+                          {[f.projets.slice(0, VISIBLE), f.projets.slice(VISIBLE)].map((lot, k) =>
+                            lot.length === 0 ? null : (
+                              k === 0 ? (
+                                <ul class="c-partner-card__project-list" role="list">
+                                  {lot.map((p) => (
+                                    <li>
+                                      <a class="c-partner-card__project" href={`/projets/${p.slug}`}>
+                                        <span class="c-partner-card__project-title">{p.titre}</span>
+                                        <span class="c-partner-card__project-meta">
+                                          {[p.statut, p.annees, p.role && roleLabel(p.role)].filter(Boolean).join(' · ')}
+                                        </span>
+                                      </a>
+                                    </li>
+                                  ))}
+                                </ul>
+                              ) : (
+                                <details class="c-partner-card__more">
+                                  <summary class="c-partner-card__more-summary">
+                                    <span>{lot.length > 1 ? `Voir les ${lot.length} autres projets` : 'Voir l’autre projet'}</span>
+                                    <Icon name="chevron-down" size="sm" class="c-partner-card__more-icon" />
+                                  </summary>
+                                  <ul class="c-partner-card__project-list" role="list">
+                                    {lot.map((p) => (
+                                      <li>
+                                        <a class="c-partner-card__project" href={`/projets/${p.slug}`}>
+                                          <span class="c-partner-card__project-title">{p.titre}</span>
+                                          <span class="c-partner-card__project-meta">
+                                            {[p.statut, p.annees, p.role && roleLabel(p.role)].filter(Boolean).join(' · ')}
+                                          </span>
+                                        </a>
+                                      </li>
+                                    ))}
+                                  </ul>
+                                </details>
+                              )
+                            ),
+                          )}
+                        </div>
+                      ) : (
+                        <p class="c-partner-card__pending">Projets communs&nbsp;: informations bientôt disponibles.</p>
+                      )}
+
+                      {f.site && (
+                        <a class="c-partner-card__site" href={f.site} target="_blank" rel="noopener">
+                          <span>{hostOf(f.site)}</span>
+                          <Icon name="external" size="sm" />
+                          <span class="u-visually-hidden"> (site officiel de {f.sigle}, nouvel onglet)</span>
+                        </a>
+                      )}
+                    </div>
+                  </article>
+                </li>
+              );
+            })}
+          </ul>
+        </section>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  /* Onglets de familles (amélioration progressive). */
+  const root = document.querySelector<HTMLElement>('[data-partners-dir]');
+  const bar = root?.querySelector<HTMLElement>('[data-dir-bar]');
+  const panel = root?.querySelector<HTMLElement>('[data-dir-panel]');
+  if (root && bar && panel) {
+    const tabs = [...bar.querySelectorAll<HTMLButtonElement>('[role="tab"]')];
+    const groups = [...panel.querySelectorAll<HTMLElement>('[data-group]')];
+    const count = bar.querySelector<HTMLElement>('[data-dir-count]');
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const apply = (tab: HTMLButtonElement, focus = false) => {
+      const id = tab.dataset.tab!;
+      const run = () => {
+        tabs.forEach((t) => {
+          const on = t === tab;
+          t.setAttribute('aria-selected', String(on));
+          t.tabIndex = on ? 0 : -1;
+        });
+        groups.forEach((g) => (g.hidden = id !== 'tous' && g.dataset.group !== id));
+        panel.setAttribute('aria-labelledby', tab.id);
+        if (count) count.textContent = tab.dataset.count ?? '';
+      };
+      const doc = document as Document & { startViewTransition?: (cb: () => void) => unknown };
+      if (doc.startViewTransition && !reduce) doc.startViewTransition(run);
+      else run();
+      if (focus) tab.focus();
+    };
+
+    bar.hidden = false;
+    tabs.forEach((tab, i) => {
+      tab.addEventListener('click', () => apply(tab));
+      tab.addEventListener('keydown', (e) => {
+        const next =
+          e.key === 'ArrowRight' ? tabs[(i + 1) % tabs.length]
+          : e.key === 'ArrowLeft' ? tabs[(i - 1 + tabs.length) % tabs.length]
+          : e.key === 'Home' ? tabs[0]
+          : e.key === 'End' ? tabs[tabs.length - 1]
+          : null;
+        if (next) { e.preventDefault(); apply(next, true); }
+      });
+    });
+
+    /* Une ancre vers une fiche d'une famille masquée : on réaffiche tout, puis on y va. */
+    const reveal = () => {
+      const target = location.hash ? document.getElementById(decodeURIComponent(location.hash.slice(1))) : null;
+      if (target && panel.contains(target) && target.closest<HTMLElement>('[data-group]')?.hidden) {
+        apply(tabs[0]);
+        requestAnimationFrame(() => target.scrollIntoView({ block: 'start' }));
+      }
+    };
+    addEventListener('hashchange', reveal);
+  }
+</script>

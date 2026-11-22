@@ -1,0 +1,164 @@
+/* Sceau goutte-feuille (LeafSeal.astro) — innovation APSUD, section des chiffres clés.
+   Toutes les durées, délais et proportions sont des jetons (--seal-*, tokens.css). */
+/* Angle animable du balayage (sans @property, l'animation saute à mi-parcours : contour entier quand même) */
+@property --seal-sweep {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 360deg;
+}
+
+@layer components {
+  .c-leaf-seal {
+    /* Centre du cercle de la forme « cap » : x = 50 / 120,71 de la largeur, y = 50 % */
+    --_cx: 41.42%;
+    --_rest: var(--seal-mark-rest-top);
+
+    position: relative;
+    display: block;
+    inline-size: 100%;
+    aspect-ratio: 120.71 / 100;
+    container-type: inline-size;     /* le symbole et le sigle se dimensionnent sur la forme (cqi) */
+    line-height: 0;
+  }
+
+  .c-leaf-seal__layer {
+    position: absolute;
+    inset: 0;
+    inline-size: 100%;
+    block-size: 100%;
+    overflow: visible;
+  }
+  .c-leaf-seal__fill { fill: var(--color-brand); }
+  /* État final (et état fixe sans mouvement) : goutte verte d'origine, face blanche résorbée */
+  .c-leaf-seal__face {
+    fill: var(--seal-face);
+    clip-path: circle(0 at var(--_cx) 50%);
+  }
+  /* Calque du contour : viewBox élargie de 3 unités de chaque côté (LINE_PAD) ⇒ boîte élargie
+     dans la même proportion (3 / 120,71 en largeur, 3 / 100 en hauteur) : le tracé reste superposé
+     à l'aplat, et le masque conique ne rogne pas la moitié extérieure du trait. */
+  .c-leaf-seal__line {
+    inset: -3% auto auto -2.4853%;
+    inline-size: 104.9706%;          /* 126,71 / 120,71 */
+    max-inline-size: none;           /* base.css plafonne les svg à 100 % */
+    block-size: 106%;                /* 106 / 100 */
+    color: var(--color-brand);
+    fill: none;
+    stroke: currentColor;
+    stroke-width: var(--seal-line-w);
+    stroke-linejoin: round;
+    /* Balayage : secteur visible de 0 à --seal-sweep, depuis la pointe (90° = à droite), centré sur le
+       cercle (x = 53 / 126,71 de la boîte élargie). Sans mouvement : 360°, contour entier. */
+    mask-image: conic-gradient(from 90deg at 41.83% 50%, currentColor var(--seal-sweep), transparent 0);
+  }
+
+  /* ---------- Symbole + sigle, centrés sur le cercle ---------- */
+  .c-leaf-seal__mark {
+    position: absolute;
+    inset-block-start: 50%;
+    inset-inline-start: var(--_cx);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--seal-mark-gap);
+    transform: translate(-50%, -50%);   /* centrage ; la propriété `translate` reste libre pour le voyage */
+    translate: var(--_rest);            /* état final : symbole et sigle séparés de la forme */
+    line-height: var(--lh-tight);
+  }
+  .c-leaf-seal__emblem {
+    /* Recadrage du JPEG source (85 × 102) : symbole seul, 80 × 75 en haut à gauche (comme Logo.astro) */
+    inline-size: var(--seal-emblem-w);
+    aspect-ratio: 80 / 75;
+    overflow: hidden;
+    /* Le symbole est un cercle de mains : on le découpe en disque. Le carré blanc du JPEG disparaît
+       ainsi sur le Coton et sur le vert (le multiply ne suffit pas : le bloc transformé l'isole). */
+    clip-path: circle(closest-side at 50% 50%);
+  }
+  .c-leaf-seal__img {
+    display: block;
+    inline-size: calc(100% * 85 / 80);
+    max-inline-size: none;
+    block-size: auto;
+    mix-blend-mode: multiply;          /* le fond blanc du JPEG disparaît sur la face blanche et sur le Coton */
+  }
+  .c-leaf-seal__word {
+    color: var(--color-brand);
+    font-family: var(--font-condensed);
+    font-stretch: var(--font-stretch-condensed);
+    font-size: var(--seal-word-fs);
+    font-weight: var(--fw-heavy);
+    letter-spacing: var(--ls-condensed);
+  }
+
+  @media (width >= 90em) {
+    .c-leaf-seal { --_rest: var(--seal-mark-rest-side); }
+  }
+
+  /* Petite forme (téléphone : 63 px) : le sigle serait illisible, le symbole occupe le cercle seul */
+  @container (inline-size < 10rem) {
+    .c-leaf-seal__emblem { inline-size: var(--seal-emblem-w-sm); }
+    .c-leaf-seal__word { display: none; }
+  }
+
+  /* ---------- Chorégraphie (mouvement accepté + JS actif) ----------
+     État d'attente tant que l'ancêtre n'a pas reçu .is-inview ; puis animations à remplissage
+     « both » qui conservent l'état final. */
+  @media (prefers-reduced-motion: no-preference) {
+    .js-reveal .c-leaf-seal__line { --seal-sweep: 0deg; }
+    .js-reveal .c-leaf-seal__fill { opacity: 0; }
+    .js-reveal .c-leaf-seal__mark { opacity: 0; translate: var(--seal-mark-from) 0; }
+
+    /* 1. Tracé : de la pointe à la pointe, pendant le glissement de la forme */
+    .js-reveal .is-inview .c-leaf-seal__line {
+      animation: c-leaf-seal-trace var(--dur-seal-trace) var(--ease-draw) var(--seal-delay) both;
+    }
+    /* 2 + 4. Cortège puis pose : une seule animation (une seule propriété `translate`), easing par étape */
+    .js-reveal .is-inview .c-leaf-seal__mark {
+      animation:
+        c-leaf-seal-mark var(--dur-seal-mark) linear var(--seal-delay) both,
+        /* 5. Effet inverse : remplissage « forwards » seulement, pour ne pas masquer l'animation 2 + 4 pendant son attente */
+        c-leaf-seal-return var(--dur-seal-return) var(--ease-draw) var(--seal-return-delay) forwards;
+    }
+    /* 3. Aplat vert quand le contour se referme */
+    .js-reveal .is-inview .c-leaf-seal__fill {
+      animation: c-leaf-seal-fill var(--dur-seal-fill) var(--ease-out) var(--seal-fill-delay) both;
+    }
+    /* 4. Onde blanche depuis le centre du cercle : elle atteint le bord avant que le symbole le franchisse */
+    .js-reveal .is-inview .c-leaf-seal__face {
+      animation:
+        c-leaf-seal-wave var(--dur-seal-wave) var(--ease-land) var(--seal-wave-delay) both,
+        c-leaf-seal-unwave var(--dur-seal-unwave) var(--ease-draw) var(--seal-unwave-delay) forwards;
+    }
+  }
+
+  @keyframes c-leaf-seal-trace {
+    from { --seal-sweep: 0deg; }
+    to   { --seal-sweep: 360deg; }
+  }
+  @keyframes c-leaf-seal-fill {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+  @keyframes c-leaf-seal-unwave {
+    from { clip-path: circle(var(--seal-wave-r) at var(--_cx) 50%); }
+    to   { clip-path: circle(0 at var(--_cx) 50%); }
+  }
+  @keyframes c-leaf-seal-return {
+    from { translate: 0 0; }
+    to   { translate: var(--_rest); }
+  }
+  @keyframes c-leaf-seal-wave {
+    from { clip-path: circle(0 at var(--_cx) 50%); }
+    to   { clip-path: circle(var(--seal-wave-r) at var(--_cx) 50%); }
+  }
+  /* Repères (durée totale --dur-seal-mark = 2,15 s) :
+       0 → 18 %   apparition à gauche de la forme ;
+       0 → 68 %   le cortège accompagne le tracé, en se rapprochant doucement ;
+       68 → 100 % le symbole entre dans le cercle et s'y pose (décélération longue, sans rebond). */
+  @keyframes c-leaf-seal-mark {
+    0%   { opacity: 0; translate: var(--seal-mark-from) 0; animation-timing-function: var(--ease-draw); }
+    18%  { opacity: 1; }
+    68%  { translate: var(--seal-mark-wait) 0; animation-timing-function: var(--ease-land); }
+    100% { opacity: 1; translate: 0 0; }
+  }
+}

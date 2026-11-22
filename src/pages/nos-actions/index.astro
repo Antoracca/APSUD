@@ -1,0 +1,33 @@
+---
+/**
+ * Hub « Nos actions » — équivalent du « What we do » de Prosper (gabarit B) :
+ * H1 + photo à légende-cartouche → intro (colonne de lecture) → domaines en zigzag
+ * → axe transversal environnement → double CTA.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/layout/PageHeader.astro';
+import CtaTwoUp from '../../components/ui/CtaTwoUp.astro';
+import ActionsIntro from '../../sections/actions/ActionsIntro.astro';
+import ActionsDomains from '../../sections/actions/ActionsDomains.astro';
+import ActionsTransversal from '../../sections/actions/ActionsTransversal.astro';
+import { hubPhoto, captionOf } from '../../sections/actions/actionsData';
+import { ctaTwoUp } from '../../data/home';
+---
+
+<BaseLayout
+  title="Nos actions"
+  description="Eau, hygiène et assainissement, sécurité alimentaire, protection, société civile : les domaines d’intervention d’APSUD en République centrafricaine et les projets qui les portent."
+>
+  <PageHeader
+    title="Nos actions"
+    breadcrumb={[{ label: 'Nos actions' }]}
+    image={hubPhoto.src}
+    imageAlt={hubPhoto.alt}
+    caption={captionOf(hubPhoto)}
+    credit="© APSUD"
+  />
+  <ActionsIntro />
+  <ActionsDomains />
+  <ActionsTransversal />
+  <CtaTwoUp {...ctaTwoUp} />
+</BaseLayout>

@@ -1,0 +1,684 @@
+{
+ "genere_le": "2026-11-21",
+ "source": "https://apsud.org (pages /home, /A_propos, /liste_projets, /detail-projet/*, /Nos_partenaires, /Contactez_nous, /Faire_un_Don)",
+ "identite": {
+  "sigle": "APSUD",
+  "nom_complet": "Action pour la Population et le Développement Durable",
+  "nom_anglais": "Action for Population and Sustainable Development",
+  "statut": "Organisation Non Gouvernementale Nationale de développement et d'action humanitaire, à but non lucratif",
+  "independance": "Indépendante de toute entreprise, collectivité, organisation politique ou religieuse.",
+  "texte_presentation_source": "Action pour la Population et le Développement Durable (Action for Population and Sustainable Development – APSUD) est une Organisation Non Gouvernementale Nationale de développement et d’action humanitaire. À but non lucratif, elle est indépendante de toute entreprise, collectivité, organisation politique ou religieuse.",
+  "pays": "République centrafricaine (RCA)",
+  "date_creation": null,
+  "date_creation_note": "Non indiquée sur le site : à demander à APSUD (avec le numéro d'agrément/enregistrement).",
+  "siege": {
+   "libelle_site": "MICHELINE, BIMBO",
+   "quartier": "Micheline",
+   "commune": "Bimbo",
+   "prefecture": "Ombella-M’Poko (déduit)",
+   "pays": "République centrafricaine"
+  },
+  "boite_postale": {
+   "valeur": "B.P. 462 Bangui",
+   "source": "Panneau du siège visible sur la photo du staff (pas dans le texte du site) — à confirmer"
+  },
+  "slogan": {
+   "valeur": "Nous sauvons des vies et accompagnons le développement local",
+   "source": "Panneau du siège visible sur la photo du staff (absent du texte du site) — à confirmer avec APSUD"
+  },
+  "accroche_accueil_site": "BIENVENUE SUR LE SITE DE L'ONG NATIONALE APSUD",
+  "gouvernance_citee": [
+   "Assemblée Générale",
+   "Conseil d'administration",
+   "Bureau Exécutif",
+   "Antennes",
+   "Terrain"
+  ],
+  "gouvernance_note": "Instances citées dans la valeur « Cohérence ». La section « Notre équipe » (« le bureau de la coordination de l'ONG APSUD ») est vide sur le site : aucun nom ni fonction publiés.",
+  "postes_cites": [
+   "Chargée de Partenariat et de localisation (citée dans les activités des projets 15 et 19)"
+  ],
+  "equipe_archives": {
+   "source": "https://web.archive.org/web/20240806071220/https://apsud.org/A_propos",
+   "membres": [
+    {
+     "nom": "Freddy NZAPA-GBIA",
+     "fonction": "Chargé de communication",
+     "photo_url": "https://apsud.org/admin/assets/img/membre/1719495915.jpg (404 aujourd’hui ; photo non téléchargée)"
+    }
+   ],
+   "note": "Seul membre publié dans « Notre équipe » en août 2024, retiré depuis. Ne pas republier sans l’accord d’APSUD et de la personne ; demander la composition actuelle de l’équipe."
+  }
+ },
+ "objectif": "Améliorer les conditions de vie des personnes en République Centrafricaine",
+ "vision": "Un Centrafrique juste, meilleur, sans pauvreté et sans discrimination",
+ "mission": "APSUD s’emploie à concevoir et mettre en œuvre de solutions durables à la pauvreté, à l’injustice, à l’insécurité et à la crise humanitaire.",
+ "valeurs": [
+  {
+   "nom": "Respect",
+   "texte": "Ecoute, tolérance, empathie, ouverture d’esprit et au dialogue. Attitude d’ouverture et reconnaissance des différences permettant de donner de la considération aux points de vue, aux valeurs, aux autres cultures sans préjugés à l’égard de ceux qui les expriment."
+  },
+  {
+   "nom": "Solidarité",
+   "texte": "Entraide, coopération, mutualité, fraternité, interdépendance. Adhésion collective aux objectifs et valeurs de l’organisation. Conscience de la communauté des intérêts et des droits des individus et des collectivités. Mesures individuelles et collectives pour d’une part renforcer la réponse humanitaire et d’autre part lutter contre l’injustice et la pauvreté."
+  },
+  {
+   "nom": "Responsabilité",
+   "texte": "Imputabilité, leadership, transparence. Prendre des décisions et en assumer les impacts. Imputabilité à l’égard de ses actions et ses décisions et devoir de rendre des comptes."
+  },
+  {
+   "nom": "Cohérence",
+   "texte": "Décisions, actions et gestes posés en harmonie avec les valeurs de l’APSUD. Les implications des décisions et des actions sont analysés en fonction de l’ensemble des activités de l’organisation. Un lien logique et une cohésion sont établis entre les orientations, les décisions et les actions à tous les niveaux de l’organisation : l’Assemblée Générale, le Conseil d’administration, le Bureau Exécutif, les antennes et le terrain."
+  },
+  {
+   "nom": "Innovation",
+   "texte": "Nouvelle approche, changement, pratique ou intervention, animée par une ouverture d’esprit à la création et par des idées neuves. Les forces tant internes qu’externes sont valorisées."
+  },
+  {
+   "nom": "Partage de savoir",
+   "texte": "Partage des connaissances, des expériences individuelles et corporatives en vue d’enrichir la pratique et le savoir-faire. Le partage du savoir favorise l’interdisciplinarité, l’innovation et un lien de réciprocité. Tous les membres et partenaires de l’organisation apprenante bénéficient ainsi de bases solides pour accroître leur impact et mieux se développer ensemble."
+  }
+ ],
+ "domaines_intervention": {
+  "intro_source": "APSUD intervient dans trois (03) domaines :",
+  "domaines": [
+   {
+    "cle": "securite-alimentaire",
+    "titre": "Sécurité alimentaire et Moyens de subsistance et stabilisation communautaire",
+    "libelle_footer": "Sécurité alimentaire",
+    "projets_id": [
+     20,
+     13,
+     8,
+     5
+    ]
+   },
+   {
+    "cle": "protection",
+    "titre": "Protection",
+    "detail": "protection physique des personnes vulnérables, promotion des droits de l’homme, justice, protection des enfants et lutte contre les violences basées sur le Genre",
+    "libelle_footer": "Protection/Genre",
+    "projets_id": [
+     18,
+     19,
+     5
+    ]
+   },
+   {
+    "cle": "wash",
+    "titre": "WASH",
+    "detail": "Eau-Hygiène et Assainissement, santé environnementale",
+    "libelle_footer": "Wash",
+    "projets_id": [
+     19,
+     15,
+     14,
+     11,
+     10,
+     9,
+     7,
+     6
+    ]
+   }
+  ],
+  "transversal": {
+   "titre": "Protection de l’Environnement",
+   "texte_source": "La Protection de l’Environnement est considérée comme un domaine transversal chez APSUD."
+  },
+  "axe_observe_dans_projets": {
+   "titre": "Renforcement de capacités de la société civile et localisation de l’aide",
+   "projets_id": [
+    19,
+    18,
+    15
+   ],
+   "note": "Axe non listé dans les domaines officiels mais central dans les projets récents (déduit) : à proposer à APSUD comme 4e pilier ou axe transversal."
+  }
+ },
+ "zones_intervention": {
+  "declarees_a_propos": [
+   {
+    "zone": "Bangui",
+    "detail": "Les 8 arrondissements de Bangui"
+   },
+   {
+    "zone": "Préfecture de l’Ombella-M’Poko",
+    "localites": [
+     "Bimbo",
+     "Bégoua",
+     "Damara"
+    ],
+    "texte_source": "Préfecture d'Ombella Mpoko (BIMBO, BEGOUA, DAMARA)"
+   },
+   {
+    "zone": "Préfecture de la Ouaka",
+    "localites": [
+     "Bambari",
+     "Ippy",
+     "Grimari",
+     "Maloum"
+    ],
+    "texte_source": "Préfecture de la OUAKA (BAMBARI, IPPY, GRIMARI, MALOUM)"
+   },
+   {
+    "zone": "Préfecture de la Haute-Kotto",
+    "localites": [
+     "Bria"
+    ],
+    "texte_source": "Préfecture de la HAUTE KOTTO (BRIA)"
+   }
+  ],
+  "observees_dans_projets": [
+   "Bangui",
+   "Ombella-M’Poko (Bimbo)",
+   "Ouaka (Bambari, Ippy, Maloum)",
+   "Ouham (Boguila, Markounda, Batangafo — préfecture déduite pour Markounda et Batangafo)",
+   "Mbomou (Rafaï — déduit)",
+   "Lobaye",
+   "Kémo",
+   "Nana-Mambéré (Bouar)",
+   "Nana-Gribizi (Kaga-Bandoro)",
+   "Bamingui-Bangoran",
+   "Basse-Kotto",
+   "Ouham-Pendé"
+  ],
+  "note": "La page À propos ne liste que 4 zones alors que les projets couvrent au moins 12 préfectures + Bangui : la liste est à mettre à jour avec APSUD (la Haute-Kotto/Bria n'apparaît dans aucun projet publié).",
+  "declarees_site_2023": {
+   "source": "https://web.archive.org/web/20230606114609/https://apsud.org/actualite/",
+   "zones": [
+    "Les 8 arrondissements de Bangui",
+    "Ombella-M’Poko (Bimbo, Bégoua)",
+    "Mambéré-Kadéi (Berberati, Carnot)",
+    "Ouham (Batangafo, Nana-Boguila)",
+    "Lim-Pendé (Paoua et environs)",
+    "Ouham-Pendé (Bozoum)",
+    "Ouaka (Bambari, Grimari, Maloum, Ippy)",
+    "Mbomou (Bangassou)",
+    "Basse-Kotto (Alindao, Mobaye, Kembé)",
+    "Haute-Kotto (Bria)"
+   ],
+   "note": "Liste « Zones déjà touchées par les interventions » publiée en 2023 : plus complète que la page À propos actuelle (4 zones). Ajouter les zones des projets 2023-2026 (Lobaye, Kémo, Nana-Gribizi, Nana-Mambéré, Bamingui-Bangoran, Mbomou/Rafaï…)."
+  },
+  "declarees_site_2018": "Bangui, Ombella-M’Poko, Ouham, Ouham-Pendé, Mambéré-Kadéi"
+ },
+ "chiffres_cles": {
+  "publies_sur_site": [],
+  "note": "Le site ne publie aucun chiffre clé. Les chiffres ci-dessous sont DÉDUITS des fiches projets (à valider par APSUD avant publication). [Contrôle qualité] Le site actuel ne publie aucun chiffre, mais l’ancien site (2023) annonçait « plus de 60 projets » : voir publies_sur_anciens_sites.",
+  "deduits": [
+   {
+    "valeur": 13,
+    "libelle": "projets publiés sur le site",
+    "detail": "2 en cours, 11 réalisés"
+   },
+   {
+    "valeur": "2018–2027",
+    "libelle": "période couverte par les projets publiés"
+   },
+   {
+    "valeur": 4116718,
+    "libelle": "USD de budgets cumulés (11 projets libellés en USD)",
+    "detail": "Hors PARSOC (360 721,61 € part probable APSUD / 1,7 M€ global) et Upscale AgriApps (159 214 €). Inclut 430 000 USD pour Boguila (montant ambigu)."
+   },
+   {
+    "valeur": "≈ 250 000",
+    "libelle": "personnes bénéficiaires déclarées",
+    "detail": "Somme des bénéficiaires chiffrés des projets 5, 6, 7, 9, 10, 11, 14, 19 (249 676), sans le projet 13 (chiffre identique au 14, doublon probable)."
+   },
+   {
+    "valeur": 200,
+    "libelle": "organisations de la société civile accompagnées (PARSOC)"
+   },
+   {
+    "valeur": 9,
+    "libelle": "ONG nationales renforcées dans des projets de localisation",
+    "detail": "6 ONG de femmes (projet 19) + 3 ONG (projet 15)"
+   },
+   {
+    "valeur": 1900,
+    "libelle": "latrines familiales appuyées",
+    "detail": "1 200 (projet 19) + 500 (projet 14) + 200 (projet 7)"
+   },
+   {
+    "valeur": "12 + Bangui",
+    "libelle": "préfectures d’intervention (projets)"
+   },
+   {
+    "valeur": 7,
+    "libelle": "bailleurs et partenaires financiers cités dans les fiches projets",
+    "detail": "FH, BMZ, WHH, UE, Japon, PNUD (+ TGH en coordination)"
+   }
+  ],
+  "publies_sur_anciens_sites": [
+   {
+    "valeur": "60+",
+    "libelle": "projets réalisés de 2016 à février 2023",
+    "source": "https://web.archive.org/web/20230606120825/https://apsud.org/projet-en-cours/",
+    "note": "Chiffre publié par APSUD elle-même (site WordPress 2023), avec le détail des contrats par partenaire : Oxfam 17, PNUD 11, Fonds humanitaire 10, UNOPS 9, FAO 3, UNFPA 2, OIM 2, NRC 2, UNICEF 1, ACF 1, ACTED 1, DRC 1. À mettre à jour avec APSUD (projets 2023-2026 en plus)."
+   },
+   {
+    "valeur": "2015",
+    "libelle": "premier projet recensé (PARVF, PNUD, nov. 2015)",
+    "note": "Indique une activité depuis au moins 2015 ; date de création toujours inconnue."
+   },
+   {
+    "valeur": "≈ 4,2 M USD",
+    "libelle": "cumul des 20 projets libellés en USD du tableau 2023 (hors XAF et EUR)",
+    "note": "Calcul du contrôle qualité, indicatif."
+   }
+  ]
+ },
+ "bailleurs_cites_dans_projets": [
+  {
+   "sigle": "FH",
+   "nom": "Fonds Humanitaire pour la RCA (géré par OCHA) — développement déduit",
+   "projets_id": [
+    19,
+    15,
+    14,
+    13,
+    11,
+    10,
+    9,
+    8,
+    7,
+    6
+   ]
+  },
+  {
+   "sigle": "UE",
+   "nom": "Union européenne",
+   "projets_id": [
+    18
+   ]
+  },
+  {
+   "sigle": "WHH",
+   "nom": "Deutsche Welthungerhilfe e.V.",
+   "role": "partenaire de mise en œuvre / chef de file",
+   "projets_id": [
+    18,
+    20
+   ]
+  },
+  {
+   "sigle": "BMZ",
+   "nom": "Ministère fédéral allemand de la Coopération économique et du Développement — développement déduit",
+   "projets_id": [
+    20
+   ]
+  },
+  {
+   "sigle": "PNUD",
+   "nom": "Programme des Nations unies pour le développement",
+   "projets_id": [
+    5
+   ]
+  },
+  {
+   "sigle": "Japon",
+   "nom": "Gouvernement du Japon",
+   "projets_id": [
+    5
+   ],
+   "note": "Correction contrôle qualité : le projet 11 (code « COVID JAPON ») est financé par le FH (CHF) d’après le tableau historique publié par APSUD en 2023 ; seul le projet 5 est financé par le Japon (via le PNUD). Le Japon a aussi financé 4 projets PNUD antérieurs (2017-2019, voir projets_historiques.json)."
+  }
+ ],
+ "partenaires_note": "La page /Nos_partenaires et l'accueil affichent 14 logos sans nom ni alt (fichiers /admin/assets/img/bailleur/img/*). Leur identification et téléchargement sont traités par un autre agent. [Contrôle qualité] Voir data/apsud/partenaires.json (36 entrées : 20 initiales + 16 retrouvées dans les archives du site).",
+ "contact": {
+  "adresse": {
+   "libelle": "Siège national",
+   "valeur": "MICHELINE, BIMBO",
+   "pays": "République centrafricaine"
+  },
+  "telephones": [
+   "+236 74 18 62 03",
+   "+236 74 18 62 14",
+   "+236 74 18 62 01"
+  ],
+  "telephones_source": "(+236) 74 18 62 03 / (+236) 74 18 62 14 / (+236)74 18 62 01 (page contact) ; (+236) 74.18.62.01 / 74.18.62.03 / 74.18.62.14 (pied de page)",
+  "telephone_panneau_siege": {
+   "valeur": "+236 72 32 56 26",
+   "source": "Panneau du siège sur photo — à confirmer"
+  },
+  "emails": [
+   "infos@apsud.org",
+   "communication@apsud.org",
+   "cm@apsud.org"
+  ],
+  "emails_footer": [
+   "cm@apsud.org",
+   "communication@apsud.org",
+   "a.cm@apsud.org"
+  ],
+  "email_panneau_siege": {
+   "valeur": "raf@apsud.org",
+   "source": "Panneau du siège sur photo — à confirmer"
+  },
+  "emails_note": "Incohérence : la page contact cite infos@apsud.org, le pied de page cite a.cm@apsud.org. Définir avec APSUD l'adresse principale à publier (ex. infos@ ou contact@).",
+  "horaires": null,
+  "horaires_note": "Non publiés sur le site.",
+  "carte": null,
+  "carte_note": "Aucune carte Google Maps ni coordonnées GPS sur le site. Coordonnées à demander à APSUD (quartier Micheline, Bimbo).",
+  "formulaire_contact": {
+   "champs": [
+    "Nom",
+    "E-mail",
+    "Objet",
+    "Message"
+   ],
+   "bouton_source": "envoyé",
+   "note": "Formulaire POST vers la même URL (action vide) : fonctionnement non vérifié (non testé pour ne pas envoyer de message)."
+  },
+  "webmail": "https://mail.apsud.org/roundcube14/",
+  "historique": [
+   {
+    "periode": "2018",
+    "telephones": [
+     "+236 72 32 56 13",
+     "+236 72 44 98 74"
+    ],
+    "email": "infos@apsud.org",
+    "boite_postale": "BP 462 Bangui",
+    "source": "https://web.archive.org/web/20180713140310/http://apsud.org:80/avis%20recrutement/APSUD%20-%20Avis%20de%20recrutement.htm"
+   },
+   {
+    "periode": "2023 (site WordPress)",
+    "adresse": "Siège national – Avenue David Dacko, 2e arrondissement, après le pont Saint-Charles, Bangui",
+    "boite_postale": "BP 462 Bangui",
+    "telephones": [
+     "+236 74 18 62 09",
+     "+236 72 36 00 77"
+    ],
+    "telephones_pied_de_page": [
+     "+236 75 44 57 85",
+     "+236 72 36 74 78"
+    ],
+    "emails": [
+     "ong.apsud@yahoo.fr",
+     "infos@apsud.org"
+    ],
+    "source": "https://web.archive.org/web/20230606121939/https://apsud.org/contact/"
+   },
+   {
+    "periode": "2024 (site Laravel, août)",
+    "adresse": "Pont Saint-Charles, 2e arrondissement de Bangui",
+    "emails": [
+     "info@apsud.org",
+     "cm@apsud.org",
+     "communication@apsud.org"
+    ],
+    "telephones": [
+     "+236 74 18 62 01",
+     "+236 74 18 62 03",
+     "+236 74 18 62 14"
+    ],
+    "source": "https://web.archive.org/web/20240806080441/https://apsud.org/Contactez_nous"
+   }
+  ],
+  "historique_note": "La BP 462 Bangui, vue sur le panneau du siège, est confirmée par les sites 2018 et 2023. Le siège semble avoir déménagé du 2e arrondissement (pont Saint-Charles) à Micheline (Bimbo) après août 2024 : à confirmer. Le pied de page 2024 citait info@ (sans s), la page contact infos@ : choisir une adresse unique."
+ },
+ "reseaux_sociaux": [
+  {
+   "reseau": "Facebook",
+   "url": "https://www.facebook.com/ong.apsud"
+  },
+  {
+   "reseau": "X (Twitter)",
+   "url": "https://x.com/apsud25",
+   "url_site": "https://x.com/apsud25/status/1945204285161005222?s=48",
+   "note": "Le site pointe vers une publication précise et non vers le profil @apsud25 (URL de profil déduite)."
+  },
+  {
+   "reseau": "Instagram",
+   "url": null,
+   "note": "Icône présente mais lien vide (#)."
+  },
+  {
+   "reseau": "LinkedIn",
+   "url": null,
+   "note": "Aucun lien ; l'icône du pied de page de classe « linkedin » pointe en réalité vers le webmail."
+  }
+ ],
+ "don": {
+  "url_source": "https://apsud.org/Faire_un_Don",
+  "contenu_source": {
+   "titre": "Faire un don",
+   "carte_image": "assets/apsud/images/don/don-mairie-3e-arrondissement-rehabilitee.jpg",
+   "texte_carte": "Que fait on de vos don?"
+  },
+  "modalites_publiees": [],
+  "mobile_money": null,
+  "virement": null,
+  "iban_rib": null,
+  "note": "La page ne contient aucune modalité de don (ni Mobile Money, ni virement, ni IBAN/RIB, ni formulaire). Le lien « Faire un don » du pied de page pointe vers # . À collecter auprès d'APSUD : numéros Orange Money / Moov Money (ou Telecel Money) et titulaire, coordonnées bancaires, éventuelle plateforme de don en ligne, reçus fiscaux, usage des fonds. [Contrôle qualité] Des coordonnées bancaires ont été publiées sur les anciens sites (2022 et 2023) : voir coordonnees_bancaires_archives, à confirmer avant tout usage.",
+  "coordonnees_bancaires_archives": {
+   "avertissement": "NE PAS PUBLIER sans confirmation écrite d’APSUD : deux comptes différents ont été publiés successivement ; l’un au moins est probablement obsolète. Une erreur de RIB détournerait des dons.",
+   "comptes": [
+    {
+     "periode": "site 2023 (WordPress)",
+     "titulaire": "Action pour la Population et le Développement Durable",
+     "banque": "BGFIBank Centrafrique, 417 rue de Brazza, BP 59 Bangui",
+     "code_banque": "20002",
+     "code_guichet": "00200",
+     "numero_compte": "37127385701",
+     "cle_rib": "84",
+     "iban": "CF42 2000 2002 0037 1273 8570 184",
+     "swift": "CBCACFCF",
+     "correspondants": "Natexis Paris (EUR), BGFIBank RDC (USD), BGFIBank Europe (EUR), CBC Douala (XAF), Versus Bank Abidjan (XOF), CBT N’Djamena (XAF), Bank of Kigali (USD)",
+     "source": "https://web.archive.org/web/20230606120435/https://apsud.org/faire-un-don/"
+    },
+    {
+     "periode": "site 2022 (don.php)",
+     "titulaire": "Action pour la Population et le Développement Durable",
+     "banque": "Banque Populaire Maroco-Centrafricaine (BPMC), rue Guérillot, BP 844 Bangui",
+     "code_banque": "20003",
+     "code_guichet": "00020",
+     "numero_compte": "37102364005-65",
+     "cle_rib": "65",
+     "iban": "CF42 20003 00020 37102364005 65",
+     "swift": "BPMCCFCF",
+     "source": "https://web.archive.org/web/20221005214138/http://apsud.org/don.php"
+    }
+   ],
+   "dons_materiels": "Le site 2023 invitait aussi aux dons matériels au siège national.",
+   "formulaire_2022": "L’ancien don.php comportait un formulaire (nom, prénom, e-mail, pays, montant, numéro) sans paiement en ligne."
+  }
+ },
+ "pied_de_page_source": {
+  "localisation": "MICHELINE, BIMBO",
+  "telephone": "(+236) 74.18.62.01 / 74.18.62.03 / 74.18.62.14",
+  "email": "cm@apsud.org / communication@apsud.org / a.cm@apsud.org",
+  "liens": [
+   "Acceuil",
+   "A Propos",
+   "Projets",
+   "Faire un don (#)"
+  ],
+  "domaines": [
+   "Wash",
+   "Protection/Genre",
+   "Sécurité alimentaire"
+  ],
+  "copyright": "© Copyright APSUD. Tous droits reservés"
+ },
+ "mentions_legales": {
+  "publiees": false,
+  "note": "Aucune page de mentions légales, de politique de confidentialité ni de politique de cookies sur le site actuel."
+ },
+ "navigation_source": [
+  "Acceuil",
+  "A Propos",
+  "Liste des projets",
+  "Partenaires et Bailleurs",
+  "Nous contactez",
+  "Faire un don"
+ ],
+ "identite_visuelle": {
+  "logo": {
+   "fichier": "assets/apsud/logo/apsud-logo-original.jpg",
+   "dimensions": "85 × 102 px",
+   "format": "JPEG fond blanc",
+   "description": "Deux mains (teinte chair) entourant un symbole vert à trois feuilles/gouttes, sigle « APSUD » en capitales vertes dessous",
+   "note": "Aucune version vectorielle ou HD publiée : à demander (SVG/AI/PDF)."
+  },
+  "vert_logo": {
+   "hex": "#2A8238",
+   "rgb": "rgb(42, 130, 56)",
+   "methode": "Analyse des pixels du logo (System.Drawing) : teinte exacte la plus fréquente parmi 2 303 pixels verts ; variantes voisines #298137, #2B8138, #288238."
+  },
+  "couleurs_css_site_actuel": [
+   {
+    "hex": "#1BBD36",
+    "usage": "Couleur principale du gabarit (liens, boutons, bordures, icônes) — 46 occurrences"
+   },
+   {
+    "hex": "#2AE149",
+    "usage": "Survol des liens"
+   },
+   {
+    "hex": "#21DF41",
+    "usage": "Survol du bouton retour en haut"
+   },
+   {
+    "hex": "#57E76F",
+    "usage": "Accent clair"
+   },
+   {
+    "hex": "#1ED33C",
+    "usage": "Variante"
+   },
+   {
+    "hex": "rgb(50, 205, 50) = #32CD32",
+    "usage": "Couleur forcée de tous les titres h3 (ajout APSUD)"
+   },
+   {
+    "hex": "green = #008000",
+    "usage": "Fond du haut du pied de page (mot-clé CSS)"
+   },
+   {
+    "hex": "black = #000000",
+    "usage": "Fond du bas du pied de page"
+   },
+   {
+    "hex": "#111111",
+    "usage": "Texte des titres / navigation"
+   },
+   {
+    "hex": "#444444",
+    "usage": "Texte courant"
+   }
+  ],
+  "couleurs_batiment_siege": {
+   "observation": "Façade du siège jaune et verte (photo hero)",
+   "jaune_approx": "#D8B038 (teinte dominante mesurée sur la photo, éclairage naturel : approximative)",
+   "note": "Le jaune pourrait servir de couleur d’accent secondaire, à valider."
+  },
+  "polices_site_actuel": [
+   "Open Sans (texte courant, body)",
+   "Roboto (titres h1–h6, navigation, bouton du hero, pied de page)",
+   "Poppins (chargée ; utilisée seulement par des composants inutilisés du gabarit : skills, pricing, FAQ)"
+  ],
+  "polices_note": "Chargées depuis Google Fonts en 3 familles × 14 graisses (poids inutile).",
+  "recommandation": "Retenir #2A8238 (vert du logo) comme vert de marque ; le #1BBD36 du gabarit est plus saturé et ne correspond pas au logo."
+ },
+ "site_actuel_stack": {
+  "framework": "Laravel (cookies XSRF-TOKEN et apsud_session, page 404 Laravel par défaut, erreurs 500 sur identifiants inexistants)",
+  "gabarit": "BootstrapMade « Company » v4.8.0 (gabarit gratuit)",
+  "librairies": [
+   "Bootstrap 5",
+   "Bootstrap Icons",
+   "Boxicons",
+   "Remix Icon",
+   "AOS",
+   "Swiper",
+   "GLightbox",
+   "Isotope",
+   "Waypoints",
+   "animate.css",
+   "php-email-form/validate.js"
+  ],
+  "hebergement": "LWS (renvoie 406 aux clients sans en-têtes navigateur)",
+  "back_office": "/login (administration des sliders, projets et bailleurs — chemins /admin/assets/img/...)"
+ },
+ "couleurs_marque": {
+  "vert_principal": "#2A8238",
+  "vert_css_actuel": "#1BBD36",
+  "jaune_siege_approx": "#D8B038"
+ },
+ "objectifs_specifiques": {
+  "valeurs": [
+   "Promouvoir le développement social",
+   "Promouvoir le développement économique pour lutter contre la pauvreté",
+   "Favoriser l’accès à l’eau, l’hygiène et l’assainissement pour les personnes vulnérables",
+   "Assurer une prise en charge psychosociale holistique, un appui juridique et médical et un rétablissement socio-économique des personnes vulnérables",
+   "Préserver l’environnement et favoriser la prise en compte de la biodiversité dans les activités humaines"
+  ],
+  "source": "https://web.archive.org/web/20211211041452/http://apsud.org/index.html",
+  "note": "Publiés sur l’ancien site (2018 et 2021), absents du site actuel. En 2018, le 4e objectif était : « Favoriser une vie équitable et sans pauvreté ni discrimination au sein de la population dans un climat du respect des droits humains ». À faire valider par APSUD."
+ },
+ "donnees_archives": {
+  "outil": "Wayback Machine (web.archive.org), index CDX de apsud.org",
+  "versions_du_site": [
+   {
+    "periode": "2018",
+    "techno": "WebSite X5 / HTML statique",
+    "pages": [
+     "Présentation",
+     "Activités 2016-2017 (10 projets détaillés)",
+     "Réalisations",
+     "Nous écrire",
+     "Contacts",
+     "Avis de recrutement (TdR formateurs CVR, juin 2017)"
+    ]
+   },
+   {
+    "periode": "2021-2022",
+    "techno": "HTML/Bootstrap",
+    "pages": [
+     "Accueil (objectifs spécifiques)",
+     "Présentation / projets en cours",
+     "Projets réalisés",
+     "Pages par domaine (WASH, Sécurité alimentaire, Protection/Genre, Multisectoriel)",
+     "Pages projets par bailleur (fh.html, ue.html, unf.html)",
+     "Bailleurs (12 logos)",
+     "Faire un don (RIB BPMC + formulaire)",
+     "Recrutement (« pas d’offres pour le moment »)"
+    ]
+   },
+   {
+    "periode": "2023",
+    "techno": "WordPress",
+    "pages": [
+     "Accueil / Qui sommes-nous (zones détaillées)",
+     "Projets réalisés (14 projets)",
+     "Liste des projets (tableau de 60 projets 2015-2023)",
+     "Fiches projets détaillées",
+     "Partenaires et bailleurs (9 logos)",
+     "Contact",
+     "Faire un don (RIB BGFIBank)",
+     "Mentions légales (lien)"
+    ]
+   },
+   {
+    "periode": "2024-2026",
+    "techno": "Laravel (site actuel)",
+    "pages": [
+     "/home",
+     "/A_propos",
+     "/liste_projets",
+     "/detail-projet/{id}/{titre}",
+     "/Nos_partenaires",
+     "/Contactez_nous",
+     "/Faire_un_Don",
+     "/login"
+    ]
+   }
+  ],
+  "securite": {
+   "constat": "En mars-juin 2024, plus de 100 pages de spam (casino, immobilier vietnamien) étaient servies sous https://apsud.org/apsud/ (dont 35 pages de listing ?page=) et une page « wp-maintenance » : le site a été compromis (WordPress piraté) avant la migration vers Laravel.",
+   "recommandation": "Vérifier que /apsud/ ne sert plus rien, demander à Google Search Console la suppression des URL indexées, changer tous les mots de passe d’hébergement LWS/FTP/base de données, et ne rien reprendre de l’ancien dossier WordPress.",
+   "verification_2026_11_21": "https://apsud.org/apsud/ redirige (301) puis les pages de spam testées renvoient 404 : plus servies aujourd’hui."
+  },
+  "route_projets": "Le site actuel ne répond à /detail-projet/{id}/{titre} que si le titre correspond exactement : une URL avec un autre titre renvoie 500. Les ids 1-4, 12, 16, 17 et 21+ ne peuvent donc pas être sondés sans leur titre exact. Grâce aux archives : id 2 = projet Alindao 2023 (retiré), id 3 = ancienne saisie du projet 5, id 4 = ancienne saisie du projet 7."
+ }
+}

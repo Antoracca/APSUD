@@ -1,0 +1,25 @@
+---
+/**
+ * /qui-sommes-nous/equipe — équivalent de « Our leadership » de Prosper (§5.3), en attente :
+ * APSUD n'a publié ni noms ni fonctions. On montre ce qui est sourcé (les cinq niveaux de
+ * gouvernance, valeur « Cohérence ») et un état vide honnête pour l'équipe.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/layout/PageHeader.astro';
+import CtaTwoUp from '../../components/ui/CtaTwoUp.astro';
+import OngGovernance from '../../sections/ong/OngGovernance.astro';
+import OngPending from '../../sections/ong/OngPending.astro';
+import { teamPage, cta } from '../../sections/ong/ong';
+---
+
+<BaseLayout title={teamPage.title} description={teamPage.description}>
+  <PageHeader
+    variant="compact"
+    title={teamPage.title}
+    intro={teamPage.intro}
+    breadcrumb={[{ label: 'Qui sommes-nous', href: '/qui-sommes-nous' }, { label: teamPage.title }]}
+  />
+  <OngGovernance link={false} title="Cinq niveaux, une même cohérence" />
+  <OngPending empty={teamPage.empty} related={teamPage.related} />
+  <CtaTwoUp primary={cta.primary} secondary={cta.secondary} />
+</BaseLayout>

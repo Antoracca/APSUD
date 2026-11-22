@@ -1,0 +1,30 @@
+---
+/**
+ * Texte riche — Prosper `.c-formatted-text` (87 occurrences) : colonne de lecture de 690 px
+ * (7 colonnes), intertitres h2/h3 condensés, listes, liens soulignés, citations, filets.
+ *
+ * Usage : <Prose lead>…html…</Prose> ou <Prose html={chaine} />.
+ *  - `lead` : le premier paragraphe passe en chapeau (--fs-lead), comme l'intro de « Who we are ».
+ *  - `contained={false}` : sans conteneur centré (dans une grille de fiche projet par ex.).
+ * Puces : petite goutte-feuille Vert APSUD (forme signature) au lieu du disque.
+ */
+import './Prose.css';
+
+interface Props {
+  html?: string;
+  lead?: boolean;
+  contained?: boolean;
+  as?: 'div' | 'section' | 'article';
+  class?: string;
+  [key: string]: unknown;
+}
+
+const { html, lead = false, contained = true, as: Tag = 'div', class: className, ...rest } = Astro.props;
+---
+
+<Tag
+  class:list={['c-prose', { 'c-prose--lead': lead, 'l-constrain l-constrain--text': contained }, className]}
+  {...rest}
+>
+  {html ? <Fragment set:html={html} /> : <slot />}
+</Tag>

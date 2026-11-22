@@ -1,0 +1,187 @@
+/* /faire-un-don — module de don (Prosper .c-donation-form, non transactionnel) */
+@layer components {
+  .c-donate-panel {
+    background: var(--color-bg);
+    border: var(--border-width) solid var(--color-border-subtle);
+    box-shadow: var(--shadow-step);
+  }
+  .c-donate-panel__head { padding: var(--space-6) var(--space-8); }
+  .c-donate-panel__title { font-size: var(--fs-h4); }
+  .c-donate-panel__intro { margin-block-start: var(--space-2); color: var(--color-text-muted); }
+  .c-donate-panel__body {
+    display: grid;
+    gap: var(--space-6);
+    padding: var(--space-8);
+  }
+
+  .c-donate-step { display: grid; gap: var(--space-3); border: 0; padding: 0; margin: 0; min-inline-size: 0; }
+  .c-donate-step__legend {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: 0;
+    margin-block-end: var(--space-3);
+    font-family: var(--font-condensed);
+    font-stretch: var(--font-stretch-condensed);
+    font-size: var(--fs-h6);
+    font-weight: var(--fw-bold);
+  }
+  .c-donate-step__num {
+    display: grid;
+    place-items: center;
+    inline-size: var(--space-8);
+    block-size: var(--space-8);
+    border-radius: var(--radius-goutte);
+    background: var(--color-surface-signature);
+    font-size: var(--fs-small);
+    font-weight: var(--fw-heavy);
+  }
+
+  /* Bascule de devise (segmentée) */
+  .c-donate-switch {
+    display: inline-grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr;
+    justify-self: start;
+    padding: var(--space-1);
+    border: var(--border-width) solid var(--color-border-control);
+    border-radius: var(--radius-control);
+  }
+  .c-donate-switch__option,
+  .c-donate-chip { position: relative; }
+  .c-donate-switch__input,
+  .c-donate-chip__input {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    inline-size: 100%;
+    block-size: 100%;
+    margin: 0;
+    cursor: pointer;
+  }
+  .c-donate-switch__label {
+    display: grid;
+    place-items: center;
+    min-block-size: var(--tap-min);
+    padding-inline: var(--space-6);
+    border-radius: var(--radius-control);
+    font-weight: var(--fw-heavy);
+    transition: background-color var(--dur-short) var(--ease-out), color var(--dur-short) var(--ease-out);
+  }
+  .c-donate-switch__input:checked + .c-donate-switch__label {
+    background: var(--color-surface-strong);
+    color: var(--button-ink-text);
+  }
+  .c-donate-switch__input:focus-visible + .c-donate-switch__label,
+  .c-donate-chip__input:focus-visible + .c-donate-chip__label {
+    outline: var(--focus-width) solid var(--color-focus);
+    outline-offset: var(--focus-offset);
+  }
+
+  /* Montants : une grille par devise, l'autre masquée en CSS seul */
+  .c-donate-amounts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--agir-chip-min)), 1fr));
+    gap: var(--space-3);
+  }
+  .c-donate-panel:has(#don-devise-eur:checked) .c-donate-amounts[data-currency="XAF"],
+  .c-donate-panel:not(:has(#don-devise-eur:checked)) .c-donate-amounts[data-currency="EUR"] { display: none; }
+
+  .c-donate-chip__label {
+    display: grid;
+    grid-auto-flow: column;
+    place-content: center;
+    align-items: baseline;
+    min-block-size: var(--tap-comfort);
+    padding-inline: var(--space-3);
+    border: var(--border-width) solid var(--color-border-control);
+    border-radius: var(--radius-control);
+    outline: 0 solid var(--color-border-control);
+    outline-offset: calc(-1 * var(--border-width-strong));
+    font-size: var(--fs-lead);
+    font-weight: var(--fw-heavy);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+    transition:
+      border-radius var(--dur-standard) var(--ease-in-out),
+      background-color var(--dur-short) var(--ease-out),
+      outline-width var(--dur-short) var(--ease-out);
+  }
+  .c-donate-chip__unit { font-size: var(--fs-small); font-weight: var(--fw-semibold); }
+  .c-donate-chip:hover .c-donate-chip__label { outline-width: var(--border-width-strong); }
+  /* puce choisie = goutte-feuille : trois coins arrondis, un coin vif (signature APSUD) */
+  .c-donate-chip__input:checked + .c-donate-chip__label {
+    border-color: var(--color-brand);
+    border-radius: var(--space-6) var(--space-6) var(--space-6) var(--radius-none);
+    background: var(--color-surface-signature);
+  }
+  /* « autre montant » saisi : plus aucune puce n'est mise en avant */
+  .c-donate-panel.is-other .c-donate-chip__input:checked + .c-donate-chip__label {
+    border-color: var(--color-border-control);
+    border-radius: var(--radius-control);
+    background: transparent;
+  }
+
+  .c-donate-other { display: grid; gap: var(--space-2); margin-block-start: var(--space-2); }
+  .c-donate-other__label { font-weight: var(--fw-semibold); }
+  .c-donate-other__hint { color: var(--color-text-muted); font-weight: var(--fw-regular); }
+  .c-donate-other__field {
+    display: flex;
+    align-items: center;
+    border: var(--border-width) solid var(--color-border-control);
+    border-radius: var(--radius-control);
+    background: var(--field-bg);
+  }
+  .c-donate-other__field:focus-within { outline: var(--focus-width) solid var(--color-focus); outline-offset: var(--focus-offset); }
+  .c-donate-other__input {
+    flex: 1;
+    min-inline-size: 0;
+    min-block-size: var(--control-h);
+    padding-inline: var(--space-4);
+    border: 0;
+    background: transparent;
+    font: inherit;
+    color: var(--color-text);
+  }
+  .c-donate-other__input:focus { outline: none; }
+  .c-donate-other__unit { padding-inline: var(--space-4); font-weight: var(--fw-heavy); color: var(--color-text-muted); }
+
+  .c-donate-ways { display: grid; gap: var(--space-3); padding: 0; list-style: none; }
+  .c-donate-ways__item {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: var(--space-4);
+    align-items: start;
+    padding: var(--space-4);
+    background: var(--color-surface-soft);
+    font-size: var(--fs-small);
+  }
+  .c-donate-ways__item strong { font-size: var(--fs-body); }
+  .c-donate-ways__icon { color: var(--color-text-brand); }
+
+  .c-donate-summary {
+    padding-block-start: var(--space-4);
+    border-block-start: var(--border-width) solid var(--color-border-subtle);
+    font-size: var(--fs-lead);
+  }
+  .c-donate-summary__value {
+    display: inline-block;
+    font-weight: var(--fw-heavy);
+    font-variant-numeric: tabular-nums;
+    color: var(--color-text-brand);
+  }
+  .c-donate-panel__cta { inline-size: 100%; }
+  .c-donate-panel__legal {
+    display: flex;
+    gap: var(--space-2);
+    font-size: var(--fs-small);
+    color: var(--color-text-muted);
+  }
+  .c-donate-panel__legal .c-icon { color: var(--color-text-brand); margin-block-start: var(--space-1); }
+  .c-donate-panel__alt { font-size: var(--fs-small); }
+  .c-donate-panel__alt a { font-weight: var(--fw-heavy); white-space: nowrap; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .c-donate-chip__label, .c-donate-switch__label { transition: none; }
+  }
+}

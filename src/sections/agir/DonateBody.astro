@@ -1,0 +1,17 @@
+---
+/**
+ * /faire-un-don — corps en 2 colonnes (gabarit E de Prosper) : argumentaire à gauche,
+ * module de don collant à droite. En mobile, le module passe en premier
+ * (les visiteurs viennent pour donner, DESIGN.md §5.9).
+ */
+import DonateArgument from './DonateArgument.astro';
+import DonatePanel from './DonatePanel.astro';
+import './DonateBody.css';
+---
+
+<section class="c-donate l-section--sm" aria-label="Argumentaire et module de don">
+  <div class="l-constrain c-donate__grid">
+    <div class="c-donate__panel"><DonatePanel /></div>
+    <div class="c-donate__argument"><DonateArgument /></div>
+  </div>
+</section>

@@ -1,0 +1,30 @@
+---
+/**
+ * Fiche projet — sur-titre de l'en-tête (slot `eyebrow` de PageHeader) : badge de statut
+ * (« En cours » avec point qui pulse, ou « Réalisé ») + domaines, liens vers la liste filtrée.
+ */
+import type { Projet } from '../../data/projects';
+import type { Domaine } from '../../data/domains';
+import { cardStatus } from './projets';
+import './ProjetStatut.css';
+
+interface Props {
+  projet: Projet;
+  domaines: Domaine[];
+}
+
+const { projet: p, domaines } = Astro.props;
+const status = cardStatus(p);
+---
+
+<div class="c-projet-statut">
+  <a
+    class:list={['c-projet-statut__badge', `c-projet-statut__badge--${status}`]}
+    href={`/projets?statut=${status}`}
+  >
+    {p.statutLibelle}<span class="u-visually-hidden"> : voir tous les projets de ce statut</span>
+  </a>
+  {domaines.map((d) => (
+    <a class="c-projet-statut__domaine" href={`/projets?domaine=${d.slug}`}>{d.titre}</a>
+  ))}
+</div>

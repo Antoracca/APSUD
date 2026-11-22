@@ -1,0 +1,107 @@
+/* Texte riche — Prosper .c-formatted-text (colonne 690 px) */
+@layer components {
+  .c-prose {
+    font-size: var(--fs-body);
+    line-height: var(--lh-body);
+    color: var(--color-text);
+  }
+
+  /* Rythme vertical : paragraphes serrés, intertitres aérés */
+  .c-prose > * + * { margin-block-start: var(--space-4); }
+  .c-prose > :where(h2, h3, h4) + * { margin-block-start: var(--space-4); }
+  .c-prose > * + :where(h2) { margin-block-start: var(--space-12); }
+  .c-prose > * + :where(h3, h4) { margin-block-start: var(--space-8); }
+  .c-prose > * + :where(blockquote, figure, hr) { margin-block-start: var(--space-10); }
+  .c-prose > :where(blockquote, figure, hr) + * { margin-block-start: var(--space-10); }
+
+  .c-prose--lead > p:first-child {
+    font-size: var(--fs-lead);
+    line-height: var(--lh-lead);
+  }
+
+  .c-prose :where(h2) { font-size: var(--fs-h3); line-height: var(--lh-heading); }
+  .c-prose :where(h3) { font-size: var(--fs-h5); line-height: var(--lh-snug); }
+  .c-prose :where(h4) { font-size: var(--fs-h6); line-height: var(--lh-snug); }
+
+  .c-prose :where(a) { font-weight: var(--fw-semibold); }
+
+  /* Listes à puces : goutte-feuille (pointe en bas à gauche) */
+  .c-prose :where(ul, ol) {
+    padding-inline-start: 0;
+    list-style: none;
+  }
+  .c-prose :where(ul, ol) > li {
+    position: relative;
+    padding-inline-start: var(--space-8);
+  }
+  .c-prose :where(ul, ol) > li + li { margin-block-start: var(--space-3); }
+  .c-prose :where(ul) > li::before {
+    content: "";
+    position: absolute;
+    inset-inline-start: var(--space-1);
+    inset-block-start: calc(0.75lh - var(--leaf-drop-xs) / 2);
+    inline-size: var(--leaf-drop-xs);
+    block-size: var(--leaf-drop-xs);
+    border-radius: var(--radius-goutte);
+    background: var(--color-brand);
+  }
+
+  /* Listes numérotées : numéro condensé Vert APSUD */
+  .c-prose :where(ol) { counter-reset: prose; }
+  .c-prose :where(ol) > li { counter-increment: prose; }
+  .c-prose :where(ol) > li::before {
+    content: counter(prose, decimal-leading-zero);
+    position: absolute;
+    inset-inline-start: 0;
+    color: var(--color-text-brand);
+    font-family: var(--font-condensed);
+    font-stretch: var(--font-stretch-condensed);
+    font-weight: var(--fw-heavy);
+  }
+
+  /* Citation : filet Soleil, grande phrase condensée */
+  .c-prose :where(blockquote) {
+    padding-inline-start: var(--space-6);
+    border-inline-start: var(--space-1) solid var(--color-accent);
+    font-family: var(--font-headline);
+    font-stretch: var(--font-stretch-headline);
+    font-weight: var(--fw-headline);
+    font-size: var(--fs-quote);
+    line-height: var(--lh-quote);
+  }
+  .c-prose :where(blockquote) :where(p + p, footer, cite) {
+    display: block;
+    margin-block-start: var(--space-4);
+    font-family: var(--font-text);
+    font-stretch: var(--font-stretch-text);
+    font-size: var(--fs-small);
+    font-weight: var(--fw-bold);
+    font-style: normal;
+    line-height: var(--lh-caption);
+  }
+
+  .c-prose :where(hr) {
+    border: 0;
+    border-block-start: var(--border-width) solid var(--color-border-subtle);
+  }
+
+  .c-prose :where(figcaption) {
+    margin-block-start: var(--space-2);
+    font-size: var(--fs-caption);
+    line-height: var(--lh-caption);
+    color: var(--color-text-muted);
+  }
+
+  .c-prose :where(table) {
+    inline-size: 100%;
+    border-collapse: collapse;
+    font-size: var(--fs-small);
+  }
+  .c-prose :where(th, td) {
+    padding: var(--space-3) var(--space-2);
+    border-block-end: var(--border-width) solid var(--color-border-subtle);
+    text-align: start;
+    vertical-align: top;
+  }
+  .c-prose :where(th) { font-weight: var(--fw-bold); }
+}

@@ -1,0 +1,28 @@
+---
+/**
+ * /faire-un-don — questions fréquentes (accordéon natif <details>, Prosper .c-accordion).
+ * Ouverture animée en CSS seul (::details-content + interpolate-size), coupée si animations réduites.
+ */
+import Icon from '../../components/ui/Icon.astro';
+import ArrowLink from '../../components/ui/ArrowLink.astro';
+import { donationFaq } from './agirData';
+import './DonateFaq.css';
+---
+
+<section class="c-donate-faq l-section t-coton" aria-labelledby="don-faq-title">
+  <div class="l-constrain l-constrain--text">
+    <h2 id="don-faq-title" class="c-donate-faq__title" data-reveal>Questions fréquentes</h2>
+    <div class="c-donate-faq__list">
+      {donationFaq.map((f, i) => (
+        <details class="c-faq" name="don-faq" open={i === 0}>
+          <summary class="c-faq__question">
+            <span>{f.q}</span>
+            <Icon name="plus" class="c-faq__icon" />
+          </summary>
+          <div class="c-faq__answer"><p>{f.a}</p></div>
+        </details>
+      ))}
+    </div>
+    <p class="c-donate-faq__more"><ArrowLink href="/contact?objet=don">Poser une autre question</ArrowLink></p>
+  </div>
+</section>

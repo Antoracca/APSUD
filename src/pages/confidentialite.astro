@@ -1,0 +1,153 @@
+---
+/**
+ * /confidentialite — politique de confidentialité, gabarit C (DESIGN.md §5.10).
+ * Structure standard (RGPD) : responsable, données, finalités et bases légales, destinataires,
+ * conservation, droits, sécurité, cookies (#cookies, ancre utilisée par le bandeau), modifications.
+ * Les choix qui reviennent à APSUD (durées, référent, autorité de contrôle) sont marqués <LegalPending>.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import LegalDoc, { type TocItem } from '../sections/legal/LegalDoc.astro';
+import LegalPending from '../sections/legal/LegalPending.astro';
+import Button from '../components/ui/Button.astro';
+import { site } from '../data/site';
+
+const toc: TocItem[] = [
+  { id: 'responsable', label: 'Responsable du traitement' },
+  { id: 'donnees', label: 'Données collectées' },
+  { id: 'finalites', label: 'Finalités et bases légales' },
+  { id: 'destinataires', label: 'Destinataires' },
+  { id: 'conservation', label: 'Durées de conservation' },
+  { id: 'droits', label: 'Vos droits' },
+  { id: 'securite', label: 'Sécurité' },
+  { id: 'cookies', label: 'Cookies' },
+  { id: 'modifications', label: 'Modifications' },
+];
+const mail = `mailto:${site.contact.email}`;
+---
+
+<BaseLayout
+  title="Politique de confidentialité"
+  description="Comment APSUD collecte, utilise et protège les données personnelles des visiteurs de son site, et comment exercer vos droits."
+>
+  <LegalDoc
+    title="Politique de confidentialité"
+    intro="Ce que nous faisons de vos données personnelles lorsque vous visitez ce site ou nous écrivez, et comment exercer vos droits."
+    updated="2026-11-22"
+    toc={toc}
+  >
+    <section id="responsable">
+      <h2>Responsable du traitement</h2>
+      <p>
+        Le responsable du traitement des données collectées sur ce site est <strong>{site.nom} ({site.sigle})</strong>,
+        {' '}{site.contact.adresse}, {site.contact.boitePostale}, {site.contact.pays}.
+      </p>
+      <p>
+        Pour toute question relative à vos données : <a href={mail}>{site.contact.email}</a>.
+        Personne référente pour la protection des données : <LegalPending hint="nom ou fonction" />.
+      </p>
+    </section>
+
+    <section id="donnees">
+      <h2>Données collectées</h2>
+      <p>Nous ne collectons des données personnelles que lorsque vous nous les transmettez vous-même :</p>
+      <ul>
+        <li>lorsque vous nous écrivez (courriel, formulaire de contact) : nom, coordonnées, contenu du message ;</li>
+        <li>lorsque vous signalez un don ou proposez un partenariat : les informations que vous choisissez de nous communiquer ;</li>
+        <li>lorsque vous répondez à une offre d’emploi ou à un appel d’offres : les pièces de votre dossier.</li>
+      </ul>
+      <p>
+        La simple consultation du site ne nécessite aucune inscription. Aucune donnée n’est vendue ni cédée à
+        des fins commerciales.
+      </p>
+    </section>
+
+    <section id="finalites">
+      <h2>Finalités et bases légales</h2>
+      <div class="c-legal__table">
+        <table>
+          <caption class="u-visually-hidden">Finalités des traitements et bases légales</caption>
+          <thead>
+            <tr><th scope="col">Finalité</th><th scope="col">Base légale</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Répondre à vos messages et demandes</td><td>Intérêt légitime d’APSUD à répondre aux personnes qui la sollicitent</td></tr>
+            <tr><td>Suivre les dons et les partenariats</td><td>Mesures préalables à un engagement pris à votre demande ; obligations légales et comptables</td></tr>
+            <tr><td>Traiter les candidatures et les offres reçues</td><td>Mesures préalables à un contrat pris à votre demande</td></tr>
+            <tr><td>Mesurer l’audience du site, afficher des contenus externes</td><td>Votre consentement, recueilli par le bandeau cookies</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="destinataires">
+      <h2>Destinataires</h2>
+      <p>
+        Vos données sont destinées aux seules personnes habilitées d’APSUD, dans la limite de ce qui est
+        nécessaire à leur mission. Elles sont hébergées par notre prestataire d’hébergement, LWS (voir les
+        {' '}<a href="/mentions-legales#hebergement">mentions légales</a>).
+      </p>
+      <p>
+        Elles ne sont communiquées à des tiers que lorsque la loi l’impose.
+        Communication éventuelle aux bailleurs de fonds des projets : <LegalPending hint="cas et conditions" />. Localisation des serveurs et éventuels transferts hors
+        de République centrafricaine : <LegalPending />.
+      </p>
+    </section>
+
+    <section id="conservation">
+      <h2>Durées de conservation</h2>
+      <p>Vos données ne sont conservées que le temps nécessaire à la finalité pour laquelle elles ont été recueillies :</p>
+      <ul>
+        <li>messages et demandes : <LegalPending hint="durée" /> ;</li>
+        <li>dossiers de candidature non retenus : <LegalPending hint="durée" /> ;</li>
+        <li>données liées aux dons et aux partenariats : <LegalPending hint="durée légale applicable" /> ;</li>
+        <li>choix sur les cookies : 6 mois.</li>
+      </ul>
+    </section>
+
+    <section id="droits">
+      <h2>Vos droits</h2>
+      <p>Vous disposez, sur les données qui vous concernent, des droits suivants :</p>
+      <ul>
+        <li>droit d’accès et de rectification ;</li>
+        <li>droit à l’effacement ;</li>
+        <li>droit d’opposition et de limitation du traitement ;</li>
+        <li>droit à la portabilité ;</li>
+        <li>droit de retirer votre consentement à tout moment, sans remettre en cause les traitements déjà effectués.</li>
+      </ul>
+      <p>
+        Pour les exercer, écrivez à <a href={mail}>{site.contact.email}</a> en précisant votre demande. Nous vous
+        répondrons dans un délai d’un mois. Autorité de contrôle auprès de laquelle introduire une réclamation :
+        {' '}<LegalPending />.
+      </p>
+    </section>
+
+    <section id="securite">
+      <h2>Sécurité</h2>
+      <p>
+        APSUD prend les mesures techniques et organisationnelles appropriées pour protéger vos données contre la
+        perte, l’accès non autorisé ou la divulgation : accès limité aux personnes habilitées et aucun script
+        publicitaire sur le site.
+      </p>
+    </section>
+
+    <section id="cookies">
+      <h2>Cookies</h2>
+      <p>
+        Rien n’est déposé sur votre appareil sans votre accord, hormis ce qui est indispensable au fonctionnement
+        du site. Le détail des catégories, des traceurs et de leur durée figure dans notre
+        {' '}<a href="/cookies">politique cookies</a>.
+      </p>
+      <p>
+        <Button variant="outline" data-cookie-open aria-haspopup="dialog">Gérer mes cookies</Button>
+      </p>
+    </section>
+
+    <section id="modifications">
+      <h2>Modifications</h2>
+      <p>
+        Cette politique peut évoluer, notamment lorsque de nouveaux services sont proposés sur le site. La date
+        de dernière mise à jour figure en haut de page.
+      </p>
+    </section>
+  </LegalDoc>
+</BaseLayout>

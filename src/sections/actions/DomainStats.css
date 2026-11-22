@@ -1,0 +1,146 @@
+/* Page domaine — le domaine en chiffres (Prosper `.c-quick-stats`, version page intérieure) */
+@layer components {
+  .c-domain-stats {
+    overflow-x: clip;   /* la goutte-feuille arrive de la gauche */
+    padding-block: var(--space-section);
+  }
+  .c-domain-stats__inner {
+    display: grid;
+    gap: var(--space-8);
+  }
+  .c-domain-stats__drop {
+    inline-size: var(--leaf-drop-sm);
+  }
+  .c-domain-stats__title {
+    margin: 0 0 var(--space-10);
+    font-size: var(--fs-h2);
+    font-weight: var(--fw-bold);
+    line-height: var(--lh-heading);
+  }
+
+  /* Chiffres : grands et légers (Prosper .c-stat__stat), séparés par un filet vertical */
+  .c-domain-stats__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-8) var(--space-6);
+    margin: 0;
+  }
+  .c-domain-stats__stat {
+    display: flex;
+    flex-direction: column-reverse;   /* chiffre au-dessus ; ordre de lecture : libellé puis chiffre */
+    justify-content: flex-end;
+    gap: var(--space-2);
+    padding-inline-start: var(--space-5);
+    border-inline-start: var(--border-width) solid var(--color-border-subtle);
+  }
+  .c-domain-stats__number {
+    margin: 0;
+    color: var(--color-text);
+    font-family: var(--font-headline);
+    font-size: var(--fs-stat);
+    font-stretch: var(--font-stretch-stat);
+    font-weight: var(--fw-stat-light);
+    line-height: var(--lh-tight);
+    letter-spacing: var(--ls-manifesto);
+    font-variant-numeric: lining-nums tabular-nums;
+    white-space: nowrap;
+  }
+  /* La période est un texte, pas un compteur : même encre, taille réduite pour tenir dans la colonne */
+  .c-domain-stats__number--period {
+    font-size: var(--fs-h3);
+    line-height: var(--lh-heading);
+    padding-block-start: calc((var(--fs-stat) - var(--fs-h3)) * 0.6);
+  }
+  .c-domain-stats__label {
+    color: var(--color-text-muted);
+    font-size: var(--fs-small);
+    font-weight: var(--fw-semibold);
+    line-height: var(--lh-caption);
+  }
+  /* Innovation (CSS seul) : un trait vert se dessine du haut vers le bas sur le filet de chaque
+     chiffre quand le bloc entre dans l'écran (.is-inview posé par counters.ts), en cascade. */
+  .c-domain-stats__stat { position: relative; }
+  .c-domain-stats__stat::before {
+    content: "";
+    position: absolute;
+    inset-block: 0 auto;
+    inset-inline-start: calc(-1 * var(--border-width));
+    inline-size: var(--border-width-strong);
+    block-size: 60%;
+    background: var(--color-brand);
+    transform-origin: 50% 0;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .js-reveal .c-domain-stats__stat::before {
+      scale: 1 0;
+      transition: scale var(--dur-signature) var(--ease-out) calc(var(--delay-signature) + var(--i, 0) * var(--stagger-count));
+    }
+    .js-reveal .is-inview .c-domain-stats__stat::before { scale: 1 1; }
+  }
+
+  /* Préfectures et bailleurs */
+  .c-domain-stats__list {
+    margin-block-start: var(--space-10);
+  }
+  .c-domain-stats__list-title {
+    margin: 0 0 var(--space-4);
+    font-size: var(--fs-h6);
+    font-weight: var(--fw-bold);
+    line-height: var(--lh-snug);
+  }
+  .c-domain-stats__chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .c-domain-stats__chip {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    min-block-size: var(--tap-min);
+    padding-inline: var(--space-4);
+    border: var(--border-width) solid var(--color-border-control);
+    border-radius: var(--radius-control);
+    background: var(--color-bg);
+    color: var(--color-text);
+    font-size: var(--fs-small);
+    font-weight: var(--fw-semibold);
+    text-decoration: none;
+    outline: 0 solid var(--color-border-control);
+    transition:
+      outline-width var(--dur-short) var(--ease-out),
+      background-color var(--dur-short) var(--ease-in);
+  }
+  .c-domain-stats__chip:hover {
+    outline-width: var(--border-width-strong);
+    background: var(--color-surface-tint);
+  }
+  .c-domain-stats__chip:focus-visible {
+    outline: var(--focus-width) solid var(--color-focus);
+    outline-offset: var(--focus-offset);
+  }
+  .c-domain-stats__chip .c-icon { color: var(--color-text-brand); }
+  .c-domain-stats__donors {
+    margin: 0;
+    max-inline-size: var(--measure-text);
+    line-height: var(--lh-body);
+  }
+  .c-domain-stats__source {
+    margin: var(--space-10) 0 0;
+    color: var(--color-text-muted);
+    font-size: var(--fs-caption);
+  }
+
+  @media (width >= 48em) {
+    .c-domain-stats__inner {
+      grid-template-columns: var(--leaf-drop-lg) minmax(0, 1fr);
+      gap: var(--space-16);
+      align-items: start;
+    }
+    .c-domain-stats__drop { inline-size: 100%; }
+    .c-domain-stats__grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  }
+}

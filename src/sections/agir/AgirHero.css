@@ -1,0 +1,115 @@
+/* /agir — hero photo + bloc Forêt (Prosper .c-hero, gabarit A) */
+@layer components {
+  .c-agir-hero {
+    position: relative;
+    max-inline-size: var(--container-wide);
+    margin-inline: auto;
+  }
+  .c-agir-hero__media {
+    overflow: hidden;
+    background: var(--color-surface-strong);
+  }
+  .c-agir-hero__img {
+    display: block;
+    inline-size: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    object-position: 50% 40%;
+  }
+
+  .c-agir-hero__content { padding: var(--space-6); }
+  .c-agir-hero__title {
+    margin-block-end: var(--space-6);
+    font-size: var(--fs-hero-title);
+    line-height: var(--lh-heading);
+  }
+  .c-agir-hero__line {
+    display: block;
+    overflow: clip;
+    overflow-clip-margin: 0.12em;
+  }
+  .c-agir-hero__line-inner { display: block; }
+  .c-agir-hero__text {
+    margin-block-end: var(--space-6);
+    line-height: var(--lh-lead);
+  }
+  .c-agir-hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-4) var(--space-6);
+  }
+  .c-agir-hero__more {
+    display: inline-flex;
+    align-items: center;
+    min-block-size: var(--tap-min);
+    font-weight: var(--fw-heavy);
+  }
+
+  @media (width >= 48em) {
+    .c-agir-hero {
+      display: grid;
+      grid-template-areas: "stack";
+    }
+    .c-agir-hero__media { grid-area: stack; }
+    .c-agir-hero__img { max-block-size: 80vh; }
+    .c-agir-hero__content {
+      position: relative;
+      grid-area: stack;
+      align-self: end;
+      margin-inline-start: var(--hero-bar-w);
+      max-inline-size: min(var(--hero-content-max), 50vw - var(--hero-bar-w));
+      min-inline-size: var(--hero-content-min);
+      padding: var(--space-8);
+    }
+    .c-agir-hero__content::before {
+      content: "";
+      position: absolute;
+      inset-block: var(--space-16) 0;
+      inset-inline-start: calc(-1 * var(--hero-bar-w));
+      inline-size: var(--hero-bar-w);
+      background: var(--color-surface-tint);
+    }
+    .c-agir-hero__title {
+      font-size: var(--fs-hero-title-md);
+      line-height: var(--lh-hero-title-md);
+    }
+    .c-agir-hero__text { font-size: var(--fs-lead); }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .c-agir-hero__img {
+      transform-origin: 60% 40%;
+      animation: c-agir-hero-zoom var(--hero-kenburns-dur) var(--ease-in-out) var(--dur-long) infinite alternate both;
+    }
+    .c-agir-hero__line-inner {
+      animation: c-agir-hero-line var(--dur-hero-line) var(--ease-out)
+        calc(var(--delay-hero-intro) + var(--line, 0) * var(--stagger-hero-line)) both;
+    }
+    .c-agir-hero__text,
+    .c-agir-hero__actions {
+      animation: c-agir-hero-rise var(--dur-hero-line) var(--ease-out)
+        calc(var(--delay-hero-intro) + 2 * var(--stagger-hero-line) + var(--dur-standard)) both;
+    }
+    .c-agir-hero__content::before {
+      transform-origin: 50% 100%;
+      animation: c-agir-hero-step var(--dur-signature) var(--ease-out) var(--delay-hero-intro) both;
+    }
+  }
+  @keyframes c-agir-hero-zoom {
+    from { scale: 1; translate: 0 0; }
+    to   { scale: var(--hero-kenburns-scale); translate: var(--hero-kenburns-shift); }
+  }
+  @keyframes c-agir-hero-line {
+    from { translate: 0 110%; }
+    to   { translate: 0 0; }
+  }
+  @keyframes c-agir-hero-rise {
+    from { opacity: 0; translate: 0 var(--space-4); }
+    to   { opacity: 1; translate: 0 0; }
+  }
+  @keyframes c-agir-hero-step {
+    from { scale: 1 0; }
+    to   { scale: 1 1; }
+  }
+}

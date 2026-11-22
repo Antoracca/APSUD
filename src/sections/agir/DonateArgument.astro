@@ -1,0 +1,64 @@
+---
+/**
+ * /faire-un-don — colonne d'argumentaire (gabarit E de Prosper, colonne gauche) :
+ * photo terrain légendée → pourquoi donner → ce que permet un don → preuves (bailleurs).
+ * « Ce que permet un don » ne cite QUE des activités publiées dans les fiches projets,
+ * avec le lieu, la période et un lien vers la fiche : aucune équivalence chiffrée inventée.
+ */
+import CaptionImage from '../../components/ui/CaptionImage.astro';
+import Icon from '../../components/ui/Icon.astro';
+import ArrowLink from '../../components/ui/ArrowLink.astro';
+import AgirLogos from './AgirLogos.astro';
+import { site } from '../../data/site';
+import { facts, impacts, projectPhoto } from './agirData';
+import './DonateArgument.css';
+
+const photo = projectPhoto('projet-boguila-distribution-kits-hygiene-01.jpg');
+---
+
+<div class="c-donate-argument">
+  <CaptionImage
+    src={photo.src}
+    alt={photo.alt}
+    caption="Distribution de kits d’hygiène aux ménages de Boguila, projet d’urgence WASH 2021–2022."
+    ratio="4/3"
+    sizes="(min-width: 60em) 40rem, 100vw"
+    loading="eager"
+  />
+
+  <div class="c-donate-argument__why">
+    <h2 class="c-donate-argument__title">Pourquoi donner</h2>
+    <p>{site.mission}</p>
+    <p>
+      Ses équipes ont mené les {facts.projets} projets présentés sur ce site dans {facts.prefectures} préfectures{facts.bangui ? ' et à Bangui' : ''},
+      souvent auprès de familles déplacées ou de retour dans leurs quartiers.
+    </p>
+    <p class="c-donate-argument__strong"><strong><em>Chaque don renforce la capacité d’APSUD à répondre aux besoins des communautés centrafricaines.</em></strong></p>
+  </div>
+
+  <section class="c-donate-argument__impacts" aria-labelledby="don-impacts-title">
+    <h2 id="don-impacts-title" class="c-donate-argument__title">Ce que permet un don</h2>
+    <p class="c-donate-argument__note">Des actions déjà menées par APSUD sur le terrain, telles que publiées dans ses fiches projets.</p>
+    <ol class="c-impacts" role="list">
+      {impacts.map((it, i) => (
+        <li class="c-impact" data-reveal data-reveal-delay={String(i * 90)}>
+          <span class="c-impact__badge" aria-hidden="true"><Icon name={it.icon} /></span>
+          <div class="c-impact__body">
+            <h3 class="c-impact__title">{it.title}</h3>
+            <p class="c-impact__fact">{it.fact}</p>
+            <p class="c-impact__meta">
+              <span>{it.place}</span>
+              <a class="c-impact__link" href={it.href}>Voir le projet<span class="u-visually-hidden"> : {it.title}</span></a>
+            </p>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </section>
+
+  <section class="c-donate-argument__proof" aria-labelledby="don-proof-title">
+    <h2 id="don-proof-title" class="c-donate-argument__subtitle">Ils ont financé des projets d’APSUD</h2>
+    <AgirLogos slugs={['fh-rca', 'union-europeenne', 'bmz', 'japon']} label="Bailleurs des projets d’APSUD" />
+    <ArrowLink href="/partenaires">Tous nos partenaires et bailleurs</ArrowLink>
+  </section>
+</div>

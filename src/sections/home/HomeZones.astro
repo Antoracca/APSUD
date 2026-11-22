@@ -1,0 +1,229 @@
+---
+/**
+ * Accueil — Nos zones d'intervention. Équivalent APSUD de la carte « Where we work » de Prosper
+ * (PROSPER_STRUCTURE §5.12) : carte des préfectures de la RCA colorées selon les projets
+ * (en cours = Soleil, réalisés = Vert APSUD, sans projet = Coton), légende Actif / Terminé,
+ * et un panneau de détails à droite (Prosper : info-bulle au survol d'un pays).
+ *
+ * Améliorations par rapport à Prosper :
+ *  - le panneau de détails remplace l'info-bulle : lisible, cliquable, accessible au clavier ;
+ *  - la légende sert de filtre (survol / focus → seules les préfectures concernées restent nettes),
+ *    en CSS pur grâce à :has() ;
+ *  - « projecteur » : la préfecture active passe au premier plan (contour dessiné par <use>),
+ *    les autres s'estompent ;
+ *  - entrée en cascade du sud-ouest vers l'est, points pulsants sur les projets en cours
+ *    (désactivés avec « animations réduites »).
+ * Sans JS : la carte s'affiche colorée, le panneau montre la synthèse et la liste textuelle
+ * (<details>) donne toutes les préfectures et leurs projets.
+ */
+import Icon from '../../components/ui/Icon.astro';
+import { zones, zonesSummary as s, mapViewBox, plural } from '../../data/zones';
+import './HomeZones.css';
+
+const label = (z: (typeof zones)[number]) =>
+  `${z.nom} : ${plural(z.enCours, 'projet en cours', 'projets en cours')}, ${plural(z.realises, 'projet réalisé', 'projets réalisés')}`;
+
+// Bangui est minuscule à cette échelle : on le dessine aussi sous forme de pastille cliquable.
+const bangui = zones.find((z) => z.slug === 'bangui');
+const prefectures = zones.filter((z) => z.slug !== 'bangui');
+const actives = zones.filter((z) => z.status !== 'none').sort((a, b) => a.nom.localeCompare(b.nom, 'fr'));
+const statusLabel = { en_cours: 'En cours', realise: 'Réalisé' } as const;
+const summaryTitle = `${s.prefectures} préfectures${s.bangui ? ' et Bangui' : ''}`;
+---
+
+<section class="c-zones" aria-labelledby="zones-titre" data-zones>
+  <div class="l-constrain">
+    <header class="c-zones__head">
+      <h2 id="zones-titre" class="c-zones__title">Nos zones d’intervention</h2>
+      <p class="c-zones__lead">
+        Nos projets, en cours et réalisés, sur la carte de la Centrafrique&nbsp;: {summaryTitle.toLowerCase()} sur
+        les {s.total} que compte le pays, au plus près des communautés.
+      </p>
+    </header>
+
+    <div class="c-zones__grid">
+      <figure class="c-zones__figure" data-reveal>
+        <div class="c-zones__map-wrap">
+          <svg
+            class="c-zones__map"
+            viewBox={mapViewBox}
+            role="group"
+            aria-label="Carte des préfectures de la République centrafricaine où APSUD intervient"
+            data-zones-map
+          >
+            <g class="c-zones__prefs">
+              {prefectures.map((z) => (
+                <path
+                  id={`zone-${z.slug}`}
+                  class:list={['c-zones__pref', `c-zones__pref--${z.status}`]}
+                  d={z.d}
+                  style={`--i:${z.ordre}`}
+                  tabindex="0"
+                  role="button"
+                  aria-pressed="false"
+                  aria-label={label(z)}
+                  data-zone={z.slug}
+                  data-status={z.status}
+                />
+              ))}
+              {bangui && (
+                <path
+                  class:list={['c-zones__pref', `c-zones__pref--${bangui.status}`, 'c-zones__pref--capital']}
+                  d={bangui.d}
+                  style={`--i:${bangui.ordre}`}
+                  aria-hidden="true"
+                  data-status={bangui.status}
+                />
+              )}
+            </g>
+            <use class="c-zones__ring" href="" data-zones-ring aria-hidden="true" />
+            <g class="c-zones__pulses" aria-hidden="true">
+              {zones
+                .filter((z) => z.status === 'ongoing' && z.slug !== 'bangui')
+                .map((z) => (
+                  <g class="c-zones__pulse" style={`--i:${z.ordre}`} transform={`translate(${z.cx} ${z.cy})`}>
+                    <circle class="c-zones__pulse-ring" r="9" />
+                    <circle class="c-zones__pulse-dot" r="5" />
+                  </g>
+                ))}
+            </g>
+            {bangui && (
+              <g
+                id="zone-bangui"
+                class:list={['c-zones__capital', `c-zones__capital--${bangui.status}`]}
+                transform={`translate(${bangui.cx} ${bangui.cy})`}
+                style={`--i:${bangui.ordre}`}
+                tabindex="0"
+                role="button"
+                aria-pressed="false"
+                aria-label={label(bangui)}
+                data-zone="bangui"
+                data-status={bangui.status}
+              >
+                {bangui.status === 'ongoing' && <circle class="c-zones__pulse-ring c-zones__capital-pulse" r="14" />}
+                <circle class="c-zones__capital-hit" r="22" />
+                <circle class="c-zones__capital-dot" r="11" />
+                <text class="c-zones__capital-label" x="18" y="34">Bangui</text>
+              </g>
+            )}
+          </svg>
+        </div>
+
+        <figcaption class="c-zones__legend">
+          <ul class="c-zones__legend-list" aria-label="Légende de la carte">
+            <li>
+              <button type="button" class="c-zones__key c-zones__key--ongoing" data-key="ongoing">
+                <span class="c-zones__swatch" aria-hidden="true"></span>
+                Projet en cours
+              </button>
+            </li>
+            <li>
+              <button type="button" class="c-zones__key c-zones__key--done" data-key="done">
+                <span class="c-zones__swatch" aria-hidden="true"></span>
+                Projets réalisés
+              </button>
+            </li>
+            <li>
+              <button type="button" class="c-zones__key c-zones__key--none" data-key="none">
+                <span class="c-zones__swatch" aria-hidden="true"></span>
+                Pas encore de projet
+              </button>
+            </li>
+          </ul>
+          <p class="c-zones__source">Fond de carte&nbsp;: geoBoundaries (licence ouverte CC BY 4.0).</p>
+        </figcaption>
+      </figure>
+
+      <div class="c-zones__panel" aria-live="polite" data-zones-panel>
+        <article class="c-zones__detail c-zones__detail--summary" data-detail="summary">
+          <p class="c-zones__overline">
+            <Icon name="localisation-rca" size="sm" />
+            En un coup d’œil
+          </p>
+          <h3 class="c-zones__name">{summaryTitle}</h3>
+          <dl class="c-zones__stats">
+            <div class="c-zones__stat c-zones__stat--ongoing">
+              <dt>Préfectures avec un projet en cours</dt>
+              <dd>{s.enCours}</dd>
+            </div>
+            <div class="c-zones__stat c-zones__stat--done">
+              <dt>Projets documentés sur la carte</dt>
+              <dd>{s.projets}</dd>
+            </div>
+          </dl>
+          <p class="c-zones__hint">
+            Survolez ou sélectionnez une préfecture pour découvrir les projets qui y sont menés.
+          </p>
+        </article>
+
+        {
+          zones.map((z) => (
+            <article class="c-zones__detail" data-detail={z.slug} hidden>
+              <p class="c-zones__overline">
+                <Icon name="map-pin" size="sm" />
+                {z.slug === 'bangui' ? 'Capitale' : 'Préfecture'}
+              </p>
+              <h3 class="c-zones__name">{z.nom}</h3>
+              <dl class="c-zones__stats">
+                <div class="c-zones__stat c-zones__stat--ongoing">
+                  <dt>En cours</dt>
+                  <dd>{z.enCours}</dd>
+                </div>
+                <div class="c-zones__stat c-zones__stat--done">
+                  <dt>{z.realises > 1 ? 'Réalisés' : 'Réalisé'}</dt>
+                  <dd>{z.realises}</dd>
+                </div>
+              </dl>
+              {z.projets.length ? (
+                <ul class="c-zones__projects">
+                  {z.projets.map((p) => (
+                    <li class="c-zones__project">
+                      <span class:list={['c-zones__status', `c-zones__status--${p.statut}`]}>{statusLabel[p.statut]}</span>
+                      <a class="c-zones__project-link" href={`/projets/${p.slug}`}>
+                        {p.titre}
+                      </a>
+                      {p.periode && <span class="c-zones__period">{p.periode}</span>}
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <p class="c-zones__empty">Aucun projet d’APSUD n’est encore documenté dans cette préfecture.</p>
+              )}
+            </article>
+          ))
+        }
+      </div>
+    </div>
+
+    <details class="c-zones__list">
+      <summary class="c-zones__list-summary">
+        <span>Liste des zones d’intervention et de leurs projets</span>
+        <Icon name="chevron-down" size="sm" class="c-zones__list-icon" />
+      </summary>
+      <ul class="c-zones__list-grid">
+        {
+          actives.map((z) => (
+            <li class="c-zones__list-item">
+              <h3 class="c-zones__list-name">{z.nom}</h3>
+              <p class="c-zones__list-count">
+                {plural(z.enCours, 'en cours', 'en cours')} · {plural(z.realises, 'réalisé', 'réalisés')}
+              </p>
+              <ul class="c-zones__list-projects">
+                {z.projets.map((p) => (
+                  <li>
+                    <a href={`/projets/${p.slug}`}>{p.titre}</a>
+                    <span class="u-visually-hidden"> ({statusLabel[p.statut]})</span>
+                  </li>
+                ))}
+              </ul>
+            </li>
+          ))
+        }
+      </ul>
+    </details>
+  </div>
+</section>
+
+<script>
+  import '../../scripts/zones-map';
+</script>

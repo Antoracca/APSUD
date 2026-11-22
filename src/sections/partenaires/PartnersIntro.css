@@ -1,0 +1,61 @@
+/* /partenaires — introduction + chiffres de partenariat */
+@layer components {
+  .c-partners-intro {
+    padding-block: var(--space-4) var(--space-section-sm);
+  }
+
+  /* Trois chiffres en ligne, filet supérieur, chiffre Condensé 800 en Vert APSUD */
+  .c-partners-intro__stats {
+    display: grid;
+    gap: var(--space-8);
+    margin: var(--space-16) 0 0;
+  }
+  .c-partners-intro__stat {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: flex-end;
+    gap: var(--space-3);
+    padding-block-start: var(--space-5);
+    border-block-start: var(--border-width-strong) solid var(--color-text);
+  }
+  .c-partners-intro__value {
+    margin: 0;
+    color: var(--color-text-brand);
+    font-stretch: var(--font-stretch-condensed);
+    font-size: var(--fs-stat);
+    font-weight: var(--fw-heavy);
+    line-height: var(--lh-tight);
+    font-variant-numeric: tabular-nums;
+  }
+  .c-partners-intro__label {
+    max-inline-size: var(--hero-content-min);
+    color: var(--color-text-muted);
+    font-size: var(--fs-body);
+    line-height: var(--lh-snug);
+  }
+
+  @media (width >= 48em) {
+    .c-partners-intro__stats { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  }
+
+  /* Le filet se trace de gauche à droite, chiffre par chiffre */
+  @media (prefers-reduced-motion: no-preference) {
+    .js-reveal .c-partners-intro__stats[data-reveal] { opacity: 1; transform: none; }
+    .js-reveal .c-partners-intro__stats[data-reveal] .c-partners-intro__stat {
+      border-block-start-color: transparent;
+      background: linear-gradient(var(--color-text), var(--color-text)) no-repeat top left / 0% var(--border-width-strong);
+      opacity: 0;
+      translate: 0 var(--space-3);
+      transition:
+        background-size var(--dur-signature) var(--ease-out),
+        opacity var(--dur-long) var(--ease-out),
+        translate var(--dur-signature) var(--ease-out);
+      transition-delay: calc(var(--i) * var(--stagger-count));
+    }
+    .js-reveal .c-partners-intro__stats.is-revealed .c-partners-intro__stat {
+      background-size: 100% var(--border-width-strong);
+      opacity: 1;
+      translate: none;
+    }
+  }
+}

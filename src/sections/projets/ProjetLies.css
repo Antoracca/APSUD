@@ -1,0 +1,26 @@
+/* Fiche projet — projets liés (3 colonnes à 1200 px, comme la liste) */
+@layer components {
+  .c-projet-lies__head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-4) var(--space-8);
+    margin-block-end: var(--space-10);
+  }
+  .c-projet-lies__title {
+    margin: 0;
+    font-size: var(--fs-h2);
+    line-height: var(--lh-heading);
+    text-wrap: balance;
+  }
+  .c-projet-lies__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, calc(3 * var(--space-30))), 1fr));
+    gap: var(--space-12) var(--grid-gap);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .c-projet-lies__grid > li { display: grid; }
+}

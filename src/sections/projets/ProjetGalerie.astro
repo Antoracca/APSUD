@@ -1,0 +1,73 @@
+---
+/**
+ * Fiche projet — galerie en diptyques (Prosper, article « 2026 in Action » : une grande photo
+ * 4:3 avec sa légende, une plus petite calée sur le bas, côte à côte dans la mesure média).
+ * Les paires alternent de côté ; une photo restée seule s'affiche en 16:9 pleine mesure.
+ * Légende = `legende` de la fiche quand elle existe (l'`alt` reste la description de l'image).
+ * Innovation APSUD : chaque photo s'ouvre par volet depuis le bas à l'entrée (CSS, coupé si
+ * « animations réduites », visible sans JS).
+ */
+import { Picture } from 'astro:assets';
+import { getImage } from '../../lib/images';
+import type { ProjetImage } from '../../data/projects';
+import './ProjetGalerie.css';
+
+interface Props {
+  images: ProjetImage[];
+  titre: string;
+}
+
+const { images, titre } = Astro.props;
+
+const pairs: ProjetImage[][] = [];
+for (let i = 0; i < images.length; i += 2) pairs.push(images.slice(i, i + 2));
+
+/** Recadrage au build (comme ProjectCard) : on ne sert que les pixels affichés. */
+function crop(src: string, ratio: number) {
+  const img = getImage(src);
+  const w = Math.round(Math.min(img.width, img.height * ratio));
+  const h = Math.round(w / ratio);
+  const widths = [400, 600, 800, 1000, 1400].filter((x) => x < w).concat(w);
+  return { img, w, h, widths };
+}
+const RATIOS = { large: 4 / 3, small: 1, solo: 16 / 9 } as const;
+const SIZES = {
+  large: '(min-width: 62em) 37rem, 60vw',
+  small: '(min-width: 62em) 24rem, 40vw',
+  solo: '(min-width: 62em) 62rem, 100vw',
+} as const;
+---
+
+{images.length > 0 && (
+  <section class="c-projet-galerie l-constrain l-constrain--media" aria-label={`Photos du projet ${titre}`}>
+    {pairs.map((pair, i) => (
+      <div class:list={['c-projet-galerie__row', { 'c-projet-galerie__row--mirror': i % 2 === 1, 'c-projet-galerie__row--solo': pair.length === 1 }]}>
+        {pair.map((im, j) => {
+          const kind = pair.length === 1 ? 'solo' : j === 0 ? 'large' : 'small';
+          const c = crop(im.src, RATIOS[kind]);
+          return (
+            <figure class:list={['c-projet-galerie__figure', `c-projet-galerie__figure--${kind}`]} data-reveal data-reveal-delay={String(j * 150)}>
+              <div class="c-projet-galerie__media">
+                <Picture
+                  src={c.img}
+                  alt={im.alt}
+                  width={c.w}
+                  height={c.h}
+                  widths={c.widths}
+                  sizes={SIZES[kind]}
+                  fit="cover"
+                  position="attention"
+                  formats={['avif', 'webp']}
+                  loading="lazy"
+                  decoding="async"
+                  class="c-projet-galerie__img"
+                />
+              </div>
+              {im.legende && <figcaption class="c-projet-galerie__caption">{im.legende}</figcaption>}
+            </figure>
+          );
+        })}
+      </div>
+    ))}
+  </section>
+)}

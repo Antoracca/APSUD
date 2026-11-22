@@ -1,0 +1,60 @@
+---
+/**
+ * /agir/partenariat — pour les bailleurs, agences des Nations unies et ONG internationales
+ * (Prosper /partners, gabarit B ; PROSPER_STRUCTURE §5.16) :
+ * en-tête photo légendée → intro → chiffres + pourquoi APSUD → références (logos)
+ * → présence en préfectures (carte réutilisée de l'accueil) → modalités → CTA contact.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/layout/PageHeader.astro';
+import Prose from '../../components/ui/Prose.astro';
+import CtaTwoUp from '../../components/ui/CtaTwoUp.astro';
+import HomeZones from '../../sections/home/HomeZones.astro';
+import PartnerReasons from '../../sections/agir/PartnerReasons.astro';
+import PartnerReferences from '../../sections/agir/PartnerReferences.astro';
+import PartnerModalities from '../../sections/agir/PartnerModalities.astro';
+import { site } from '../../data/site';
+---
+
+<BaseLayout
+  title="Devenir partenaire"
+  description="Bailleurs, agences des Nations unies, ONG internationales : collaborez avec APSUD, ONG nationale centrafricaine présente à Bangui et dans les préfectures."
+>
+  <PageHeader
+    title="Devenir partenaire d’APSUD"
+    breadcrumb={[{ label: 'Agir avec nous', href: '/agir' }, { label: 'Devenir partenaire' }]}
+    image="assets/apsud/images/hero/hero-formation-responsables-ong-partenaires.jpg"
+    imageAlt="Formation des responsables des ONG partenaires dans la salle de réunion d’APSUD"
+    caption="Formation des responsables des ONG partenaires au siège d’APSUD."
+    credit="© APSUD"
+  />
+
+  <Prose lead class="l-section--sm">
+    <p>
+      {site.nom} ({site.sigle}) est une {site.statut} en {site.pays}. {site.mission}
+    </p>
+    <p>
+      Bailleurs institutionnels, agences des Nations unies et ONG internationales&nbsp;: APSUD met en œuvre
+      vos programmes avec les communautés, renforce les organisations locales et rend compte de chaque résultat.
+    </p>
+  </Prose>
+
+  <PartnerReasons />
+  <PartnerReferences />
+  <HomeZones />
+  <PartnerModalities />
+
+  <CtaTwoUp
+    id="partenariat-cta-title"
+    primary={{
+      title: 'Un projet à mettre en œuvre ?',
+      text: 'Présentez-nous votre programme, votre zone et votre calendrier : l’équipe d’APSUD revient vers vous.',
+      cta: { label: 'Proposer un partenariat', href: '/contact?objet=partenariat' },
+    }}
+    secondary={{
+      title: 'Voir nos réalisations',
+      text: 'Fiches détaillées des projets : bailleurs, zones, activités et résultats.',
+      cta: { label: 'Tous les projets', href: '/projets' },
+    }}
+  />
+</BaseLayout>

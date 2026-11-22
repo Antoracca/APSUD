@@ -1,0 +1,84 @@
+/* Carrières — valeurs d'APSUD (grille 3 × 2 sur Coton) */
+@layer components {
+  .c-careers-values {
+    padding-block: var(--space-section);
+  }
+
+  .c-careers-values__head {
+    display: grid;
+    gap: var(--space-4);
+    max-inline-size: var(--measure-media);
+    margin-block-end: var(--space-12);
+  }
+  .c-careers-values__title {
+    font-size: var(--fs-h2);
+    line-height: var(--lh-heading);
+  }
+  .c-careers-values__intro {
+    max-inline-size: var(--measure-intro);
+    font-size: var(--fs-lead);
+    line-height: var(--lh-lead);
+    color: var(--color-text-muted);
+  }
+
+  .c-careers-values__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, calc(var(--measure-intro) / 2)), 1fr));
+    gap: var(--space-10) var(--grid-gap);
+  }
+
+  .c-careers-values__item {
+    display: grid;
+    align-content: start;
+    gap: var(--space-3);
+    padding-block-start: var(--space-6);
+    border-block-start: var(--border-width-strong) solid var(--color-text);
+  }
+
+  .c-careers-values__num {
+    position: relative;
+    display: inline-grid;
+    place-items: center;
+    inline-size: var(--leaf-drop-sm);
+    block-size: var(--leaf-drop-sm);
+    margin-block-end: var(--space-2);
+    font-family: var(--font-condensed);
+    font-stretch: var(--font-stretch-condensed);
+    font-weight: var(--fw-heavy);
+    font-size: var(--fs-small);
+    color: var(--color-text);
+  }
+  /* Goutte-feuille derrière le numéro : elle « pousse » (pivote et grandit) à la révélation */
+  .c-careers-values__drop {
+    position: absolute;
+    inset: 0;
+    z-index: var(--z-below);
+    border-radius: var(--radius-goutte);
+    background: var(--color-surface-signature);
+  }
+  .c-careers-values__num { isolation: isolate; }
+
+  :root.js-reveal .c-careers-values__drop {
+    scale: 0.4;
+    rotate: -90deg;
+    transition:
+      scale var(--dur-signature) var(--ease-out) calc(var(--reveal-delay, 0ms) + var(--dur-intro)),
+      rotate var(--dur-signature) var(--ease-out) calc(var(--reveal-delay, 0ms) + var(--dur-intro));
+  }
+  :root.js-reveal .is-revealed .c-careers-values__drop {
+    scale: 1;
+    rotate: 0deg;
+  }
+
+  .c-careers-values__name {
+    font-size: var(--fs-h5);
+    line-height: var(--lh-snug);
+  }
+  .c-careers-values__text {
+    color: var(--color-text-muted);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .c-careers-values__drop { scale: 1; rotate: 0deg; transition: none; }
+  }
+}

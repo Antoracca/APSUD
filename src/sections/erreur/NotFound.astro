@@ -1,0 +1,135 @@
+---
+/**
+ * Page 404 — DESIGN.md §5.11 : gabarit C allégé sur Coton, goutte-feuille géante « tombée »
+ * (Vert APSUD, −20°) à droite, H1 sobre (pas de « Oups »), champ de recherche, liens vers les
+ * 4 portes + « Voir les projets en cours ».
+ *
+ * Innovations APSUD :
+ *  - la goutte « tombe » et se pose en oscillant légèrement à l'arrivée (coupé si animations réduites) ;
+ *  - « Vous cherchiez peut-être… » : les anciennes adresses du site Laravel (/A_propos,
+ *    /detail-projet/12…) et les mots de l'adresse demandée sont rapprochés d'une vraie page ;
+ *    le champ de recherche est prérempli avec ces mots. Sans JS : rien ne s'affiche, la page reste complète.
+ */
+import LeafDrop from '../../components/ui/LeafDrop.astro';
+import ArrowLink from '../../components/ui/ArrowLink.astro';
+import Icon from '../../components/ui/Icon.astro';
+import { mainNav } from '../../data/navigation';
+import { getProjects } from '../../data/projects';
+import { searchIndex } from '../recherche/searchIndex';
+import './NotFound.css';
+
+/* Données du rapprochement d'adresse (petites : titres + adresses) */
+const suggestData = {
+  /* Anciennes routes du site Laravel (DESIGN.md §5.11) */
+  legacy: {
+    home: '/',
+    a_propos: '/qui-sommes-nous',
+    liste_projets: '/projets',
+    nos_partenaires: '/partenaires',
+    contactez_nous: '/contact',
+    faire_un_don: '/faire-un-don',
+  } as Record<string, string>,
+  /* /detail-projet/{id} → fiche du projet */
+  projets: Object.fromEntries(getProjects().map((p) => [String(p.id), `/projets/${p.slug}`])),
+  pages: searchIndex.map((e) => ({ t: e.titre, h: e.href })),
+};
+
+const doors = [
+  ...mainNav.map((g) => ({ label: g.label, href: g.href })),
+  { label: 'Voir les projets en cours', href: '/projets' },
+];
+---
+
+<section class="c-not-found t-coton" aria-labelledby="page-title" data-not-found>
+  <div class="c-not-found__drop" aria-hidden="true">
+    <LeafDrop size="fill" color="brand" />
+  </div>
+
+  <div class="c-not-found__inner l-constrain">
+    <p class="c-not-found__code">Erreur 404</p>
+    <h1 id="page-title" class="c-not-found__title">Cette page n’existe pas ou a été déplacée</h1>
+    <p class="c-not-found__text">
+      L’adresse saisie est peut-être incomplète, ou la page a changé de place avec la nouvelle version du site.
+    </p>
+
+    <p class="c-not-found__suggest" data-not-found-suggest hidden>
+      Vous cherchiez peut-être <a href="/" data-not-found-link>…</a>
+    </p>
+
+    <form class="c-not-found__form" action="/recherche" method="get" role="search">
+      <label class="u-visually-hidden" for="erreur-q">Rechercher sur le site</label>
+      <input
+        class="c-not-found__input"
+        id="erreur-q"
+        name="q"
+        type="search"
+        placeholder="Rechercher un projet, une page…"
+        autocomplete="off"
+        data-not-found-input
+      />
+      <button class="c-not-found__submit" type="submit">
+        <Icon name="search" />
+        <span>Rechercher</span>
+      </button>
+    </form>
+
+    <nav class="c-not-found__nav" aria-label="Rubriques du site">
+      <ul class="c-not-found__links" role="list">
+        {doors.map((d) => (
+          <li><ArrowLink href={d.href}>{d.label}</ArrowLink></li>
+        ))}
+      </ul>
+    </nav>
+  </div>
+</section>
+
+<script type="application/json" id="not-found-data" set:html={JSON.stringify(suggestData)} />
+
+<script>
+  interface Data {
+    legacy: Record<string, string>;
+    projets: Record<string, string>;
+    pages: { t: string; h: string }[];
+  }
+  const raw = document.getElementById('not-found-data')?.textContent;
+  const box = document.querySelector<HTMLElement>('[data-not-found-suggest]');
+  const link = document.querySelector<HTMLAnchorElement>('[data-not-found-link]');
+  const input = document.querySelector<HTMLInputElement>('[data-not-found-input]');
+
+  if (raw && box && link) {
+    const data = JSON.parse(raw) as Data;
+    const norm = (s: string) => s.normalize('NFD').replace(/\p{Diacritic}/gu, '').toLowerCase();
+    const path = decodeURIComponent(location.pathname).replace(/\/+$/, '');
+    const parts = norm(path).split('/').filter(Boolean);
+    const words = parts.join(' ').split(/[^a-z0-9]+/).filter((w) => w.length > 2 && !/^\d+$/.test(w) && w !== 'html' && w !== 'php');
+
+    let target: { t: string; h: string } | undefined;
+
+    /* 1. Anciennes adresses du site */
+    const first = parts[0] ?? '';
+    if (first === 'detail-projet' && parts[1] && data.projets[parts[1]]) {
+      const h = data.projets[parts[1]];
+      target = data.pages.find((p) => p.h === h);
+    } else if (data.legacy[first]) {
+      target = data.pages.find((p) => p.h === data.legacy[first]);
+    }
+
+    /* 2. Rapprochement par mots : adresse et titre de chaque page */
+    if (!target && words.length) {
+      let best = 0;
+      for (const p of data.pages) {
+        const hay = norm(`${p.h} ${p.t}`);
+        const score = words.reduce((s, w) => s + (hay.includes(w) ? w.length : 0), 0);
+        if (score > best) { best = score; target = p; }
+      }
+      if (best < 4) target = undefined;
+    }
+
+    if (target && target.h !== location.pathname) {
+      link.href = target.h;
+      link.textContent = `« ${target.t} »`;
+      box.hidden = false;
+    }
+    if (input && words.length) input.value = words.join(' ');
+  }
+</script>

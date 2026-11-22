@@ -1,0 +1,76 @@
+---
+/**
+ * Tuile texte (équivalent `.c-tile` de Prosper, bloc « From the press room »).
+ * DESIGN.md §4.13 ; PROSPER_TOKENS §13 ; PROSPER_STRUCTURE §4.3.
+ *
+ * Anatomie : sur-titre (période · lieu) → titre h3 condensée → résumé tronqué → « Lire la fiche ».
+ * Toute la tuile est cliquable : le lien est posé sur le titre et étiré sur la tuile
+ * (un seul arrêt de tabulation, nom accessible = le titre). Le libellé « Lire la fiche »
+ * est un rappel visuel (aria-hidden), comme le `span.c-button` de Prosper.
+ * Survol / focus : la tuile monte de 16 px (375 ms, ease-in-out Prosper) et le libellé s'épaissit.
+ */
+import Icon from './Icon.astro';
+import './Tile.css';
+
+interface Props {
+  href: string;
+  title: string;
+  /** Période ou date affichée en sur-titre (« 2023–2024 »). */
+  date?: string;
+  /** Lieu(x) affiché(s) après la période. */
+  place?: string;
+  text?: string;
+  linkLabel?: string;
+  /** Nombre de lignes du résumé avant troncature. */
+  lines?: number;
+  headingLevel?: 2 | 3 | 4;
+  external?: boolean;
+  class?: string;
+}
+
+const {
+  href,
+  title,
+  date,
+  place,
+  text,
+  linkLabel = 'Lire la fiche',
+  lines = 4,
+  headingLevel = 3,
+  external = false,
+  class: className,
+} = Astro.props;
+
+/** Typographie française sur le contenu importé : apostrophe typographique, espaces insécables. */
+const typo = (s?: string) =>
+  s
+    ?.replace(/'/g, '’')
+    .replace(/ ([:;!?»])/g, ' $1')
+    .replace(/« /g, '« ');
+
+const Heading = `h${headingLevel}` as 'h3';
+---
+
+<article class:list={['c-tile', className]} style={`--_lines: ${lines}`}>
+  <div class="c-tile__animate">
+    <Heading class="c-tile__title">
+      <a
+        class="c-tile__link"
+        href={href}
+        {...(external ? { target: '_blank', rel: 'noopener' } : {})}
+      >{typo(title)}{external && <span class="u-visually-hidden"> (nouvel onglet)</span>}</a>
+    </Heading>
+    {(date || place) && (
+      <p class="c-tile__meta">
+        {date && <span class="c-tile__date">{date}</span>}
+        {date && place && <span class="c-tile__sep" aria-hidden="true">·</span>}
+        {place && <span class="c-tile__place">{typo(place)}</span>}
+      </p>
+    )}
+    {text && <p class="c-tile__summary">{typo(text)}</p>}
+    <span class="c-tile__button" aria-hidden="true">
+      <span class="c-tile__button-label">{linkLabel}</span>
+      <Icon name={external ? 'external' : 'arrow-right'} size="sm" class="c-tile__button-icon" />
+    </span>
+  </div>
+</article>

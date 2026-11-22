@@ -1,0 +1,33 @@
+---
+/**
+ * Qui sommes-nous §3 — Mission, vision, objectif.
+ * La mission en très grande phrase (coupe Headline légère du manifeste de l'accueil), adossée
+ * à une barre Soleil qui se dessine de haut en bas ; puis vision et objectif côte à côte,
+ * chacun marqué d'une goutte-feuille. Textes : organisation.json (via ong.ts).
+ * Innovation APSUD : la barre Soleil grandit à l'entrée dans l'écran (coupée si animations réduites).
+ */
+import LeafDrop from '../../components/ui/LeafDrop.astro';
+import { purpose } from './ong';
+import './OngPurpose.css';
+---
+
+<section class="c-ong-purpose" aria-labelledby="ong-purpose-title">
+  <div class="l-constrain l-constrain--media">
+    <h2 id="ong-purpose-title" class="c-ong-purpose__title">{purpose.title}</h2>
+
+    <figure class="c-ong-purpose__mission" data-reveal>
+      <figcaption class="c-ong-purpose__label">Notre mission</figcaption>
+      <blockquote class="c-ong-purpose__statement"><p>{purpose.mission}</p></blockquote>
+    </figure>
+
+    <dl class="c-ong-purpose__grid">
+      {purpose.items.map((item, i) => (
+        <div class="c-ong-purpose__item" data-reveal data-reveal-delay={String(i * 150)}>
+          <LeafDrop shape="feuille" size="sm" color={i === 0 ? 'signature' : 'accent'} class="c-ong-purpose__drop" />
+          <dt class="c-ong-purpose__label">{item.label}</dt>
+          <dd class="c-ong-purpose__text">{item.text}</dd>
+        </div>
+      ))}
+    </dl>
+  </div>
+</section>

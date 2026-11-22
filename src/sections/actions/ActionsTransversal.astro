@@ -1,0 +1,49 @@
+---
+/**
+ * Axe transversal « Protection de l'environnement » (organisation.json › domaines_intervention.transversal).
+ * Pas de page dédiée : une mention, en deux formats.
+ *  - `band`   (hub)      : grande goutte-feuille qui glisse en place, pictogramme, h2 et texte source,
+ *                          complété par l'objectif spécifique environnemental (ancien site, à valider).
+ *  - `inline` (domaines) : une ligne encadrée d'un filet, pictogramme dans une goutte.
+ */
+import LeafDrop from '../../components/ui/LeafDrop.astro';
+import Icon from '../../components/ui/Icon.astro';
+import { transversal } from '../../data/domains';
+import { hub } from './actionsData';
+import './ActionsTransversal.css';
+
+interface Props {
+  variant?: 'band' | 'inline';
+}
+const { variant = 'band' } = Astro.props;
+---
+
+{variant === 'band' ? (
+  <section class="c-actions-transversal c-actions-transversal--band" aria-labelledby="actions-transversal-title">
+    <div class="l-constrain l-constrain--media c-actions-transversal__inner">
+      <div class="c-actions-transversal__mark">
+        <LeafDrop shape="goutte" size="fill" color="brand" animate />
+        <span class="c-actions-transversal__icon"><Icon name={transversal.icone} size="xl" /></span>
+      </div>
+      <div class="c-actions-transversal__body" data-reveal>
+        <p class="c-actions-transversal__kicker">Axe transversal</p>
+        <h2 id="actions-transversal-title" class="c-actions-transversal__title">{transversal.titre}</h2>
+        <p class="c-actions-transversal__text">{transversal.texte}</p>
+        {hub.environnement && (
+          <p class="c-actions-transversal__goal">
+            <span class="c-actions-transversal__goal-label">Objectif :</span> {hub.environnement}.
+          </p>
+        )}
+      </div>
+    </div>
+  </section>
+) : (
+  <aside class="c-actions-transversal c-actions-transversal--inline" aria-label="Axe transversal">
+    <div class="l-constrain l-constrain--text">
+      <p class="c-actions-transversal__line" data-reveal>
+        <span class="c-actions-transversal__pill" aria-hidden="true"><Icon name={transversal.icone} size="sm" /></span>
+        <span><strong>Axe transversal.</strong> {transversal.texte}</span>
+      </p>
+    </div>
+  </aside>
+)}

@@ -1,0 +1,6 @@
+/* Qui sommes-nous — présentation (Prosper : ~64 px sous la photo, texte 7 colonnes) */
+@layer components {
+  .c-ong-intro {
+    margin-block: var(--space-section-sm);
+  }
+}

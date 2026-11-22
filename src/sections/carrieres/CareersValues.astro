@@ -1,0 +1,46 @@
+---
+/**
+ * Carrières §3 — Les valeurs d'APSUD (pitch employeur de Prosper : « curiosité, courage,
+ * bienveillance, collaboration », PROSPER_STRUCTURE §5.4 n° 2).
+ * Les six valeurs RÉELLES d'APSUD (organisation.json) : nom + première phrase de leur définition,
+ * sans réécriture. Grille 3 × 2 sur Coton ; chaque valeur porte son numéro condensé et une
+ * goutte-feuille qui pivote quand la carte entre dans l'écran (innovation, coupée si animations réduites).
+ */
+import organisation from '../../../data/apsud/organisation.json';
+import './CareersValues.css';
+
+/* Première phrase de la définition (mots-clés de la valeur), telle qu'écrite par APSUD */
+const firstSentence = (t: string) => {
+  const i = t.indexOf('. ');
+  return i === -1 ? t : t.slice(0, i + 1);
+};
+
+const values = organisation.valeurs.map((v, i) => ({
+  num: String(i + 1).padStart(2, '0'),
+  nom: v.nom,
+  texte: firstSentence(v.texte),
+}));
+---
+
+<section class="c-careers-values t-coton" aria-labelledby="valeurs-titre">
+  <div class="l-constrain">
+    <header class="c-careers-values__head">
+      <h2 id="valeurs-titre" class="c-careers-values__title" data-reveal>Six valeurs guident notre travail</h2>
+      <p class="c-careers-values__intro" data-reveal data-reveal-delay="100">
+        Elles orientent chaque décision, de l’Assemblée générale jusqu’au terrain.
+      </p>
+    </header>
+    <ol class="c-careers-values__grid" role="list">
+      {values.map((v, i) => (
+        <li class="c-careers-values__item" data-reveal data-reveal-delay={String((i % 3) * 120)}>
+          <span class="c-careers-values__num" aria-hidden="true">
+            <span class="c-careers-values__drop"></span>
+            {v.num}
+          </span>
+          <h3 class="c-careers-values__name">{v.nom}</h3>
+          <p class="c-careers-values__text">{v.texte}</p>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>

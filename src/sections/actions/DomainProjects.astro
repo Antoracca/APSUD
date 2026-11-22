@@ -1,0 +1,91 @@
+---
+/**
+ * Page domaine §4 — Projets du domaine (STRUCTURE §5.9 : « projets du domaine, filtre statut »).
+ * Grille de cartes ProjectCard (photo de la fiche) ; un projet sans photo est présenté en tuile
+ * texte (Tile) plutôt qu'avec une image d'emprunt.
+ * Filtre « Tous / En cours / Réalisés » sans JavaScript : boutons radio natifs + :has() ;
+ * affiché seulement si le domaine compte des projets des deux statuts.
+ */
+import ProjectCard from '../../components/ui/ProjectCard.astro';
+import Tile from '../../components/ui/Tile.astro';
+import ArrowLink from '../../components/ui/ArrowLink.astro';
+import { domainProjects, projectMeta, type Domaine } from './actionsData';
+import './DomainProjects.css';
+
+interface Props {
+  domain: Domaine;
+}
+const { domain: d } = Astro.props;
+const { withImage, withoutImage, enCours, realises } = domainProjects(d.slug);
+const total = withImage.length + withoutImage.length;
+const showFilter = enCours > 0 && realises > 0;
+const status = (s: string) => (s === 'en_cours' ? 'en-cours' : 'realise') as 'en-cours' | 'realise';
+const filters = [
+  { value: 'tous', label: 'Tous', count: total },
+  { value: 'en-cours', label: 'En cours', count: enCours },
+  { value: 'realise', label: 'Réalisés', count: realises },
+];
+---
+
+<section class="c-domain-projects" aria-labelledby="domain-projects-title">
+  <div class="l-constrain">
+    <div class="c-domain-projects__head">
+      <h2 id="domain-projects-title" class="c-domain-projects__title" data-reveal>Projets du domaine</h2>
+      {showFilter && (
+        <fieldset class="c-domain-projects__filter" data-reveal>
+          <legend class="u-visually-hidden">Filtrer les projets par statut</legend>
+          {filters.map((f, i) => (
+            <label class="c-domain-projects__option">
+              <input
+                class="u-visually-hidden"
+                type="radio"
+                name="statut-projets"
+                value={f.value}
+                id={`statut-${f.value}`}
+                checked={i === 0}
+              />
+              <span>{f.label}</span>
+              <span class="c-domain-projects__count">{f.count}</span>
+            </label>
+          ))}
+        </fieldset>
+      )}
+    </div>
+
+    <ul class="c-domain-projects__grid" role="list">
+      {withImage.map((p, i) => (
+        <li class="c-domain-projects__item" data-status={status(p.statut)}>
+          <ProjectCard
+            href={`/projets/${p.slug}`}
+            image={p.images[0].src}
+            imageAlt={p.images[0].alt}
+            title={p.titreCourt}
+            text={p.resume}
+            meta={projectMeta(p)}
+            status={status(p.statut)}
+            linkLabel="Voir le projet"
+            sizes="(min-width: 75em) 24rem, (min-width: 37.5em) 50vw, 100vw"
+            reveal
+            revealDelay={(i % 3) * 150}
+          />
+        </li>
+      ))}
+      {withoutImage.map((p) => (
+        <li class="c-domain-projects__item c-domain-projects__item--tile" data-status={status(p.statut)} data-reveal>
+          <Tile
+            href={`/projets/${p.slug}`}
+            title={p.titreCourt}
+            date={p.annees}
+            place={p.lieux.join(', ')}
+            text={p.resume}
+            linkLabel="Voir le projet"
+          />
+        </li>
+      ))}
+    </ul>
+
+    <div class="c-domain-projects__more" data-reveal>
+      <ArrowLink href="/projets">Tous les projets d’APSUD</ArrowLink>
+    </div>
+  </div>
+</section>

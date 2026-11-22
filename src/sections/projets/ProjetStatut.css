@@ -1,0 +1,92 @@
+/* Fiche projet — sur-titre de l'en-tête (statut + domaines) et réglages du H1 de fiche */
+@layer components {
+  /* Titres de projets plus longs qu'un titre de rubrique : H1 au gabarit h2 (Prosper, articles) */
+  .c-projet-header .c-page-header__title {
+    font-size: var(--fs-h2);
+    line-height: var(--lh-heading);
+    text-wrap: balance;
+  }
+  .c-projet-header .c-page-header__intro { max-inline-size: var(--measure-text); }
+
+  .c-projet-statut {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-2) var(--space-4);
+    font-family: var(--font-condensed);
+    font-stretch: var(--font-stretch-condensed);
+    font-size: var(--fs-overline);
+    font-weight: var(--fw-heavy);
+    letter-spacing: var(--ls-overline);
+  }
+
+  .c-projet-statut__badge {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    min-block-size: var(--tap-min);
+    padding-inline: var(--space-3);
+    border-radius: var(--radius-control);
+    text-decoration: none;
+    outline: var(--outline-hover) solid transparent;
+    transition: outline-color var(--dur-short) var(--ease-out);
+  }
+  .c-projet-statut__badge:hover { outline-color: var(--color-border-control); outline-offset: 0; }
+  .c-projet-statut__badge:focus-visible {
+    outline: var(--focus-width) solid var(--color-focus);
+    outline-offset: var(--focus-offset);
+  }
+  .c-projet-statut__badge--en-cours {
+    background: var(--color-status-ongoing-bg);
+    color: var(--color-status-ongoing-text);
+  }
+  .c-projet-statut__badge--realise {
+    background: var(--color-status-done-bg);
+    color: var(--color-status-done-text);
+  }
+  /* Point vivant du statut « En cours » (même geste que ProjectCard) */
+  .c-projet-statut__badge--en-cours::before,
+  .c-projet-statut__badge--en-cours::after {
+    content: "";
+    inline-size: var(--status-dot);
+    block-size: var(--status-dot);
+    border-radius: var(--radius-round);
+    background: currentColor;
+  }
+  .c-projet-statut__badge--en-cours::after {
+    position: absolute;
+    inset-block-start: 50%;
+    inset-inline-start: var(--space-3);
+    translate: 0 -50%;
+    opacity: 0;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .c-projet-statut__badge--en-cours::after {
+      animation: c-projet-statut-pulse var(--dur-pulse) var(--ease-out) infinite;
+    }
+  }
+  @keyframes c-projet-statut-pulse {
+    0%   { opacity: 0.6; scale: 1; }
+    60%  { opacity: 0;   scale: 2.6; }
+    100% { opacity: 0;   scale: 2.6; }
+  }
+
+  .c-projet-statut__domaine {
+    display: inline-flex;
+    align-items: center;
+    min-block-size: var(--tap-min);
+    color: var(--color-text-brand);
+    text-transform: uppercase;
+    text-decoration: underline;
+    text-decoration-color: transparent;
+    text-decoration-thickness: var(--border-width-strong);
+    text-underline-offset: var(--space-1);
+    transition: text-decoration-color var(--dur-short) var(--ease-out);
+  }
+  .c-projet-statut__domaine:hover { text-decoration-color: currentColor; }
+  .c-projet-statut__domaine:focus-visible {
+    outline: var(--focus-width) solid var(--color-focus);
+    outline-offset: var(--focus-offset);
+  }
+}

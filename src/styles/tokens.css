@@ -1,0 +1,535 @@
+/* ==========================================================================
+   APSUD — Design tokens v1 (2026-11-21)
+   Primitives (--apsud-*) → sémantiques (--color-*, --font-*, --space-*…) → composants
+   Règle : les composants n'utilisent jamais les primitives directement.
+   ========================================================================== */
+
+@property --underline-thickness {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 1px;
+}
+
+:root {
+  /* ---------- 1. Primitives de couleur ---------- */
+  --apsud-foret-950: #061B10;
+  --apsud-foret-900: #0B2A1A;
+  --apsud-vert-800:  #14431F;
+  --apsud-vert-700:  #1B5A28;
+  --apsud-vert-600:  #226E30;
+  --apsud-vert-500:  #2A8238;  /* vert du logo APSUD */
+  --apsud-vert-400:  #4FA557;
+  --apsud-vert-300:  #8BCB84;
+  --apsud-vert-200:  #BDE3B5;
+  --apsud-vert-100:  #DDF0D7;
+  --apsud-vert-50:   #EFF8EC;
+  --apsud-pousse-700: #77BC4B;
+  --apsud-pousse-600: #8FD462;
+  --apsud-pousse-300: #A8E87C;
+  --apsud-pousse-100: #E3F7CF;
+  --apsud-soleil-800: #8A5E00;
+  --apsud-soleil-700: #C4870A;
+  --apsud-soleil-600: #E0A01A;
+  --apsud-soleil-400: #F4B731;
+  --apsud-soleil-100: #FCEBC2;
+  --apsud-coton:  #F7F3E8;
+  --apsud-sable:  #ECE4D0;
+  --apsud-blanc:  #FFFFFF;
+  --apsud-mousse: #4D6457;
+  --apsud-lichen: #7A8C80;
+  --apsud-ligne:  #C9D3CB;
+  --apsud-erreur:     #B42318;
+  --apsud-erreur-100: #FCE8E6;
+
+  /* ---------- 2. Couleurs sémantiques (thème clair) ---------- */
+  --color-bg:                 var(--apsud-blanc);
+  --color-surface-soft:       var(--apsud-coton);
+  --color-surface-sand:       var(--apsud-sable);
+  --color-surface-signature:  var(--apsud-pousse-300);
+  --color-surface-tint:       var(--apsud-pousse-100);
+  --color-surface-strong:     var(--apsud-foret-900);
+  --color-surface-warm:       var(--apsud-soleil-100);
+
+  --color-text:          var(--apsud-foret-900);
+  --color-text-muted:    var(--apsud-mousse);
+  --color-text-inverse:  var(--apsud-coton);
+  --color-text-brand:    var(--apsud-vert-600);
+  --color-heading:       var(--color-text);
+
+  --color-brand:   var(--apsud-vert-500);
+  --color-accent:  var(--apsud-soleil-400);
+
+  --color-link:             var(--color-text);
+  --color-link-decoration:  var(--apsud-vert-500);
+
+  --color-border-control: var(--apsud-foret-900);
+  --color-border-subtle:  var(--apsud-ligne);
+
+  --color-focus:          var(--apsud-foret-900);
+  --color-focus-inverse:  var(--apsud-pousse-300);
+
+  --color-selection-bg:   var(--apsud-soleil-100);
+  --color-selection-text: var(--apsud-foret-900);
+
+  --color-success:        var(--apsud-vert-600);
+  --color-success-bg:     var(--apsud-vert-50);
+  --color-error:          var(--apsud-erreur);
+  --color-error-bg:       var(--apsud-erreur-100);
+  --color-warning-text:   var(--apsud-soleil-800);
+  --color-warning-bg:     var(--apsud-soleil-100);
+  --color-disabled-bg:    var(--apsud-sable);
+  --color-disabled-text:  var(--apsud-mousse);
+
+  /* Statuts (badges, carte) */
+  --color-status-ongoing-bg:   var(--apsud-soleil-400);  /* En cours */
+  --color-status-ongoing-text: var(--apsud-foret-900);
+  --color-status-done-bg:      var(--apsud-vert-100);    /* Réalisé */
+  --color-status-done-text:    var(--apsud-vert-700);
+  --color-status-open-bg:      var(--apsud-pousse-100);  /* Offre ouverte */
+  --color-status-open-text:    var(--apsud-vert-700);
+  --color-status-closed-bg:    var(--apsud-sable);       /* Clôturé */
+  --color-status-closed-text:  var(--apsud-mousse);
+
+  /* Carte de RCA */
+  --color-map-ongoing:  var(--apsud-soleil-400);
+  --color-map-done:     var(--apsud-vert-500);
+  --color-map-none:     var(--apsud-coton);
+  --color-map-stroke:   var(--apsud-foret-900);
+  --color-map-boundary: var(--apsud-blanc);
+
+  /* ---------- 3. Typographie ---------- */
+  --font-family-base: "Mona Sans Variable", "Mona Sans", "Mona Sans Fallback", system-ui, -apple-system,
+                      "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-text:      var(--font-family-base);
+  --font-condensed: var(--font-family-base);
+  --font-headline:  var(--font-family-base);
+  --font-stretch-text:      100%;
+  --font-stretch-condensed: 75%;
+  --font-stretch-headline:  75%;
+
+  --fw-regular:  400;
+  --fw-medium:   500;
+  --fw-semibold: 600;
+  --fw-bold:     700;
+  --fw-heavy:    800;
+  --fw-headline: 600;   /* à caler entre 560 et 640 sur le prototype */
+
+  --fs-display:   clamp(2rem, 1.2742rem + 3.2258vw, 4.5rem);          /* 32 → 72 */
+  --fs-h1:        clamp(2.5rem, 1.8649rem + 2.8226vw, 4.6875rem);     /* 40 → 75 */
+  --fs-hero:      clamp(2rem, 1.6371rem + 1.6129vw, 3.25rem);         /* 32 → 52 */
+  --fs-h2:        clamp(2.125rem, 1.7802rem + 1.5323vw, 3.3125rem);   /* 34 → 53 */
+  --fs-h3:        clamp(1.75rem, 1.4778rem + 1.2097vw, 2.6875rem);    /* 28 → 43 */
+  --fs-h4:        clamp(1.375rem, 1.1935rem + 0.8065vw, 2rem);        /* 22 → 32 */
+  --fs-h5:        clamp(1.25rem, 1.123rem + 0.5645vw, 1.6875rem);     /* 20 → 27 */
+  --fs-h6:        clamp(1.125rem, 1.0161rem + 0.4839vw, 1.5rem);      /* 18 → 24 */
+  --fs-stat:      clamp(2.75rem, 2.0968rem + 2.9032vw, 5rem);         /* 44 → 80 */
+  --fs-quote:     clamp(1.5rem, 1.2823rem + 0.9677vw, 2.25rem);       /* 24 → 36 */
+  --fs-lead:      clamp(1.125rem, 1.0706rem + 0.2419vw, 1.3125rem);   /* 18 → 21 */
+  --fs-body:      clamp(1rem, 0.9637rem + 0.1613vw, 1.125rem);        /* 16 → 18 */
+  --fs-small:     clamp(0.875rem, 0.8569rem + 0.0806vw, 0.9375rem);   /* 14 → 15 */
+  --fs-caption:   clamp(0.8125rem, 0.7944rem + 0.0806vw, 0.875rem);   /* 13 → 14 */
+  --fs-overline:  clamp(0.8125rem, 0.7944rem + 0.0806vw, 0.875rem);   /* 13 → 14 */
+  --fs-button:    clamp(1.0625rem, 1.0262rem + 0.1613vw, 1.1875rem);  /* 17 → 19 */
+  --fs-button-lg: clamp(1.25rem, 1.1048rem + 0.6452vw, 1.75rem);      /* 20 → 28 */
+  --fs-nav:       clamp(1.125rem, 1.0706rem + 0.2419vw, 1.3125rem);   /* 18 → 21 */
+  --fs-nav-mobile: clamp(1.75rem, 1.6774rem + 0.3226vw, 2rem);        /* 28 → 32 */
+
+  --lh-tight:   1;
+  --lh-heading: 1.1;
+  --lh-snug:    1.2;
+  --lh-quote:   1.3;
+  --lh-caption: 1.4;
+  --lh-lead:    1.45;
+  --lh-body:    1.5;
+
+  --ls-headline: -0.01em;
+  --ls-condensed: 0.01em;
+  --ls-overline:  0.03em;
+
+  /* ---------- 4. Espacements ---------- */
+  --space-0: 0;
+  --space-1: 0.25rem;  /*   4 */
+  --space-2: 0.5rem;   /*   8 */
+  --space-3: 0.75rem;  /*  12 */
+  --space-4: 1rem;     /*  16 */
+  --space-5: 1.25rem;  /*  20 */
+  --space-6: 1.5rem;   /*  24 */
+  --space-8: 2rem;     /*  32 */
+  --space-10: 2.5rem;  /*  40 */
+  --space-12: 3rem;    /*  48 */
+  --space-16: 4rem;    /*  64 */
+  --space-20: 5rem;    /*  80 */
+  --space-24: 6rem;    /*  96 */
+  --space-30: 7.5rem;  /* 120 */
+  --space-section:    clamp(4rem, 2.8387rem + 5.1613vw, 8rem);      /* 64 → 128 */
+  --space-section-sm: clamp(3rem, 2.4194rem + 2.5806vw, 5rem);      /* 48 → 80 */
+  --space-stack:      clamp(1.5rem, 1.2097rem + 1.2903vw, 2.5rem);  /* 24 → 40 */
+  --gutter:           clamp(1rem, 0.8548rem + 0.6452vw, 1.5rem);    /* 16 → 24 */
+
+  /* ---------- 5. Mise en page ---------- */
+  --container:      75rem;      /* 1200 */
+  --container-wide: 100rem;     /* 1600 */
+  --measure-media:  62.25rem;   /*  996 */
+  --measure-logos:  55.875rem;  /*  894 */
+  --measure-text:   43.125rem;  /*  690 */
+  --measure-intro:  36.75rem;   /*  588 */
+  --grid-columns: 12;
+  --grid-gap:     var(--space-8);
+  --header-h:     4rem;         /* 64 ; 5rem (80) à partir de 48em, voir plus bas */
+  --eyebrow-h:    0px;          /* mis à jour en JS (ResizeObserver) */
+  --tap-min:      2.75rem;      /* 44 : cible tactile minimale */
+  --tap-comfort:  3rem;         /* 48 : cible tactile confortable (mobile) */
+  --control-h:    3rem;         /* 48 : hauteur des champs */
+
+  /* ---------- 6. Formes ---------- */
+  --radius-none:    0;
+  --radius-control: 4px;
+  --radius-round:   50%;
+  --radius-goutte:  50% 50% 50% 0;
+  --border-width:        1px;
+  --border-width-strong: 2px;
+  --outline-hover:       3px;
+  --focus-width:  2px;
+  --focus-offset: 2px;
+
+  /* ---------- 7. Ombres (pleines et décalées uniquement) ---------- */
+  --shadow-none: none;
+  --shadow-step:        0.5rem 0.5rem 0 var(--color-surface-signature);
+  --shadow-step-strong: 0.5rem 0.5rem 0 var(--color-surface-strong);
+  --shadow-panel:       0 1.5rem 2.5rem -1.25rem color-mix(in oklab, var(--apsud-foret-900) 45%, transparent);  /* panneau du méga-menu posé sur la hero */
+
+  /* ---------- 8. Index z ---------- */
+  --z-below: -1;
+  --z-base: 0;
+  --z-raised: 1;
+  --z-sticky: 50;
+  --z-header: 100;
+  --z-megamenu: 101;
+  --z-drawer: 200;
+  --z-modal: 1000;
+  --z-cookie: 1100;
+  --z-skiplink: 9999;
+
+  /* ---------- 9. Mouvement ---------- */
+  --ease-in-out: cubic-bezier(0.95, 0, 0.05, 1);
+  --ease-out:    cubic-bezier(0.01, 0, 0.1, 1);
+  --ease-in:     cubic-bezier(0.9, 0, 0.99, 1);
+  --ease-linear: linear;
+  --dur-shortest: 150ms;
+  --dur-short:    200ms;
+  --dur-outro:    195ms;
+  --dur-intro:    270ms;
+  --dur-menu:     300ms;
+  --dur-standard: 375ms;
+  --dur-long:     400ms;
+  --dur-signature: 1200ms;
+  --dur-count:     1500ms;
+  --delay-menu:      300ms;
+  --delay-signature: 400ms;
+  --stagger-count:   150ms;
+
+  /* ---------- 10. Tokens de composants ---------- */
+  --button-primary-bg:          var(--apsud-vert-500);
+  --button-primary-bg-hover:    var(--apsud-vert-600);
+  --button-primary-bg-active:   var(--apsud-vert-700);
+  --button-primary-text:        var(--apsud-blanc);
+  --button-donate-bg:           var(--apsud-soleil-400);
+  --button-donate-bg-hover:     var(--apsud-soleil-600);
+  --button-donate-bg-active:    var(--apsud-soleil-700);
+  --button-donate-text:         var(--apsud-foret-900);
+  --button-ink-bg:              var(--apsud-foret-900);
+  --button-ink-bg-hover:        var(--apsud-foret-950);
+  --button-ink-bg-active:       var(--apsud-vert-800);
+  --button-ink-text:            var(--apsud-pousse-300);
+  --button-on-dark-bg:          var(--apsud-pousse-300);
+  --button-on-dark-bg-hover:    var(--apsud-pousse-600);
+  --button-on-dark-bg-active:   var(--apsud-pousse-700);
+  --button-on-dark-text:        var(--apsud-foret-900);
+  --button-pad-block:  var(--space-3);
+  --button-pad-inline: var(--space-5);
+  --button-min-h:      var(--tap-min);
+
+  --hero-bar-w:  var(--space-24);   /* barre Soleil à gauche du bloc texte */
+  --caption-max: 24rem;             /* légende-cartouche */
+  --card-media-ratio: 4 / 3;
+  --tile-media-ratio: 3 / 2;
+  --icon-size: 1.5rem;
+  --icon-stroke: 2;
+
+  /* Logo (Logo.astro) — calé sur le logo Prosper (symbole ~38 px, mot ~19 px, mention 11–12 px) */
+  --logo-mark-h:     clamp(2.25rem, 2.1048rem + 0.6452vw, 2.75rem);   /* 36 → 44 : symbole, header */
+  --logo-mark-h-lg:  clamp(3rem, 2.7097rem + 1.2903vw, 4rem);        /* 48 → 64 : symbole, footer */
+  --fs-logo-word:    clamp(1.5rem, 1.3911rem + 0.4839vw, 1.875rem);   /* 24 → 30 : « APSUD » */
+  --fs-logo-word-lg: clamp(2rem, 1.8185rem + 0.8065vw, 2.625rem);     /* 32 → 42 : « APSUD », footer */
+  --fs-logo-mention: clamp(0.6875rem, 0.6694rem + 0.0806vw, 0.75rem); /* 11 → 12 : nom complet */
+  --logo-mention-w:  9.5rem;                                          /* 152 : colonne du nom complet */
+
+  /* Goutte-feuille (LeafDrop.astro) — tailles nommées */
+  --leaf-drop-xs: 0.625rem;  /*  10 : puce */
+  --leaf-drop-sm: 3rem;      /*  48 : aplat de pictogramme */
+  --leaf-drop-md: 8rem;      /* 128 : coin de CTA */
+  --leaf-drop-lg: clamp(6rem, 3.6774rem + 10.3226vw, 14rem);  /* 96 → 224 : section chiffres (chevron Prosper ~202) */
+
+  /* Légende-cartouche (CaptionImage.astro) — valeurs Prosper (.c-caption-image--hero) */
+  --caption-step-w: 5rem;    /* 80 : petit carré teinté décalé à gauche du cartouche */
+
+  /* Pile d'en-tête (Eyebrow.astro, Header.astro) — valeurs Prosper (.l-eyebrow, .c-main-navigation) */
+  --header-h-scrolled: 3.5rem;   /* 56 : barre réduite après défilement (64 au repos) ; 4rem (64) dès 48em, voir plus bas */
+  --nav-door-w: clamp(6.75rem, 14.84375vw - 0.375rem, 11.5rem);  /* 108 → 184 : largeur d'une « porte » (.c-main-navigation__group) */
+  --nav-link-shift: 0.625rem;    /* 10 : glissement d'un sous-lien du méga-menu au survol */
+  --nav-close-dur: 100ms;        /* fermeture sans délai du tiroir (Prosper : 100ms ease-in) */
+  --nav-open-delay: 120ms;       /* intention de survol avant la PREMIÈRE ouverture (Prosper : 300 ms, jugé gênant) ; changement de porte immédiat */
+  --nav-close-grace: 180ms;      /* tolérance quand le pointeur sort du panneau (trajectoire imprécise) */
+  --nav-panel-shadow-room: 4rem; /* place laissée sous le panneau pour son ombre portée */
+  --burger-w: 1.5rem;            /* 24 : largeur des traits du burger */
+  --burger-bar: 0.1875rem;       /*  3 : épaisseur d'un trait */
+  --burger-step: 0.4375rem;      /*  7 : écart entre deux traits */
+  --drawer-row-min: 4rem;        /* 64 : hauteur d'une porte dans le menu mobile */
+
+  /* Projets à la une (HomeFeaturedProjects, ProjectCard) — Prosper `.c-featured-stories__grid` :
+     colonnes 58,58 % / 41,42 % = rapport d'argent √2 ; la 2ᵉ carte est calée sur le bas de la 1ʳᵉ */
+  --ratio-silver: 1.4142;
+
+  /* Tuile (Tile.astro), double CTA, grille de logos — valeurs Prosper (.c-tile, .c-cta, .c-logo) */
+  --fs-tile-title: clamp(1.75rem, 1.6774rem + 0.3226vw, 2rem);    /* 28 → 32 : titre de tuile (.c-tile__title 2rem) */
+  --fs-cta-title:  clamp(2rem, 1.7097rem + 1.2903vw, 3rem);       /* 32 → 48 : titre de panneau CTA (.c-cta__title, 800) */
+  --tile-lift:     var(--space-4);                                /* 16 : la tuile monte au survol (translateY(-16px)) */
+  --logo-rest-ink:     0.42;                                      /* logo partenaire au repos : gris moyen visé pour l'encre (0 = noir, 1 = blanc) ;
+                                                                     remplace l'opacité .5 de Prosper, qui rendait illisibles les logos déjà clairs */
+  --partner-logo-ink:  0.26;                                      /* encre visée au repos sur l'accueil : plus soutenue que --logo-rest-ink, car les
+                                                                     traits fins réduits à ~150 px s'éclaircissent à l'anticrénelage (mesuré : rendu ≈ 0,65) */
+
+  /* Bandeau défilant des bailleurs et partenaires (HomePartners.astro, 2026-11-22 — inspiration Alight) */
+  --band-bg:             color-mix(in oklab, var(--apsud-pousse-300) 45%, var(--apsud-pousse-100));  /* vert doux : logos en couleur lisibles (bleus pâles, verts) */
+  --band-from:           var(--apsud-blanc);   /* couleur de la section précédente (projets récents) */
+  --band-to:             var(--apsud-coton);   /* couleur de la section suivante (double appel à l'action) */
+  --band-fade:           clamp(5rem, 3.5484rem + 6.4516vw, 10rem);  /* 80 → 160 : fondu d'entrée et de sortie */
+  --band-pad: clamp(6rem, 4.8387rem + 5.1613vw, 10rem);  /* 96 → 160 : marges verticales (le fondu est dedans) */
+  --marquee-logo-hover-scale: 1.08;
+  --give-step:  0.5rem 0.5rem 0 var(--color-brand);   /* marche Vert APSUD sous la capsule « Et vous ? » (le Pousse se perdait dans le vert doux) */
+  --give-leaf:  clamp(2.5rem, 2.0645rem + 1.9355vw, 3.5rem);  /* 40 → 56 : goutte-feuille de la capsule */
+  --give-text:  var(--apsud-vert-100);   /* texte clair sur Forêt (contraste ≥ 12:1) */
+  --marquee-logo-dim:    0.55;
+  --marquee-tile-h: clamp(4.5rem, 3.9194rem + 2.5806vw, 6.5rem);  /* 72 → 104 : hauteur de la rangée */
+  --marquee-tile-min: var(--tap-min);  /* zone cliquable mini ; la largeur suit le logo (plus de carte) */
+  --marquee-logo-h: clamp(3.25rem, 2.6694rem + 2.5806vw, 5.25rem);  /* 52 → 84 : hauteur d'un logo carré */
+  --marquee-logo-h-min: clamp(2rem, 1.7097rem + 1.2903vw, 3rem);  /* 32 → 48 : plancher des sigles très larges */
+  --marquee-logo-h-max: clamp(3.75rem, 3.2419rem + 2.2581vw, 5.5rem);  /* 60 → 88 : plafond des emblèmes hauts */
+  --marquee-logo-w-max: clamp(10rem, 8.8387rem + 5.1613vw, 14rem);  /* 160 → 224 : largeur maxi d'un logo */
+  --marquee-gap: clamp(2rem, 1.4194rem + 2.5806vw, 4rem);  /* 32 → 64 : respiration entre logos nus */
+  --marquee-fade:        clamp(1rem, 0.4194rem + 2.5806vw, 3rem);       /*  16 → 48 : fondu aux bords */
+  --marquee-step-dur:    3.6s;        /* durée de défilement PAR logo : vitesse constante quelle que soit la rangée */
+  --marquee-enter:       4rem;        /* glissement d'entrée d'une rangée depuis son côté */
+  --marquee-count-size:  1.75rem;     /*  28 : pastille du nombre d'organisations */
+  --stagger-marquee:     180ms;       /* décalage d'entrée entre les deux rangées */
+  --band-head-w:         32%;         /* colonne du titre (≥ 64em) */
+  --band-head-min:       20rem;
+  --band-em-stretch:     112%;        /* mot mis en valeur : italique LARGE et légère, contraste avec la Condensée grasse */
+  --band-em-weight:      380;
+  --band-em-pad:         0.08em;      /* l'italique penche : on lui laisse sa place à droite */
+  --band-em-pad-b:       0.3em;       /* place sous le mot pour le trait de pinceau (la ligne suivante s'écarte d'autant) */
+  --band-brush-w:        4;           /* épaisseur des traits de pinceau (unités du SVG 200 × 17) */
+  --band-brush-w-2:      2.75;
+  --dur-brush:           900ms;
+  --delay-brush:         350ms;
+  --stagger-brush:       160ms;
+  --band-bg-fill:        color-mix(in oklab, var(--apsud-pousse-300) 55%, var(--band-bg));  /* ton sur ton : Pousse vif adouci dans le vert du bandeau */
+  --band-bg-line:        var(--apsud-pousse-300);
+  --band-bg-line-soft:   color-mix(in oklab, var(--apsud-pousse-300) 60%, var(--band-bg));
+  --band-bg-line-w:      2px;
+  --band-drift-dur:      40s;
+  --band-drift-shift:    -2% 3%;
+  --band-drift-rotate:   -4deg;
+  --tile-bar:          0.1875rem;                                 /*  3 : barre de couleur qui se remplit au survol d'une tuile (innovation APSUD) */
+  --cta-step:          clamp(3rem, 2.4194rem + 2.5806vw, 5rem);   /* 48 → 80 : « marche » d'angle des panneaux du double CTA (écho des marches du pied de page) */
+
+  /* Hero d'accueil (HomeHero.astro) — valeurs exactes de Prosper (hero.css, PROSPER_TOKENS §14) */
+  --fs-hero-title:    2rem;                                            /* 32 : titre du hero, mobile */
+  --fs-hero-title-md: clamp(2.125rem, 1.871rem + 1.129vw, 3rem);       /* 34 → 48 : titre du hero ≥ 48em */
+  --lh-hero-title-md: 1.15;
+  --hero-content-max: 37.5rem;   /* 600 : largeur max du bloc sombre (min(37.5rem, 50vw − 6rem)) */
+  --hero-content-min: 19rem;     /* 304 : largeur min du bloc sombre */
+  --hero-focus:       52% 45%;     /* point d'intérêt de la photo du hero (mains unies) : cadrage et origine du zoom */
+  --hero-ratio-mobile: 4 / 5;      /* photo du hero en portrait sur téléphone */
+  --hero-ratio-tablet: 4 / 3;      /* photo du hero sur tablette (48–64em) */
+  --hero-fade-h:      30%;         /* dégradé vers le bloc Forêt sous la photo (téléphone) */
+  --hero-toggle-bg:   color-mix(in srgb, var(--apsud-blanc) 65%, transparent);  /* bouton vidéo (Prosper : blanc 65 %) */
+
+  /* Manifeste + chiffres (HomeManifesto.astro) — valeurs exactes de Prosper (.c-quick-stats, .c-stat) */
+  --fs-stat-panel:     clamp(1.75rem, 0.7339rem + 4.5161vw, 5.25rem);  /* 28 → 84 : chiffre dans le panneau (.c-stat__stat) */
+  --stats-step-w:      13.4375rem;  /* 215 : marche Pousse pâle entre la goutte et le panneau */
+  --stats-panel-w:     45rem;       /* 720 : panneau des chiffres */
+  --stats-panel-w-sm:  17.875rem;   /* 286 : panneau des chiffres en mobile (< 30em) */
+  --stats-drop-w-sm:   3.9375rem;   /*  63 : goutte en mobile (< 30em) */
+  --stats-step-gap:    28%;         /* la marche commence à 28 % de la hauteur du panneau */
+  --stats-drop-from:   -150% 25%;   /* départ de la goutte (translate) : bas gauche → place, trajectoire diagonale mesurée chez Prosper */
+
+  /* Hero — ajouts (passe « hero » du 2026-11-22) */
+  --hero-kenburns-dur:   18s;     /* zoom « Ken Burns » très lent de la photo quand il n'y a pas de vidéo (aller-retour) */
+  --hero-kenburns-scale: 1.07;    /* zoom maximal : assez faible pour ne jamais rogner les visages */
+  --hero-kenburns-shift: -1.5% -1%;  /* léger glissement associé au zoom (translate) */
+  --dur-hero-line:       900ms;   /* montée d'une ligne du H1 derrière son masque */
+  --stagger-hero-line:   140ms;   /* décalage entre deux lignes du H1 */
+  --delay-hero-intro:    150ms;   /* attente avant la première ligne (laisse la photo se peindre) */
+
+  /* Manifeste — ajouts (passe « hero » du 2026-11-22) : coupe Headline légère, comme le rendu réel de Prosper */
+  --font-stretch-manifesto: 90%;  /* Mona Sans à peine resserrée (Prosper Sans Headline n'est pas condensée) */
+  --fw-manifesto:           400;  /* graisse normale : la phrase est grande, pas grasse */
+  --ls-manifesto:           -0.015em;
+  --fw-stat-light:          400;  /* chiffres du panneau : grands et légers (Prosper .c-stat__stat) */
+  --font-stretch-stat:      100%;
+  --manifesto-ink-from: color-mix(in oklab, var(--color-heading) 26%, var(--color-bg));  /* mot pas encore « lu » */
+  --manifesto-ink-step: 0.45%;    /* décalage de la plage de défilement par mot (balayage gauche → droite) */
+  --stats-drop-w:       18rem;    /* 288 : goutte-feuille GRANDE (hauteur ≈ 240, celle du chevron Prosper) */
+  --stats-drop-from-lg: -130% 70%;  /* départ en diagonale depuis le bas gauche (≥ 30em, coupé par la section) */
+  --delay-count:        600ms;    /* les compteurs partent 0,6 s après l'entrée (Prosper : 1,8 s) */
+  --dur-count-stats:    1800ms;   /* durée d'un compteur (MESURES.md) */
+  --stats-number-fit:   25cqi;    /* chiffre ≤ 25 % de sa colonne en taille de police : « 250 000 » (3,78 em) n'en dépasse jamais la largeur */
+  --stats-gap-fluid:    6.667cqi; /* écart entre cartes = 48 px pour un panneau de 720 */
+  --stats-pad-fluid:    8.889cqi; /* marge intérieure = 64 px pour un panneau de 720 */
+
+  /* Sceau goutte-feuille (LeafSeal.astro) — innovation APSUD dans la section des chiffres (2026-11-22).
+     Repères depuis l'entrée dans l'écran : tracé 0,4 → 1,5 s · aplat vert 1,35 → 1,6 s ·
+     onde blanche 1,75 → 2,65 s · pose du symbole 1,86 → 2,55 s. */
+  --seal-face:        var(--apsud-blanc);   /* face du sceau : blanc pur, même sur le Coton de la section */
+  --seal-line-w:      0.1875rem;            /*  3 : liseré vert (trait non mis à l'échelle) */
+  --seal-emblem-w:    30cqi;                /* symbole : 30 % de la largeur de la forme (≈ 86 px pour 288 : taille native du JPEG) */
+  --seal-emblem-w-sm: 46cqi;                /* symbole seul dans la petite forme du téléphone */
+  --seal-word-fs:     11cqi;                /* sigle « APSUD » sous le symbole */
+  --seal-mark-gap:    2cqi;
+  --seal-mark-from:   -112cqi;              /* départ du cortège : à gauche de la forme */
+  --seal-mark-wait:   -96cqi;               /* fin du cortège, juste avant la pose */
+  --seal-wave-r:      75%;                  /* rayon final de l'onde blanche (couvre la pointe) */
+  --seal-delay:       var(--delay-signature);
+  --dur-seal-trace:   1100ms;
+  --dur-seal-mark:    2150ms;               /* cortège (68 %) puis pose (32 %) */
+  --seal-fill-delay:  calc(var(--seal-delay) + 950ms);
+  --dur-seal-fill:    250ms;
+  --seal-wave-delay:  calc(var(--seal-delay) + 1350ms);
+  --dur-seal-wave:    900ms;
+  /* Effet inverse (demande du 2026-11-22) : après un temps de pose, le symbole ressort et la goutte
+     redevient verte ; les deux restent séparés. Repères : retour 4,15 → 4,95 s · face blanche résorbée 4,3 → 4,95 s. */
+  --seal-hold:          1600ms;             /* temps pendant lequel le logo reste posé dans le sceau blanc */
+  --dur-seal-return:    800ms;
+  --seal-return-delay:  calc(var(--seal-delay) + var(--dur-seal-mark) + var(--seal-hold));
+  --dur-seal-unwave:    650ms;
+  --seal-unwave-delay:  calc(var(--seal-return-delay) + 150ms);   /* la face se résorbe une fois le symbole sorti du cercle */
+  --seal-mark-rest-side: -90cqi 0;          /* repos à gauche de la forme (≥ 90em : la place existe) */
+  --seal-mark-rest-top:  0 -68cqi;          /* repos au-dessus de la forme (écrans plus étroits : la gauche est hors champ) */
+  --ease-draw: cubic-bezier(0.65, 0, 0.35, 1);   /* tracé régulier, sans à-coup */
+  --ease-land: cubic-bezier(0.22, 1, 0.36, 1);   /* pose : longue décélération, sans rebond */
+
+  /* Pied de page (Footer.astro) — valeurs exactes de Prosper (.c-footer-desktop*, PROSPER_TOKENS §12) */
+  --footer-col-lead:   26.875rem;  /* 430 : colonne signature / logo (et largeur de la 1re marche) */
+  --footer-col-menu:   36.5rem;    /* 584 : colonnes de liens / mentions */
+  --footer-col-aside:  20rem;      /* 320 : lettre d'information / pastille de preuve */
+  --footer-inset:      6.25rem;    /* 100 : retrait gauche de la signature et du logo (≥ 80em) */
+  --footer-step-w:     31.25rem;   /* 500 : largeur de la 2e marche (≥ 80em) */
+  --footer-step-sm:    1.75rem;    /*  28 : hauteur unique des marches en mobile */
+  --footer-step-md:    4.3125rem;  /*  69 : 2e marche (≥ 80em) */
+  --footer-step-lg:    8.5625rem;  /* 137 : 3e marche (≥ 80em) */
+  --footer-step-ratio: 47%;        /* largeur de la 1re marche (basse) en mobile */
+  --fs-footer-tagline: 2.5rem;     /*  40 : signature Condensée 700 */
+  --fs-footer-title:    1.125rem;  /*  18 : titres de colonnes (mobile) */
+  --fs-footer-title-md: 1rem;      /*  16 : titres de colonnes (≥ 48em) */
+  --fs-footer-legal:   0.75rem;    /*  12 : mention de confidentialité de la lettre */
+  --field-bg:          var(--apsud-blanc);  /* fond des champs, y compris sur un thème coloré */
+  --checkbox-size:     1.375rem;   /*  22 : case à cocher (Prosper) */
+  --newsletter-button-w: 10rem;    /* 160 : bouton « S'inscrire » (Prosper .c-footer__newsletter-button) */
+  --footer-group-min:  15rem;      /* 240 : largeur mini d'une colonne de liens avant retour à la ligne */
+  --footer-pad-top:    3.75rem;    /*  60 : haut du corps et du sous-footer (≥ 80em, Prosper padding-top 3.75rem) */
+  --footer-group-gap:  1.75rem;    /*  28 : titre de colonne → premier lien (Prosper .c-footer__group gap) */
+  --footer-link-row:   2.125rem;   /*  34 : pas vertical d'un lien de colonne (≥ 48em, mesuré chez Prosper) */
+  --footer-info-row:   1.5rem;     /*  24 : hauteur d'un lien légal du sous-footer (Prosper .c-footer__info-link) */
+
+  /* Pastille de preuve (rôle de l'anneau « 86 % » de Prosper, .c-efficiency-lockup--footer) */
+  --proof-size:     6rem;          /*  96 : mobile */
+  --proof-size-md:  5rem;          /*  80 : ≥ 48em */
+  --proof-disc:     var(--apsud-foret-900);
+  --proof-ring-bg:  var(--apsud-mousse);     /* piste grise (Prosper #557978) */
+  --proof-ring-fg:  var(--apsud-pousse-300);
+  --proof-text-w:   10rem;         /* 160 : bloc de texte à droite de l'anneau (.c-efficiency-lockup__content) */
+  --fs-proof-value: 1.625rem;      /*  26 : « 60+ » dans l'anneau */
+  --dur-ring:       2000ms;        /* dessin de l'anneau (efficiency-lockup.js : 2 s) */
+
+  /* Bandeau cookies + panneau de préférences (CookieBanner.astro) */
+  --cookie-surface:   var(--apsud-blanc);
+  --cookie-banner-w:  28rem;       /* 448 : carte flottante desktop */
+  --cookie-panel-w:   40rem;       /* 640 : panneau de préférences desktop */
+  --cookie-backdrop:  color-mix(in srgb, var(--apsud-foret-950) 60%, transparent);
+  --switch-w:         2.75rem;     /*  44 : piste de l'interrupteur */
+  --switch-h:         1.5rem;      /*  24 */
+  --switch-thumb:     1rem;        /*  16 : curseur */
+
+  /* Carte des zones d'intervention (HomeZones.astro) — équivalent de la carte « Where we work » de Prosper */
+  --zones-panel-min:    22rem;     /* 352 : largeur mini du panneau de détails à côté de la carte */
+  --zones-dim:          0.28;      /* opacité des préfectures estompées (projecteur, filtre de légende) */
+  --zones-cascade-step: 55ms;      /* décalage entre deux préfectures dans la cascade d'entrée (sud-ouest → est) */
+  --zones-pulse-dur:    2400ms;    /* cycle d'un point pulsant (projet en cours) */
+  --zones-label-size:   1.375rem;  /* 22 unités de viewBox ≈ 14 px affichés : étiquette « Bangui » dans le SVG */
+  --zones-list-col:     16rem;     /* 256 : colonne mini de la liste textuelle des zones */
+
+  /* En-tête : innovations APSUD (Header.astro) */
+  --nav-feature-w:       18rem;      /* 288 : carte « À la une », 5ᵉ colonne du tiroir du méga-menu (≥ 90em) */
+  --nav-feature-delay:   120ms;      /* la photo « À la une » se dévoile juste après la descente du tiroir */
+  --header-progress-h:   0.1875rem;  /*   3 : barre de lecture sous la barre d'en-tête */
+  --header-logo-scale:   0.875;      /* logo réduit quand la barre se compacte au défilement (80 → 64) */
+
+  /* Révélations par volet + badge « En cours » (ProjectCard, SideBySide) — innovation APSUD */
+  --status-dot:       0.375rem;    /*   6 : point du badge « En cours » */
+  --dur-pulse:        2400ms;      /* pulsation lente et discrète du point « En cours » */
+  --reveal-slide:     var(--space-16);  /* 64 : la boîte du zigzag glisse depuis le côté de l'image */
+  --reveal-zoom:      1.06;        /* la photo se pose (1,06 → 1) pendant que le volet s'ouvre */
+
+  /* Pages pratiques : carrières, appels d'offres, légal, 404, recherche */
+  --job-row-min:      4rem;        /*  64 : hauteur mini d'une ligne d'offre (cible tactile de toute la ligne, DESIGN §4.14) */
+  --legal-toc-w:      15rem;       /* 240 : sommaire d'ancres collant des pages légales (≥ 80em) */
+  --legal-pending-bg: var(--apsud-soleil-100);   /* marqueur « [à compléter par APSUD] » */
+  --legal-pending-ink: var(--apsud-soleil-800);
+  --error-drop-w:     clamp(7rem, 1.1935rem + 25.8065vw, 24rem);  /* 112 → 384 : goutte-feuille « tombée » de la 404 */
+  --error-drop-tilt:  -20deg;      /* inclinaison de la goutte tombée (DESIGN §5.11) */
+  --dur-drop-fall:    1100ms;      /* chute de la goutte à l'arrivée sur la 404 */
+
+  /* Pages « Agir avec nous » (/agir, /faire-un-don, /agir/partenariat, /contact) : largeurs mini des grilles auto-fit */
+  --agir-card-min:    20rem;   /* 320 : boîte « façon d'agir » */
+  --agir-chip-min:    9rem;    /* 144 : puce de montant / logo */
+  --agir-logo-min-sm: 6.5rem;  /* 104 : logo compact */
+  --agir-stat-min:    13rem;   /* 208 : chiffre du bandeau partenariat */
+  --agir-reason-min:  28rem;   /* 448 : raison « Pourquoi APSUD » (2 colonnes en 1440) */
+  --agir-mode-min:    18rem;   /* 288 : modalité de collaboration */
+}
+
+@media (width >= 48em) {
+  :root { --header-h: 5rem; }   /* 80 px */
+}
+
+@media (width >= 48em) {
+  :root { --header-h-scrolled: 4rem; }   /* 64 px : header réduit après défilement (Header.astro) */
+}
+
+/* Thèmes de section : redéfinissent localement les sémantiques */
+.t-coton       { --color-bg: var(--apsud-coton); background: var(--color-bg); }
+.t-pousse      { --color-bg: var(--apsud-pousse-300); background: var(--color-bg);
+                 --color-accent: var(--apsud-foret-900);
+                 --color-text-muted: var(--apsud-vert-800);  /* Mousse sur Pousse = 4,43 : échec */
+                 --button-primary-bg: var(--apsud-foret-900);
+                 --button-primary-bg-hover: var(--apsud-foret-950);
+                 --button-primary-bg-active: var(--apsud-vert-800);
+                 --button-primary-text: var(--apsud-pousse-300);
+                 --shadow-step: 0.5rem 0.5rem 0 var(--apsud-foret-900); }
+.t-pousse-pale { --color-bg: var(--apsud-pousse-100); background: var(--color-bg); }
+.t-foret       { --color-bg: var(--apsud-foret-900); background: var(--color-bg);
+                 --color-text: var(--apsud-coton);
+                 --color-heading: var(--apsud-coton);
+                 --color-text-muted: var(--apsud-vert-200);
+                 --color-link: var(--apsud-coton);
+                 --color-link-decoration: var(--apsud-pousse-300);
+                 --color-border-control: var(--apsud-coton);
+                 --color-focus: var(--apsud-pousse-300);
+                 --button-primary-bg: var(--button-on-dark-bg);
+                 --button-primary-bg-hover: var(--button-on-dark-bg-hover);
+                 --button-primary-bg-active: var(--button-on-dark-bg-active);
+                 --button-primary-text: var(--button-on-dark-text);
+                 color: var(--color-text); }
+
+::selection { background: var(--color-selection-bg); color: var(--color-selection-text); }

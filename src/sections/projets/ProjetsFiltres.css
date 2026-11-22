@@ -1,0 +1,260 @@
+/* /projets — barre de filtres (boîte Coton, champs Prosper : contour Forêt 1 px, rayon 4 px) */
+@layer components {
+  /* Sans JS, le filtrage est impossible : la barre disparaît, tous les projets restent visibles */
+  :root:not(.js) .c-projets-filtres { display: none; }
+
+  .c-projets-filtres {
+    display: grid;
+    gap: var(--space-6);
+    padding: clamp(var(--space-4), 5vw, var(--space-6));   /* 16 px au pouce → 24 px dès ~480 px */
+    background: var(--color-surface-soft);
+  }
+
+  /* --- Petit écran : champs repliés derrière « Filtrer (n) » ------------------ */
+  .c-projets-filtres__toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+    inline-size: 100%;
+    min-block-size: var(--control-h);
+    padding-inline: var(--space-4);
+    border: var(--border-width) solid var(--color-border-control);
+    border-radius: var(--radius-control);
+    background: var(--field-bg);
+    font-weight: var(--fw-heavy);
+    text-align: start;
+    cursor: pointer;
+    outline: var(--outline-hover) solid transparent;
+    outline-offset: calc(-1 * var(--border-width));
+    transition: outline-color var(--dur-short) var(--ease-out);
+  }
+  .c-projets-filtres__toggle:hover { outline-color: var(--color-border-control); }
+  .c-projets-filtres__toggle:focus-visible {
+    outline: var(--focus-width) solid var(--color-focus);
+    outline-offset: var(--focus-offset);
+  }
+  .c-projets-filtres__toggle-label {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+  .c-projets-filtres__toggle-badge {
+    display: inline-grid;
+    place-items: center;
+    min-inline-size: var(--space-6);
+    block-size: var(--space-6);
+    padding-inline: var(--space-1);
+    border-radius: var(--radius-round);
+    background: var(--color-surface-strong);
+    color: var(--color-text-inverse);
+    font-size: var(--fs-caption);
+    font-variant-numeric: tabular-nums;
+  }
+  .c-projets-filtres__toggle-badge[hidden] { display: none; }
+  .c-projets-filtres__toggle[aria-expanded="true"] .c-projets-filtres__toggle-chevron { rotate: 180deg; }
+
+  .c-projets-filtres__panel {
+    display: grid;
+    gap: var(--space-6);
+    min-inline-size: 0;
+  }
+  @media (width < 48em) {
+    .c-projets-filtres:not(.is-open) .c-projets-filtres__panel { display: none; }
+  }
+  @media (width >= 48em) {
+    .c-projets-filtres__toggle { display: none; }
+    .c-projets-filtres__panel { display: contents; }   /* disposition ordinateur inchangée */
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .c-projets-filtres__toggle-chevron { transition: rotate var(--dur-short) var(--ease-out); }
+    @media (width < 48em) {
+      .c-projets-filtres.is-open .c-projets-filtres__panel {
+        animation: c-projets-filtres-open var(--dur-short) var(--ease-out) both;
+      }
+    }
+  }
+  @keyframes c-projets-filtres-open {
+    from { opacity: 0; translate: 0 calc(-1 * var(--space-2)); }
+  }
+  @media (width >= 64em) {
+    .c-projets-filtres {
+      grid-template-columns: auto 1fr;
+      align-items: end;
+      column-gap: var(--space-10);
+      padding: var(--space-8) var(--space-10);
+    }
+    .c-projets-filtres__bilan { grid-column: 1 / -1; }
+  }
+
+  /* --- Statut : puces radio ------------------------------------------------ */
+  .c-projets-filtres__statut {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    min-inline-size: 0;
+  }
+  .c-projets-filtres__legend,
+  .c-projets-filtres__label {
+    display: block;
+    margin-block-end: var(--space-2);
+    padding: 0;
+    font-family: var(--font-condensed);
+    font-stretch: var(--font-stretch-condensed);
+    font-size: var(--fs-overline);
+    font-weight: var(--fw-heavy);
+    letter-spacing: var(--ls-overline);
+    text-transform: uppercase;
+    color: var(--color-text);
+  }
+  .c-projets-filtres__chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+  .c-projets-filtres__chip { position: relative; display: inline-flex; }
+  .c-projets-filtres__radio {
+    position: absolute;
+    inset: 0;
+    margin: 0;
+    opacity: 0;
+    cursor: pointer;
+  }
+  .c-projets-filtres__chip-label {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    min-block-size: var(--control-h);
+    padding-inline: var(--space-4);
+    border: var(--border-width) solid var(--color-border-control);
+    border-radius: var(--radius-control);
+    background: var(--field-bg);
+    font-weight: var(--fw-bold);
+    outline: var(--outline-hover) solid transparent;
+    outline-offset: calc(-1 * var(--border-width));
+    transition:
+      background-color var(--dur-short) var(--ease-out),
+      color var(--dur-short) var(--ease-out),
+      outline-color var(--dur-short) var(--ease-out);
+  }
+  .c-projets-filtres__chip:hover .c-projets-filtres__chip-label { outline-color: var(--color-border-control); }
+  .c-projets-filtres__radio:checked + .c-projets-filtres__chip-label {
+    background: var(--color-surface-strong);
+    border-color: var(--color-surface-strong);
+    color: var(--color-text-inverse);
+  }
+  .c-projets-filtres__radio:focus-visible + .c-projets-filtres__chip-label {
+    outline: var(--focus-width) solid var(--color-focus);
+    outline-offset: var(--focus-offset);
+  }
+  .c-projets-filtres__chip-count {
+    min-inline-size: var(--space-6);
+    padding: 0 var(--space-1);
+    border-radius: var(--radius-control);
+    background: var(--color-surface-tint);
+    color: var(--color-text);
+    font-size: var(--fs-caption);
+    text-align: center;
+  }
+  .c-projets-filtres__radio:checked + .c-projets-filtres__chip-label .c-projets-filtres__chip-count {
+    background: var(--color-surface-signature);
+  }
+  .c-projets-filtres__dot {
+    inline-size: var(--status-dot);
+    block-size: var(--status-dot);
+    border-radius: var(--radius-round);
+    background: var(--color-status-ongoing-bg);
+    box-shadow: 0 0 0 var(--border-width) var(--color-border-control);
+  }
+
+  /* --- Listes déroulantes -------------------------------------------------- */
+  .c-projets-filtres__selects {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, calc(2 * var(--space-24))), 1fr));
+    gap: var(--space-4);
+  }
+  .c-projets-filtres__select-wrap { position: relative; }
+  .c-projets-filtres__select {
+    appearance: none;
+    inline-size: 100%;
+    min-block-size: var(--control-h);
+    padding-block: var(--space-2);
+    padding-inline: var(--space-4) var(--space-10);
+    border: var(--border-width) solid var(--color-border-control);
+    border-radius: var(--radius-control);
+    background: var(--field-bg);
+    font-weight: var(--fw-semibold);
+    text-overflow: ellipsis;
+    cursor: pointer;
+    outline: var(--outline-hover) solid transparent;
+    outline-offset: calc(-1 * var(--border-width));
+    transition: outline-color var(--dur-short) var(--ease-out);
+  }
+  .c-projets-filtres__select:hover { outline-color: var(--color-border-control); }
+  .c-projets-filtres__select:focus-visible {
+    outline: var(--focus-width) solid var(--color-focus);
+    outline-offset: var(--focus-offset);
+  }
+  /* Filtre actif : le champ passe en Pousse pâle, on voit d'un coup d'œil ce qui filtre */
+  .c-projets-filtres__select.is-active {
+    background: var(--color-surface-tint);
+    border-width: var(--border-width-strong);
+  }
+  .c-projets-filtres__chevron {
+    position: absolute;
+    inset-block-start: 50%;
+    inset-inline-end: var(--space-4);
+    translate: 0 -50%;
+    pointer-events: none;
+  }
+
+  /* --- Bilan : compteur + réinitialiser -------------------------------------- */
+  .c-projets-filtres__bilan {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3) var(--space-6);
+    padding-block-start: var(--space-5);
+    border-block-start: var(--border-width) solid var(--color-border-subtle);
+  }
+  .c-projets-filtres__count {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-2);
+    margin: 0;
+    font-size: var(--fs-body);
+  }
+  .c-projets-filtres__count strong {
+    font-family: var(--font-condensed);
+    font-stretch: var(--font-stretch-condensed);
+    font-size: var(--fs-h4);
+    font-weight: var(--fw-heavy);
+    line-height: var(--lh-tight);
+    font-variant-numeric: tabular-nums;
+  }
+  .c-projets-filtres__count-total { color: var(--color-text-muted); }
+
+  .c-projets-filtres__reset {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    min-block-size: var(--tap-min);
+    font-weight: var(--fw-heavy);
+    text-decoration: underline;
+    text-decoration-color: var(--color-link-decoration);
+    text-decoration-thickness: var(--underline-thickness);
+    text-underline-offset: var(--space-1);
+    transition: --underline-thickness var(--dur-short) var(--ease-out), opacity var(--dur-short) var(--ease-out);
+  }
+  .c-projets-filtres__reset:hover { --underline-thickness: var(--border-width-strong); }
+  .c-projets-filtres__reset:focus-visible {
+    outline: var(--focus-width) solid var(--color-focus);
+    outline-offset: var(--focus-offset);
+  }
+  .c-projets-filtres__reset:disabled {
+    opacity: 0.45;
+    cursor: default;
+    text-decoration: none;
+  }
+}

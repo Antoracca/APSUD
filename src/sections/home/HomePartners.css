@@ -1,0 +1,339 @@
+/* Accueil — Bailleurs et partenaires : bandeau défilant (inspiration Alight « Récipiendaire fier de ce prix »).
+   Toutes les valeurs viennent de tokens.css (--marquee-*, --band-*). */
+@layer components {
+  /* Fond : vert doux, NUANCÉ aux deux bouts — il naît du blanc de la section précédente et se fond
+     dans le Coton de la suivante (aucune ligne horizontale franche). */
+  .c-partners-band {
+    position: relative;
+    overflow: clip;                       /* fond décoratif et rangées coupés aux bords du bandeau */
+    padding-block: var(--band-pad);
+    isolation: isolate;
+    color: var(--color-text);
+    background: linear-gradient(
+      to bottom,
+      var(--band-from) 0,
+      var(--band-bg) var(--band-fade),
+      var(--band-bg) calc(100% - var(--band-fade)),
+      var(--band-to) 100%
+    );
+  }
+
+  /* ---------- Fond décoratif (SVG) ---------- */
+  .c-partners-band__bg {
+    position: absolute;
+    inset: 0;
+    z-index: var(--z-below);
+    inline-size: 100%;
+    max-inline-size: none;
+    block-size: 100%;
+    pointer-events: none;
+    /* les formes s'effacent dans les fondus : aucune arête franche en haut ni en bas */
+    mask-image: linear-gradient(to bottom, transparent, currentColor var(--band-fade), currentColor calc(100% - var(--band-fade)), transparent);
+  }
+  .c-partners-band__bg-fill { fill: var(--band-bg-fill); }
+  .c-partners-band__bg-line {
+    fill: none;
+    stroke: var(--band-bg-line);
+    stroke-width: var(--band-bg-line-w);
+  }
+  .c-partners-band__bg-line--soft { stroke: var(--band-bg-line-soft); }
+  .c-partners-band__bg-seed { fill: var(--band-bg-fill); }
+
+  /* ---------- Mise en page : titre puis rangées (mobile) → titre à gauche, rangées à droite ---------- */
+  .c-partners-band__inner {
+    display: grid;
+    gap: var(--space-10);
+  }
+
+  .c-partners-band__head {
+    padding-inline: var(--gutter);
+    max-inline-size: calc(var(--measure-intro) + 2 * var(--gutter));
+  }
+  .c-partners-band__overline {
+    margin-block-end: var(--space-4);
+    color: var(--color-text-muted);
+    font-size: var(--fs-overline);
+    font-weight: var(--fw-heavy);
+    letter-spacing: var(--ls-overline);
+    text-transform: uppercase;
+  }
+
+  /* Titre : Condensée grasse (voix APSUD) ; le mot mis en valeur passe en italique large et léger,
+     le contraste « droit / italique » du bandeau Alight, sans police supplémentaire (Mona Sans italique). */
+  .c-partners-band__title {
+    color: var(--color-heading);
+    font-size: var(--fs-h2);
+    font-stretch: var(--font-stretch-condensed);
+    font-weight: var(--fw-heavy);
+    line-height: var(--lh-heading);
+    letter-spacing: var(--ls-condensed);
+    text-wrap: balance;
+  }
+  .c-partners-band__em {
+    position: relative;
+    display: inline-block;
+    padding-inline-end: var(--band-em-pad);
+    padding-block-end: var(--band-em-pad-b);
+    font-stretch: var(--band-em-stretch);
+    font-style: italic;
+    font-weight: var(--band-em-weight);
+  }
+  /* Double trait de pinceau sous le mot (écho des soulignés peints d'Alight), Vert APSUD */
+  .c-partners-band__brush {
+    position: absolute;
+    inset-inline: 0;
+    inset-block-start: calc(100% - var(--band-em-pad-b));   /* juste sous la ligne de base du mot */
+    inline-size: 100%;
+    max-inline-size: none;
+    block-size: auto;
+    overflow: visible;
+    fill: none;
+    stroke: var(--color-brand);
+    stroke-linecap: round;
+    stroke-width: var(--band-brush-w);
+    stroke-dasharray: 1;
+    stroke-dashoffset: 0;
+  }
+  .c-partners-band__brush path + path { stroke-width: var(--band-brush-w-2); }
+
+  .c-partners-band__text {
+    margin-block-start: var(--space-8);
+    color: var(--color-text);
+    font-size: var(--fs-lead);
+    line-height: var(--lh-lead);
+  }
+
+  .c-partners-band__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-4) var(--space-6);
+    margin-block-start: var(--space-8);
+  }
+
+
+  /* ---------- Rangées ---------- */
+  .c-partners-band__rows {
+    display: grid;
+    gap: var(--space-8);
+    min-inline-size: 0;
+  }
+
+  .c-marquee {
+    display: grid;
+    gap: var(--space-3);
+    min-inline-size: 0;
+  }
+  .c-marquee__label {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding-inline: var(--gutter);
+    color: var(--color-text);
+    font-size: var(--fs-h6);
+    font-stretch: var(--font-stretch-condensed);
+    font-weight: var(--fw-heavy);
+    line-height: var(--lh-tight);
+    letter-spacing: var(--ls-condensed);
+  }
+  /* Pastille du nombre : goutte-feuille Forêt (coin vif en bas à gauche), chiffre Pousse */
+  .c-marquee__count {
+    display: inline-grid;
+    place-items: center;
+    min-inline-size: var(--marquee-count-size);
+    block-size: var(--marquee-count-size);
+    padding-inline: var(--space-1);
+    border-radius: var(--radius-goutte);
+    background: var(--color-surface-strong);
+    color: var(--color-surface-signature);
+    font-size: var(--fs-small);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .c-marquee__viewport {
+    overflow: hidden;
+    /* fondu aux deux bords : les logos naissent et disparaissent dans le vert */
+    mask-image: linear-gradient(to right, transparent, currentColor var(--marquee-fade), currentColor calc(100% - var(--marquee-fade)), transparent);
+    padding-block: var(--space-2);   /* place pour le logo agrandi au survol */
+  }
+  .c-marquee__track {
+    display: flex;
+    inline-size: max-content;
+  }
+  .c-marquee__list {
+    display: flex;
+    gap: var(--marquee-gap);
+    margin: 0;
+    padding: 0 var(--marquee-gap) 0 0;      /* écart final = écart entre listes : boucle exacte à −50 % */
+    list-style: none;
+  }
+  .c-marquee__item { flex: none; }
+
+  /* Logo nu, sans fond, directement sur le vert : la zone cliquable garde 44 px de haut mini */
+  .c-marquee__tile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-inline-size: var(--marquee-tile-min);
+    block-size: var(--marquee-tile-h);
+    padding-inline: var(--space-2);
+    text-decoration: none;
+  }
+  .c-marquee__tile:focus-visible {
+    outline: var(--focus-width) solid var(--color-focus);
+    outline-offset: var(--focus-offset);
+  }
+  .c-marquee__logo {
+    inline-size: auto;
+    block-size: clamp(var(--marquee-logo-h-min), calc(var(--marquee-logo-h) * var(--_scale, 1)), var(--marquee-logo-h-max));
+    max-inline-size: var(--marquee-logo-w-max);
+    object-fit: contain;
+  }
+
+  /* ---------- ≥ 64em : titre à gauche, rangées à droite jusqu'au bord de l'écran ---------- */
+  @media (width >= 64em) {
+    .c-partners-band__inner {
+      grid-template-columns: minmax(var(--band-head-min), var(--band-head-w)) minmax(0, 1fr);
+      align-items: center;
+      gap: var(--space-12);
+      padding-inline-start: max(var(--gutter), (100% - var(--container)) / 2);
+    }
+    .c-partners-band__head { padding-inline: 0; }
+    .c-marquee__label { padding-inline: var(--marquee-fade) 0; }
+  }
+
+  /* ---------- Mouvement (accepté) ---------- */
+  @media (prefers-reduced-motion: no-preference) {
+    .c-marquee__track {
+      animation: c-marquee calc(var(--_n) * var(--marquee-step-dur)) linear infinite;
+    }
+    .c-marquee--right .c-marquee__track { animation-direction: reverse; }
+        /* Le défilement continue au survol et au toucher (demande du développeur) ; seule la navigation
+       au CLAVIER l'arrête, pour que le logo focalisé reste lisible. */
+    .c-marquee:has(:focus-visible) .c-marquee__track { animation-play-state: paused; }
+
+    /* logo survolé : il grandit légèrement, les autres de la rangée s'estompent un peu */
+    .c-marquee__logo { transition: scale var(--dur-standard) var(--ease-out), opacity var(--dur-standard) var(--ease-out); }
+    .c-marquee__tile:hover .c-marquee__logo,
+    .c-marquee__tile:focus-visible .c-marquee__logo { scale: var(--marquee-logo-hover-scale); }
+    .c-marquee__list:has(.c-marquee__tile:hover) .c-marquee__tile:not(:hover) .c-marquee__logo { opacity: var(--marquee-logo-dim); }
+
+    /* fond : la goutte géante dérive et pivote très lentement (aller-retour) */
+    .c-partners-band__bg-drift {
+      transform-box: fill-box;
+      transform-origin: 60% 50%;
+      animation: c-partners-band-drift var(--band-drift-dur) var(--ease-in-out) infinite alternate;
+    }
+
+    /* Entrée : le pinceau se dessine, chaque rangée glisse depuis son côté (un seul déclencheur) */
+    .js-reveal .c-partners-band__head:not(.is-revealed) .c-partners-band__brush path { stroke-dashoffset: 1; }
+    .c-partners-band__brush path {
+      transition: stroke-dashoffset var(--dur-brush) var(--ease-draw) var(--delay-brush);
+    }
+    .c-partners-band__brush path + path { transition-delay: calc(var(--delay-brush) + var(--stagger-brush)); }
+
+    .js-reveal .c-partners-band__rows[data-reveal] { opacity: 1 !important; transform: none !important; }
+    .js-reveal .c-partners-band__rows > .c-marquee {
+      opacity: 0;
+      translate: var(--marquee-enter) 0;
+      transition:
+        opacity var(--dur-long) var(--ease-out) calc(var(--_row) * var(--stagger-marquee)),
+        translate var(--dur-signature) var(--ease-out) calc(var(--_row) * var(--stagger-marquee));
+    }
+    .js-reveal .c-partners-band__rows > .c-marquee--right { translate: calc(-1 * var(--marquee-enter)) 0; }
+    .js-reveal .c-partners-band__rows.is-revealed > .c-marquee { opacity: 1; translate: none; }
+  }
+
+  /* ---------- Animations réduites : rien ne défile, rangées balayables au doigt ---------- */
+  @media (prefers-reduced-motion: reduce) {
+    .c-marquee__viewport {
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-padding-inline: var(--gutter);
+      mask-image: none;
+    }
+    .c-marquee__list { padding-inline: var(--gutter); }
+    .c-marquee__list[aria-hidden="true"] { display: none; }
+    .c-marquee__item { scroll-snap-align: start; }
+  }
+
+  @keyframes c-marquee {
+    to { translate: -50% 0; }
+  }
+  @keyframes c-partners-band-drift {
+    from { translate: 0 0; rotate: 0deg; }
+    to   { translate: var(--band-drift-shift); rotate: var(--band-drift-rotate); }
+  }
+}
+
+/* ---------- Appel au don entre les deux rangées (« Et vous ? ») ---------- */
+@layer components {
+  .c-partners-band__give {
+    position: relative;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: center;
+    gap: var(--space-4) var(--space-6);
+    margin-inline: var(--gutter);
+    padding: var(--space-6);
+    background: var(--color-surface-strong);
+    box-shadow: var(--give-step);              /* marche Pousse vif, signature des panneaux APSUD */
+    color: var(--give-text);
+    --color-focus: var(--color-surface-signature);   /* anneau de focus visible sur le Forêt */
+  }
+  /* Goutte-feuille Pousse : l'emblème de la capsule */
+  .c-partners-band__give-leaf {
+    inline-size: var(--give-leaf);
+    aspect-ratio: 1;
+    border-radius: var(--radius-goutte);
+    background: var(--color-surface-signature);
+  }
+  .c-partners-band__give-title {
+    color: var(--color-surface-signature);
+    font-size: var(--fs-h4);
+    font-stretch: var(--band-em-stretch);
+    font-style: italic;
+    font-weight: var(--band-em-weight);
+    line-height: var(--lh-tight);
+  }
+  .c-partners-band__give-text {
+    margin-block-start: var(--space-2);
+    color: var(--give-text);
+    font-size: var(--fs-body);
+    line-height: var(--lh-snug);
+    text-wrap: pretty;
+  }
+  .c-partners-band__give-button {
+    grid-column: 1 / -1;
+    justify-self: start;
+    gap: var(--space-3);
+  }
+  .c-partners-band__give-arrow { flex: none; }
+
+  @media (width >= 48em) {
+    .c-partners-band__give {
+      grid-template-columns: auto minmax(0, 1fr) auto;
+      padding: var(--space-6) var(--space-8);
+    }
+    .c-partners-band__give-button { grid-column: auto; justify-self: end; }
+  }
+  @media (width >= 64em) {
+    /* aligné sur les libellés des rangées, il s'arrête avant le bord : une capsule, pas un bandeau */
+    .c-partners-band__give { margin-inline: var(--marquee-fade) var(--space-12); }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .c-partners-band__give-arrow { transition: translate var(--dur-standard) var(--ease-out); }
+    .c-partners-band__give-button:hover .c-partners-band__give-arrow,
+    .c-partners-band__give-button:focus-visible .c-partners-band__give-arrow { translate: var(--space-1) 0; }
+    /* entrée : la capsule monte en fondu entre les deux rangées qui glissent */
+    .js-reveal .c-partners-band__rows > .c-partners-band__give {
+      opacity: 0;
+      translate: 0 var(--space-4);
+      transition:
+        opacity var(--dur-long) var(--ease-out) var(--stagger-marquee),
+        translate var(--dur-signature) var(--ease-out) var(--stagger-marquee);
+    }
+    .js-reveal .c-partners-band__rows.is-revealed > .c-partners-band__give { opacity: 1; translate: none; }
+  }
+}
